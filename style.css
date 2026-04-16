@@ -187,7 +187,7 @@ body {
 /* ─── Hero ─────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 86vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -219,9 +219,16 @@ body {
 .hero__inner {
   position: relative;
   z-index: 1;
-  max-width: 680px;
-  padding-top: 60px;
-  padding-bottom: 120px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 48px;
+  align-items: center;
+  padding-top: 44px;
+  padding-bottom: 92px;
+}
+
+.hero__content {
+  max-width: 650px;
 }
 
 .hero__badge {
@@ -242,7 +249,7 @@ body {
 
 .hero__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2.25rem, 4.4vw, 4rem);
   line-height: 1.1;
   color: var(--text);
   margin-bottom: 24px;
@@ -275,6 +282,24 @@ body {
 }
 .hero__actions .btn--ghost:hover {
   background: var(--purple-light);
+}
+
+.hero__media {
+  display: grid;
+  gap: 16px;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.hero__media img:last-child {
+  width: 88%;
+  justify-self: end;
 }
 
 .hero__scroll-hint {
@@ -458,6 +483,14 @@ body {
 
 .service-card--accent .service-card__number {
   color: rgba(255,255,255,.12);
+}
+
+.service-card__image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 24px;
 }
 
 .service-card__icon {
@@ -843,6 +876,10 @@ body {
 
 /* ─── Responsive ──────────────────────────────────── */
 @media (max-width: 1024px) {
+  .hero { min-height: auto; }
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__media { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero__media img:last-child { width: 100%; }
   .intro { grid-template-columns: 1fr; margin-top: -40px; }
   .about__inner { grid-template-columns: 1fr; gap: 48px; }
   .services__grid { grid-template-columns: 1fr; }
@@ -868,6 +905,8 @@ body {
   }
   .nav__hamburger { display: flex; }
   .hero__inner { padding-top: 40px; padding-bottom: 80px; }
+  .hero__media { grid-template-columns: 1fr; }
+  .hero__media img { height: 190px; }
   .intro { margin-top: 40px; }
   .about, .services, .philosophy, .contact { padding: 80px 0; }
   .philosophy__grid { grid-template-columns: 1fr; }
