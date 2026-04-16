@@ -184,8 +184,9 @@ a { color: var(--purple); text-decoration: none; }
 }
 
 @media (max-width: 768px) {
-  .nav__logo-text { display: none; }
   .nav__logo img { height: 54px; }
+  .nav__logo-text strong { font-size: .85rem; }
+  .nav__logo-text span { display: none; }
 }
 
 .nav__links {
