@@ -1,349 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Horizon Care Services Ltd – Where We Meet Your Needs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>Horizon care services – Hertfordshire | Horizon Care Limited</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav__inner container">
-      <a href="#" class="nav__logo">
-        <img src="logo.svg" alt="Horizon Care Services Ltd" />
-      </a>
-      <nav class="nav__links">
-        <a href="#services">Services</a>
-        <a href="#philosophy">Philosophy</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="btn btn--outline">Apply Now</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html"><img src="logo.svg" alt="Horizon Care Services Ltd"><span>Horizon Care Services Ltd</span></a>
+      <button class="menu-btn" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <nav class="nav-links">
+        <a class="active" href="index.html">Home</a>
+        <a href="supported-accommodation.html">Supported accommodation</a>
+        <a href="staffing-solutions.html">Staffing solutions</a>
+        <a href="contact-apply.html">Contact us</a>
+        <a class="btn btn-primary" href="contact-apply.html">Contact &amp; Apply</a>
       </nav>
-      <button class="nav__hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__bg"></div>
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <div class="hero__badge">Registered Health &amp; Social Care Provider</div>
-        <h1 class="hero__title">Where We Meet<br /><em>Your Needs</em></h1>
-        <p class="hero__sub">
-          A dynamic health and social care provider delivering tailored, high-quality
-          care that transforms lives while promoting respect, dignity, and individuality.
-        </p>
-        <div class="hero__actions">
-          <a href="#services" class="btn btn--primary">Explore Services</a>
-          <a href="#contact" class="btn btn--ghost">Contact Us</a>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Horizon Care Services</div>
+          <h1>Horizon Care Services is a dynamic health and social care provider with a compelling vision.</h1>
+          <p class="lead">Our mission is to deliver tailored, high-quality care that transforms lives while promoting respect, dignity, and individuality.</p>
+          <p class="lead">Our dedication to excellence is reflected in our highly trained staff, each of whom provides exceptional care customised to meet the distinct needs of every individual. By fostering collaboration with healthcare professionals, local communities, families, and carers, we ensure seamless integration and a continuous continuum of care for each person.</p>
+          <p><a class="btn btn-primary" href="contact-apply.html">Contact &amp; Apply</a></p>
+        </div>
+        <div class="hero-media">
+          <img src="https://images.pexels.com/photos/7551666/pexels-photo-7551666.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Care professional with resident">
+          <img class="mini" src="https://images.pexels.com/photos/5794749/pexels-photo-5794749.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Compassionate support">
         </div>
       </div>
-      <div class="hero__media">
-        <img src="https://images.pexels.com/photos/7551666/pexels-photo-7551666.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Healthcare professional supporting a client" />
-        <img src="https://images.pexels.com/photos/7088530/pexels-photo-7088530.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Caregiver and client sharing a supportive handshake" />
-      </div>
-    </div>
-    <div class="hero__scroll-hint">
-      <span></span>
-    </div>
-  </section>
+    </section>
 
-  <!-- INTRO STRIP -->
-  <section class="intro container">
-    <div class="intro__card">
-      <div class="intro__icon">&#10003;</div>
-      <h3>Highly Trained Staff</h3>
-      <p>Every team member delivers exceptional, customised care to meet the distinct needs of each individual.</p>
-    </div>
-    <div class="intro__card">
-      <div class="intro__icon">&#10023;</div>
-      <h3>Collaborative Care</h3>
-      <p>We partner with healthcare professionals, communities, families and carers for seamless continuity.</p>
-    </div>
-    <div class="intro__card">
-      <div class="intro__icon">&#9654;</div>
-      <h3>Person-Centred</h3>
-      <p>Tailored plans that respect individuality, cultural backgrounds and personal preferences.</p>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about">
-    <div class="container about__inner">
-      <div class="about__image-wrap">
-        <div class="about__image-block">
-          <div class="about__image-accent"></div>
-          <img src="logo.svg" alt="Horizon Care Services" class="about__logo-large" />
-        </div>
-      </div>
-      <div class="about__content">
-        <span class="label">About Us</span>
-        <h2>A Compelling Vision for Care</h2>
-        <p>
-          Horizon Care Services is a dynamic health and social care provider with a compelling vision.
-          Our mission is to deliver tailored, high-quality care that transforms lives while promoting
-          respect, dignity, and individuality.
-        </p>
-        <p>
-          Our dedication to excellence is reflected in our highly trained staff, each of whom provides
-          exceptional care customised to meet the distinct needs of every individual. By fostering
-          collaboration with healthcare professionals, local communities, families, and carers, we
-          ensure seamless integration and a continuous continuum of care for each person.
-        </p>
-        <a href="#contact" class="btn btn--primary">Get In Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header">
-        <span class="label">What We Offer</span>
-        <h2>Our Services</h2>
-        <p>Specialised care solutions designed around you.</p>
-      </div>
-      <div class="services__grid">
-
-        <div class="service-card">
-          <div class="service-card__number">01</div>
-          <img class="service-card__image" src="https://images.pexels.com/photos/7363081/pexels-photo-7363081.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Modern supported accommodation interior" />
-          <div class="service-card__icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 40V18L24 6l16 12v22H30V28H18v12H8z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>Supported Accommodation</h3>
-          <p>Safe, supportive living environments tailored to each resident's needs, promoting independence and well-being.</p>
-          <a href="#contact" class="service-card__link">Learn More <span>&rarr;</span></a>
-        </div>
-
-        <div class="service-card service-card--accent">
-          <div class="service-card__number">02</div>
-          <img class="service-card__image" src="https://images.pexels.com/photos/5726794/pexels-photo-5726794.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Healthcare staffing team in discussion" />
-          <div class="service-card__icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="18" cy="14" r="6" stroke="currentColor" stroke-width="2.5"/>
-              <circle cx="34" cy="14" r="6" stroke="currentColor" stroke-width="2.5"/>
-              <path d="M4 38c0-8 6-12 14-12s14 4 14 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M34 26c4 0 10 2 10 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Staffing Solutions</h3>
-          <p>Reliable, highly qualified healthcare professionals placed to deliver uninterrupted, standard care services to your service users.</p>
-          <a href="#contact" class="service-card__link">Learn More <span>&rarr;</span></a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="philosophy" id="philosophy">
-    <div class="container">
-      <div class="section-header section-header--light">
-        <span class="label label--light">How We Work</span>
-        <h2>Our Philosophy of Care</h2>
-        <p>Our dedicated team is driven by a strong commitment to maintaining the highest standards of care.</p>
-      </div>
-      <div class="philosophy__grid">
-
-        <div class="phil-card">
-          <div class="phil-card__icon">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 34C11 34 4 27 4 20S11 6 20 6s16 7 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M26 20a6 6 0 11-12 0 6 6 0 0112 0z" stroke="currentColor" stroke-width="2"/>
-              <path d="M20 14v-4M20 30v4M14 20h-4M30 20h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h4>Holistic &amp; Person-Centred</h4>
-          <p>Our approach is holistic, transparent, and person-centred. Care and risk management plans are tailored to the individual, ensuring right support at the right time.</p>
-        </div>
-
-        <div class="phil-card">
-          <div class="phil-card__icon">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 8l2.9 8.9H32l-7.6 5.5 2.9 8.9L20 26l-7.3 5.3 2.9-8.9L8 16.9h9.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h4>Respect &amp; Dignity</h4>
-          <p>We deeply respect our clients' dignity and privacy, recognising individual choices, cultural backgrounds, social preferences and religious beliefs.</p>
-        </div>
-
-        <div class="phil-card">
-          <div class="phil-card__icon">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 20l8 8 16-16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h4>Compliance &amp; Excellence</h4>
-          <p>Unwavering commitment to national standards and regulations. Our employees undergo comprehensive training to provide the best possible care.</p>
-        </div>
-
-        <div class="phil-card">
-          <div class="phil-card__icon">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="20" r="4" stroke="currentColor" stroke-width="2"/>
-              <circle cx="28" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-              <circle cx="28" cy="28" r="4" stroke="currentColor" stroke-width="2"/>
-              <path d="M16 20h8M24 14l-8 4M24 26l-8-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h4>Integration &amp; Continuity</h4>
-          <p>Our diverse team actively coordinates with professionals, family and friends to ensure continuity of care and a consistent experience.</p>
-        </div>
-
-      </div>
-
-      <div class="philosophy__quote">
-        <blockquote>
-          "At Horizon Care Services, our commitment to excellence is at the heart of everything we do."
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BAND -->
-  <section class="cta-band">
-    <div class="container cta-band__inner">
-      <div>
-        <h2>Ready to work with us?</h2>
-        <p>Contact Horizon Care Services Ltd for all your staffing needs for uninterrupted standard care services.</p>
-      </div>
-      <a href="#contact" class="btn btn--primary btn--lg">Contact &amp; Apply</a>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container contact__inner">
-
-      <div class="contact__info">
-        <span class="label">Get In Touch</span>
-        <h2>Contact Us</h2>
-        <div class="contact__details">
-          <div class="contact__item">
-            <div class="contact__item-icon">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Office Address</strong>
-              <p>9 Lilac Grove, Luton, LU3 3JG</p>
-            </div>
-          </div>
-          <div class="contact__item">
-            <div class="contact__item-icon">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" fill="currentColor"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Phone</strong>
-              <p>Mobile: <a href="tel:07572701349">07572 701 349</a></p>
-              <p>Office: <a href="tel:01582354119">01582 354 119</a></p>
-            </div>
-          </div>
-          <div class="contact__item">
-            <div class="contact__item-icon">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Email</strong>
-              <p><a href="mailto:admin@horizon-careservices.co.uk">admin@horizon-careservices.co.uk</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="contact__social">
-          <a href="#" aria-label="Facebook" class="social-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="social-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" aria-label="Instagram" class="social-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" aria-label="Twitter" class="social-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.43.36a9 9 0 01-2.88 1.1A4.52 4.52 0 0016.11 0c-2.5 0-4.52 2.02-4.52 4.52 0 .35.04.7.11 1.03C7.69 5.37 4.07 3.58 1.64.9a4.52 4.52 0 00-.61 2.27 4.52 4.52 0 002.01 3.76 4.49 4.49 0 01-2.05-.57v.06a4.52 4.52 0 003.63 4.43 4.54 4.54 0 01-2.04.08 4.53 4.53 0 004.22 3.14A9.07 9.07 0 010 19.54a12.79 12.79 0 006.92 2.03c8.3 0 12.84-6.88 12.84-12.84 0-.2 0-.39-.01-.58A9.17 9.17 0 0023 3z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <form class="contact__form" onsubmit="return false;">
-        <h3>Send Us a Message</h3>
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="Your full name" />
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <select id="subject">
-            <option value="">Select a subject</option>
-            <option>General Enquiry</option>
-            <option>Staffing Solutions</option>
-            <option>Supported Accommodation</option>
-            <option>Job Application</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
-        </div>
-        <button type="submit" class="btn btn--primary btn--full">Send Message</button>
-      </form>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <img src="logo.svg" alt="Horizon Care Services Ltd" />
-        <p>Where we meet your needs.</p>
-      </div>
-      <div class="footer__links">
-        <h5>Quick Links</h5>
-        <a href="#services">Services</a>
-        <a href="#philosophy">Our Philosophy</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="footer__links">
-        <h5>Legal</h5>
-        <a href="#">Legal Notice</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Manage Consent</a>
-      </div>
-      <div class="footer__links">
-        <h5>Follow Us</h5>
-        <a href="#">Facebook</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
+    <section class="section">
       <div class="container">
-        <p>&copy; 2022 Horizon Care Services Ltd. All rights reserved.</p>
+        <h2>Our Services:</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>i. Supported accommodation</h3>
+            <p><a class="btn btn-ghost" href="supported-accommodation.html">Learn More</a></p>
+          </article>
+          <article class="card">
+            <h3>ii. Staffing solutions</h3>
+            <p><a class="btn btn-ghost" href="staffing-solutions.html">Learn More</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container card">
+        <h2>Our Philosophy of Care</h2>
+        <p class="subtle">At Horizon Care Services, our dedicated team is driven by a strong commitment to maintaining the highest standards of care. Our philosophy revolves around a set of core values that guide everything we do:</p>
+        <ul class="list">
+          <li><strong>Holistic and Person-Centred Approach:</strong> Our approach towards care is holistic, transparent, and person-centred. We understand that each person is unique, with their own set of needs and preferences. Our care and risk management plans are tailored to the individual, ensuring that they receive the right support at the right time, and we respond promptly to the ever-changing needs of the individual.</li>
+          <li><strong>Respect and Dignity:</strong> We deeply respect our clients’ dignity and privacy. We recognise the importance of individual choices, cultural backgrounds, social preferences, and religious beliefs. We are dedicated to preserving the independence of our clients and maximising their potential by involving them in their care to the fullest extent possible.</li>
+          <li><strong>Compliance and Excellence:</strong> We are unwavering in our commitment to adhere to national standards and regulations, as well as our own internal policies. Our employees undergo comprehensive training and are always ready to go the extra mile to provide the best possible care. Our goal is to enhance the quality of our clients’ lives through exceptional care.</li>
+          <li><strong>Integration and Continuity:</strong> We recognise the importance of seamless care provision. Our diverse team actively participate in the care processes with individual and their support network. We coordinate and communicate with professionals, family and friends to ensure the continuity of care, promoting a consistent and reliable experience for people we care for.</li>
+        </ul>
+        <p>By aligning ourselves with these principles, we ensure that every person we serve receives the highest quality of care, and we strive to make a positive impact on their lives. At Horizon Care Services, our commitment to excellence is at the heart of everything we do.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h3>Come Contact Horizon Care Services Ltd for all your staffing needs for uninterrupted standard care services delivered to service users.</h3>
+          </div>
+          <a class="btn btn-ghost" href="contact-apply.html">Contact &amp; Apply</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Office</h4>
+        <p>Address : 9 Lilac Grove, Luton . LU3 3 JG</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Mobile: <a href="tel:+447572701349">07572 701 349</a><br>Office: <a href="tel:+441582354119">01582 354 119</a><br>Email: <a href="mailto:admin@horizon-careservices.co.uk">admin@horizon-careservices.co.uk</a></p>
+      </div>
+      <div>
+        <h4>More links</h4>
+        <p class="inline-links"><a href="legal-notice.html">Legal notice</a> <a href="privacy-policy.html">Privacy policy</a></p>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <p class="inline-links"><a href="#">Facebook</a><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">Twitter</a></p>
       </div>
     </div>
+    <div class="container footer-bottom">© 2022 Horizon Care Services Ltd.</div>
   </footer>
-
   <script src="main.js"></script>
 </body>
 </html>
