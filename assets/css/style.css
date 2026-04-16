@@ -31,6 +31,9 @@ body {
   overflow-x: hidden;
 }
 
+/* Global link base — overridden by component rules */
+a { color: var(--purple); text-decoration: none; }
+
 /* ─── Utility ─────────────────────────────────────── */
 .container {
   max-width: 1180px;
@@ -826,11 +829,13 @@ body {
 }
 
 .footer__brand img {
-  height: 52px;
+  height: 56px;
   width: auto;
-  filter: brightness(0) invert(1);
-  opacity: .85;
+  background: rgba(255,255,255,.12);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
   margin-bottom: 16px;
+  display: block;
 }
 
 .footer__brand p {
@@ -1526,4 +1531,225 @@ body {
   .stats-bar__grid { grid-template-columns: 1fr 1fr; }
   .stat-item { border-right: none; padding-bottom: 20px; }
   .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.15); }
+}
+
+
+/* ═══════════════════════════════════════════════════
+   TEXTURE, DEPTH & POLISH
+   ═══════════════════════════════════════════════════ */
+
+/* ─── Dot-grid texture on light bg sections ─────── */
+.services,
+.cta-band,
+.page-section--muted {
+  background-color: var(--off-white);
+  background-image: radial-gradient(rgba(107,45,139,.055) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+/* ─── Subtle grain on purple/dark sections ──────── */
+.philosophy,
+.stats-bar {
+  background-image:
+    radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ─── Card depth: inner top-edge highlight ──────── */
+.intro__card,
+.service-card,
+.scheme-card,
+.role-card,
+.info-block {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 1px 3px rgba(0,0,0,.05),
+    0 4px 20px rgba(107,45,139,.09);
+}
+
+.content-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 2px 8px rgba(0,0,0,.04),
+    0 8px 28px rgba(107,45,139,.08);
+}
+
+.contact__form {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 4px 24px rgba(107,45,139,.1);
+}
+
+/* ─── Hover depth boost ─────────────────────────── */
+.intro__card:hover,
+.scheme-card:hover,
+.role-card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 12px 40px rgba(107,45,139,.18);
+}
+
+.service-card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 16px 48px rgba(107,45,139,.22);
+}
+
+/* ─── Phil cards dark inner glow ────────────────── */
+.phil-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 4px 20px rgba(0,0,0,.15);
+}
+
+.phil-card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 8px 32px rgba(0,0,0,.2);
+}
+
+/* ─── Split image richer shadow ─────────────────── */
+.split-img {
+  box-shadow:
+    0 20px 60px rgba(107,45,139,.18),
+    0 6px 20px rgba(0,0,0,.08);
+}
+
+/* ─── Nav polish ─────────────────────────────────── */
+.nav {
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(107,45,139,.06);
+}
+
+/* ─── Hero dot texture ───────────────────────────── */
+.hero {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% 40%, var(--blue-light) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, var(--purple-light) 0%, transparent 60%),
+    linear-gradient(135deg, #F8F7FC 0%, #EDE5F5 50%, #D6EEF8 100%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(107,45,139,.045) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Page hero modern dot texture ──────────────── */
+.page-hero-modern {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-modern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(107,45,139,.05) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-hero-modern .container { position: relative; z-index: 1; }
+.page-hero-modern .label { position: relative; z-index: 1; }
+
+/* ─── Image hero secondary overlay ──────────────── */
+.page-hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── CTA block texture ──────────────────────────── */
+.cta-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.cta-block { position: relative; overflow: hidden; }
+.cta-block > * { position: relative; z-index: 1; }
+
+/* ─── About section tinted bg ───────────────────── */
+.about { background: linear-gradient(180deg, var(--white) 0%, #FAF8FE 100%); }
+
+/* ─── Contact section tinted bg ─────────────────── */
+.contact { background: linear-gradient(180deg, #FAF8FE 0%, var(--white) 100%); }
+
+/* ─── Intro card top border accent ──────────────── */
+.intro__card { border-top: 3px solid var(--purple-light); }
+.intro__card:hover { border-top-color: var(--purple); }
+
+/* ─── Section dividers ───────────────────────────── */
+.services { border-top: 1px solid var(--border); }
+.philosophy { border-top: 1px solid rgba(255,255,255,.06); }
+
+/* ─── Consistent Playfair headings everywhere ────── */
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
+
+/* ─── Nav link hover underline ───────────────────── */
+.nav__links a:not(.btn) {
+  position: relative;
+}
+.nav__links a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0; right: 0;
+  height: 2px;
+  background: var(--purple);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+.nav__links a:not(.btn):hover::after { transform: scaleX(1); }
+
+/* ─── Button transitions ─────────────────────────── */
+.btn { transition: all var(--transition); }
+
+/* ─── Footer link hover ──────────────────────────── */
+.footer__links a { transition: color var(--transition), padding-left var(--transition); }
+.footer__links a:hover { color: var(--white); padding-left: 4px; }
+
+/* ─── Scheme card accent left border ─────────────── */
+.scheme-card { border-left: 3px solid var(--purple-light); }
+.scheme-card:hover { border-left-color: var(--purple); }
+
+/* ─── Role card top accent ───────────────────────── */
+.role-card { border-top: 3px solid var(--purple-light); }
+.role-card:hover { border-top-color: var(--purple); }
+
+/* ─── Form inputs refined ────────────────────────── */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--white);
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: rgba(107,45,139,.35);
+}
+
+/* ─── Responsive: mobile polish ─────────────────── */
+@media (max-width: 768px) {
+  h1 { font-size: clamp(1.9rem, 6vw, 3rem); }
+  .page-section { padding: 60px 0; }
+  .scheme-cards, .content-grid { gap: 16px; }
+  .process-steps { gap: 16px; }
 }
