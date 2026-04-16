@@ -822,7 +822,7 @@ a { color: var(--purple); text-decoration: none; }
 
 .footer__inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1.5fr 1fr;
   gap: 48px;
   padding-top: 72px;
   padding-bottom: 72px;
@@ -1548,11 +1548,19 @@ a { color: var(--purple); text-decoration: none; }
 }
 
 /* ─── Subtle grain on purple/dark sections ──────── */
-.philosophy,
+/* Layer dots ON TOP of the existing gradient/solid backgrounds */
+.philosophy {
+  background-image:
+    radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #2D6B8B 100%);
+  background-size: 22px 22px, cover;
+}
+
 .stats-bar {
   background-image:
     radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
   background-size: 22px 22px;
+  background-color: var(--purple);
 }
 
 /* ─── Card depth: inner top-edge highlight ──────── */
