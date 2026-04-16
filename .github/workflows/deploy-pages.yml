@@ -6,6 +6,7 @@ on:
       - main
       - master
       - work
+      - claude/premium-modern-redesign-6iKK4
   workflow_dispatch:
 
 permissions:
