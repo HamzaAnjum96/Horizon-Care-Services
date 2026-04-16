@@ -120,6 +120,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   min-height: 72px;
+  position: relative;
 }
 
 .brand {
@@ -737,18 +738,19 @@ h4 { font-size: 1.05rem; }
   .nav-links {
     display: none;
     position: absolute;
-    right: 4vw;
-    top: 64px;
-    background: rgba(247,249,252,.97);
-    backdrop-filter: blur(20px) saturate(180%);
+    right: 0;
+    top: calc(100% + 10px);
+    z-index: 240;
+    background: #ffffff;
     border: 1px solid var(--line);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
     border-radius: var(--radius);
-    width: min(300px, 88vw);
+    width: min(320px, 88vw);
     flex-direction: column;
     align-items: stretch;
     padding: 12px;
     gap: 2px;
+    isolation: isolate;
   }
   .nav-links.open { display: flex; }
   .nav-links a:not(.btn) {
