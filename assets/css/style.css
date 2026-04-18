@@ -2176,8 +2176,10 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
    prevent FOUC before the components upgrade.
    ══════════════════════════════════════════════════ */
 
-site-nav    { display: block; min-height: var(--nav-h); }
-site-footer { display: block; min-height: 260px; }
+/* .nav is position:fixed; pages already reserve --nav-h with
+   padding-top, so site-nav must not add flow height. */
+site-nav    { display: contents; }
+site-footer { display: block; }
 
 /* ══════════════════════════════════════════════════
    COMPONENT SPACING & UTILITIES
