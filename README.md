@@ -136,7 +136,7 @@ All design tokens live in `:root` at the top of `style.css`. Reach for these ins
 | Section | Lines (approx.) | What's there |
 |---|---|---|
 | `:root` tokens | 1–110 | Colour, type, shadow, gradient, texture, motion variables |
-| Reset & base | ~110–180 | Box sizing, anchor reset, container, `.btn` system |
+| Reset & base | ~110–180 | Box sizing, `[hidden]` enforcement, anchor reset, container, `.btn` system |
 | Nav | ~190–280 | `.nav`, `.nav__logo`, `.nav__links`, hamburger |
 | Hero | ~280–480 | `.hero`, `.hero__bg`, animated orbs (`.hero__orb--1`–`4`), centred content, scroll hint |
 | Intro / About / Services / Philosophy / CTA / Contact | ~415–950 | Home-page sections |
