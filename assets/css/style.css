@@ -2,23 +2,75 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  /* ─── Brand palette ────────────────────────── */
   --purple:      #6B2D8B;
   --purple-dark: #4A1A6B;
   --purple-mid:  #8B3DAB;
   --purple-light:#F3E8FB;
   --blue-light:  #D6EEF8;
   --teal:        #2D8B8B;
+  --teal-dark:   #2D6B8B;
+  --lilac:       #EDE5F5;
+  --mist:        #FAF8FE;
+
+  /* ─── Ink & surface ────────────────────────── */
   --text:        #1A1A2E;
   --text-muted:  #5A5A7A;
   --white:       #FFFFFF;
   --off-white:   #F8F7FC;
   --border:      #E8E0F0;
+
+  /* ─── Shape ────────────────────────────────── */
   --radius:      16px;
   --radius-sm:   8px;
-  --shadow:      0 4px 24px rgba(107,45,139,.12);
-  --shadow-lg:   0 16px 48px rgba(107,45,139,.18);
   --nav-h:       84px;
-  --transition:  .3s cubic-bezier(.4,0,.2,1);
+
+  /* ─── Motion ───────────────────────────────── */
+  --ease:          cubic-bezier(.4,0,.2,1);
+  --ease-out-back: cubic-bezier(.34,1.56,.64,1);
+  --transition:    .3s var(--ease);
+
+  /* ─── Shadow system ────────────────────────── */
+  --shadow:            0 4px 24px rgba(107,45,139,.12);
+  --shadow-lg:         0 16px 48px rgba(107,45,139,.18);
+  --shadow-card:       inset 0 1px 0 rgba(255,255,255,.85), 0 1px 3px rgba(0,0,0,.05), 0 4px 20px rgba(107,45,139,.09);
+  --shadow-card-hover: inset 0 1px 0 rgba(255,255,255,.85), 0 12px 40px rgba(107,45,139,.18);
+  --shadow-card-deep:  inset 0 1px 0 rgba(255,255,255,.85), 0 16px 48px rgba(107,45,139,.22);
+  --shadow-phil:       inset 0 1px 0 rgba(255,255,255,.12), 0 4px 20px rgba(0,0,0,.15);
+  --shadow-phil-hover: inset 0 1px 0 rgba(255,255,255,.18), 0 8px 32px rgba(0,0,0,.2);
+  --shadow-nav:        0 1px 0 var(--border), 0 4px 24px rgba(107,45,139,.06);
+  --shadow-nav-scroll: 0 1px 0 rgba(107,45,139,.08), 0 10px 30px rgba(107,45,139,.10);
+
+  /* ─── Reusable gradients ───────────────────── */
+  --grad-hero:
+    radial-gradient(ellipse 80% 60% at 70% 40%, var(--blue-light) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, var(--purple-light) 0%, transparent 60%),
+    linear-gradient(135deg, var(--off-white) 0%, var(--lilac) 50%, var(--blue-light) 100%);
+  --grad-dark-wave:
+    linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, var(--teal-dark) 100%);
+  --grad-section-top:    linear-gradient(180deg, var(--white) 0%, var(--mist) 100%);
+  --grad-section-bottom: linear-gradient(180deg, var(--mist) 0%, var(--white) 100%);
+  --grad-card-wash:      linear-gradient(180deg, var(--white) 0%, #FDFBFF 100%);
+  --grad-accent-card:    linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+  --grad-page-image-veil:linear-gradient(135deg, rgba(74,26,107,.90) 0%, rgba(45,107,139,.70) 100%);
+  --grad-about-block:    linear-gradient(135deg, var(--purple-light) 0%, var(--blue-light) 100%);
+
+  /* ─── Reusable textures (apply as background-image) ─── */
+  --tex-dots:       radial-gradient(rgba(107,45,139,.055) 1.5px, transparent 1.5px);
+  --tex-dots-soft:  radial-gradient(rgba(107,45,139,.045) 1.5px, transparent 1.5px);
+  --tex-dots-light: radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+  --tex-grid:
+    linear-gradient(rgba(107,45,139,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107,45,139,.035) 1px, transparent 1px);
+  --tex-grid-light:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  --tex-diagonal:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 1px, transparent 1px 18px);
+  --tex-scanline:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 4px);
+  --tex-noise:
+    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 html { scroll-behavior: smooth; }
@@ -235,10 +287,7 @@ a { color: var(--purple); text-decoration: none; }
 .hero__bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 40%, var(--blue-light) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 20% 80%, var(--purple-light) 0%, transparent 60%),
-    linear-gradient(135deg, #F8F7FC 0%, #EDE5F5 50%, #D6EEF8 100%);
+  background: var(--grad-hero);
 }
 
 /* decorative blob */
@@ -439,7 +488,7 @@ a { color: var(--purple); text-decoration: none; }
   justify-content: center;
   padding: 48px;
   border-radius: 32px;
-  background: linear-gradient(135deg, var(--purple-light) 0%, var(--blue-light) 100%);
+  background: var(--grad-about-block);
 }
 
 .about__image-accent {
@@ -503,7 +552,7 @@ a { color: var(--purple); text-decoration: none; }
 }
 
 .service-card--accent {
-  background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+  background: var(--grad-accent-card);
   border-color: transparent;
   color: var(--white);
 }
@@ -586,7 +635,7 @@ a { color: var(--purple); text-decoration: none; }
 /* ─── Philosophy ──────────────────────────────────── */
 .philosophy {
   padding: 120px 0;
-  background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #2D6B8B 100%);
+  background: var(--grad-dark-wave);
   position: relative;
   overflow: hidden;
 }
@@ -970,7 +1019,10 @@ a { color: var(--purple); text-decoration: none; }
 }
 
 .page-hero-modern {
-  background: linear-gradient(135deg, #F8F7FC 0%, #EDE5F5 55%, #D6EEF8 100%);
+  background:
+    radial-gradient(ellipse 70% 55% at 78% 30%, var(--blue-light) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 75% at 18% 90%, var(--purple-light) 0%, transparent 60%),
+    linear-gradient(135deg, var(--off-white) 0%, var(--lilac) 55%, var(--blue-light) 100%);
   padding: 88px 0 64px;
 }
 
@@ -1072,7 +1124,7 @@ a { color: var(--purple); text-decoration: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(74,26,107,.90) 0%, rgba(45,107,139,.70) 100%);
+  background: var(--grad-page-image-veil);
 }
 
 .page-hero-image .container { position: relative; z-index: 1; }
@@ -1362,7 +1414,7 @@ a { color: var(--purple); text-decoration: none; }
 
 /* ─── CTA Block ─────────────────────────────────── */
 .cta-block {
-  background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #2D6B8B 100%);
+  background: var(--grad-dark-wave);
   border-radius: var(--radius);
   padding: 52px 40px;
   text-align: center;
@@ -1586,8 +1638,8 @@ a { color: var(--purple); text-decoration: none; }
 /* Layer dots ON TOP of the existing gradient/solid backgrounds */
 .philosophy {
   background-image:
-    radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-    linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, #2D6B8B 100%);
+    var(--tex-dots-light),
+    var(--grad-dark-wave);
   background-size: 22px 22px, cover;
 }
 
@@ -1603,19 +1655,9 @@ a { color: var(--purple); text-decoration: none; }
 .service-card,
 .scheme-card,
 .role-card,
-.info-block {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    0 1px 3px rgba(0,0,0,.05),
-    0 4px 20px rgba(107,45,139,.09);
-}
+.info-block { box-shadow: var(--shadow-card); }
 
-.content-card {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    0 2px 8px rgba(0,0,0,.04),
-    0 8px 28px rgba(107,45,139,.08);
-}
+.content-card { box-shadow: var(--shadow-card); }
 
 .contact__form {
   box-shadow:
@@ -1626,30 +1668,15 @@ a { color: var(--purple); text-decoration: none; }
 /* ─── Hover depth boost ─────────────────────────── */
 .intro__card:hover,
 .scheme-card:hover,
-.role-card:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    0 12px 40px rgba(107,45,139,.18);
-}
+.role-card:hover,
+.info-block:hover,
+.content-card:hover { box-shadow: var(--shadow-card-hover); }
 
-.service-card:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.85),
-    0 16px 48px rgba(107,45,139,.22);
-}
+.service-card:hover { box-shadow: var(--shadow-card-deep); }
 
 /* ─── Phil cards dark inner glow ────────────────── */
-.phil-card {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.12),
-    0 4px 20px rgba(0,0,0,.15);
-}
-
-.phil-card:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.18),
-    0 8px 32px rgba(0,0,0,.2);
-}
+.phil-card       { box-shadow: var(--shadow-phil); }
+.phil-card:hover { box-shadow: var(--shadow-phil-hover); }
 
 /* ─── Split image richer shadow ─────────────────── */
 .split-img {
@@ -1661,15 +1688,12 @@ a { color: var(--purple); text-decoration: none; }
 /* ─── Nav polish ─────────────────────────────────── */
 .nav {
   background: rgba(255,255,255,.96);
-  box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(107,45,139,.06);
+  box-shadow: var(--shadow-nav);
 }
 
 /* ─── Hero dot texture ───────────────────────────── */
 .hero {
-  background-image:
-    radial-gradient(ellipse 80% 60% at 70% 40%, var(--blue-light) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 20% 80%, var(--purple-light) 0%, transparent 60%),
-    linear-gradient(135deg, #F8F7FC 0%, #EDE5F5 50%, #D6EEF8 100%);
+  background: var(--grad-hero);
 }
 
 .hero::after {
@@ -1727,10 +1751,10 @@ a { color: var(--purple); text-decoration: none; }
 .cta-block > * { position: relative; z-index: 1; }
 
 /* ─── About section tinted bg ───────────────────── */
-.about { background: linear-gradient(180deg, var(--white) 0%, #FAF8FE 100%); }
+.about { background: var(--grad-section-top); }
 
 /* ─── Contact section tinted bg ─────────────────── */
-.contact { background: linear-gradient(180deg, #FAF8FE 0%, var(--white) 100%); }
+.contact { background: var(--grad-section-bottom); }
 
 /* ─── Intro card top border accent ──────────────── */
 .intro__card { border-top: 3px solid var(--purple-light); }
