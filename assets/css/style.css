@@ -376,22 +376,134 @@ a { color: var(--purple); text-decoration: none; }
   background: var(--purple-light);
 }
 
-.hero__media {
-  display: grid;
-  gap: 16px;
-}
-
-.hero__media img {
+/* Hero textured panel (replaces stock imagery on homepage) */
+.hero__panel {
+  position: relative;
+  aspect-ratio: 1 / 1;
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
+  max-width: 480px;
+  justify-self: end;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(ellipse 80% 70% at 15% 100%, rgba(63,143,181,.35), transparent 60%),
+    linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 55%, var(--teal-dark) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    0 30px 60px -20px rgba(107,45,139,.45),
+    0 10px 30px -10px rgba(45,107,139,.35);
+  isolation: isolate;
 }
 
-.hero__media img:last-child {
-  width: 88%;
-  justify-self: end;
+.hero__panel-aurora {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.25) 0%, transparent 40%),
+    conic-gradient(from 120deg at 65% 55%, rgba(255,255,255,.18), transparent 35%, rgba(63,143,181,.22) 60%, transparent 90%);
+  filter: blur(24px);
+  animation: auroraDrift 32s linear infinite;
+  z-index: 0;
+}
+
+.hero__panel-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,.09) 1px, transparent 1.4px);
+  background-size: 44px 44px, 44px 44px, 22px 22px;
+  mask-image: linear-gradient(135deg, #000 0%, rgba(0,0,0,.55) 60%, transparent 100%);
+  z-index: 1;
+}
+
+.hero__panel-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--white);
+  text-align: center;
+  z-index: 2;
+  padding: 0 24px;
+}
+
+.hero__panel-badge-label {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  text-shadow: 0 2px 30px rgba(0,0,0,.25);
+}
+
+.hero__panel-badge-tag {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.8);
+}
+
+.hero__panel-card {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.92);
+  color: var(--text);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.9);
+  font-size: .85rem;
+  line-height: 1.3;
+  max-width: 62%;
+}
+
+.hero__panel-card strong {
+  display: block;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hero__panel-card span {
+  display: block;
+  font-size: .76rem;
+  color: var(--text-muted);
+}
+
+.hero__panel-card--tl {
+  top: 24px;
+  left: 24px;
+}
+
+.hero__panel-card--br {
+  bottom: 24px;
+  right: 24px;
+}
+
+.hero__panel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #25c28a;
+  box-shadow: 0 0 0 4px rgba(37,194,138,.2);
+  flex-shrink: 0;
+}
+
+.hero__panel-stat strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  color: var(--purple);
+  font-weight: 700;
 }
 
 .hero__scroll-hint {
@@ -985,8 +1097,7 @@ a { color: var(--purple); text-decoration: none; }
 @media (max-width: 1024px) {
   .hero { min-height: auto; }
   .hero__inner { grid-template-columns: 1fr; }
-  .hero__media { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero__media img:last-child { width: 100%; }
+  .hero__panel { justify-self: center; max-width: 420px; }
   .intro { grid-template-columns: 1fr; margin-top: -40px; }
   .about__inner { grid-template-columns: 1fr; gap: 48px; }
   .services__grid { grid-template-columns: 1fr; }
@@ -1019,8 +1130,10 @@ a { color: var(--purple); text-decoration: none; }
     transform: rotate(-45deg) translate(5px, -5px);
   }
   .hero__inner { padding-top: 40px; padding-bottom: 80px; }
-  .hero__media { grid-template-columns: 1fr; }
-  .hero__media img { height: 190px; }
+  .hero__panel { max-width: 360px; }
+  .hero__panel-card { font-size: .78rem; padding: 10px 14px; }
+  .hero__panel-card--tl { top: 16px; left: 16px; }
+  .hero__panel-card--br { bottom: 16px; right: 16px; }
   .intro { margin-top: 40px; }
   .about, .services, .philosophy, .contact { padding: 80px 0; }
   .philosophy__grid { grid-template-columns: 1fr; }
@@ -1986,22 +2099,35 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
   line-height: 1.6;
 }
 
-/* ─── Benefit Tiles (vertical stack, icon left) ─ */
+/* ─── Benefit Tiles (3-column grid, icon on top) ─ */
 .benefit-tiles {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
 }
 
 .benefit-tile {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 12px;
   align-items: flex-start;
+  padding: 20px 18px;
+  background: linear-gradient(180deg, #fff 0%, #fdfbff 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.benefit-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .benefit-tile__icon {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   background: var(--purple-light);
   display: flex;
@@ -2011,23 +2137,25 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
   flex-shrink: 0;
 }
 
-.benefit-tile__icon svg { width: 22px; height: 22px; }
+.benefit-tile__icon svg { width: 20px; height: 20px; }
 
 .benefit-tile h4 {
   font-weight: 600;
-  font-size: .98rem;
-  margin-bottom: 5px;
+  font-size: .95rem;
+  margin-bottom: 4px;
   color: var(--text);
+  line-height: 1.3;
 }
 
 .benefit-tile p {
-  font-size: .88rem;
+  font-size: .82rem;
   color: var(--text-muted);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 @media (max-width: 768px) {
   .service-tiles { grid-template-columns: 1fr; }
+  .benefit-tiles { grid-template-columns: 1fr; }
 }
 
 /* ══════════════════════════════════════════════════
