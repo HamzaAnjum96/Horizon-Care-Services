@@ -936,7 +936,8 @@ a { color: var(--purple); text-decoration: none; }
   margin-bottom: 8px;
 }
 
-.footer__links a {
+.footer__links a,
+.footer__links .footer__address {
   font-size: .9rem;
   color: rgba(255,255,255,.55);
   text-decoration: none;
@@ -973,7 +974,7 @@ a { color: var(--purple); text-decoration: none; }
 
 @media (max-width: 768px) {
   .nav__links { display: none; }
-  .nav__links.open {
+  .nav.nav--open .nav__links {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -986,6 +987,13 @@ a { color: var(--purple); text-decoration: none; }
     box-shadow: var(--shadow-lg);
   }
   .nav__hamburger { display: flex; }
+  .nav.nav--open .nav__hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .nav.nav--open .nav__hamburger span:nth-child(2) { opacity: 0; }
+  .nav.nav--open .nav__hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
   .hero__inner { padding-top: 40px; padding-bottom: 80px; }
   .hero__media { grid-template-columns: 1fr; }
   .hero__media img { height: 190px; }
@@ -2140,3 +2148,68 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
     transform: none !important;
   }
 }
+
+/* ══════════════════════════════════════════════════
+   CUSTOM ELEMENTS
+   ──────────────────────────────────────────────────
+   Light-DOM custom elements defined in
+   assets/js/layout.js. Reserve layout height to
+   prevent FOUC before the components upgrade.
+   ══════════════════════════════════════════════════ */
+
+site-nav    { display: block; min-height: var(--nav-h); }
+site-footer { display: block; min-height: 260px; }
+
+/* ══════════════════════════════════════════════════
+   COMPONENT SPACING & UTILITIES
+   ──────────────────────────────────────────────────
+   Replaces ad-hoc inline styles across the HTML
+   pages. Names describe role, not styling.
+   ══════════════════════════════════════════════════ */
+
+.muted-note {
+  margin-top: 24px;
+  font-size: .9rem;
+  color: var(--text-muted);
+}
+
+.form-note {
+  margin-top: 14px;
+  font-size: .82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.text-purple { color: var(--purple); }
+
+.heading-sm {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+/* "Work for us" twin-column layout (replaces inline grid styles) */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin: 24px 0 28px;
+}
+@media (max-width: 768px) {
+  .work-grid { grid-template-columns: 1fr; }
+}
+
+/* Natural spacing for content blocks that follow a paragraph */
+* + .check-list { margin-top: 16px; }
+
+/* Inline-flex CTA after a content block (common subpage pattern) */
+.split-content > .btn,
+.benefit-tiles + .btn,
+.check-list + .btn {
+  margin-top: 32px;
+  display: inline-flex;
+}
+
+/* CTA panel sitting beneath a content grid */
+.content-grid + .cta-block { margin-top: 32px; }

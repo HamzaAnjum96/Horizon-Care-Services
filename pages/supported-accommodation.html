@@ -11,34 +11,19 @@
 </head>
 <body>
 
-  <header class="nav">
-    <div class="nav__inner container">
-      <a href="../index.html" class="nav__logo">
-        <img src="../assets/images/logo-1.jpg" alt="Horizon Care Services Ltd" />
-        <div class="nav__logo-text">
-          <strong>Horizon Care Services</strong>
-          <span>Where We Meet Your Needs</span>
-        </div>
-      </a>
-      <nav class="nav__links">
-        <a href="../index.html">Home</a>
-        <a href="supported-accommodation.html">Supported Accommodation</a>
-        <a href="staffing-solutions.html">Staffing Solutions</a>
-        <a href="contact-apply.html" class="btn btn--outline">Contact &amp; Apply</a>
-      </nav>
-      <button class="nav__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
-    </div>
-  </header>
+  <site-nav data-base=".." data-active="supported">
+    <noscript><a href="../index.html">Horizon Care Services – Home</a></noscript>
+  </site-nav>
 
   <main class="subpage-main">
 
     <!-- HERO -->
     <section class="page-hero-image" style="background-image: url('https://images.pexels.com/photos/7363081/pexels-photo-7363081.jpeg?auto=compress&cs=tinysrgb&w=1600')">
       <div class="container">
-        <span class="label">Supported Accommodation</span>
-        <h1>Safe homes. <em>Real</em> support.</h1>
-        <p>Quality supported living for people with mental health needs and learning disabilities across Hertfordshire — helping residents build confidence, independence, and a better future.</p>
-        <div class="anchor-nav">
+        <span class="label" data-animate="fade-up">Supported Accommodation</span>
+        <h1 data-animate="fade-up" data-stagger="1">Safe homes. <em>Real</em> support.</h1>
+        <p data-animate="fade-up" data-stagger="2">Quality supported living for people with mental health needs and learning disabilities across Hertfordshire — helping residents build confidence, independence, and a better future.</p>
+        <div class="anchor-nav" data-animate="fade-up" data-stagger="3">
           <a href="#schemes">Types of schemes</a>
           <a href="#support">How we support</a>
           <a href="#accommodation">Our projects</a>
@@ -50,19 +35,19 @@
     <div class="stats-bar">
       <div class="container">
         <div class="stats-bar__grid">
-          <div class="stat-item">
+          <div class="stat-item" data-animate="fade-up" data-stagger="1">
             <span class="stat-item__number">5+</span>
             <span class="stat-item__label">Bed spaces</span>
           </div>
-          <div class="stat-item">
+          <div class="stat-item" data-animate="fade-up" data-stagger="2">
             <span class="stat-item__number">4</span>
             <span class="stat-item__label">Scheme types</span>
           </div>
-          <div class="stat-item">
+          <div class="stat-item" data-animate="fade-up" data-stagger="3">
             <span class="stat-item__number">7</span>
             <span class="stat-item__label">Days a week support</span>
           </div>
-          <div class="stat-item">
+          <div class="stat-item" data-animate="fade-up" data-stagger="4">
             <span class="stat-item__number">24/7</span>
             <span class="stat-item__label">On-call access</span>
           </div>
@@ -73,28 +58,28 @@
     <!-- SCHEMES -->
     <section class="page-section" id="schemes">
       <div class="container">
-        <div class="subsection-header">
+        <div class="subsection-header" data-animate="fade-up">
           <span class="label">What We Offer</span>
           <h2>Types of Schemes</h2>
           <p>Flexible support ranging from a few hours weekly to intensive daily interventions — always tailored to the individual.</p>
         </div>
         <div class="scheme-cards">
-          <div class="scheme-card">
+          <div class="scheme-card" data-animate="fade-up" data-stagger="1">
             <span class="scheme-card__duration">6 months – 2 years</span>
             <h4>Adult Placement Scheme</h4>
             <p>Longer placements with structured transition planning toward independent living, supporting residents to develop life skills at their own pace.</p>
           </div>
-          <div class="scheme-card">
+          <div class="scheme-card" data-animate="fade-up" data-stagger="2">
             <span class="scheme-card__duration">1 – 6 months</span>
             <h4>Short-Term Support</h4>
             <p>Focused support to stabilise wellbeing, build resilience, and create a foundation for longer-term independence and community engagement.</p>
           </div>
-          <div class="scheme-card">
+          <div class="scheme-card" data-animate="fade-up" data-stagger="3">
             <span class="scheme-card__duration">1 – 6 weeks</span>
             <h4>Step-Down Transitional Support</h4>
             <p>Short intensive support following hospital discharge, bridging the gap between clinical care and community living with minimal disruption.</p>
           </div>
-          <div class="scheme-card">
+          <div class="scheme-card" data-animate="fade-up" data-stagger="4">
             <span class="scheme-card__duration">Time-limited</span>
             <h4>Outreach Floating Support</h4>
             <p>Ongoing help once residents move on — tenancy management, bills, local orientation, and community integration to sustain independence.</p>
@@ -107,36 +92,36 @@
     <section class="page-section page-section--muted" id="support">
       <div class="container">
         <div class="split-section">
-          <div class="split-img">
+          <div class="split-img" data-animate="fade-right">
             <img src="https://images.pexels.com/photos/7088530/pexels-photo-7088530.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Caregiver supporting a resident" />
           </div>
-          <div class="split-content">
+          <div class="split-content" data-animate="fade-left" data-stagger="1">
             <span class="label">Our Approach</span>
             <h2>Holistic support, person by person</h2>
             <p>We use comprehensive assessments covering physical and mental health, daily living, education, employment, finances, and social wellbeing — then build support plans that evolve with each resident.</p>
             <div class="process-steps">
-              <div class="process-step">
+              <div class="process-step" data-animate="fade-up" data-stagger="1">
                 <div class="process-step__num">1</div>
                 <div class="process-step__body">
                   <h4>Holistic Assessment</h4>
                   <p>Physical and mental health, daily living, education, finances, and social wellbeing — all evaluated together.</p>
                 </div>
               </div>
-              <div class="process-step">
+              <div class="process-step" data-animate="fade-up" data-stagger="2">
                 <div class="process-step__num">2</div>
                 <div class="process-step__body">
                   <h4>Personalised Support Plan</h4>
                   <p>Residents actively co-create their own plan. Goals are clear, measurable, and reviewed regularly.</p>
                 </div>
               </div>
-              <div class="process-step">
+              <div class="process-step" data-animate="fade-up" data-stagger="3">
                 <div class="process-step__num">3</div>
                 <div class="process-step__body">
                   <h4>Strengths-Based Recovery</h4>
                   <p>Focused on building from what residents can do, progressing steadily toward greater independence.</p>
                 </div>
               </div>
-              <div class="process-step">
+              <div class="process-step" data-animate="fade-up" data-stagger="4">
                 <div class="process-step__num">4</div>
                 <div class="process-step__body">
                   <h4>Ongoing Review</h4>
@@ -153,7 +138,7 @@
     <section class="page-section">
       <div class="container">
         <div class="split-section">
-          <div class="split-content">
+          <div class="split-content" data-animate="fade-right">
             <span class="label">Our Team</span>
             <h2>Dedicated professionals, 7 days a week</h2>
             <p>Our team is carefully recruited, continuously trained, and consistently available. We work with dignity, respect, and collaboration at every stage of support delivery.</p>
@@ -164,9 +149,9 @@
               <li>DBS-checked and fully referenced on appointment</li>
               <li>Coordinated with NHS, social care, and community partners</li>
             </ul>
-            <a href="contact-apply.html#job-opportunities" class="btn btn--primary" style="margin-top: 28px; display: inline-flex;">Join our team &rarr;</a>
+            <a href="contact-apply.html#job-opportunities" class="btn btn--primary">Join our team &rarr;</a>
           </div>
-          <div class="split-img">
+          <div class="split-img" data-animate="fade-left" data-stagger="1">
             <img src="https://images.pexels.com/photos/7551666/pexels-photo-7551666.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Healthcare professional providing support" />
           </div>
         </div>
@@ -176,26 +161,26 @@
     <!-- ACCOMMODATION PROJECTS -->
     <section class="page-section page-section--muted" id="accommodation">
       <div class="container">
-        <div class="subsection-header">
+        <div class="subsection-header" data-animate="fade-up">
           <span class="label">Current Projects</span>
           <h2>Our Accommodation</h2>
           <p>Purpose-designed properties in well-connected locations across Hertfordshire.</p>
         </div>
         <div class="content-grid">
-          <div class="content-card">
+          <div class="content-card" data-animate="fade-up" data-stagger="1">
             <h3>Hatfield (Current)</h3>
             <p>Five furnished bedrooms, shared communal facilities, and a private garden. Located close to shops, GP surgeries, and public transport links.</p>
-            <ul class="check-list" style="margin-top: 16px;">
+            <ul class="check-list">
               <li>5 fully furnished bedrooms</li>
               <li>Shared kitchen, lounge and garden</li>
               <li>Walking distance to Hatfield town centre</li>
               <li>Excellent transport connections</li>
             </ul>
           </div>
-          <div class="content-card">
+          <div class="content-card" data-animate="fade-up" data-stagger="2">
             <h3>Coming Soon</h3>
             <p>We are expanding our portfolio with two additional five-bedroom projects to meet growing demand for supported living placements in the region.</p>
-            <ul class="check-list" style="margin-top: 16px;">
+            <ul class="check-list">
               <li>Additional Hatfield property</li>
               <li>New St Albans property</li>
               <li>Same high standard of furnishing and facilities</li>
@@ -203,7 +188,7 @@
             </ul>
           </div>
         </div>
-        <div class="cta-block" style="margin-top: 32px;">
+        <div class="cta-block" data-animate="fade-up">
           <h3>Refer or enquire about a place</h3>
           <p>We welcome referrals from social workers, care coordinators, and support teams. We aim to respond within 2 working days.</p>
           <a href="contact-apply.html" class="btn btn--ghost">Get in touch</a>
@@ -213,32 +198,11 @@
 
   </main>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <img src="../assets/images/logo-1.jpg" alt="Horizon Care Services Ltd" />
-        <p>Where we meet your needs.</p>
-      </div>
-      <div class="footer__links">
-        <h5>Contact</h5>
-        <a href="tel:07572701349">07572 701 349</a>
-        <a href="tel:01582354119">01582 354 119</a>
-        <a href="mailto:admin@horizon-careservices.co.uk">admin@horizon-careservices.co.uk</a>
-        <a href="#">9 Lilac Grove, Luton, LU3 3JG</a>
-      </div>
-      <div class="footer__links">
-        <h5>Legal</h5>
-        <a href="legal-notice.html">Legal Notice</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>&copy; 2026 Horizon Care Services Ltd. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <site-footer data-base="..">
+    <noscript><a href="../index.html">Horizon Care Services</a></noscript>
+  </site-footer>
 
+  <script src="../assets/js/layout.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -11,67 +11,49 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav__inner container">
-      <a href="#" class="nav__logo">
-        <img src="assets/images/logo-1.jpg" alt="Horizon Care Services Ltd" />
-        <div class="nav__logo-text">
-          <strong>Horizon Care Services</strong>
-          <span>Where We Meet Your Needs</span>
-        </div>
-      </a>
-      <nav class="nav__links">
-        <a href="#services">Services</a>
-        <a href="pages/supported-accommodation.html">Supported Accommodation</a>
-        <a href="pages/staffing-solutions.html">Staffing Solutions</a>
-        <a href="pages/contact-apply.html" class="btn btn--outline">Apply Now</a>
-      </nav>
-      <button class="nav__hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+  <site-nav data-base="." data-active="home">
+    <noscript><a href="index.html">Horizon Care Services – Home</a></noscript>
+  </site-nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero__bg"></div>
     <div class="container hero__inner">
       <div class="hero__content">
-        <div class="hero__badge">Registered Health &amp; Social Care Provider</div>
-        <h1 class="hero__title">Where We Meet<br /><em>Your Needs</em></h1>
-        <p class="hero__sub">
+        <div class="hero__badge" data-animate="fade-up">Registered Health &amp; Social Care Provider</div>
+        <h1 class="hero__title" data-animate="fade-up" data-stagger="1">Where We Meet<br /><em>Your Needs</em></h1>
+        <p class="hero__sub" data-animate="fade-up" data-stagger="2">
           A dynamic health and social care provider delivering tailored, high-quality
           care that transforms lives while promoting respect, dignity, and individuality.
         </p>
-        <div class="hero__actions">
+        <div class="hero__actions" data-animate="fade-up" data-stagger="3">
           <a href="#services" class="btn btn--primary">Explore Services</a>
           <a href="#contact" class="btn btn--ghost">Contact Us</a>
         </div>
       </div>
-      <div class="hero__media">
+      <div class="hero__media" data-animate="fade-left" data-stagger="2">
         <img src="https://images.pexels.com/photos/7551666/pexels-photo-7551666.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Healthcare professional supporting a client" />
         <img src="https://images.pexels.com/photos/7088530/pexels-photo-7088530.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Caregiver and client sharing a supportive handshake" />
       </div>
     </div>
-    <div class="hero__scroll-hint">
-      <span></span>
+    <div class="hero__scroll-hint" aria-label="Scroll to continue">
+      <span aria-hidden="true"></span>
     </div>
   </section>
 
   <!-- INTRO STRIP -->
   <section class="intro container">
-    <div class="intro__card">
+    <div class="intro__card" data-animate="fade-up" data-stagger="1">
       <div class="intro__icon">&#10003;</div>
       <h3>Highly Trained Staff</h3>
       <p>Every team member delivers exceptional, customised care to meet the distinct needs of each individual.</p>
     </div>
-    <div class="intro__card">
+    <div class="intro__card" data-animate="fade-up" data-stagger="2">
       <div class="intro__icon">&#10023;</div>
       <h3>Collaborative Care</h3>
       <p>We partner with healthcare professionals, communities, families and carers for seamless continuity.</p>
     </div>
-    <div class="intro__card">
+    <div class="intro__card" data-animate="fade-up" data-stagger="3">
       <div class="intro__icon">&#9654;</div>
       <h3>Person-Centred</h3>
       <p>Tailored plans that respect individuality, cultural backgrounds and personal preferences.</p>
@@ -81,13 +63,13 @@
   <!-- ABOUT -->
   <section class="about">
     <div class="container about__inner">
-      <div class="about__image-wrap">
+      <div class="about__image-wrap" data-animate="fade-right">
         <div class="about__image-block">
           <div class="about__image-accent"></div>
           <img src="assets/images/logo-1.jpg" alt="Horizon Care Services" class="about__logo-large" />
         </div>
       </div>
-      <div class="about__content">
+      <div class="about__content" data-animate="fade-left" data-stagger="1">
         <span class="label">About Us</span>
         <h2>A Compelling Vision for Care</h2>
         <p>
@@ -109,14 +91,14 @@
   <!-- SERVICES -->
   <section class="services" id="services">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-animate="fade-up">
         <span class="label">What We Offer</span>
         <h2>Our Services</h2>
         <p>Specialised care solutions designed around you.</p>
       </div>
       <div class="services__grid">
 
-        <div class="service-card">
+        <div class="service-card" data-animate="fade-up" data-stagger="1">
           <div class="service-card__number">01</div>
           <img class="service-card__image" src="https://images.pexels.com/photos/7363081/pexels-photo-7363081.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Modern supported accommodation interior" />
           <div class="service-card__icon">
@@ -129,7 +111,7 @@
           <a href="pages/supported-accommodation.html" class="service-card__link">Learn More <span>&rarr;</span></a>
         </div>
 
-        <div class="service-card service-card--accent">
+        <div class="service-card service-card--accent" data-animate="fade-up" data-stagger="2">
           <div class="service-card__number">02</div>
           <img class="service-card__image" src="https://images.pexels.com/photos/5726794/pexels-photo-5726794.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Healthcare staffing team in discussion" />
           <div class="service-card__icon">
@@ -152,7 +134,7 @@
 
   <!-- CTA BAND -->
   <section class="cta-band">
-    <div class="container cta-band__inner">
+    <div class="container cta-band__inner" data-animate="fade-up">
       <div>
         <h2>Ready to work with us?</h2>
         <p>Contact Horizon Care Services Ltd for all your staffing needs for uninterrupted standard care services.</p>
@@ -165,7 +147,7 @@
   <section class="contact" id="contact">
     <div class="container contact__inner">
 
-      <div class="contact__info">
+      <div class="contact__info" data-animate="fade-right">
         <span class="label">Get In Touch</span>
         <h2>Contact Us</h2>
         <div class="contact__details">
@@ -220,7 +202,7 @@
         </div>
       </div>
 
-      <form class="contact__form" onsubmit="return false;">
+      <form class="contact__form" onsubmit="return false;" data-animate="fade-left" data-stagger="1">
         <h3>Send Us a Message</h3>
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -250,33 +232,11 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <img src="assets/images/logo-1.jpg" alt="Horizon Care Services Ltd" />
-        <p>Where we meet your needs.</p>
-      </div>
-      <div class="footer__links">
-        <h5>Contact</h5>
-        <a href="tel:07572701349">07572 701 349</a>
-        <a href="tel:01582354119">01582 354 119</a>
-        <a href="mailto:admin@horizon-careservices.co.uk">admin@horizon-careservices.co.uk</a>
-        <a href="#">9 Lilac Grove, Luton, LU3 3JG</a>
-      </div>
-      <div class="footer__links">
-        <h5>Legal</h5>
-        <a href="pages/legal-notice.html">Legal Notice</a>
-        <a href="pages/privacy-policy.html">Privacy Policy</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>&copy; 2026 Horizon Care Services Ltd. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <site-footer data-base=".">
+    <noscript><a href="index.html">Horizon Care Services</a></noscript>
+  </site-footer>
 
+  <script src="assets/js/layout.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

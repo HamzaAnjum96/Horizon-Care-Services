@@ -1,64 +1,60 @@
-// Nav scroll effect
+/* ══════════════════════════════════════════════════
+   Site behaviours
+   ──────────────────────────────────────────────────
+   • Nav shadow on scroll        → toggles .nav--scrolled
+   • Mobile hamburger            → toggles .nav--open + aria
+   • Scroll-reveal observer      → adds .is-visible to
+                                   any element with the
+                                   data-animate attribute
+                                   (styles live in CSS).
+
+   Runs after <site-nav>/<site-footer> custom elements
+   have rendered: this script is the *last* tag before
+   </body> and layout.js is registered above it.
+   ══════════════════════════════════════════════════ */
+
 const nav = document.querySelector('.nav');
+
 if (nav) {
+  let ticking = false;
+  const updateNav = () => {
+    nav.classList.toggle('nav--scrolled', window.scrollY > 20);
+    ticking = false;
+  };
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      nav.style.boxShadow = '0 4px 24px rgba(107,45,139,.10)';
-    } else {
-      nav.style.boxShadow = 'none';
+    if (!ticking) {
+      window.requestAnimationFrame(updateNav);
+      ticking = true;
     }
-  });
+  }, { passive: true });
 }
 
-// Mobile hamburger
 const hamburger = document.querySelector('.nav__hamburger');
-const navLinks = document.querySelector('.nav__links');
+const navLinks  = document.querySelector('.nav__links');
+
 if (hamburger && navLinks) {
+  const setOpen = (open) => {
+    nav.classList.toggle('nav--open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    const spans = hamburger.querySelectorAll('span');
-    const isOpen = navLinks.classList.contains('open');
-    spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px,5px)' : '';
-    spans[1].style.opacity = isOpen ? '0' : '1';
-    spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
+    setOpen(!nav.classList.contains('nav--open'));
   });
 
-  // Close menu on link click
-  document.querySelectorAll('.nav__links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      const spans = hamburger.querySelectorAll('span');
-      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-    });
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
   });
 }
 
-// Intersection Observer – fade-in on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+const reveal = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+      entry.target.classList.add('is-visible');
+      reveal.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll(
-  '.intro__card, .service-card, .phil-card, .about__content, .about__image-wrap, .contact__info, .contact__form'
-).forEach(el => {
-  el.classList.add('fade-up');
-  observer.observe(el);
-});
-
-// Add CSS for fade-up animation
-const style = document.createElement('style');
-style.textContent = `
-  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1); }
-  .fade-up.visible { opacity: 1; transform: none; }
-  .intro__card:nth-child(2) { transition-delay: .1s; }
-  .intro__card:nth-child(3) { transition-delay: .2s; }
-  .phil-card:nth-child(2) { transition-delay: .1s; }
-  .phil-card:nth-child(3) { transition-delay: .2s; }
-  .phil-card:nth-child(4) { transition-delay: .3s; }
-`;
-document.head.appendChild(style);
+document.querySelectorAll('[data-animate]').forEach((el) => reveal.observe(el));
