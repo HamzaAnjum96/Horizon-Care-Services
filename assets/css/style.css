@@ -640,14 +640,7 @@ a { color: var(--purple); text-decoration: none; }
   overflow: hidden;
 }
 
-.philosophy::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.04);
-}
+/* Aurora blobs defined in TEXTURE section */
 
 .philosophy__grid {
   display: grid;
@@ -1623,40 +1616,199 @@ a { color: var(--purple); text-decoration: none; }
 
 /* ═══════════════════════════════════════════════════
    TEXTURE, DEPTH & POLISH
+   ───────────────────────────────────────────────────
+   All CSS — no raster images except the SVG-data-URI
+   noise token. Sections get a base background + an
+   absolutely-positioned overlay (::before for blurred
+   aurora glows, ::after for crosshatch / dots / scan
+   textures). Content is lifted above with z-index.
    ═══════════════════════════════════════════════════ */
 
-/* ─── Dot-grid texture on light bg sections ─────── */
+/* ─── Light sections: crosshatch (grid) + dots ───── */
 .services,
 .cta-band,
 .page-section--muted {
   background-color: var(--off-white);
-  background-image: radial-gradient(rgba(107,45,139,.055) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
+  background-image: var(--tex-dots), var(--tex-grid);
+  background-size: 28px 28px, 56px 56px, 56px 56px;
 }
 
-/* ─── Subtle grain on purple/dark sections ──────── */
-/* Layer dots ON TOP of the existing gradient/solid backgrounds */
+/* ─── Dark section: philosophy ───────────────────── */
 .philosophy {
-  background-image:
-    var(--tex-dots-light),
-    var(--grad-dark-wave);
+  background-image: var(--tex-dots-light), var(--grad-dark-wave);
   background-size: 22px 22px, cover;
 }
 
+/* Aurora glows behind philosophy (large blurred blobs) */
+.philosophy::before {
+  content: '';
+  position: absolute;
+  top: -25%; right: -10%;
+  width: 70%; height: 120%;
+  background: radial-gradient(circle at 60% 40%, rgba(139,61,171,.38) 0%, transparent 55%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+.philosophy::after {
+  content: '';
+  position: absolute;
+  bottom: -30%; left: -15%;
+  width: 65%; height: 110%;
+  background: radial-gradient(circle at 40% 60%, rgba(45,139,139,.30) 0%, transparent 55%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.philosophy > .container { position: relative; z-index: 1; }
+
+/* ─── Stats bar: diagonal stripes + dots on purple ─ */
 .stats-bar {
-  background-image:
-    radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
-  background-size: 22px 22px;
   background-color: var(--purple);
+  background-image: var(--tex-dots-light), var(--tex-diagonal);
+  background-size: 22px 22px, auto;
+  position: relative;
+  overflow: hidden;
+}
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: 60%;
+  width: 80%; height: 180%;
+  background: radial-gradient(circle, rgba(139,61,171,.35) 0%, transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+.stats-bar > .container { position: relative; z-index: 1; }
+
+/* ─── Hero: aurora drift + dots+grid overlay ─────── */
+.hero__bg::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: conic-gradient(from 0deg at 50% 50%,
+    transparent 0deg,
+    rgba(139,61,171,.14) 60deg,
+    transparent 140deg,
+    rgba(45,139,139,.10) 210deg,
+    transparent 280deg,
+    rgba(107,45,139,.12) 340deg,
+    transparent 360deg);
+  filter: blur(50px);
+  animation: auroraDrift 48s linear infinite;
+  pointer-events: none;
+}
+.hero__bg::after {
+  animation: float 7s ease-in-out infinite alternate;
 }
 
-/* ─── Card depth: inner top-edge highlight ──────── */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--tex-dots-soft), var(--tex-grid);
+  background-size: 32px 32px, 64px 64px, 64px 64px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 82%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 82%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Page hero modern: aurora + crosshatch ──────── */
+.page-hero-modern {
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-modern::before {
+  content: '';
+  position: absolute;
+  inset: -15% -10% auto auto;
+  width: 60%; aspect-ratio: 1;
+  background: conic-gradient(from 45deg at 70% 30%,
+    transparent 0deg,
+    rgba(139,61,171,.14) 70deg,
+    transparent 150deg,
+    rgba(214,238,248,.45) 230deg,
+    transparent 310deg);
+  filter: blur(55px);
+  animation: auroraDrift 60s linear infinite reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+.page-hero-modern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--tex-dots), var(--tex-grid);
+  background-size: 28px 28px, 56px 56px, 56px 56px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 75%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 75%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.page-hero-modern .container { position: relative; z-index: 1; }
+
+/* ─── Page hero image: dots + editorial scan lines ─ */
+.page-hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--tex-dots-light), var(--tex-scanline);
+  background-size: 24px 24px, auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── CTA block: aurora glow + dots + diagonal ───── */
+.cta-block {
+  position: relative;
+  overflow: hidden;
+}
+.cta-block::before {
+  content: '';
+  position: absolute;
+  top: -40%; right: -20%;
+  width: 70%; aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(139,61,171,.45) 0%, transparent 60%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+.cta-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background-image: var(--tex-dots-light), var(--tex-diagonal);
+  background-size: 20px 20px, auto;
+  pointer-events: none;
+  z-index: 1;
+}
+.cta-block > * { position: relative; z-index: 2; }
+
+/* ─── Section base backgrounds ───────────────────── */
+.about   { background: var(--grad-section-top); }
+.contact { background: var(--grad-section-bottom); }
+
+/* ─── Card inner wash (keeps white cards from feeling flat) ─── */
+.intro__card,
+.scheme-card,
+.role-card,
+.content-card,
+.info-block {
+  background: var(--grad-card-wash);
+}
+.service-card:not(.service-card--accent) {
+  background: var(--grad-card-wash);
+}
+
+/* ─── Card shadow system ─────────────────────────── */
 .intro__card,
 .service-card,
 .scheme-card,
 .role-card,
-.info-block { box-shadow: var(--shadow-card); }
-
+.info-block,
 .content-card { box-shadow: var(--shadow-card); }
 
 .contact__form {
@@ -1665,7 +1817,6 @@ a { color: var(--purple); text-decoration: none; }
     0 4px 24px rgba(107,45,139,.1);
 }
 
-/* ─── Hover depth boost ─────────────────────────── */
 .intro__card:hover,
 .scheme-card:hover,
 .role-card:hover,
@@ -1674,11 +1825,9 @@ a { color: var(--purple); text-decoration: none; }
 
 .service-card:hover { box-shadow: var(--shadow-card-deep); }
 
-/* ─── Phil cards dark inner glow ────────────────── */
 .phil-card       { box-shadow: var(--shadow-phil); }
 .phil-card:hover { box-shadow: var(--shadow-phil-hover); }
 
-/* ─── Split image richer shadow ─────────────────── */
 .split-img {
   box-shadow:
     0 20px 60px rgba(107,45,139,.18),
@@ -1686,92 +1835,27 @@ a { color: var(--purple); text-decoration: none; }
 }
 
 /* ─── Nav polish ─────────────────────────────────── */
-.nav {
-  background: rgba(255,255,255,.96);
-  box-shadow: var(--shadow-nav);
-}
-
-/* ─── Hero dot texture ───────────────────────────── */
-.hero {
-  background: var(--grad-hero);
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(107,45,139,.045) 1.5px, transparent 1.5px);
-  background-size: 32px 32px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ─── Page hero modern dot texture ──────────────── */
-.page-hero-modern {
-  position: relative;
-  overflow: hidden;
-}
-
-.page-hero-modern::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(107,45,139,.05) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.page-hero-modern .container { position: relative; z-index: 1; }
-.page-hero-modern .label { position: relative; z-index: 1; }
-
-/* ─── Image hero secondary overlay ──────────────── */
-.page-hero-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ─── CTA block texture ──────────────────────────── */
-.cta-block::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
-}
-
-.cta-block { position: relative; overflow: hidden; }
-.cta-block > * { position: relative; z-index: 1; }
-
-/* ─── About section tinted bg ───────────────────── */
-.about { background: var(--grad-section-top); }
-
-/* ─── Contact section tinted bg ─────────────────── */
-.contact { background: var(--grad-section-bottom); }
-
-/* ─── Intro card top border accent ──────────────── */
-.intro__card { border-top: 3px solid var(--purple-light); }
-.intro__card:hover { border-top-color: var(--purple); }
+.nav { box-shadow: var(--shadow-nav); }
+.nav--scrolled { box-shadow: var(--shadow-nav-scroll); }
 
 /* ─── Section dividers ───────────────────────────── */
-.services { border-top: 1px solid var(--border); }
+.services   { border-top: 1px solid var(--border); }
 .philosophy { border-top: 1px solid rgba(255,255,255,.06); }
 
-/* ─── Consistent Playfair headings everywhere ────── */
+/* ─── Card accent borders ────────────────────────── */
+.intro__card  { border-top: 3px solid var(--purple-light); }
+.intro__card:hover { border-top-color: var(--purple); }
+.scheme-card  { border-left: 3px solid var(--purple-light); }
+.scheme-card:hover { border-left-color: var(--purple); }
+.role-card    { border-top: 3px solid var(--purple-light); }
+.role-card:hover { border-top-color: var(--purple); }
+
+/* ─── Typography consistency ─────────────────────── */
 h1, h2, h3 { font-family: 'Playfair Display', serif; }
 h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
 
 /* ─── Nav link hover underline ───────────────────── */
-.nav__links a:not(.btn) {
-  position: relative;
-}
+.nav__links a:not(.btn) { position: relative; }
 .nav__links a:not(.btn)::after {
   content: '';
   position: absolute;
@@ -1781,24 +1865,16 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
   background: var(--purple);
   border-radius: 2px;
   transform: scaleX(0);
+  transform-origin: left center;
   transition: transform var(--transition);
 }
-.nav__links a:not(.btn):hover::after { transform: scaleX(1); }
-
-/* ─── Button transitions ─────────────────────────── */
-.btn { transition: all var(--transition); }
+.nav__links a:not(.btn):hover::after,
+.nav__links a.is-active::after { transform: scaleX(1); }
+.nav__links a.is-active { color: var(--purple); }
 
 /* ─── Footer link hover ──────────────────────────── */
 .footer__links a { transition: color var(--transition), padding-left var(--transition); }
 .footer__links a:hover { color: var(--white); padding-left: 4px; }
-
-/* ─── Scheme card accent left border ─────────────── */
-.scheme-card { border-left: 3px solid var(--purple-light); }
-.scheme-card:hover { border-left-color: var(--purple); }
-
-/* ─── Role card top accent ───────────────────────── */
-.role-card { border-top: 3px solid var(--purple-light); }
-.role-card:hover { border-top-color: var(--purple); }
 
 /* ─── Form inputs refined ────────────────────────── */
 .form-group input,
@@ -1811,6 +1887,10 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
 .form-group select:hover,
 .form-group textarea:hover {
   border-color: rgba(107,45,139,.35);
+}
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+  border-color: #D94A5C;
 }
 
 /* ─── Responsive: mobile polish ─────────────────── */
@@ -1916,4 +1996,147 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
 
 @media (max-width: 768px) {
   .service-tiles { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════
+   ANIMATION SYSTEM
+   ──────────────────────────────────────────────────
+   Driven by two data attributes on any element:
+     data-animate="fade-up|fade-down|fade-left|fade-right|scale-in"
+     data-stagger="1..6"  (optional; adds 80ms per step)
+   JS adds `.is-visible` via IntersectionObserver
+   (see assets/js/main.js).
+   ══════════════════════════════════════════════════ */
+
+[data-animate] {
+  opacity: 0;
+  transition:
+    opacity .7s var(--ease),
+    transform .7s var(--ease);
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"]    { transform: translateY(32px); }
+[data-animate="fade-down"]  { transform: translateY(-24px); }
+[data-animate="fade-left"]  { transform: translateX(32px); }
+[data-animate="fade-right"] { transform: translateX(-32px); }
+[data-animate="scale-in"]   { transform: scale(.94); }
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-stagger="1"] { transition-delay: 80ms;  }
+[data-stagger="2"] { transition-delay: 160ms; }
+[data-stagger="3"] { transition-delay: 240ms; }
+[data-stagger="4"] { transition-delay: 320ms; }
+[data-stagger="5"] { transition-delay: 400ms; }
+[data-stagger="6"] { transition-delay: 480ms; }
+
+/* ─── Keyframes ────────────────────────────────────── */
+
+@keyframes auroraDrift {
+  0%   { transform: rotate(0deg)   scale(1); }
+  50%  { transform: rotate(180deg) scale(1.08); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0)    translateX(0); }
+  100% { transform: translateY(-14px) translateX(6px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes softShake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-3px); }
+  75%      { transform: translateX(3px); }
+}
+
+/* ─── Button polish: press + shimmer sweep ─────────── */
+
+.btn:active {
+  transform: translateY(0) scale(.98);
+}
+
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, .22) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: -200% 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s var(--ease);
+}
+
+.btn--primary:hover::after {
+  opacity: 1;
+  animation: shimmer 1.2s var(--ease);
+}
+
+/* ─── Focus ring (keyboard-only) ───────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.btn:focus-visible,
+.nav__logo:focus-visible,
+.nav__links a:focus-visible {
+  outline-offset: 4px;
+}
+
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
+  outline: none; /* already styled via border + box-shadow */
+}
+
+/* ─── Form validation feedback ─────────────────────── */
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+  border-color: #c23b4e;
+  animation: softShake .35s var(--ease);
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+  border-color: var(--teal);
+}
+
+/* ─── Motion-safety ────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
