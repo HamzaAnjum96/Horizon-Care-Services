@@ -238,7 +238,12 @@ a { color: var(--purple); text-decoration: none; }
 @media (max-width: 768px) {
   .nav__logo img { height: 54px; }
   .nav__logo-text strong { font-size: .85rem; }
-  .nav__logo-text span { display: none; }
+  .nav__logo-text span { font-size: .65rem; }
+}
+
+@media (max-width: 420px) {
+  .nav__logo-text strong { font-size: .78rem; }
+  .nav__logo-text span { font-size: .6rem; }
 }
 
 .nav__links {
