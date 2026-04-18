@@ -62,6 +62,24 @@ document.querySelectorAll('[data-animate]').forEach((el) => reveal.observe(el));
 const mobilePreviewQuery = window.matchMedia('(max-width: 768px)');
 const mobilePreviewConfigs = [];
 
+const scrollToggleIntoView = (button) => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+  const targetTop = button.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: prefersReducedMotion ? 'auto' : 'smooth'
+  });
+};
+
+const getPreviewItems = (grid) => {
+  const scopedItems = grid.querySelectorAll(':scope > [data-mobile-preview-item]');
+  if (scopedItems.length) {
+    return Array.from(scopedItems);
+  }
+  return Array.from(grid.children);
+};
+
 const syncMobilePreview = () => {
   const isMobile = mobilePreviewQuery.matches;
   mobilePreviewConfigs.forEach((config) => {
@@ -79,7 +97,7 @@ const syncMobilePreview = () => {
 };
 
 document.querySelectorAll('[data-mobile-preview]').forEach((grid) => {
-  const cards = Array.from(grid.children);
+  const cards = getPreviewItems(grid);
   const previewCount = Number(grid.dataset.mobilePreview || 2);
   if (cards.length <= previewCount) return;
 
@@ -97,8 +115,12 @@ document.querySelectorAll('[data-mobile-preview]').forEach((grid) => {
   };
 
   button.addEventListener('click', () => {
+    const wasExpanded = config.expanded;
     config.expanded = !config.expanded;
     syncMobilePreview();
+    if (wasExpanded && mobilePreviewQuery.matches) {
+      scrollToggleIntoView(button);
+    }
   });
 
   grid.insertAdjacentElement('afterend', button);
