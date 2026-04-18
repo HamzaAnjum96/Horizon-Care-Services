@@ -62,7 +62,7 @@ Horizon-Care-Services/
 
 | File | Role | Key sections (top → bottom) |
 |---|---|---|
-| `index.html` | Home | Hero, intro strip, about, services, CTA band, contact form |
+| `index.html` | Home | Hero (centred text + animated orb background), intro strip, about, services, CTA band, contact form |
 | `pages/supported-accommodation.html` | Service detail | Page hero (image), stats bar, scheme types, "how we support" split, our team split, accommodation projects |
 | `pages/staffing-solutions.html` | Service detail | Page hero (image), stats bar, products & services tiles, roles we place, why-choose-us split, service promise, CTA band |
 | `pages/contact-apply.html` | Contact + jobs | Page hero (modern), contact info + enquiry form, "Work for Us" panel |
@@ -138,7 +138,7 @@ All design tokens live in `:root` at the top of `style.css`. Reach for these ins
 | `:root` tokens | 1–110 | Colour, type, shadow, gradient, texture, motion variables |
 | Reset & base | ~110–180 | Box sizing, anchor reset, container, `.btn` system |
 | Nav | ~190–280 | `.nav`, `.nav__logo`, `.nav__links`, hamburger |
-| Hero | ~280–415 | `.hero`, `.hero__bg`, `.hero__media`, scroll hint |
+| Hero | ~280–480 | `.hero`, `.hero__bg`, animated orbs (`.hero__orb--1`–`4`), centred content, scroll hint |
 | Intro / About / Services / Philosophy / CTA / Contact | ~415–950 | Home-page sections |
 | Footer | ~950–1010 | Three-column footer + bottom strip |
 | Subpages: page-hero, stats bar, schemes, splits, content-card, info-block, process steps, role/service tiles, benefit tiles | ~1010–2000 | Subpage components |
@@ -235,7 +235,7 @@ Reusable class names in `style.css`. BEM-style: `block__element--modifier`.
 - **Pexels image URLs** are hard-coded with `?auto=compress&cs=tinysrgb&w=900` (or `w=1600` for hero backgrounds). Keep the query string when swapping.
 - **The contact form has no backend.** It's wired with `onsubmit="return false;"` and is a front-end placeholder. Submitting does nothing.
 - **`prefers-reduced-motion` is fully respected.** When auditing animations, test with reduced-motion both off **and** on.
-- **Hero animations need keyframes.** `auroraDrift` and `float` are defined in the ANIMATION SYSTEM section of `style.css` — don't remove them or the hero/page-hero textures go static.
+- **Hero animations need keyframes.** `orbDrift1`–`orbDrift4` drive the home-page hero background orbs. `auroraDrift` and `float` are used by page-hero textures on subpages. All live in the ANIMATION SYSTEM section of `style.css` — don't remove them.
 - **GitHub Pages workflow** (`.github/workflows/deploy-pages.yml`) triggers on push to `main`, `master`, or `work`. Other branches just stage changes.
 - **Don't introduce a build step or framework** without buy-in. The whole point of this codebase is "open in a text editor, save, refresh".
 
