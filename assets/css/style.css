@@ -1,5 +1,6 @@
 /* ─── Reset & Base ────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
 
 :root {
   /* ─── Brand palette ────────────────────────── */
@@ -1598,6 +1599,15 @@ a { color: var(--purple); text-decoration: none; }
   line-height: 1.55;
 }
 
+.mobile-preview__toggle {
+  display: none;
+  margin: 20px auto 0;
+}
+
+.mobile-preview__item--hidden {
+  display: none !important;
+}
+
 /* ─── CTA Block ─────────────────────────────────── */
 .cta-block {
   background: var(--grad-dark-wave);
@@ -2204,6 +2214,7 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
 @media (max-width: 768px) {
   .service-tiles { grid-template-columns: 1fr; }
   .benefit-tiles { grid-template-columns: 1fr; }
+  .mobile-preview__toggle { display: inline-flex; }
 }
 
 /* ══════════════════════════════════════════════════
