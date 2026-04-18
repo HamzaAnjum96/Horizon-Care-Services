@@ -1149,9 +1149,8 @@ a { color: var(--purple); text-decoration: none; }
 @media (max-width: 1024px) {
   .hero { min-height: auto; }
   .hero__inner { padding-top: 60px; padding-bottom: 100px; }
-  .intro { grid-template-columns: 1fr; margin-top: -40px; }
+  .intro { margin-top: -40px; }
   .about__inner { grid-template-columns: 1fr; gap: 48px; }
-  .services__grid { grid-template-columns: 1fr; }
   .philosophy__grid { grid-template-columns: 1fr; }
   .cta-band__inner { flex-direction: column; text-align: center; }
   .contact__inner { grid-template-columns: 1fr; gap: 48px; }
@@ -1182,7 +1181,9 @@ a { color: var(--purple); text-decoration: none; }
   }
   .hero__inner { padding-top: 40px; padding-bottom: 80px; }
   .intro { margin-top: 40px; }
+  .intro { grid-template-columns: 1fr; }
   .about, .services, .philosophy, .contact { padding: 80px 0; }
+  .services__grid { grid-template-columns: 1fr; }
   .philosophy__grid { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; gap: 32px; }
   .contact__form { padding: 32px 24px; }
@@ -1787,13 +1788,13 @@ a { color: var(--purple); text-decoration: none; }
   .roles-grid { grid-template-columns: repeat(2, 1fr); }
   .split-section { grid-template-columns: 1fr; gap: 36px; }
   .contact-page-grid { grid-template-columns: 1fr; gap: 36px; }
-  .scheme-cards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
   .page-hero-image { padding: 80px 0 60px; }
   .stats-bar { padding: 36px 0; }
   .roles-grid { grid-template-columns: 1fr; }
+  .scheme-cards { grid-template-columns: 1fr; }
   .split-img img { height: 260px; }
   .cta-block { padding: 40px 24px; }
   .form-row { grid-template-columns: 1fr; }
