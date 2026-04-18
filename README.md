@@ -64,7 +64,7 @@ Horizon-Care-Services/
 |---|---|---|
 | `index.html` | Home | Hero (centred text + animated orb background), intro strip, about, services, CTA band, contact form |
 | `pages/supported-accommodation.html` | Service detail | Page hero (image), stats bar, scheme types, "how we support" split, our team split, accommodation projects |
-| `pages/staffing-solutions.html` | Service detail | Page hero (image), stats bar, products & services tiles, roles we place, why-choose-us split, service promise, CTA band |
+| `pages/staffing-solutions.html` | Service detail | Page hero (image), stats bar, products & services tiles (mobile preview + show more), roles we place (mobile preview + show more), why-choose-us split, service promise, CTA band |
 | `pages/contact-apply.html` | Contact + jobs | Page hero (modern), contact info + enquiry form, "Work for Us" panel |
 | `pages/legal-notice.html` | Legal | Hero + single content card with company info, IP, liability, governing law |
 | `pages/privacy-policy.html` | Legal | Hero + single content card; sections 1–13 of UK GDPR-style policy |
@@ -136,7 +136,7 @@ All design tokens live in `:root` at the top of `style.css`. Reach for these ins
 | Section | Lines (approx.) | What's there |
 |---|---|---|
 | `:root` tokens | 1–110 | Colour, type, shadow, gradient, texture, motion variables |
-| Reset & base | ~110–180 | Box sizing, anchor reset, container, `.btn` system |
+| Reset & base | ~110–180 | Box sizing, `[hidden]` enforcement, anchor reset, container, `.btn` system |
 | Nav | ~190–280 | `.nav`, `.nav__logo`, `.nav__links`, hamburger |
 | Hero | ~280–480 | `.hero`, `.hero__bg`, animated orbs (`.hero__orb--1`–`4`), centred content, scroll hint |
 | Intro / About / Services / Philosophy / CTA / Contact | ~415–950 | Home-page sections |
