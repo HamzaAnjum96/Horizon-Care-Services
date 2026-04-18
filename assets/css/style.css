@@ -1149,9 +1149,7 @@ a { color: var(--purple); text-decoration: none; }
 @media (max-width: 1024px) {
   .hero { min-height: auto; }
   .hero__inner { padding-top: 60px; padding-bottom: 100px; }
-  .intro { grid-template-columns: 1fr; margin-top: -40px; }
   .about__inner { grid-template-columns: 1fr; gap: 48px; }
-  .services__grid { grid-template-columns: 1fr; }
   .philosophy__grid { grid-template-columns: 1fr; }
   .cta-band__inner { flex-direction: column; text-align: center; }
   .contact__inner { grid-template-columns: 1fr; gap: 48px; }
@@ -1181,7 +1179,8 @@ a { color: var(--purple); text-decoration: none; }
     transform: rotate(-45deg) translate(5px, -5px);
   }
   .hero__inner { padding-top: 40px; padding-bottom: 80px; }
-  .intro { margin-top: 40px; }
+  .intro { grid-template-columns: 1fr; margin-top: 40px; }
+  .services__grid { grid-template-columns: 1fr; }
   .about, .services, .philosophy, .contact { padding: 80px 0; }
   .philosophy__grid { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; gap: 32px; }
