@@ -1,0 +1,27 @@
+# Horizon Care Services Ltd
+
+> Registered health and social care provider based in Luton, UK. Delivers supported accommodation for adults with mental health needs and learning disabilities in Hertfordshire, and healthcare staffing solutions across Bedfordshire, Buckinghamshire, Cambridgeshire, and Hertfordshire.
+
+## Overview
+
+Horizon Care Services Ltd is a CQC-registered provider founded to deliver tailored, high-quality care that transforms lives while promoting respect, dignity, and individuality. The company operates two core service lines: Supported Accommodation and Staffing Solutions.
+
+- Registered address: 9 Lilac Grove, Luton, LU3 3JG, England
+- Governed by the laws of England and Wales
+- Regulated by the Care Quality Commission (CQC)
+- Email: admin@horizon-careservices.co.uk
+- Mobile: 07572 701 349
+- Office: 01582 354 119
+
+## Pages
+
+- [Home](/index.html): Company introduction, core services summary, philosophy, and contact form
+- [Supported Accommodation](/pages/supported-accommodation.html): Accommodation schemes, current and upcoming properties in Hatfield and St Albans, support approach, and team overview
+- [Staffing Solutions](/pages/staffing-solutions.html): Healthcare staffing services, roles placed, care settings served, and service promise
+- [Contact & Apply](/pages/contact-apply.html): Enquiry form, contact details, and job application information
+- [Legal Notice](/pages/legal-notice.html): Company information, intellectual property, liability disclaimer, and governing law
+- [Privacy Policy](/pages/privacy-policy.html): UK GDPR-compliant data protection policy covering data collection, retention, and individual rights
+
+## Optional
+
+- [llms-full.txt](/llms-full.txt): Complete plain-text description of the business for AI systems

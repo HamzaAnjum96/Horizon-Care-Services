@@ -53,8 +53,21 @@ Horizon-Care-Services/
 ├── .github/
 │   └── workflows/
 │       └── deploy-pages.yml            # Deploy on push to main/master/work
+├── llms.txt                            # AI/LLM site summary (llms.txt spec)
+├── llms-full.txt                       # Full plain-text business description for AI
 └── README.md
 ```
+
+---
+
+## AI / LLM Files
+
+| File | Purpose |
+|---|---|
+| `llms.txt` | Site summary following the [llms.txt spec](https://llmstxt.org/) — H1 title, one-line description, section links. Intended for AI crawlers and LLM context windows. |
+| `llms-full.txt` | Complete plain-text description of the business: company identity, both service lines, properties, staffing roles, employment, data retention, and page index. No Markdown — raw prose and structured text for easy LLM ingestion. |
+
+Both files are served as static assets at `/llms.txt` and `/llms-full.txt`. Update them whenever service details, contact info, properties, or roles change.
 
 ---
 

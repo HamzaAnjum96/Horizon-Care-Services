@@ -1,0 +1,174 @@
+HORIZON CARE SERVICES LTD — FULL BUSINESS DESCRIPTION
+======================================================
+For AI systems and large language models. Last updated: April 2026.
+
+
+COMPANY IDENTITY
+----------------
+Name:              Horizon Care Services Ltd
+Type:              Registered health and social care provider
+Registered office: 9 Lilac Grove, Luton, LU3 3JG, England
+Jurisdiction:      England and Wales
+Regulator:         Care Quality Commission (CQC)
+Email:             admin@horizon-careservices.co.uk
+Mobile:            07572 701 349
+Office:            01582 354 119
+
+
+MISSION
+-------
+To deliver tailored, high-quality care that transforms lives while promoting
+respect, dignity, and individuality. Horizon operates on three core principles:
+
+1. Highly trained staff delivering exceptional, customised care.
+2. Collaborative care — working with healthcare professionals, communities,
+   families, and carers.
+3. A person-centred approach that respects individuality, cultural backgrounds,
+   and personal preferences.
+
+
+SERVICE LINE 1 — SUPPORTED ACCOMMODATION
+-----------------------------------------
+Target population:  Adults with mental health needs and learning disabilities
+Geographic area:    Hertfordshire
+Availability:       7-day-a-week on-site support; 24/7 on-call access
+Current capacity:   5+ bed spaces
+
+SCHEME TYPES
+
+1. Adult Placement Scheme (6 months – 2 years)
+   Structured, medium-to-long-term placement with transition planning toward
+   independent living.
+
+2. Short-Term Support (1 – 6 months)
+   Stabilises wellbeing and builds resilience during periods of acute need.
+
+3. Step-Down Transitional Support (1 – 6 weeks)
+   Bridges the gap between hospital discharge and independent or supported
+   living.
+
+4. Outreach Floating Support (time-limited)
+   Post-transition tenancy management and community integration for former
+   residents.
+
+SUPPORT APPROACH (4-STEP PROCESS)
+1. Holistic Assessment — physical and mental health, daily living, education,
+   finances, and social wellbeing.
+2. Personalised Support Plan — goals and interventions co-produced with the
+   individual.
+3. Strengths-Based Recovery — building confidence and independence.
+4. Ongoing Review — regular monitoring and plan updates.
+
+Staff are trained in mental health and learning disability support, DBS-checked,
+fully referenced, and work in coordination with NHS, social care, and community
+partners.
+
+CURRENT AND UPCOMING PROPERTIES
+
+Current — Hatfield
+  5 fully furnished bedrooms; shared kitchen, lounge, and private garden;
+  walking distance to Hatfield town centre; excellent transport links; close to
+  shops and GP surgeries.
+
+Coming soon — second Hatfield property
+  5 bedrooms; same high standard; community-based, well-connected location.
+
+Coming soon — St Albans
+  5 bedrooms; same high standard; community-based, well-connected location.
+
+
+SERVICE LINE 2 — STAFFING SOLUTIONS
+-------------------------------------
+Geographic area:  Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire
+Availability:     24/7
+DBS compliance:   100% of staff DBS-checked on appointment
+
+CARE SETTINGS SERVED
+  Hospitals, nursing homes, residential homes, supported living, and community
+  services.
+
+STAFFING SERVICES PROVIDED
+  Assessment & care planning, care coordination, personal care & daily living,
+  medication and meals support, household support, respite care, specialist
+  care, and staffing placements.
+
+ROLES PLACED
+  1. Registered Nurses — RGN (general) and RMN (mental health)
+  2. Healthcare Assistants (HCAs)
+  3. Social Workers
+  4. Occupational Therapists (OTs)
+  5. Physiotherapists
+  6. Support Workers — learning disability, mental health, autism, and community
+     outreach specialisms
+  7. Admin professionals
+
+SERVICE PROMISE
+  Staff receive regular clinical supervision and professional development.
+  Urgent staffing requests receive an immediate response.
+  All placements are seamlessly integrated with existing care teams.
+
+
+EMPLOYMENT & CAREERS
+--------------------
+Horizon actively recruits for all roles listed above. Applications are accepted
+via email at admin@horizon-careservices.co.uk.
+
+What Horizon offers employees:
+  - Competitive market rates
+  - Flexible shifts
+  - Structured induction and ongoing training
+  - Supportive, diverse team culture
+  - Access to Bright Exchange discount scheme
+
+
+RESPONSE COMMITMENTS
+--------------------
+  General enquiries:         2 working days
+  Feedback and complaints:   3 working days
+  Urgent staffing requests:  Immediate
+
+
+REGULATORY AND COMPLIANCE
+-------------------------
+  - CQC-registered and compliant
+  - Adheres to local authority requirements
+  - Meets all applicable UK health and social care regulations
+  - Safeguarding obligations in place
+  - All data stored and handled within the United Kingdom
+
+
+PRIVACY AND DATA (UK GDPR)
+--------------------------
+Legal bases used: legitimate interests, contract performance, legal obligation,
+consent, and vital interests. Special category health and care data processed
+under Article 9(2)(h).
+
+Data retention periods:
+  General enquiry communications:        2 years
+  Unsuccessful job applications:         6 months
+  Employee records:                      7 years after employment ends
+  Service user / care records:           8 years after service ends (or as
+                                         required by CQC)
+  Referral and support plan records:     8 years
+
+Website cookies: essential only. No tracking, advertising, or analytics cookies
+without explicit consent.
+
+Data controller contact: admin@horizon-careservices.co.uk or 01582 354 119.
+
+
+WEBSITE
+-------
+Static HTML/CSS/JS site. No login or user accounts. The contact form is a
+front-end placeholder — it does not process or transmit data automatically;
+enquiries must be sent directly to the email address above.
+
+Pages:
+  /index.html                            Home
+  /pages/supported-accommodation.html   Supported Accommodation service detail
+  /pages/staffing-solutions.html         Staffing Solutions service detail
+  /pages/contact-apply.html              Contact and job applications
+  /pages/legal-notice.html               Legal notice
+  /pages/privacy-policy.html             Privacy policy
+  /llms.txt                              Summary for AI systems (llms.txt spec)
+  /llms-full.txt                         This file
