@@ -1086,44 +1086,32 @@ a { color: var(--purple); text-decoration: none; }
 
 .footer > * { position: relative; z-index: 1; }
 
-.footer__inner {
-  display: flex;
-  justify-content: center;
-  padding-top: 48px;
-  padding-bottom: 40px;
+.footer__bottom {
+  padding: 32px 0;
 }
 
-.footer__links {
+.footer__bottom .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  text-align: center;
+  gap: 14px;
 }
 
-.footer__links h5 {
-  font-size: .78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  color: var(--white);
-  margin-bottom: 8px;
+.footer__legal {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.footer__links a,
-.footer__links .footer__address {
+.footer__legal a {
   font-size: .9rem;
   color: rgba(255,255,255,.55);
   text-decoration: none;
-  transition: color var(--transition);
+  transition: color var(--transition), padding-left var(--transition);
 }
 
-.footer__links a:hover { color: var(--white); }
-
-.footer__bottom {
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding: 24px 0;
-}
+.footer__legal a:hover { color: var(--white); padding-left: 4px; }
 
 .footer__bottom p {
   font-size: .82rem;
@@ -1140,7 +1128,10 @@ a { color: var(--purple); text-decoration: none; }
   .philosophy__grid { grid-template-columns: 1fr; }
   .cta-band__inner { flex-direction: column; text-align: center; }
   .contact__inner { grid-template-columns: 1fr; gap: 48px; }
+<<<<<<< HEAD
   .footer__inner { padding-top: 40px; padding-bottom: 32px; }
+=======
+>>>>>>> cd94d6f (Remove logo and contact from footer; show only legal links and copyright)
 }
 
 @media (max-width: 768px) {
@@ -1171,8 +1162,11 @@ a { color: var(--purple); text-decoration: none; }
   .about, .services, .philosophy, .contact { padding: 80px 0; }
   .services__grid { grid-template-columns: 1fr; }
   .philosophy__grid { grid-template-columns: 1fr; }
+<<<<<<< HEAD
   .footer__inner { padding-top: 32px; padding-bottom: 24px; }
   .footer__bottom { padding: 16px 0; }
+=======
+>>>>>>> cd94d6f (Remove logo and contact from footer; show only legal links and copyright)
   .contact__form { padding: 32px 24px; }
   .philosophy__quote { padding: 0 20px; }
 }
@@ -2056,10 +2050,6 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
 .nav__links a:not(.btn):hover::after,
 .nav__links a.is-active::after { transform: scaleX(1); }
 .nav__links a.is-active { color: var(--purple); }
-
-/* ─── Footer link hover ──────────────────────────── */
-.footer__links a { transition: color var(--transition), padding-left var(--transition); }
-.footer__links a:hover { color: var(--white); padding-left: 4px; }
 
 /* ─── Form inputs refined ────────────────────────── */
 .form-group input,
