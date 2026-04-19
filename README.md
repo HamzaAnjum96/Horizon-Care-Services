@@ -66,8 +66,8 @@ Horizon-Care-Services/
 | `pages/supported-accommodation.html` | Service detail | Page hero (image), stats bar, scheme types, "how we support" split, our team split, accommodation projects |
 | `pages/staffing-solutions.html` | Service detail | Page hero (image), stats bar, products & services tiles (mobile preview + show more), roles we place (mobile preview + show more), why-choose-us split, service promise, CTA band |
 | `pages/contact-apply.html` | Contact + jobs | Page hero (modern), contact info + enquiry form, "Work for Us" panel |
-| `pages/legal-notice.html` | Legal | Hero + single content card with company info, IP, liability, governing law |
-| `pages/privacy-policy.html` | Legal | Hero + single content card; sections 1–13 of UK GDPR-style policy |
+| `pages/legal-notice.html` | Legal | Hero + muted `page-section` with a single content card covering company info, IP, liability, governing law |
+| `pages/privacy-policy.html` | Legal | Hero + muted `page-section` with a single content card; sections 1–13 of UK GDPR-style policy |
 
 ---
 

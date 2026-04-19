@@ -2074,6 +2074,11 @@ h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
   .page-section { padding: 60px 0; }
   .scheme-cards, .content-grid { gap: 16px; }
   .process-steps { gap: 16px; }
+  .content-card { padding: 24px; }
+}
+
+@media (max-width: 480px) {
+  .content-card { padding: 20px 18px; }
 }
 
 /* ─── Service Tiles (horizontal icon + text) ──── */
