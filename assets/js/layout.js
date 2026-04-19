@@ -71,15 +71,12 @@ class SiteFooter extends HTMLElement {
 
     this.innerHTML = `
       <footer class="footer">
-        <div class="container footer__inner">
-          <div class="footer__links">
-            <h5>Legal</h5>
-            <a href="${base}/pages/legal-notice.html">Legal Notice</a>
-            <a href="${base}/pages/privacy-policy.html">Privacy Policy</a>
-          </div>
-        </div>
         <div class="footer__bottom">
           <div class="container">
+            <nav class="footer__legal" aria-label="Legal">
+              <a href="${base}/pages/legal-notice.html">Legal Notice</a>
+              <a href="${base}/pages/privacy-policy.html">Privacy Policy</a>
+            </nav>
             <p>&copy; ${year} Horizon Care Services Ltd. All rights reserved.</p>
           </div>
         </div>
