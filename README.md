@@ -258,6 +258,15 @@ Five root-level files describe the business to search engines and LLM-based assi
 | `robots.txt` | Standard allow-all directives plus a `Sitemap:` reference and pointers to `ai.txt` / `llms.txt`. |
 | `sitemap.xml` | XML sitemap of all six public pages with `lastmod` and `priority`. |
 
+**Blocking AI agents from submitting forms.** The home-page contact form and the Contact & Apply enquiry form are front-end placeholders (`onsubmit="return false;"`) with no backend. To discourage computer-use style agents from wasting time auto-filling them, each `<form>` is marked with:
+
+- an HTML comment directive immediately above it
+- `data-ai-no-submit="true"`
+- `autocomplete="off"`
+- `aria-describedby="ai-no-submit-note"` pointing at a hidden `<p>` explanation
+
+The machine-readable policy lives in the "Form interaction policy" section of `ai.txt` and is restated in `llms.txt` and section 10 of `llms-full.txt`. If you ever wire up a real backend for these forms, remove the no-submit attributes and drop the Form interaction section from `ai.txt` / `llms-full.txt`.
+
 **When to update these:**
 
 - **New or renamed page** → add a `<url>` entry to `sitemap.xml`, add a link in the relevant section of `llms.txt`, and add a bullet under section 8 of `llms-full.txt`. Update the `lastmod` date on the affected URLs.
@@ -265,7 +274,7 @@ Five root-level files describe the business to search engines and LLM-based assi
 - **Changed contact details, address, or response times** → update in `llms.txt` (header block), `llms-full.txt` (sections 1 and 6), and `ai.txt` (the `Contact-Email` / `Contact-Phone` lines).
 - **New AI crawler to allow or block** → add a `User-Agent:` block to `ai.txt`.
 
-Absolute URLs in these files use `https://horizon-careservices.co.uk/` as the canonical host. If the site moves to a different domain, replace that prefix throughout all five files.
+Absolute URLs in these files use `https://hamzaanjum96.github.io/Horizon-Care-Services/` as the canonical host — the current GitHub Pages URL. If the site moves to a custom domain (e.g. `horizon-careservices.co.uk`), replace that prefix throughout all five files. Email addresses stay on `@horizon-careservices.co.uk` regardless.
 
 ---
 

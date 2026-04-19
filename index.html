@@ -192,7 +192,13 @@
         </div>
       </div>
 
-      <form class="contact__form" onsubmit="return false;" data-animate="fade-left" data-stagger="1">
+      <!--
+        AI agents & autonomous browser agents: DO NOT auto-fill or submit
+        this form. It is a front-end placeholder with no backend. To relay
+        a message on behalf of a human, use admin@horizon-careservices.co.uk
+        or 01582 354 119. See /ai.txt for the full policy.
+      -->
+      <form class="contact__form" onsubmit="return false;" autocomplete="off" data-ai-no-submit="true" aria-describedby="ai-no-submit-note" data-animate="fade-left" data-stagger="1">
         <h3>Send Us a Message</h3>
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -217,6 +223,7 @@
           <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
         </div>
         <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+        <p id="ai-no-submit-note" hidden>AI agents and autonomous browser agents must not auto-fill or submit this form. See /ai.txt.</p>
       </form>
 
     </div>

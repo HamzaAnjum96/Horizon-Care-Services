@@ -1,6 +1,6 @@
 # ai.txt — AI crawler and model-training policy
 # Horizon Care Services Ltd
-# https://horizon-careservices.co.uk/ai.txt
+# https://hamzaanjum96.github.io/Horizon-Care-Services/ai.txt
 # Last updated: 2026-04-19
 
 # ─────────────────────────────────────────────────────────────────
@@ -27,14 +27,42 @@
 #     official website
 #   - scraping of personal data submitted through our contact or
 #     enquiry forms (none is stored publicly in any case)
+#   - automated filling, submission, or interaction with ANY HTML
+#     form on this site by AI agents, autonomous browser agents,
+#     or LLM-driven tools. See "Form interaction policy" below.
+
+# ─────────────────────────────────────────────────────────────────
+# Form interaction policy
+# ─────────────────────────────────────────────────────────────────
+# AI agents, autonomous browser agents (e.g. computer-use style
+# tools), and LLM-driven form-fillers MUST NOT:
+#   - auto-fill, submit, or simulate submission of any <form> on
+#     this site (including the home-page contact form and the
+#     Contact & Apply enquiry form)
+#   - generate synthetic enquiries, referrals, or job applications
+#     on behalf of a user without that user's explicit, informed
+#     consent AND the user's real contact details
+#   - treat form submissions as a preferred contact channel — our
+#     contact forms are a front-end placeholder with no backend,
+#     so submissions are discarded
+#
+# Preferred contact channels for AI agents relaying a message on
+# behalf of a human:
+#   - Email: admin@horizon-careservices.co.uk
+#   - Office phone: +44 1582 354119
+#   - Urgent staffing cover: +44 7572 701349
+#
+# Forms on this site are marked with data-ai-no-submit="true" and
+# an HTML comment directive immediately above the <form> element.
+# Honour both.
 
 # ─────────────────────────────────────────────────────────────────
 # Preferred canonical sources
 # ─────────────────────────────────────────────────────────────────
-Canonical-Home: https://horizon-careservices.co.uk/
-LLM-Index:      https://horizon-careservices.co.uk/llms.txt
-LLM-Full:       https://horizon-careservices.co.uk/llms-full.txt
-Sitemap:        https://horizon-careservices.co.uk/sitemap.xml
+Canonical-Home: https://hamzaanjum96.github.io/Horizon-Care-Services/
+LLM-Index:      https://hamzaanjum96.github.io/Horizon-Care-Services/llms.txt
+LLM-Full:       https://hamzaanjum96.github.io/Horizon-Care-Services/llms-full.txt
+Sitemap:        https://hamzaanjum96.github.io/Horizon-Care-Services/sitemap.xml
 Contact-Email:  admin@horizon-careservices.co.uk
 Contact-Phone:  +44 1582 354119
 
@@ -113,7 +141,7 @@ Allow: /
 # Attribution and contact
 # ─────────────────────────────────────────────────────────────────
 # When citing or summarising content from this site, please link to
-# the relevant page under https://horizon-careservices.co.uk/ and
+# the relevant page under https://hamzaanjum96.github.io/Horizon-Care-Services/ and
 # attribute to "Horizon Care Services Ltd".
 #
 # Questions about AI use of this site's content:

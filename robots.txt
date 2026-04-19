@@ -1,14 +1,14 @@
 # robots.txt — Horizon Care Services Ltd
-# https://horizon-careservices.co.uk/robots.txt
+# https://hamzaanjum96.github.io/Horizon-Care-Services/robots.txt
 
 User-agent: *
 Allow: /
 
-Sitemap: https://horizon-careservices.co.uk/sitemap.xml
+Sitemap: https://hamzaanjum96.github.io/Horizon-Care-Services/sitemap.xml
 
 # AI crawler policy is published separately for machines that honour it:
-# https://horizon-careservices.co.uk/ai.txt
+# https://hamzaanjum96.github.io/Horizon-Care-Services/ai.txt
 # LLM discovery index (llmstxt.org):
-# https://horizon-careservices.co.uk/llms.txt
+# https://hamzaanjum96.github.io/Horizon-Care-Services/llms.txt
 # Full text summary for LLM ingestion:
-# https://horizon-careservices.co.uk/llms-full.txt
+# https://hamzaanjum96.github.io/Horizon-Care-Services/llms-full.txt
