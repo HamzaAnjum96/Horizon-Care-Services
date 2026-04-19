@@ -139,7 +139,7 @@ All design tokens live in `:root` at the top of `style.css`. Reach for these ins
 | Reset & base | ~110–180 | Box sizing, `[hidden]` enforcement, anchor reset, container, `.btn` system |
 | Nav | ~190–280 | `.nav`, `.nav__logo`, `.nav__links`, hamburger |
 | Hero | ~280–480 | `.hero`, `.hero__bg`, animated orbs (`.hero__orb--1`–`4`), centred content, scroll hint |
-| Intro / About / Services / Philosophy / CTA / Contact | ~415–950 | Home-page sections |
+| Intro / About / Services / Philosophy / CTA / Contact | ~415–950 | Home-page sections (section padding reduced from 120px to 80px desktop, 80px to 56px mobile) |
 | Footer | ~950–1010 | Compact footer: legal links + copyright strip only |
 | Subpages: page-hero, stats bar, schemes, splits, content-card, info-block, process steps, role/service tiles, benefit tiles | ~1010–2000 | Subpage components |
 | `TEXTURE, DEPTH & POLISH` | ~1620–1830 | Aurora layers, crosshatches, scan lines, dual-blob philosophy/CTA |
