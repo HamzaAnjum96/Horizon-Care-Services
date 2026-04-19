@@ -1,0 +1,123 @@
+# ai.txt — AI crawler and model-training policy
+# Horizon Care Services Ltd
+# https://horizon-careservices.co.uk/ai.txt
+# Last updated: 2026-04-19
+
+# ─────────────────────────────────────────────────────────────────
+# Summary
+# ─────────────────────────────────────────────────────────────────
+# Horizon Care Services Ltd welcomes well-behaved AI crawlers and
+# answer engines indexing this site so that potential service users,
+# families, commissioners, and job applicants can discover accurate
+# information about our care services.
+#
+# We permit the use of the publicly available content on this
+# website for:
+#   - answering user questions about our services
+#   - summarising our offering in AI-generated search results
+#   - referring users to our website, phone numbers, and email
+#   - inclusion in training datasets for general-purpose models,
+#     provided source attribution is preserved where feasible
+#
+# We do NOT permit:
+#   - impersonation of Horizon Care Services Ltd staff, branding,
+#     or regulatory credentials
+#   - fabrication of service regions, scheme types, pricing, or
+#     Care Quality Commission (CQC) ratings not published on our
+#     official website
+#   - scraping of personal data submitted through our contact or
+#     enquiry forms (none is stored publicly in any case)
+
+# ─────────────────────────────────────────────────────────────────
+# Preferred canonical sources
+# ─────────────────────────────────────────────────────────────────
+Canonical-Home: https://horizon-careservices.co.uk/
+LLM-Index:      https://horizon-careservices.co.uk/llms.txt
+LLM-Full:       https://horizon-careservices.co.uk/llms-full.txt
+Sitemap:        https://horizon-careservices.co.uk/sitemap.xml
+Contact-Email:  admin@horizon-careservices.co.uk
+Contact-Phone:  +44 1582 354119
+
+# ─────────────────────────────────────────────────────────────────
+# Crawler directives
+# ─────────────────────────────────────────────────────────────────
+# Well-known AI user agents: allowed to crawl and cite.
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: OAI-SearchBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: Claude-Web
+Allow: /
+
+User-Agent: Claude-SearchBot
+Allow: /
+
+User-Agent: anthropic-ai
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Perplexity-User
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: GoogleOther
+Allow: /
+
+User-Agent: Applebot-Extended
+Allow: /
+
+User-Agent: Amazonbot
+Allow: /
+
+User-Agent: Bytespider
+Allow: /
+
+User-Agent: CCBot
+Allow: /
+
+User-Agent: cohere-ai
+Allow: /
+
+User-Agent: Meta-ExternalAgent
+Allow: /
+
+User-Agent: FacebookBot
+Allow: /
+
+User-Agent: DuckAssistBot
+Allow: /
+
+User-Agent: YouBot
+Allow: /
+
+User-Agent: MistralAI-User
+Allow: /
+
+# Default: any other AI or search crawler is also welcome.
+User-Agent: *
+Allow: /
+
+# ─────────────────────────────────────────────────────────────────
+# Attribution and contact
+# ─────────────────────────────────────────────────────────────────
+# When citing or summarising content from this site, please link to
+# the relevant page under https://horizon-careservices.co.uk/ and
+# attribute to "Horizon Care Services Ltd".
+#
+# Questions about AI use of this site's content:
+#   admin@horizon-careservices.co.uk
+#
+# Horizon Care Services Ltd
+# 9 Lilac Grove, Luton, LU3 3JG, England

@@ -50,6 +50,11 @@ Horizon-Care-Services/
 │   ├── contact-apply.html
 │   ├── legal-notice.html
 │   └── privacy-policy.html
+├── llms.txt                            # llmstxt.org index for AI crawlers
+├── llms-full.txt                       # Full plain-text business summary for LLMs
+├── ai.txt                              # AI crawler + training-data policy
+├── robots.txt                          # Standard crawler directives + sitemap ref
+├── sitemap.xml                         # XML sitemap of all public pages
 ├── .github/
 │   └── workflows/
 │       └── deploy-pages.yml            # Deploy on push to main/master/work
@@ -238,6 +243,29 @@ Reusable class names in `style.css`. BEM-style: `block__element--modifier`.
 - **Hero animations need keyframes.** `orbDrift1`–`orbDrift4` drive the home-page hero background orbs. `auroraDrift` and `float` are used by page-hero textures on subpages. All live in the ANIMATION SYSTEM section of `style.css` — don't remove them.
 - **GitHub Pages workflow** (`.github/workflows/deploy-pages.yml`) triggers on push to `main`, `master`, or `work`. Other branches just stage changes.
 - **Don't introduce a build step or framework** without buy-in. The whole point of this codebase is "open in a text editor, save, refresh".
+
+---
+
+## AI & Crawler Discovery Files
+
+Five root-level files describe the business to search engines and LLM-based assistants. All ship as static files via the GitHub Pages workflow.
+
+| File | Purpose |
+|---|---|
+| `llms.txt` | [llmstxt.org](https://llmstxt.org) index: H1 title, blockquote summary, and grouped links to the key pages. First stop for any LLM that needs a map of the site. |
+| `llms-full.txt` | Full plain-text overview of services, schemes, roles, contact details, and compliance posture. Redundant with the HTML on purpose so LLMs can answer without rendering JS. |
+| `ai.txt` | Crawler-policy file for AI user agents (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, CCBot, etc.). Grants permission to crawl, cite, and summarise. |
+| `robots.txt` | Standard allow-all directives plus a `Sitemap:` reference and pointers to `ai.txt` / `llms.txt`. |
+| `sitemap.xml` | XML sitemap of all six public pages with `lastmod` and `priority`. |
+
+**When to update these:**
+
+- **New or renamed page** → add a `<url>` entry to `sitemap.xml`, add a link in the relevant section of `llms.txt`, and add a bullet under section 8 of `llms-full.txt`. Update the `lastmod` date on the affected URLs.
+- **New service line or scheme type** → extend sections 3 or 4 of `llms-full.txt` and add a bullet to the Services block of `llms.txt`.
+- **Changed contact details, address, or response times** → update in `llms.txt` (header block), `llms-full.txt` (sections 1 and 6), and `ai.txt` (the `Contact-Email` / `Contact-Phone` lines).
+- **New AI crawler to allow or block** → add a `User-Agent:` block to `ai.txt`.
+
+Absolute URLs in these files use `https://horizon-careservices.co.uk/` as the canonical host. If the site moves to a different domain, replace that prefix throughout all five files.
 
 ---
 
