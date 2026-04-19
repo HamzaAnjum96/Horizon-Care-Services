@@ -1087,33 +1087,18 @@ a { color: var(--purple); text-decoration: none; }
 .footer > * { position: relative; z-index: 1; }
 
 .footer__inner {
-  display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr;
-  gap: 48px;
-  padding-top: 72px;
-  padding-bottom: 72px;
-}
-
-.footer__brand img {
-  height: 56px;
-  width: auto;
-  background: rgba(255,255,255,.12);
-  border-radius: var(--radius-sm);
-  padding: 6px 12px;
-  margin-bottom: 16px;
-  display: block;
-}
-
-.footer__brand p {
-  font-size: .9rem;
-  font-style: italic;
-  color: rgba(255,255,255,.5);
+  display: flex;
+  justify-content: center;
+  padding-top: 48px;
+  padding-bottom: 40px;
 }
 
 .footer__links {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
+  text-align: center;
 }
 
 .footer__links h5 {
@@ -1155,7 +1140,7 @@ a { color: var(--purple); text-decoration: none; }
   .philosophy__grid { grid-template-columns: 1fr; }
   .cta-band__inner { flex-direction: column; text-align: center; }
   .contact__inner { grid-template-columns: 1fr; gap: 48px; }
-  .footer__inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer__inner { padding-top: 40px; padding-bottom: 32px; }
 }
 
 @media (max-width: 768px) {
@@ -1186,7 +1171,8 @@ a { color: var(--purple); text-decoration: none; }
   .about, .services, .philosophy, .contact { padding: 80px 0; }
   .services__grid { grid-template-columns: 1fr; }
   .philosophy__grid { grid-template-columns: 1fr; }
-  .footer__inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer__inner { padding-top: 32px; padding-bottom: 24px; }
+  .footer__bottom { padding: 16px 0; }
   .contact__form { padding: 32px 24px; }
   .philosophy__quote { padding: 0 20px; }
 }
