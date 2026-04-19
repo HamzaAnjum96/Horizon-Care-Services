@@ -72,17 +72,6 @@ class SiteFooter extends HTMLElement {
     this.innerHTML = `
       <footer class="footer">
         <div class="container footer__inner">
-          <div class="footer__brand">
-            <img src="${base}/assets/images/logo-1.jpg" alt="Horizon Care Services Ltd" />
-            <p>Where we meet your needs.</p>
-          </div>
-          <div class="footer__links">
-            <h5>Contact</h5>
-            <a href="tel:07572701349">07572 701 349</a>
-            <a href="tel:01582354119">01582 354 119</a>
-            <a href="mailto:admin@horizon-careservices.co.uk">admin@horizon-careservices.co.uk</a>
-            <span class="footer__address">9 Lilac Grove, Luton, LU3 3JG</span>
-          </div>
           <div class="footer__links">
             <h5>Legal</h5>
             <a href="${base}/pages/legal-notice.html">Legal Notice</a>
