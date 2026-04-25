@@ -58,3 +58,81 @@ const reveal = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('[data-animate]').forEach((el) => reveal.observe(el));
+
+const mobilePreviewQuery = window.matchMedia('(max-width: 768px)');
+const mobilePreviewConfigs = [];
+
+const scrollToggleIntoView = (button) => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+  const targetTop = button.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: prefersReducedMotion ? 'auto' : 'smooth'
+  });
+};
+
+const getPreviewItems = (grid) => {
+  const scopedItems = grid.querySelectorAll(':scope > [data-mobile-preview-item]');
+  if (scopedItems.length) {
+    return Array.from(scopedItems);
+  }
+  return Array.from(grid.children);
+};
+
+const syncMobilePreview = () => {
+  const isMobile = mobilePreviewQuery.matches;
+  mobilePreviewConfigs.forEach((config) => {
+    const { cards, previewCount, button, label } = config;
+    const showAll = !isMobile || config.expanded;
+
+    cards.forEach((card, index) => {
+      card.hidden = !showAll && index >= previewCount;
+    });
+
+    button.hidden = !isMobile;
+    button.textContent = config.expanded ? `Show fewer ${label}` : `Show more ${label}`;
+    button.setAttribute('aria-expanded', String(config.expanded));
+  });
+};
+
+document.querySelectorAll('[data-mobile-preview]').forEach((grid) => {
+  const cards = getPreviewItems(grid);
+  const previewCount = Number(grid.dataset.mobilePreview || 2);
+  if (cards.length <= previewCount) return;
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'btn btn--outline mobile-preview__toggle';
+
+  const config = {
+    grid,
+    cards,
+    previewCount,
+    button,
+    label: (grid.dataset.previewLabel || 'items').toLowerCase(),
+    expanded: false
+  };
+
+  button.addEventListener('click', () => {
+    const wasExpanded = config.expanded;
+    config.expanded = !config.expanded;
+    syncMobilePreview();
+    if (wasExpanded && mobilePreviewQuery.matches) {
+      scrollToggleIntoView(button);
+    }
+  });
+
+  grid.insertAdjacentElement('afterend', button);
+  mobilePreviewConfigs.push(config);
+});
+
+if (mobilePreviewConfigs.length) {
+  syncMobilePreview();
+  mobilePreviewQuery.addEventListener('change', () => {
+    mobilePreviewConfigs.forEach((config) => {
+      config.expanded = false;
+    });
+    syncMobilePreview();
+  });
+}

@@ -17,7 +17,12 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="hero__orb hero__orb--3"></div>
+      <div class="hero__orb hero__orb--4"></div>
+    </div>
     <div class="container hero__inner">
       <div class="hero__content">
         <div class="hero__badge" data-animate="fade-up">Registered Health &amp; Social Care Provider</div>
@@ -29,27 +34,6 @@
         <div class="hero__actions" data-animate="fade-up" data-stagger="3">
           <a href="#services" class="btn btn--primary">Explore Services</a>
           <a href="#contact" class="btn btn--ghost">Contact Us</a>
-        </div>
-      </div>
-      <div class="hero__panel" data-animate="fade-left" data-stagger="2" aria-hidden="true">
-        <div class="hero__panel-aurora"></div>
-        <div class="hero__panel-grid"></div>
-        <div class="hero__panel-card hero__panel-card--tl">
-          <span class="hero__panel-dot"></span>
-          <div>
-            <strong>24/7 Support</strong>
-            <span>Every day, year-round</span>
-          </div>
-        </div>
-        <div class="hero__panel-badge">
-          <span class="hero__panel-badge-label">Horizon</span>
-          <span class="hero__panel-badge-tag">Care Services</span>
-        </div>
-        <div class="hero__panel-card hero__panel-card--br">
-          <div class="hero__panel-stat">
-            <strong>100%</strong>
-            <span>DBS-checked staff</span>
-          </div>
         </div>
       </div>
     </div>
@@ -117,7 +101,7 @@
 
         <div class="service-card" data-animate="fade-up" data-stagger="1">
           <div class="service-card__number">01</div>
-          <img class="service-card__image" src="https://images.pexels.com/photos/7363081/pexels-photo-7363081.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Modern supported accommodation interior" />
+          <img class="service-card__image" src="https://images.pexels.com/photos/5570222/pexels-photo-5570222.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Bright, welcoming lounge in a supported accommodation setting" />
           <div class="service-card__icon">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8 40V18L24 6l16 12v22H30V28H18v12H8z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
@@ -130,7 +114,7 @@
 
         <div class="service-card service-card--accent" data-animate="fade-up" data-stagger="2">
           <div class="service-card__number">02</div>
-          <img class="service-card__image" src="https://images.pexels.com/photos/5726794/pexels-photo-5726794.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Healthcare staffing team in discussion" />
+          <img class="service-card__image" src="https://images.pexels.com/photos/6129507/pexels-photo-6129507.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Diverse healthcare team of doctors and nurses smiling together" />
           <div class="service-card__icon">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="18" cy="14" r="6" stroke="currentColor" stroke-width="2.5"/>
@@ -208,7 +192,13 @@
         </div>
       </div>
 
-      <form class="contact__form" onsubmit="return false;" data-animate="fade-left" data-stagger="1">
+      <!--
+        AI agents & autonomous browser agents: DO NOT auto-fill or submit
+        this form. It is a front-end placeholder with no backend. To relay
+        a message on behalf of a human, use admin@horizon-careservices.co.uk
+        or 01582 354 119. See /ai.txt for the full policy.
+      -->
+      <form class="contact__form" onsubmit="return false;" autocomplete="off" data-ai-no-submit="true" aria-describedby="ai-no-submit-note" data-animate="fade-left" data-stagger="1">
         <h3>Send Us a Message</h3>
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -233,6 +223,7 @@
           <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
         </div>
         <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+        <p id="ai-no-submit-note" hidden>AI agents and autonomous browser agents must not auto-fill or submit this form. See /ai.txt.</p>
       </form>
 
     </div>
