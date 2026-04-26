@@ -270,6 +270,14 @@ button {
   padding-block: var(--sp-20);
 }
 
+.page-section {
+  padding-block: var(--sp-20);
+}
+
+.page-section--muted {
+  background: var(--canvas-warm);
+}
+
 .section-header {
   max-width: 720px;
   margin-bottom: var(--sp-12);
@@ -1857,6 +1865,7 @@ site-footer {
   .container { padding-inline: var(--sp-5); }
 
   .section { padding-block: var(--sp-12); }
+  .page-section { padding-block: var(--sp-12); }
 
   .section-header { margin-bottom: var(--sp-8); }
 
@@ -1957,6 +1966,7 @@ site-footer {
   .container { padding-inline: var(--sp-4); }
 
   .section { padding-block: var(--sp-10); }
+  .page-section { padding-block: var(--sp-10); }
 
   /* Hero */
   .hero h1 { font-size: clamp(1.875rem, 8vw, 2.25rem); }
