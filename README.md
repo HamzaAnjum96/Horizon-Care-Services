@@ -4,6 +4,8 @@ Marketing website for Horizon Care Services Ltd — a registered health and soci
 
 This README is written for whoever lands here next — whether that's a human dev or an AI agent — so they can install, run, ship, and extend the site without first reading the source.
 
+> **Redesign in progress.** See [`REDESIGN.md`](REDESIGN.md) for the full design specification and [`PHASES.md`](PHASES.md) for the sprint execution plan. Both documents take precedence over anything in this README that conflicts with them.
+
 ---
 
 ## Quick Start
