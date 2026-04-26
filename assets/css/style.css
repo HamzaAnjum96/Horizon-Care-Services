@@ -25,8 +25,10 @@
      22. Forms
      23. Grids (content / work)
      24. Mobile preview toggle
-     [Q4 pending — responsive overrides, animation system, FOUC
-      reservations, utilities]
+     25. Animation system
+     26. FOUC reservations (<site-nav>, <site-footer>)
+     27. Utilities
+     28. Responsive overrides (1024 / 768 / 480)
    ═══════════════════════════════════════════════════════════════════════ */
 
 
@@ -1702,4 +1704,284 @@ button {
 .mobile-preview__toggle {
   display: none;
   margin-top: var(--sp-6);
+}
+
+
+/* ── 25. Animation system ─────────────────────────────────────────────── */
+
+[data-animate] {
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"]    { transform: translateY(32px); }
+[data-animate="fade-down"]  { transform: translateY(-24px); }
+[data-animate="fade-left"]  { transform: translateX(32px); }
+[data-animate="fade-right"] { transform: translateX(-32px); }
+[data-animate="scale-in"]   { transform: scale(0.94); }
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-stagger="1"] { transition-delay:  80ms; }
+[data-stagger="2"] { transition-delay: 160ms; }
+[data-stagger="3"] { transition-delay: 240ms; }
+[data-stagger="4"] { transition-delay: 320ms; }
+[data-stagger="5"] { transition-delay: 400ms; }
+[data-stagger="6"] { transition-delay: 480ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
+/* ── 26. FOUC reservations ────────────────────────────────────────────── */
+
+site-nav {
+  display: block;
+  min-height: var(--nav-height);
+  background: var(--canvas);
+  border-bottom: 1px solid transparent;
+}
+
+site-footer {
+  display: block;
+  min-height: 280px;
+  background: var(--ink);
+}
+
+
+/* ── 27. Utilities ────────────────────────────────────────────────────── */
+
+.muted-note {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.text-sage  { color: var(--sage-dark); }
+.text-terra { color: var(--terra-dark); }
+.text-ink   { color: var(--ink); }
+
+.bg-canvas      { background: var(--canvas); }
+.bg-canvas-warm { background: var(--canvas-warm); }
+.bg-canvas-sand { background: var(--canvas-sand); }
+.bg-sage-tint   { background: var(--sage-tint); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.flow > * + * { margin-top: var(--sp-4); }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   28. Responsive overrides
+   Desktop-first; max-width breakpoints at 1024 / 768 / 480.
+   Nav has its own responsive block inline in section 5.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .section { padding-block: var(--sp-16); }
+
+  /* Hero */
+  .hero { padding-block: var(--sp-12) var(--sp-16); }
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+  }
+  .hero__media { aspect-ratio: 16 / 11; max-width: 640px; }
+
+  /* Strips */
+  .services-strip,
+  .about-strip { padding-block: var(--sp-16); }
+
+  .about-strip__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+  }
+
+  /* Page hero */
+  .page-hero { padding-block: var(--sp-16) var(--sp-12); }
+
+  /* Stats bar */
+  .stats-bar__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-8);
+  }
+
+  /* Split section */
+  .split-section { padding-block: var(--sp-16); }
+  .split-section__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+  }
+  .split-section--reverse .split-section__inner { direction: ltr; }
+  .split-section__media { max-width: 720px; }
+
+  /* CTA band */
+  .cta-band__inner { gap: var(--sp-6); }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-10);
+  }
+  .footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+
+  .container { padding-inline: var(--sp-5); }
+
+  .section { padding-block: var(--sp-12); }
+
+  .section-header { margin-bottom: var(--sp-8); }
+
+  /* Hero */
+  .hero { padding-block: var(--sp-10) var(--sp-12); }
+  .hero h1 { font-size: clamp(2rem, 7vw, 2.75rem); }
+  .hero__lede { font-size: 1rem; }
+  .hero__actions .btn { flex: 1 1 auto; }
+  .hero__meta { gap: var(--sp-4); }
+
+  /* Strips */
+  .services-strip,
+  .about-strip { padding-block: var(--sp-12); }
+  .services-strip__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+
+  /* Coverage band */
+  .coverage-band { padding-block: var(--sp-10); }
+  .coverage-band__list em { display: none; }
+  .coverage-band__list strong { display: block; margin-bottom: var(--sp-1); }
+
+  /* CTA band */
+  .cta-band { padding-block: var(--sp-12); }
+  .cta-band__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-6);
+  }
+  .cta-band__actions { width: 100%; }
+  .cta-band__actions .btn { flex: 1 1 auto; }
+
+  /* Page hero */
+  .page-hero { padding-block: var(--sp-12) var(--sp-10); }
+  .page-hero h1 { font-size: clamp(1.875rem, 6vw, 2.5rem); }
+  .page-hero__lede { font-size: 1rem; }
+
+  /* Stats bar — 2-col remains; tighten padding */
+  .stats-bar { padding-block: var(--sp-8); }
+
+  /* Cards & grids */
+  .service-card,
+  .benefit-tile { padding: var(--sp-6); }
+
+  .content-grid,
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
+  /* Forms */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Content card */
+  .content-card { padding: var(--sp-6); }
+  .content-card section + section {
+    margin-top: var(--sp-8);
+    padding-top: var(--sp-8);
+  }
+
+  /* Footer */
+  .footer { padding-top: var(--sp-12); margin-top: var(--sp-16); }
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+    padding-bottom: var(--sp-8);
+  }
+  .footer__brand { grid-column: auto; }
+
+  /* Mobile preview toggle becomes visible — main.js manages aria-expanded */
+  .mobile-preview__toggle { display: inline-flex; }
+
+  /* Process steps tighten on mobile */
+  .process-step {
+    grid-template-columns: 48px 1fr;
+    gap: var(--sp-4);
+    padding: var(--sp-5);
+  }
+  .process-step__number {
+    width: 44px;
+    height: 44px;
+    font-size: 1.125rem;
+  }
+
+  /* Cookie bar */
+  .cookie-bar {
+    padding: var(--sp-4);
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--sp-3);
+    text-align: left;
+  }
+  .cookie-bar__accept { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .container { padding-inline: var(--sp-4); }
+
+  .section { padding-block: var(--sp-10); }
+
+  /* Hero */
+  .hero h1 { font-size: clamp(1.875rem, 8vw, 2.25rem); }
+  .hero__chip { font-size: 0.6875rem; padding: var(--sp-1) var(--sp-3); }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { width: 100%; }
+
+  /* Stats bar collapses to 1-col */
+  .stats-bar__inner { grid-template-columns: 1fr; gap: var(--sp-5); }
+
+  /* Page hero */
+  .page-hero h1 { font-size: 1.875rem; }
+
+  /* Content card */
+  .content-card { padding: var(--sp-5); }
+
+  /* Process steps stack number above text */
+  .process-step {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  /* CTA band actions full-width */
+  .cta-band__phone { font-size: 1.25rem; }
+
+  /* Footer brand block items align tighter */
+  .footer__contact-label { display: block; margin: 0; }
 }
