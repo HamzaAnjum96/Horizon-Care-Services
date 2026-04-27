@@ -654,3 +654,304 @@ a:not([class]):hover {
   object-fit: cover;
   border-radius: var(--radius-lg);
 }
+
+/* ── 10. Services strip ───────────────────────────────── */
+
+.services-strip {
+  padding: clamp(4rem, 7vw, 6rem) 0;
+  background: var(--canvas);
+}
+
+.services-strip .subsection-header {
+  margin-bottom: var(--sp-10);
+}
+
+.services-strip__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+  counter-reset: service;
+}
+
+.service-card {
+  counter-increment: service;
+  position: relative;
+  padding: var(--sp-10) var(--sp-8);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-mid);
+}
+
+/* Large typographic number replaces the icon */
+.service-card::before {
+  content: '0' counter(service);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--amber);
+  opacity: 0.65;
+}
+
+.service-card__icon {
+  display: none;
+}
+
+.service-card h3 {
+  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  font-weight: 700;
+  color: var(--midnight);
+  margin: 0;
+}
+
+.service-card p {
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  flex-grow: 1;
+  max-width: none;
+  margin: 0;
+}
+
+.service-card__stat {
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+.service-card__stat strong {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--midnight);
+}
+
+.service-card__link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--midnight);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  transition: gap 200ms var(--ease-out);
+}
+
+.service-card__link::after {
+  content: '→';
+  display: inline-block;
+  transition: transform 200ms var(--ease-out);
+}
+
+.service-card__link:hover::after {
+  transform: translateX(4px);
+}
+
+/* Dark variant — replaces old terracotta card */
+.service-card--terra {
+  background: var(--midnight);
+  border-color: transparent;
+}
+
+.service-card--terra::before {
+  opacity: 0.35;
+}
+
+.service-card--terra h3 {
+  color: var(--on-midnight);
+}
+
+.service-card--terra p {
+  color: var(--on-midnight-muted);
+}
+
+.service-card--terra .service-card__stat {
+  color: var(--on-midnight-faint);
+}
+
+.service-card--terra .service-card__stat strong {
+  color: var(--amber);
+}
+
+.service-card--terra .service-card__link {
+  color: var(--amber);
+}
+
+/* ── 11. About strip ──────────────────────────────────── */
+
+.about-strip {
+  padding: clamp(4rem, 7vw, 6rem) 0;
+  background: var(--canvas-mid);
+}
+
+.about-strip__inner {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: clamp(var(--sp-12), 6vw, var(--sp-20));
+  align-items: start;
+}
+
+.about-strip__lede .label {
+  display: block;
+  margin-bottom: var(--sp-4);
+}
+
+.about-strip__lede h2 {
+  margin-bottom: var(--sp-5);
+}
+
+.about-strip__lede p {
+  color: var(--ink-mid);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: 44ch;
+  margin: 0;
+}
+
+.about-strip__pillars {
+  counter-reset: pillar;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.value-pillar {
+  counter-increment: pillar;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+/* Numbered marker replaces SVG icon */
+.value-pillar::before {
+  content: '0' counter(pillar);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.value-pillar__icon {
+  display: none;
+}
+
+.value-pillar h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--midnight);
+  margin-bottom: var(--sp-2);
+}
+
+.value-pillar p {
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  max-width: none;
+  margin: 0;
+}
+
+/* ── 12. Coverage band ────────────────────────────────── */
+
+.coverage-band {
+  background: var(--amber);
+  padding: var(--sp-5) 0;
+}
+
+.coverage-band .container {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+  flex-wrap: wrap;
+}
+
+.coverage-band__label {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--midnight);
+  opacity: 0.6;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.coverage-band__list {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--midnight);
+  max-width: none;
+  margin: 0;
+}
+
+/* ── 13. CTA band ─────────────────────────────────────── */
+
+.cta-band {
+  padding: clamp(4rem, 6vw, 5rem) 0;
+  background: var(--canvas);
+  border-top: 1px solid var(--border);
+}
+
+.cta-band__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-12);
+  flex-wrap: wrap;
+}
+
+.cta-band__copy h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: var(--sp-3);
+}
+
+.cta-band__copy p {
+  color: var(--ink-mid);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.cta-band__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* Phone link — large Spectral number, small Sora label above */
+.cta-band__phone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--sp-1);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  font-weight: 700;
+  color: var(--midnight);
+  transition: opacity var(--transition);
+}
+
+.cta-band__phone:hover {
+  opacity: 0.7;
+}
+
+.cta-band__phone span {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
