@@ -539,3 +539,118 @@ a:not([class]):hover {
 .nav--open .nav__hamburger span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
+
+/* ── 9. Hero ──────────────────────────────────────────── */
+
+.hero {
+  background-color: var(--midnight);
+  padding: clamp(5rem, 9vw, 8rem) 0 clamp(4rem, 7vw, 7rem);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: clamp(var(--sp-12), 7vw, var(--sp-20));
+  align-items: center;
+}
+
+/* ── Text column ── */
+
+.hero__chip {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: var(--sp-6);
+}
+
+.hero__content h1 {
+  color: var(--on-midnight);
+  font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--sp-6);
+}
+
+.hero__content h1 em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.hero__lede {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--on-midnight-muted);
+  line-height: 1.7;
+  max-width: 52ch;
+  margin-bottom: var(--sp-8);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-10);
+}
+
+.hero__meta {
+  display: flex;
+  gap: var(--sp-8);
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--border-night);
+}
+
+.hero__meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.hero__meta strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.hero__meta span {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--on-midnight-faint);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Image column ── */
+
+/* Offset amber frame: image sits over a translucent amber rectangle
+   shifted 14px down-right, creating depth without a side stripe. */
+.hero__media {
+  position: relative;
+  padding-bottom: 14px;
+  padding-right: 14px;
+}
+
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 14px 0 0 14px;
+  border: 2px solid oklch(70% 0.14 72 / 0.45);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.hero__media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: clamp(340px, 45vw, 560px);
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
