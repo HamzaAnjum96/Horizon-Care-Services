@@ -1,0 +1,92 @@
+/* ═══════════════════════════════════════════════════════
+   Horizon Care Services — Design System
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 1. Design Tokens ─────────────────────────────────── */
+
+:root {
+
+  /* Ink / Text
+     Near-black with a cool blue-violet undertone — quality print ink,
+     not warm brown. */
+  --ink:        oklch(16% 0.018 265);
+  --ink-mid:    oklch(40% 0.015 265);
+  --ink-soft:   oklch(58% 0.012 265);
+  --ink-faint:  oklch(74% 0.008 265);
+
+  /* Canvas / Surfaces
+     Just barely warm — a breath of yellow-beige, not a full cream. */
+  --canvas:      oklch(98.5% 0.004 95);
+  --canvas-mid:  oklch(96%   0.008 90);
+  --canvas-deep: oklch(93%   0.012 88);
+  --white:       oklch(100%  0     0);
+
+  /* Midnight — primary brand identity
+     Deep navy sitting between blue and charcoal. Authoritative,
+     not techy. Used for hero, footer, and key CTAs. */
+  --midnight:       oklch(22%  0.055 260);
+  --midnight-light: oklch(32%  0.055 260);
+  --midnight-mid:   oklch(48%  0.040 260);
+  --midnight-tint:  oklch(95%  0.018 260);
+  --midnight-pale:  oklch(97.5% 0.010 260);
+
+  /* Text on midnight surfaces */
+  --on-midnight:       oklch(95%  0.005 90);
+  --on-midnight-muted: oklch(72%  0.010 265);
+  --on-midnight-faint: oklch(50%  0.010 265);
+
+  /* Amber — warm accent
+     Honey/amber. Unexpected in care. Warm without being earthy.
+     Used for: labels, chip text, stat numbers, CTA buttons,
+     duration badges, process numbers, coverage band. */
+  --amber:       oklch(70%   0.14  72);
+  --amber-dark:  oklch(57%   0.14  72);
+  --amber-tint:  oklch(96.5% 0.025 72);
+  --amber-pale:  oklch(98%   0.012 72);
+
+  /* Borders */
+  --border:        oklch(88%  0.008 88);
+  --border-mid:    oklch(80%  0.012 88);
+  --border-strong: oklch(70%  0.015 88);
+  --border-night:  oklch(35%  0.040 260);
+
+  /* Shadows — cool-ink tinted, 5 levels */
+  --shadow-sm:        0 1px 3px  oklch(16% 0.018 265 / 0.07);
+  --shadow:           0 2px 8px  oklch(16% 0.018 265 / 0.09);
+  --shadow-md:        0 4px 16px oklch(16% 0.018 265 / 0.11);
+  --shadow-lg:        0 8px 32px oklch(16% 0.018 265 / 0.14);
+  --shadow-card:      0 1px 3px  oklch(16% 0.018 265 / 0.06),
+                      0 2px 8px  oklch(16% 0.018 265 / 0.07);
+  --shadow-card-hover:0 4px 12px oklch(16% 0.018 265 / 0.10),
+                      0 2px 6px  oklch(16% 0.018 265 / 0.07);
+
+  /* Typography */
+  --font-display: 'Spectral', Georgia, serif;
+  --font-body:    'Sora', system-ui, sans-serif;
+
+  /* Spacing — 4px base unit */
+  --sp-1:  0.25rem;   /*  4px */
+  --sp-2:  0.5rem;    /*  8px */
+  --sp-3:  0.75rem;   /* 12px */
+  --sp-4:  1rem;      /* 16px */
+  --sp-5:  1.25rem;   /* 20px */
+  --sp-6:  1.5rem;    /* 24px */
+  --sp-8:  2rem;      /* 32px */
+  --sp-10: 2.5rem;    /* 40px */
+  --sp-12: 3rem;      /* 48px */
+  --sp-16: 4rem;      /* 64px */
+  --sp-20: 5rem;      /* 80px */
+  --sp-24: 6rem;      /* 96px */
+
+  /* Border radius */
+  --radius-sm: 3px;
+  --radius:    6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Motion — ease-out-quart for reveals, standard ease for micro */
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 300ms var(--ease);
+
+}
