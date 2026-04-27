@@ -955,3 +955,195 @@ a:not([class]):hover {
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+
+/* ── 14. Page hero (subpages) ─────────────────────────── */
+
+.page-hero {
+  background: var(--midnight);
+  padding: clamp(4rem, 7vw, 6rem) 0 clamp(3rem, 5vw, 5rem);
+}
+
+.page-hero__inner {
+  /* inherits .container constraints */
+}
+
+.page-hero .label {
+  display: block;
+  margin-bottom: var(--sp-5);
+}
+
+.page-hero h1 {
+  color: var(--on-midnight);
+  margin-bottom: var(--sp-5);
+  max-width: 18ch;
+}
+
+.page-hero h1 em {
+  color: var(--amber);
+  font-style: italic;
+}
+
+.page-hero__lede {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--on-midnight-muted);
+  line-height: 1.7;
+  max-width: 56ch;
+  margin: 0;
+}
+
+.page-hero__lede a {
+  color: var(--amber);
+  text-decoration: underline;
+  text-decoration-color: oklch(70% 0.14 72 / 0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition);
+}
+
+.page-hero__lede a:hover {
+  text-decoration-color: var(--amber);
+}
+
+.page-hero .hero__actions {
+  margin-top: var(--sp-8);
+  margin-bottom: 0;
+}
+
+/* ── 15. Stats bar ────────────────────────────────────── */
+
+.stats-bar {
+  background: var(--midnight-pale);
+  border-top: 1px solid var(--midnight-tint);
+  border-bottom: 1px solid var(--midnight-tint);
+  padding: var(--sp-8) 0;
+}
+
+.stats-bar__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-6);
+  text-align: center;
+}
+
+.stat-item__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--midnight);
+  line-height: 1;
+  margin-bottom: var(--sp-2);
+}
+
+.stat-item__label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── 16. Split section ────────────────────────────────── */
+
+.split-section {
+  padding: clamp(4rem, 7vw, 6rem) 0;
+  background: var(--canvas);
+}
+
+.split-section.page-section--muted {
+  background: var(--canvas-mid);
+}
+
+.split-section__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--sp-12), 6vw, var(--sp-20));
+  align-items: center;
+}
+
+.split-section__content .label {
+  display: block;
+  margin-bottom: var(--sp-4);
+}
+
+.split-section__content h2 {
+  margin-bottom: var(--sp-5);
+}
+
+.split-section__content p {
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin-bottom: var(--sp-4);
+  max-width: 52ch;
+}
+
+.split-section__content p:last-of-type {
+  margin-bottom: var(--sp-6);
+}
+
+.split-section__content .btn {
+  margin-top: var(--sp-2);
+}
+
+.split-section__media img {
+  width: 100%;
+  height: clamp(300px, 40vw, 480px);
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+/* ── 17. Scheme cards ─────────────────────────────────── */
+
+/* Old design had border-left: 3px solid sage — banned side stripe.
+   Replaced with full border + amber duration badge. */
+
+.scheme-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+}
+
+.scheme-card {
+  padding: var(--sp-8);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.scheme-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-mid);
+}
+
+.scheme-card__duration {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--amber-dark);
+  background: var(--amber-tint);
+  border: 1px solid oklch(88% 0.05 72);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius);
+}
+
+.scheme-card h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--midnight);
+  margin: 0;
+}
+
+.scheme-card p {
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  max-width: none;
+  margin: 0;
+}
