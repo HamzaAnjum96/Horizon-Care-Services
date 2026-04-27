@@ -1957,3 +1957,491 @@ a:not([class]):hover {
     gap: var(--sp-4);
   }
 }
+
+/* ══════════════════════════════════════════════════════
+   Overhaul — ambitious layout and animation layer
+   Overrides and extends the base component styles above.
+   ══════════════════════════════════════════════════════ */
+
+/* ── Hero overhaul ────────────────────────────────────── */
+
+/* Full-viewport midnight hero */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(6rem, 10vw, 9rem) 0 0;
+}
+
+.hero__inner {
+  grid-template-columns: 1fr 0.75fr;
+  gap: clamp(var(--sp-10), 6vw, var(--sp-16));
+  align-items: center;
+  flex: 1;
+  padding-bottom: clamp(var(--sp-10), 5vw, var(--sp-16));
+}
+
+/* Heading line-mask reveal — text slides up into clipping container */
+.hero__heading {
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--on-midnight);
+  margin-bottom: var(--sp-6);
+}
+
+.hero__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em; /* prevents descender clip */
+}
+
+.hero__line > span {
+  display: block;
+  animation: line-reveal 0.9s var(--ease-out) both;
+}
+
+.hero__line:nth-child(2) > span { animation-delay: 0.13s; }
+.hero__line:nth-child(3) > span { animation-delay: 0.26s; }
+
+.hero__heading em {
+  color: var(--amber);
+  font-style: italic;
+}
+
+@keyframes line-reveal {
+  from { transform: translateY(108%); }
+  to   { transform: translateY(0); }
+}
+
+/* Amber rule that draws left-to-right after heading */
+.hero__rule {
+  display: block;
+  height: 2px;
+  background: var(--amber);
+  width: 0;
+  margin-bottom: var(--sp-8);
+  animation: rule-draw 0.7s var(--ease-out) 0.5s both;
+}
+
+@keyframes rule-draw {
+  from { width: 0; }
+  to   { width: 80px; }
+}
+
+/* Lede and actions fade up together */
+.hero__body {
+  opacity: 0;
+  animation: fade-up 0.7s var(--ease-out) 0.55s both;
+}
+
+/* Image: clip-path wipe from right on load */
+.hero__media img {
+  animation: img-wipe 1.1s var(--ease-out) 0.3s both;
+}
+
+@keyframes img-wipe {
+  from { clip-path: inset(0 100% 0 0 round var(--radius-lg)); }
+  to   { clip-path: inset(0 0% 0 0 round var(--radius-lg)); }
+}
+
+/* Meta bar — full-width strip pinned to the bottom of the hero */
+.hero__meta-bar {
+  border-top: 1px solid var(--border-night);
+  background: oklch(19% 0.05 260);
+}
+
+.hero__meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: none;
+  padding: var(--sp-6) 0;
+  gap: 0;
+}
+
+.hero__meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-4) var(--sp-8);
+  border-right: 1px solid var(--border-night);
+  animation: fade-up 0.6s var(--ease-out) both;
+}
+
+.hero__meta > div:first-child { padding-left: 0; animation-delay: 0.65s; }
+.hero__meta > div:nth-child(2) { animation-delay: 0.75s; }
+.hero__meta > div:last-child  { border-right: none; animation-delay: 0.85s; }
+
+/* ── Service panels ───────────────────────────────────── */
+/* Replaces the old service-card grid on the home page.
+   Full-width horizontal rows with enormous decorative numbers. */
+
+.service-panels {
+  border-top: 1px solid var(--border);
+}
+
+.service-panel {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  transition: background 0.35s var(--ease);
+  cursor: default;
+}
+
+.service-panel:hover {
+  background: var(--canvas-mid);
+}
+
+.service-panel--dark {
+  background: var(--midnight);
+  border-color: transparent;
+}
+
+.service-panel--dark:hover {
+  background: var(--midnight-light);
+}
+
+.service-panel__inner {
+  display: grid;
+  grid-template-columns: clamp(7rem, 14vw, 13rem) 1fr auto;
+  gap: clamp(var(--sp-8), 5vw, var(--sp-16));
+  align-items: center;
+  padding: clamp(3rem, 5vw, 4.5rem) 0;
+}
+
+/* The enormous number — decorative, not informational */
+.service-panel__num {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 13vw, 11rem);
+  font-weight: 800;
+  line-height: 0.82;
+  color: var(--amber);
+  opacity: 0.1;
+  letter-spacing: -0.05em;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease), transform 0.5s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.service-panel:hover .service-panel__num {
+  opacity: 0.22;
+  transform: translateX(-8px) scale(1.04);
+}
+
+.service-panel--dark .service-panel__num {
+  opacity: 0.15;
+}
+
+.service-panel--dark:hover .service-panel__num {
+  opacity: 0.3;
+  transform: translateX(-8px) scale(1.04);
+}
+
+.service-panel__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.service-panel__content h3 {
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-weight: 700;
+  color: var(--midnight);
+  letter-spacing: -0.02em;
+  transition: color 0.25s var(--ease);
+}
+
+.service-panel--dark .service-panel__content h3 {
+  color: var(--on-midnight);
+}
+
+.service-panel__content p {
+  color: var(--ink-mid);
+  font-size: 1.0625rem;
+  max-width: 50ch;
+  margin: 0;
+  transition: color 0.25s var(--ease);
+}
+
+.service-panel--dark .service-panel__content p {
+  color: var(--on-midnight-muted);
+}
+
+.service-panel__stat {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.service-panel__stat strong {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.service-panel--dark .service-panel__stat {
+  color: var(--on-midnight-faint);
+}
+
+.service-panel__cta {
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity 0.3s var(--ease), transform 0.35s var(--ease-out);
+}
+
+.service-panel:hover .service-panel__cta {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Coverage band — scrolling marquee ────────────────── */
+
+.coverage-band {
+  padding: var(--sp-5) 0;
+  overflow: hidden;
+  background: var(--amber);
+}
+
+/* Override the old container layout */
+.coverage-band .container { display: none; }
+
+.coverage-band__track {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-10);
+  white-space: nowrap;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.coverage-band:hover .coverage-band__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.coverage-band__item {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.375rem);
+  font-weight: 700;
+  color: var(--midnight);
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+
+.coverage-band__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--midnight);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+/* ── Value pillar icons — animated ───────────────────── */
+
+/* Restore icons, remove the ::before counter */
+.value-pillar::before {
+  display: none;
+}
+
+.value-pillar {
+  grid-template-columns: 48px 1fr;
+  gap: var(--sp-5);
+  transition: gap 0.3s var(--ease);
+}
+
+.value-pillar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--amber-tint);
+  border-radius: var(--radius-md);
+  color: var(--amber-dark);
+  flex-shrink: 0;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.4s var(--ease-out);
+}
+
+.value-pillar:hover .value-pillar__icon {
+  background: var(--amber);
+  color: var(--midnight);
+  transform: scale(1.1) rotate(-6deg);
+}
+
+.value-pillar__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.value-pillar__icon svg path,
+.value-pillar__icon svg circle {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 0.9s var(--ease-out);
+}
+
+.value-pillar.is-visible .value-pillar__icon svg path,
+.value-pillar.is-visible .value-pillar__icon svg circle {
+  stroke-dashoffset: 0;
+}
+
+/* Stagger the draw per pillar */
+.about-strip__pillars li:nth-child(2).is-visible .value-pillar__icon svg path,
+.about-strip__pillars li:nth-child(2).is-visible .value-pillar__icon svg circle {
+  transition-delay: 0.15s;
+}
+.about-strip__pillars li:nth-child(3).is-visible .value-pillar__icon svg path,
+.about-strip__pillars li:nth-child(3).is-visible .value-pillar__icon svg circle {
+  transition-delay: 0.3s;
+}
+
+/* ── Card / tile hover lifts ─────────────────────────── */
+
+.service-tile,
+.role-card,
+.benefit-tile,
+.scheme-card {
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.service-tile:hover,
+.role-card:hover,
+.benefit-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.scheme-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ── Button shimmer on primary ───────────────────────── */
+
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    oklch(100% 0 0 / 0.22) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.55s var(--ease-out);
+}
+
+.btn--primary:hover::after {
+  transform: translateX(100%);
+}
+
+/* ── Process step hover indent ───────────────────────── */
+
+.process-step {
+  transition: padding 0.25s var(--ease), background 0.25s var(--ease);
+  border-radius: var(--radius);
+}
+
+.process-step:hover {
+  background: var(--canvas-mid);
+  padding-left: var(--sp-4);
+  padding-right: var(--sp-4);
+  margin-inline: calc(-1 * var(--sp-4));
+}
+
+.process-step__number {
+  transition: transform 0.3s var(--ease-out), color 0.2s var(--ease);
+}
+
+.process-step:hover .process-step__number {
+  transform: translateX(5px) scale(1.08);
+  color: var(--amber-dark);
+}
+
+/* ── Reduced motion — disable all overhaul animations ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__line > span,
+  .hero__rule,
+  .hero__body,
+  .hero__media img,
+  .hero__meta > div,
+  .coverage-band__track {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    width: auto !important;
+  }
+
+  .value-pillar__icon svg path,
+  .value-pillar__icon svg circle {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+
+  .service-panel__cta {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Responsive overhaul overrides ──────────────────────*/
+
+@media (max-width: 1024px) {
+  .service-panel__inner {
+    grid-template-columns: clamp(5rem, 10vw, 8rem) 1fr auto;
+    gap: var(--sp-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: clamp(4rem, 8vw, 6rem);
+  }
+
+  .hero__meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero__meta > div:nth-child(2) { border-right: none; }
+  .hero__meta > div:last-child   { grid-column: 1 / -1; border-top: 1px solid var(--border-night); border-right: none; }
+
+  .service-panel__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
+  .service-panel__num {
+    font-size: clamp(5rem, 20vw, 8rem);
+    opacity: 0.08;
+  }
+
+  .service-panel__cta {
+    opacity: 1;
+    transform: none;
+  }
+}
