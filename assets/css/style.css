@@ -294,3 +294,248 @@ a:not([class]):hover {
   }
   html { scroll-behavior: auto; }
 }
+
+/* ── 6. Labels / eyebrows ─────────────────────────────── */
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber-dark);
+}
+
+/* On dark (midnight) backgrounds the label uses full amber */
+.hero .label,
+.page-hero .label,
+.footer .label {
+  color: var(--amber);
+}
+
+/* ── 7. Buttons ───────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.625rem var(--sp-6);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform 150ms var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Primary — amber fill, midnight text */
+.btn--primary {
+  background: var(--amber);
+  color: var(--midnight);
+  border-color: var(--amber);
+}
+
+.btn--primary:hover {
+  background: var(--amber-dark);
+  border-color: var(--amber-dark);
+  color: var(--midnight);
+}
+
+/* Outline — midnight border on light backgrounds */
+.btn--outline {
+  background: transparent;
+  color: var(--midnight);
+  border-color: var(--midnight);
+}
+
+.btn--outline:hover {
+  background: var(--midnight);
+  color: var(--canvas);
+  border-color: var(--midnight);
+}
+
+/* Ghost — subtle border, no fill */
+.btn--ghost {
+  background: transparent;
+  color: var(--ink-mid);
+  border-color: var(--border-mid);
+}
+
+.btn--ghost:hover {
+  background: var(--canvas-mid);
+  color: var(--ink);
+  border-color: var(--border-strong);
+}
+
+/* Outline + ghost on dark surfaces (hero, page-hero, cta-block) */
+.hero .btn--outline,
+.page-hero .btn--outline {
+  color: var(--on-midnight);
+  border-color: oklch(50% 0.015 265);
+}
+
+.hero .btn--outline:hover,
+.page-hero .btn--outline:hover {
+  background: var(--canvas);
+  color: var(--midnight);
+  border-color: var(--canvas);
+}
+
+.page-hero .btn--ghost,
+.hero .btn--ghost {
+  color: var(--on-midnight-muted);
+  border-color: oklch(38% 0.03 265);
+}
+
+.page-hero .btn--ghost:hover,
+.hero .btn--ghost:hover {
+  background: oklch(28% 0.045 260);
+  color: var(--on-midnight);
+  border-color: oklch(46% 0.035 265);
+}
+
+/* Large variant */
+.btn--lg {
+  padding: 0.875rem var(--sp-8);
+  font-size: 1rem;
+}
+
+/* ── 8. Navigation ────────────────────────────────────── */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--canvas);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.nav--scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  height: 64px;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: auto;
+}
+
+.nav__logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.nav__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.nav__logo-text strong {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--midnight);
+}
+
+.nav__logo-text span {
+  font-size: 0.6875rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.nav__links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-mid);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius);
+  transition: color var(--transition), background var(--transition);
+}
+
+.nav__links a:hover {
+  color: var(--midnight);
+  background: var(--midnight-tint);
+}
+
+.nav__links a.is-active {
+  color: var(--midnight);
+  font-weight: 600;
+}
+
+.nav__cta {
+  margin-left: var(--sp-3);
+  flex-shrink: 0;
+}
+
+/* Hamburger */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: var(--sp-2);
+  border-radius: var(--radius);
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.nav__hamburger:hover {
+  background: var(--canvas-mid);
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--midnight);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav--open .nav__hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav--open .nav__hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav--open .nav__hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
