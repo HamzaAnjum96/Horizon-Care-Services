@@ -2,22 +2,25 @@
 
 /* ─── Tokens ─────────────────────────────────────────── */
 :root {
-  --deep:              oklch(15% 0.032 148);
-  --forest:            oklch(22% 0.058 148);
-  --forest-mid:        oklch(29% 0.078 148);
-  --cream:             oklch(96% 0.018 82);
-  --cream-dim:         oklch(91% 0.022 82);
+  --deep:              oklch(24% 0.028 176);
+  --forest:            oklch(31% 0.038 172);
+  --forest-mid:        oklch(42% 0.045 170);
+  --cream:             oklch(97% 0.012 98);
+  --cream-dim:         oklch(93% 0.014 98);
 
-  --ink-dark:          oklch(18% 0.055 148);
-  --ink-light:         oklch(94% 0.014 82);
-  --ink-muted-dark:    oklch(40% 0.07 148);
-  --ink-muted-light:   oklch(78% 0.038 148);
+  --ink-dark:          oklch(25% 0.03 178);
+  --ink-light:         oklch(96% 0.01 102);
+  --ink-muted-dark:    oklch(43% 0.026 176);
+  --ink-muted-light:   oklch(80% 0.015 170);
 
-  --amber:             oklch(75% 0.155 70);
-  --amber-dim:         oklch(83% 0.10 74);
+  --moss:              oklch(48% 0.075 164);
+  --moss-soft:         oklch(76% 0.04 162);
+  --sky-soft:          oklch(84% 0.03 220);
+  --amber:             oklch(70% 0.11 72);
+  --amber-dim:         oklch(81% 0.06 78);
 
-  --rule-dark:         oklch(30% 0.055 148);
-  --rule-light:        oklch(82% 0.024 82);
+  --rule-dark:         oklch(38% 0.022 175);
+  --rule-light:        oklch(88% 0.014 176);
 }
 
 @theme inline {
@@ -32,6 +35,9 @@
   --color-ink-muted-dark:   var(--ink-muted-dark);
   --color-ink-muted-light:  var(--ink-muted-light);
 
+  --color-moss:             var(--moss);
+  --color-moss-soft:        var(--moss-soft);
+  --color-sky-soft:         var(--sky-soft);
   --color-amber:            var(--amber);
   --color-amber-dim:        var(--amber-dim);
 
@@ -47,7 +53,11 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(circle at 18% -5%, color-mix(in oklab, var(--moss-soft) 48%, transparent) 0%, transparent 38%),
+    radial-gradient(circle at 90% 14%, color-mix(in oklab, var(--sky-soft) 38%, transparent) 0%, transparent 42%),
+    linear-gradient(180deg, color-mix(in oklab, var(--cream) 96%, var(--moss-soft) 4%) 0%, var(--cream) 72%);
   color: var(--ink-dark);
   font-family: var(--font-bricolage), system-ui, sans-serif;
   line-height: 1.6;
@@ -61,10 +71,10 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.06;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
   background-repeat: repeat;
 }
 

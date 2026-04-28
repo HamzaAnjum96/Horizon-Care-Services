@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -17,7 +18,7 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
+    const onScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -26,19 +27,26 @@ export function Nav() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled
-            ? 'bg-deep/95 backdrop-blur-md border-b border-rule-dark'
-            : 'bg-transparent',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-rule-light/70 bg-cream/92 backdrop-blur-md',
+          scrolled && 'shadow-[0_8px_28px_-22px_oklch(28%_0.04_180)]',
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-display text-ink-light text-[16px] font-semibold leading-none tracking-[-0.01em]"
-            style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
-          >
-            Horizon Care Services
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between gap-4">
+          <Link href="/" className="inline-flex items-center gap-3 min-w-0">
+            <Image
+              src="/hcs-logo.svg"
+              alt="Horizon Care Services logo"
+              width={34}
+              height={34}
+              className="h-[34px] w-[34px]"
+              priority
+            />
+            <span
+              className="font-display text-ink-dark text-[15px] sm:text-[16px] font-semibold leading-none tracking-[-0.01em] truncate"
+              style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
+            >
+              Horizon Care Services
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8" aria-label="Main">
@@ -46,7 +54,7 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-ink-light opacity-70 hover:opacity-100 transition-opacity tracking-wide"
+                className="text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-wide"
               >
                 {link.label}
               </Link>
@@ -56,19 +64,19 @@ export function Nav() {
           <div className="flex items-center gap-5">
             <Link
               href="/contact"
-              className="hidden md:block text-[13px] font-medium text-ink-light opacity-70 hover:opacity-100 transition-opacity tracking-wide"
+              className="hidden md:block text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-wide"
             >
               Contact
             </Link>
             <Link
               href="/referrals"
-              className="hidden md:inline-flex items-center bg-amber text-deep text-[13px] font-semibold px-4 py-2 rounded hover:opacity-90 transition-opacity"
+              className="hidden md:inline-flex items-center bg-moss text-ink-light text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
             >
               Make a Referral
             </Link>
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-1.5 -mr-1 text-ink-light"
+              className="md:hidden p-1.5 -mr-1 text-ink-dark"
               aria-label="Open menu"
             >
               <Menu size={22} />
@@ -118,7 +126,7 @@ export function Nav() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="font-display text-ink-light text-[2.2rem] font-semibold leading-tight hover:text-amber-dim transition-colors"
+                      className="font-display text-ink-light text-[2.2rem] font-semibold leading-tight hover:text-moss-soft transition-colors"
                       style={{ fontVariationSettings: '"opsz" 36, "wght" 600' }}
                     >
                       {link.label}
@@ -132,7 +140,7 @@ export function Nav() {
               <Link
                 href="/referrals"
                 onClick={() => setMobileOpen(false)}
-                className="block bg-amber text-deep text-center font-semibold px-6 py-4 rounded text-lg"
+                className="block bg-moss text-ink-light text-center font-semibold px-6 py-4 rounded text-lg"
               >
                 Make a Referral
               </Link>
