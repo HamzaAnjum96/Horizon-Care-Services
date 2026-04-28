@@ -560,7 +560,7 @@ button {
 .footer {
   background: var(--ink);
   color: rgba(253, 250, 246, 0.78);
-  padding-top: var(--sp-16);
+  padding-top: var(--sp-8);
   margin-top: var(--sp-24);
 }
 
@@ -570,102 +570,22 @@ button {
 }
 .footer a:hover { color: var(--terra-tint); }
 
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: var(--sp-12);
-  padding-bottom: var(--sp-12);
-}
-
-.footer__brand {
+.footer__bottom {
+  border-top: 1px solid rgba(253, 250, 246, 0.12);
+  padding: var(--sp-6) 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: var(--sp-4);
 }
 
-.footer__logo {
-  display: inline-flex;
+.footer__minimal-links {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--sp-3);
-  color: var(--canvas);
-}
-.footer__logo:hover { color: var(--canvas); }
-
-.footer__logo img {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  object-fit: cover;
-}
-
-.footer__logo strong {
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--canvas);
-  letter-spacing: -0.01em;
-}
-
-.footer__address {
-  font-style: normal;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-}
-
-.footer__contact {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-  font-size: 0.9375rem;
-}
-
-.footer__contact-label {
-  color: var(--ink-faint);
-  font-size: 0.8125rem;
-  margin-left: var(--sp-1);
-}
-
-.footer__nav,
-.footer__legal {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  font-size: 0.9375rem;
-}
-
-.footer__heading {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--canvas);
-  margin: 0 0 var(--sp-2);
-}
-
-.footer__legal .footer__cookie-settings {
-  align-self: flex-start;
-  padding: 0;
-  font-size: 0.9375rem;
-  color: rgba(253, 250, 246, 0.78);
-  border: 0;
-  background: transparent;
-  text-align: left;
-  text-decoration: none;
-  border-bottom: 1px dotted rgba(253, 250, 246, 0.4);
-  transition: color var(--transition), border-color var(--transition);
-}
-.footer__legal .footer__cookie-settings:hover {
-  color: var(--terra-tint);
-  border-bottom-color: var(--terra-tint);
-}
-
-.footer__bottom {
-  border-top: 1px solid rgba(253, 250, 246, 0.12);
-  padding: var(--sp-6) 0 var(--sp-8);
+  gap: var(--sp-5);
+  font-size: 0.9rem;
 }
 
 .footer__bottom p {
@@ -736,7 +656,32 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+
+.hero__journeys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
   margin-bottom: var(--sp-8);
+}
+
+.hero__journeys a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--border-mid);
+  border-radius: 999px;
+  color: var(--ink-mid);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.hero__journeys a:hover {
+  color: var(--sage-dark);
+  border-color: rgba(77, 112, 102, 0.45);
+  background: var(--sage-tint);
 }
 
 .hero__meta {
@@ -780,6 +725,48 @@ button {
   pointer-events: none;
   box-shadow: inset 0 0 0 1px rgba(30, 26, 23, 0.06);
   border-radius: inherit;
+}
+
+
+/* ── 8b. Home priorities ─────────────────────────────────────────────── */
+
+.home-priorities {
+  background: var(--canvas);
+  padding-block: 0 var(--sp-16);
+}
+
+.home-priorities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-5);
+}
+
+.home-priority-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-card);
+}
+
+.home-priority-card h3 { margin-bottom: var(--sp-2); }
+
+.home-priority-card p {
+  color: var(--ink-mid);
+  font-size: 0.9875rem;
+}
+
+.home-priority-card__meta {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  margin-top: var(--sp-4);
+}
+
+.home-priority-card__link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--sp-4);
+  font-weight: 600;
 }
 
 
@@ -1843,12 +1830,6 @@ site-footer {
   /* CTA band */
   .cta-band__inner { gap: var(--sp-6); }
 
-  /* Footer */
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-10);
-  }
-  .footer__brand { grid-column: 1 / -1; }
 }
 
 @media (max-width: 768px) {
@@ -1865,9 +1846,16 @@ site-footer {
   .hero h1 { font-size: clamp(2rem, 7vw, 2.75rem); }
   .hero__lede { font-size: 1rem; }
   .hero__actions .btn { flex: 1 1 auto; }
+  .hero__journeys { margin-bottom: var(--sp-6); }
+  .hero__journeys a {
+    flex: 1 1 calc(50% - var(--sp-3));
+    justify-content: center;
+  }
   .hero__meta { gap: var(--sp-4); }
 
   /* Strips */
+  .home-priorities { padding-block: 0 var(--sp-12); }
+  .home-priorities__grid { grid-template-columns: 1fr; }
   .services-strip,
   .about-strip { padding-block: var(--sp-12); }
   .services-strip__grid {
@@ -1919,13 +1907,12 @@ site-footer {
   }
 
   /* Footer */
-  .footer { padding-top: var(--sp-12); margin-top: var(--sp-16); }
-  .footer__grid {
-    grid-template-columns: 1fr;
-    gap: var(--sp-8);
-    padding-bottom: var(--sp-8);
+  .footer { padding-top: var(--sp-6); margin-top: var(--sp-16); }
+  .footer__bottom { align-items: flex-start; }
+  .footer__minimal-links {
+    width: 100%;
+    gap: var(--sp-4);
   }
-  .footer__brand { grid-column: auto; }
 
   /* Mobile preview toggle becomes visible — main.js manages aria-expanded */
   .mobile-preview__toggle { display: inline-flex; }
@@ -1963,6 +1950,7 @@ site-footer {
   .hero__chip { font-size: 0.6875rem; padding: var(--sp-1) var(--sp-3); }
   .hero__actions { flex-direction: column; align-items: stretch; }
   .hero__actions .btn { width: 100%; }
+  .hero__journeys a { flex: 1 1 100%; }
 
   /* Stats bar collapses to 1-col */
   .stats-bar__inner { grid-template-columns: 1fr; gap: var(--sp-5); }
@@ -1982,6 +1970,5 @@ site-footer {
   /* CTA band actions full-width */
   .cta-band__phone { font-size: 1.25rem; }
 
-  /* Footer brand block items align tighter */
-  .footer__contact-label { display: block; margin: 0; }
+  .footer__minimal-links { font-size: 0.875rem; }
 }

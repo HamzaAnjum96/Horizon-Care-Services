@@ -29,6 +29,11 @@ No build step is required.
 - `pages/legal-notice.html`
 - `pages/privacy-policy.html`
 
+## Design Planning Notes
+
+- `DESIGN-DISCUSSION-PLAN.md` captures an agent/client self-critique workshop and a phased improvement plan that keeps the existing colour system while refining UX, copy hierarchy, and implementation consistency.
+- Homepage pass now prioritises rapid user journeys with stronger hero actions and a `home-priorities` route section; footer output from `layout.js` is intentionally minimal (Legal, Privacy Policy, Contact Us, and © notice).
+
 ## Design System Highlights
 
 The redesign uses a warm editorial palette and shared component library in `style.css`.
