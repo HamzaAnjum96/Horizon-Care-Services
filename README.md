@@ -15,12 +15,13 @@ This repository maintains a clean root directory with all content organized into
   
 - **`/Documents`** - Documentation files
   - Project documentation, guides, and reference materials
+  - [`AI-ASSISTANT.md`](Documents/AI-ASSISTANT.md) - Installed AI assistant skills and reinstall instructions
 
 - **`.github/workflows`** - GitHub Actions automation
   - `deploy-to-pages.yml` - Automatic deployment to GitHub Pages
 
-- **`.agents/`** - Claude Code agent configurations
-- **`.claude/`** - Claude Code settings
+- **`.agents/`** - AI assistant skills (UI/UX Pro Max, frontend-design, Vercel skills, etc.). See [`Documents/AI-ASSISTANT.md`](Documents/AI-ASSISTANT.md).
+- **`.claude/`** - Claude Code settings and symlinks to the skills above
 
 ### Why Keep Root Clean?
 
