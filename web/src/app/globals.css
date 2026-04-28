@@ -1,121 +1,78 @@
 @import "tailwindcss";
 
-/* ─── Design tokens ──────────────────────────────── */
+/* ─── Tokens ─────────────────────────────────────────── */
 :root {
-  --hcs-bg-base:     oklch(97% 0.008 145);
-  --hcs-bg-subtle:   oklch(94% 0.015 145);
-  --hcs-bg-deep:     oklch(19% 0.045 148);
-  --hcs-bg-mid:      oklch(28% 0.075 148);
+  --deep:              oklch(15% 0.032 148);
+  --forest:            oklch(22% 0.058 148);
+  --forest-mid:        oklch(29% 0.078 148);
+  --cream:             oklch(96% 0.018 82);
+  --cream-dim:         oklch(91% 0.022 82);
 
-  --hcs-green-600:   oklch(42% 0.12 148);
-  --hcs-green-500:   oklch(52% 0.14 150);
-  --hcs-green-300:   oklch(70% 0.09 148);
-  --hcs-green-100:   oklch(91% 0.025 145);
+  --ink-dark:          oklch(18% 0.055 148);
+  --ink-light:         oklch(94% 0.014 82);
+  --ink-muted-dark:    oklch(40% 0.07 148);
+  --ink-muted-light:   oklch(78% 0.038 148);
 
-  --hcs-amber-400:   oklch(78% 0.14 75);
-  --hcs-amber-300:   oklch(86% 0.10 78);
+  --amber:             oklch(75% 0.155 70);
+  --amber-dim:         oklch(83% 0.10 74);
 
-  --hcs-text-primary:   oklch(20% 0.04 148);
-  --hcs-text-secondary: oklch(44% 0.05 148);
-  --hcs-text-inverse:   oklch(96% 0.01 145);
-
-  --hcs-border-subtle:  oklch(88% 0.02 145);
-  --hcs-border-mid:     oklch(80% 0.04 145);
+  --rule-dark:         oklch(30% 0.055 148);
+  --rule-light:        oklch(82% 0.024 82);
 }
 
 @theme inline {
-  --color-bg-base:    var(--hcs-bg-base);
-  --color-bg-subtle:  var(--hcs-bg-subtle);
-  --color-bg-deep:    var(--hcs-bg-deep);
-  --color-bg-mid:     var(--hcs-bg-mid);
+  --color-deep:             var(--deep);
+  --color-forest:           var(--forest);
+  --color-forest-mid:       var(--forest-mid);
+  --color-cream:            var(--cream);
+  --color-cream-dim:        var(--cream-dim);
 
-  --color-green-brand: var(--hcs-green-600);
-  --color-green-hover: var(--hcs-green-500);
-  --color-green-muted: var(--hcs-green-300);
-  --color-green-tint:  var(--hcs-green-100);
+  --color-ink-dark:         var(--ink-dark);
+  --color-ink-light:        var(--ink-light);
+  --color-ink-muted-dark:   var(--ink-muted-dark);
+  --color-ink-muted-light:  var(--ink-muted-light);
 
-  --color-amber:       var(--hcs-amber-400);
-  --color-amber-light: var(--hcs-amber-300);
+  --color-amber:            var(--amber);
+  --color-amber-dim:        var(--amber-dim);
 
-  --color-text-main:   var(--hcs-text-primary);
-  --color-text-muted:  var(--hcs-text-secondary);
-  --color-text-inv:    var(--hcs-text-inverse);
+  --color-rule-dark:        var(--rule-dark);
+  --color-rule-light:       var(--rule-light);
 
-  --color-border-soft: var(--hcs-border-subtle);
-  --color-border-mid:  var(--hcs-border-mid);
-
-  --font-display: var(--font-fraunces);
-  --font-body:    var(--font-inter);
+  --font-display: var(--font-source-serif);
+  --font-body:    var(--font-bricolage);
 }
 
-/* ─── Base ───────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+/* ─── Base ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--hcs-bg-base);
-  color: var(--hcs-text-primary);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink-dark);
+  font-family: var(--font-bricolage), system-ui, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Aurora background blobs ────────────────────── */
-.aurora-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  animation: aurora-drift 24s ease-in-out infinite;
-  will-change: transform;
+/* ─── Grain overlay ─────────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  background-repeat: repeat;
 }
 
-.aurora-1 {
-  width: 55vw;
-  height: 40vw;
-  background: oklch(42% 0.12 148);
-  top: -15%;
-  left: -8%;
-  opacity: 0.22;
-  animation-delay: 0s;
-}
-
-.aurora-2 {
-  width: 45vw;
-  height: 35vw;
-  background: oklch(78% 0.14 75);
-  top: 30%;
-  right: -8%;
-  opacity: 0.08;
-  animation-delay: -8s;
-}
-
-.aurora-3 {
-  width: 40vw;
-  height: 32vw;
-  background: oklch(50% 0.13 150);
-  bottom: -5%;
-  left: 25%;
-  opacity: 0.14;
-  animation-delay: -16s;
-}
-
-@keyframes aurora-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(40px, -30px) scale(1.06); }
-  66%       { transform: translate(-30px, 35px) scale(0.94); }
-}
-
-/* ─── Marquee ────────────────────────────────────── */
+/* ─── Marquee ─────────────────────────────────────────── */
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 40s linear infinite;
+  animation: marquee 55s linear infinite;
 }
 
 @keyframes marquee {
@@ -123,8 +80,6 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-/* ─── Accessibility ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob   { animation: none; }
   .marquee-track { animation: none; }
 }

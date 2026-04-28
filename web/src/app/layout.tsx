@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
-import { Fraunces, Inter } from 'next/font/google'
+import { Source_Serif_4, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 
-const fraunces = Fraunces({
+const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
-  axes: ['opsz', 'SOFT', 'WONK'],
-  variable: '--font-fraunces',
+  axes: ['opsz'],
+  variable: '--font-source-serif',
   display: 'swap',
 })
 
-const inter = Inter({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  variable: '--font-inter',
+  axes: ['wdth'],
+  variable: '--font-bricolage',
   display: 'swap',
 })
 
@@ -27,9 +28,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${sourceSerif.variable} ${bricolage.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <div className="grain-overlay" aria-hidden="true" />
+        {children}
+      </body>
     </html>
   )
 }

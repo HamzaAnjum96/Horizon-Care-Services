@@ -1,67 +1,40 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { NumberTicker } from '@/components/ui/number-ticker'
+
+const ease = [0.16, 1, 0.3, 1] as const
 
 const stats = [
-  {
-    id: 'areas',
-    ticker: true,
-    value: 6,
-    suffix: '',
-    display: null,
-    label: 'Service areas across England',
-  },
-  {
-    id: 'response',
-    ticker: false,
-    value: 2,
-    suffix: '',
-    display: '2 working\ndays',
-    label: 'Referral response time',
-  },
-  {
-    id: 'availability',
-    ticker: false,
-    value: 7,
-    suffix: '',
-    display: '7 days\na week',
-    label: 'On-site staffing availability',
-  },
+  { value: '6', label: 'Service areas across England' },
+  { value: '2 working\ndays', label: 'Maximum referral response time' },
+  { value: '7 days\na week', label: 'On-site staffing availability' },
 ]
 
 export function StatsBand() {
   return (
-    <section className="bg-bg-mid py-20 lg:py-28">
+    <section className="bg-deep py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
+        <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-rule-dark">
           {stats.map((stat, i) => (
             <motion.div
-              key={stat.id}
+              key={stat.label}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{
-                delay: i * 0.1,
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="flex flex-col gap-2.5"
+              transition={{ delay: i * 0.1, duration: 0.5, ease }}
+              className="flex flex-col gap-3 py-10 md:py-0 md:px-12 first:md:pl-0 last:md:pr-0"
             >
               <p
-                className="font-display text-amber-light leading-[1.0] whitespace-pre-line tracking-[-0.02em]"
+                className="font-display text-amber leading-[1.0] whitespace-pre-line tracking-[-0.03em]"
                 style={{
-                  fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
-                  fontWeight: 700,
+                  fontSize: 'clamp(2.8rem, 5vw, 4.25rem)',
+                  fontVariationSettings: '"opsz" 48, "wght" 600',
+                  fontStyle: 'italic',
                 }}
               >
-                {stat.ticker ? (
-                  <NumberTicker value={stat.value} suffix={stat.suffix} />
-                ) : (
-                  stat.display ?? `${stat.value}${stat.suffix}`
-                )}
+                {stat.value}
               </p>
-              <p className="text-green-muted text-[13px] font-medium tracking-[0.04em] uppercase leading-snug">
+              <p className="text-ink-muted-light text-[12px] font-medium tracking-[0.08em] uppercase leading-snug">
                 {stat.label}
               </p>
             </motion.div>
