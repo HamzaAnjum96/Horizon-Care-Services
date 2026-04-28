@@ -37,10 +37,10 @@ class SiteNav extends HTMLElement {
       <header class="nav">
         <div class="nav__inner container">
           <a href="${base}/index.html" class="nav__logo">
-            <img src="${base}/assets/images/logo-1.jpg" alt="Horizon Care Services Ltd" />
+            <img src="${base}/assets/images/logo.svg" alt="Horizon Care Services Ltd" />
             <div class="nav__logo-text">
               <strong>Horizon Care Services</strong>
-              <span>Where We Meet Your Needs</span>
+              <span>Professional care with compassion</span>
             </div>
           </a>
           <nav class="nav__links" aria-label="Primary">
@@ -70,7 +70,7 @@ class SiteFooter extends HTMLElement {
               <a href="${base}/pages/privacy-policy.html">Privacy Policy</a>
               <a href="${base}/pages/contact.html">Contact Us</a>
             </nav>
-            <p>&copy; ${year} Horizon Care Services Ltd</p>
+            <p>&copy; ${year} Horizon Care Services Ltd · 475B Cheetham Hill Road, Cheetham Hill, Manchester, M89LR</p>
           </div>
         </div>
       </footer>
