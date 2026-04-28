@@ -17,6 +17,14 @@
             color: #333;
         }
 
+        .banner {
+            background: #ffc107;
+            color: #333;
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -80,12 +88,30 @@
             background: #333;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             margin-top: 60px;
+        }
+
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer .footer-links {
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
+    <div class="banner">
+        ⚠️ Work in Progress - This website is under development
+    </div>
+
     <header>
         <h1>Horizon Care Services</h1>
         <p>Health and Social Care Provider</p>
@@ -180,6 +206,10 @@
     </container>
 
     <footer>
+        <div class="footer-links">
+            <a href="legal.html">Legal Notice</a> |
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
         <p>&copy; 2024 Horizon Care Services. All rights reserved.</p>
     </footer>
 </body>
