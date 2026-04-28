@@ -61,41 +61,16 @@ class SiteFooter extends HTMLElement {
     const base = this.dataset.base || '.';
     const year = new Date().getFullYear();
 
-    const pageLink = (l) => `<a href="${base}/${l.href}">${l.label}</a>`;
-    const pageLinks = [...NAV_LINKS, CTA_LINK].map(pageLink).join('');
-
     this.innerHTML = `
       <footer class="footer">
         <div class="container">
-          <div class="footer__grid">
-            <div class="footer__brand">
-              <a href="${base}/index.html" class="footer__logo">
-                <img src="${base}/assets/images/logo-1.jpg" alt="Horizon Care Services Ltd" />
-                <strong>Horizon Care Services</strong>
-              </a>
-              <address class="footer__address">
-                9 Lilac Grove<br>
-                Luton, LU3 3JG
-              </address>
-              <ul class="footer__contact">
-                <li><a href="tel:+447572701349">07572 701 349</a> <span class="footer__contact-label">Mobile</span></li>
-                <li><a href="tel:+441582354119">01582 354 119</a> <span class="footer__contact-label">Office</span></li>
-                <li><a href="mailto:admin@horizon-careservices.co.uk">admin@horizon-careservices.co.uk</a></li>
-              </ul>
-            </div>
-            <nav class="footer__nav" aria-label="Pages">
-              <h3 class="footer__heading">Explore</h3>
-              ${pageLinks}
-            </nav>
-            <nav class="footer__legal" aria-label="Legal">
-              <h3 class="footer__heading">Legal</h3>
-              <a href="${base}/pages/privacy-policy.html">Privacy Policy</a>
-              <a href="${base}/pages/legal-notice.html">Legal Notice</a>
-              <button type="button" class="footer__cookie-settings" data-cookie-settings>Cookie settings</button>
-            </nav>
-          </div>
           <div class="footer__bottom">
-            <p>&copy; ${year} Horizon Care Services Ltd. All rights reserved.</p>
+            <nav class="footer__minimal-links" aria-label="Footer links">
+              <a href="${base}/pages/legal-notice.html">Legal</a>
+              <a href="${base}/pages/privacy-policy.html">Privacy Policy</a>
+              <a href="${base}/pages/contact.html">Contact Us</a>
+            </nav>
+            <p>&copy; ${year} Horizon Care Services Ltd</p>
           </div>
         </div>
       </footer>
