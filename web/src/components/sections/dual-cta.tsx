@@ -31,12 +31,11 @@ export function DualCTA() {
                 fontStyle: 'italic',
               }}
             >
-              Make a referral.
+              Refer a person in need.
             </p>
             <p className="text-ink-muted-light text-[15px] leading-relaxed mb-10 max-w-[44ch]">
               For NHS trusts, local authorities, social workers, and other
-              professionals. We respond within 2 working days and carry out a
-              thorough holistic assessment.
+              professionals. We respond within 2 working days and provide a thorough, person-centred assessment.
             </p>
             <div>
               <Link
@@ -67,12 +66,11 @@ export function DualCTA() {
                 fontStyle: 'italic',
               }}
             >
-              Work with us.
+              Join our care team.
             </p>
             <p className="text-ink-muted-light text-[15px] leading-relaxed mb-10 max-w-[44ch]">
               We recruit registered nurses, social workers, occupational
-              therapists, healthcare assistants, and support workers. Competitive
-              rates, flexible shifts, professional development.
+              therapists, healthcare assistants, and support workers. Competitive rates, flexible shifts, and ongoing professional development.
             </p>
             <div>
               <Link

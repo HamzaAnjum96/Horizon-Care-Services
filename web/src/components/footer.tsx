@@ -21,18 +21,20 @@ export function Footer() {
     <footer className="bg-deep border-t border-rule-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-16 lg:pt-20 pb-8">
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-16 mb-14">
-
           <div>
             <p
-              className="font-display text-ink-light text-[16px] mb-5"
+              className="font-display text-ink-light text-[16px] mb-4"
               style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
             >
               Horizon Care Services
             </p>
+            <p className="text-ink-muted-light text-[14px] mb-5 leading-relaxed max-w-[30ch]">
+              Professional health and social care with a calm, personal approach.
+            </p>
             <address className="not-italic text-ink-muted-light text-[14px] leading-7">
-              9 Lilac Grove
+              475B Cheetham Hill Road
               <br />
-              Luton, LU3 3JG
+              Cheetham Hill, Manchester, M89LR
               <br />
               <a
                 href="tel:07572701349"
@@ -99,7 +101,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Horizon Care Services. All rights reserved.
           </p>
           <p className="text-[11px] font-medium tracking-[0.08em] uppercase text-ink-muted-light">
-            Health &amp; Social Care Provider
+            Trusted Health &amp; Social Care Provider
           </p>
         </div>
       </div>
