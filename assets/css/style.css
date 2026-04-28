@@ -36,32 +36,32 @@
 
 :root {
   /* Ink — warm near-blacks for text */
-  --ink:           #1E1A17;
-  --ink-mid:       #4A4239;
-  --ink-soft:      #7A6E65;
-  --ink-faint:     #ADA299;
+  --ink:           #1C2D2A;
+  --ink-mid:       #3F5651;
+  --ink-soft:      #6C8480;
+  --ink-faint:     #9EB4AF;
 
   /* Canvas — warm off-whites for surfaces */
-  --canvas:        #FDFAF6;
-  --canvas-warm:   #F5F0E8;
-  --canvas-sand:   #EDE7DB;
+  --canvas:        #F8FBF9;
+  --canvas-warm:   #F0F7F4;
+  --canvas-sand:   #E7F1EE;
   --white:         #FFFFFF;
 
   /* Sage — primary brand */
-  --sage:          #4D7066;
-  --sage-dark:     #324A44;
-  --sage-mid:      #6B9088;
-  --sage-tint:     #EBF0EE;
-  --sage-pale:     #F4F7F6;
+  --sage:          #2F7A6D;
+  --sage-dark:     #21574D;
+  --sage-mid:      #5F9D92;
+  --sage-tint:     #E5F2EE;
+  --sage-pale:     #EFF7F4;
 
   /* Terra — accent / energy */
-  --terra:         #B85C3A;
-  --terra-dark:    #8A3E22;
-  --terra-tint:    #F7EDE8;
+  --terra:         #3D8FA1;
+  --terra-dark:    #2D6F7D;
+  --terra-tint:    #E7F4F7;
 
   /* Sand — warm neutral accent */
-  --sand:          #C4A882;
-  --sand-light:    #F0E8DC;
+  --sand:          #88B8AF;
+  --sand-light:    #E6F2EF;
 
   /* Borders */
   --border:        rgba(30, 26, 23, 0.10);
@@ -130,7 +130,12 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--ink);
-  background: var(--canvas);
+  background-color: var(--canvas);
+  background-image:
+    radial-gradient(circle at 14% 18%, rgba(47, 122, 109, 0.06) 0, rgba(47, 122, 109, 0) 34%),
+    radial-gradient(circle at 86% 10%, rgba(61, 143, 161, 0.05) 0, rgba(61, 143, 161, 0) 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -349,10 +354,10 @@ button {
 .nav__logo:hover { color: var(--ink); }
 
 .nav__logo img {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  object-fit: cover;
+  width: 52px;
+  height: 52px;
+  border-radius: 0;
+  object-fit: contain;
 }
 
 .nav__logo-text {
@@ -599,9 +604,9 @@ button {
 
 .hero {
   position: relative;
-  background: var(--canvas);
+  background: transparent;
   overflow: hidden;
-  padding-block: var(--sp-20);
+  padding-block: var(--sp-16);
 }
 
 .hero__inner {
@@ -632,7 +637,7 @@ button {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5.2vw, 4rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.3rem);
   font-weight: 500;
   line-height: 1.05;
   margin-bottom: var(--sp-6);
@@ -708,7 +713,7 @@ button {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 6;
   background: var(--canvas-warm);
 }
 
