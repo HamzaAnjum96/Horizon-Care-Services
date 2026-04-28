@@ -124,26 +124,160 @@ No sub-menus on mobile. Desktop: hover reveals a simple dropdown for Services wi
 
 #### 2. Hero
 
-Full viewport height. Background: `--bg-deep` (near-black forest green).
+Full viewport height. Background: `--bg-deep` (near-black forest green) with the Aceternity ambient beams — slow, muted green/amber rays. Never distracting. The effect anchors the dark bg so it reads as atmospheric, not just empty.
 
-**Aceternity effect**: Subtle "Beams of Light" rays emanating from top-left or "Aurora" background — muted, ambient. Green/amber tones only. Slow animation, not distracting.
+---
 
-**Content layout** (asymmetric):
-- Left column (65% width): large editorial headline
-- Right column (35%): a quiet supporting element (small descriptor text + contact nudge)
+##### 2a. Document Panel (Folder Tab Structure)
 
-**Headline approach** — two lines, large Fraunces display-2xl, `--text-inverse`:
+The primary content lives inside a large white panel (`--bg-base`) that sits on the dark background — slightly elevated, `box-shadow: 0 32px 80px oklch(0% 0 0 / 0.45)`. The panel does not reach the viewport edges; it has generous margin on all sides (64px desktop, 20px mobile). Rounded corners: `border-radius: 20px`.
+
+The physical detail: **folder tabs** grow out of the top edge of the panel. Not navigation tabs — literal folder-file tabs, the kind that stick above a document folder. They are part of the panel's shape, not separate elements.
+
+**Tab structure (desktop):**
+
 ```
-Care that holds
-people steady.
+┌──────────────┐  ┌──────────────────┐
+│  For Families │  │ For Professionals │        ← tabs, above the panel
+└──────────────┘──┴──────────────────┴──────────────────────────────────┐
+│                                                                        │
+│   panel content                                                        │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
 ```
-*(or similar — to be copywritten)*
 
-Below headline: a single sentence in `body-xl`, `--green-300`. Then two CTA buttons:
-1. "Our Services" — outlined, white border
-2. "Make a Referral" — amber fill
+- Tabs are part of the panel's SVG/clip-path shape, or built with `::before` pseudo-elements. NOT a separate tab bar component sitting on top.
+- Active tab ("For Families" by default): white, full opacity, the panel's top-left corner.
+- Inactive tab ("For Professionals"): `oklch(91% 0.02 145)` — slightly greyed, appears to sit one layer behind the active tab. Subtle `box-shadow` on the bottom edge of the inactive tab to reinforce it's behind. Clicking it switches the panel content.
+- Tab labels: Inter 500, 14px, `--text-secondary`. Not a heading — a quiet label.
+- Tab shape: each tab has a straight inner edge and a curved outer top corner (`border-radius: 10px 10px 0 0`). The active tab's bottom border is white (same as panel), visually merging into the panel. The inactive tab has a bottom border in `--border-mid` to show its separation.
+- On mobile: tabs stack horizontally above the panel, full width split 50/50. Same shape logic, smaller.
 
-Bottom of hero: a horizontal ticker/marquee of service area names scrolling slowly. Subtle. Not a spinning animation. Uses `--green-300` text on `--bg-deep`.
+**Panel content switches** (Framer Motion `AnimatePresence`, crossfade 200ms) between two states:
+
+**State A — "For Families & Individuals"** (default):
+```
+LEFT (55%)                          RIGHT (45%)
+─────────────────────────────────   ─────────────────────────
+Fraunces display-2xl                [Sticker badges cluster]
+"Care that holds                    + contact nudge
+ people steady."
+
+Inter body-xl, --text-secondary
+"Supported accommodation, home
+ care, and specialist services
+ across England."
+
+[Our Services →]  [Make a Referral →]
+```
+
+**State B — "For Professionals"**:
+```
+LEFT (55%)                          RIGHT (45%)
+─────────────────────────────────   ─────────────────────────
+Fraunces display-xl                 [Different sticker cluster]
+"Staff and referrals,               + urgent contact number
+ handled with care."
+
+Inter body-xl, --text-secondary
+"Staffing solutions and referral
+ pathways for NHS trusts, local
+ authorities, and care providers."
+
+[Staffing Solutions →]  [Submit a Referral →]
+```
+
+---
+
+##### 2b. Sticker Badges (Hero + Recurring Motif)
+
+Sticker badges are small, physically-present elements scattered at non-grid positions — overlapping panel edges, rotated 1–3 degrees, slightly elevated with their own shadow. They reference labels and stickers on physical care folders without being literal.
+
+**Construction:**
+```css
+.sticker {
+  /* Solid color fill — no gradient, no glass */
+  background: var(--sticker-bg);
+  border-radius: 6px;          /* slightly less round than a pill */
+  padding: 6px 12px;
+  font: 600 12px/1 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  
+  /* Physical elevation */
+  box-shadow:
+    0 2px 0 oklch(0% 0 0 / 0.12),   /* bottom edge shadow — like a sticker's thickness */
+    0 4px 12px oklch(0% 0 0 / 0.18); /* ambient shadow lifting it off surface */
+  
+  /* Slight rotation — each sticker gets a fixed unique value, not random */
+  transform: rotate(-2deg);  /* or +1.5deg, +3deg — varies per sticker */
+  
+  /* Position: absolute within the panel's right column, overlapping the panel edge */
+  position: absolute;
+}
+```
+
+**Sticker color palette (specific tokens):**
+
+| Token | Value | Use |
+|---|---|---|
+| `--sticker-amber` | `oklch(78% 0.14 75)` | Key stats, urgent info |
+| `--sticker-sage` | `oklch(85% 0.08 148)` | Service areas |
+| `--sticker-cream` | `oklch(95% 0.02 90)` | Secondary labels |
+| `--sticker-deep` | `oklch(30% 0.08 148)` | Inverted/dark sticker |
+
+Text on `--sticker-amber` and `--sticker-sage`: `--text-primary` (dark). Text on `--sticker-deep`: `--text-inverse`.
+
+**Hero sticker cluster (State A — right column):**
+
+Three stickers, scattered naturally:
+1. `STAFFED 7 DAYS A WEEK` — amber, rotate(-2deg), top of right column, slightly overlapping panel top edge
+2. `6 SERVICE AREAS` — sage, rotate(1.5deg), mid-right
+3. `2-DAY REFERRAL RESPONSE` — cream, rotate(-1deg), lower right
+
+These are not perfectly aligned. They should look placed by hand, not by a grid. Absolute positioning within a relative right column container.
+
+**Where sticker badges appear across the site:**
+- Hero: 3 stickers in the right column (as above)
+- Stats band: no stickers (the numbers are the feature)
+- Services overview: each service pillar gets one sticker — e.g., "MENTAL HEALTH FOCUS" on Supported Accommodation, "24/7 AVAILABILITY" on Staffing
+- Supported accommodation page: property sticker on the Hatfield project block — "CURRENTLY AVAILABLE"
+- Work For Us page: benefit stickers — "FLEXIBLE SHIFTS", "BRIGHT EXCHANGE ACCESS"
+- Contact page: a "RESPONDS IN 2 DAYS" sticker near the referral form
+
+Rule: max 3 stickers visible at once in any section. They lose impact through overuse.
+
+---
+
+##### 2c. Hero Bottom — Area Scroll
+
+Below the panel, still within the hero viewport: a slow horizontal marquee of service area names. `--green-300` text on `--bg-deep`. Separated by a thin `|` divider. No background, no border. 12px Inter 500, letter-spacing 0.1em, all caps. Speed: ~40 seconds per full loop.
+
+```
+BEDFORDSHIRE  |  BUCKINGHAMSHIRE  |  CAMBRIDGESHIRE  |  HERTFORDSHIRE  |  MANCHESTER  |  LONDON  |  ...
+```
+
+This is purely ambient — not a navigation element. On mobile it auto-scrolls and cannot be interacted with.
+
+---
+
+##### 2d. Hero Animation Sequence (Framer Motion)
+
+All `ease: [0.16, 1, 0.3, 1]` (exponential ease-out). `prefers-reduced-motion`: all animations skip to final state.
+
+| Element | Initial state | Final state | Delay |
+|---|---|---|---|
+| Panel | `opacity: 0, y: 40px, scale: 0.97` | `opacity: 1, y: 0, scale: 1` | 0ms |
+| Folder tabs | `opacity: 0` | `opacity: 1` | 100ms |
+| Headline words | Each word: `opacity: 0, y: 20px` | `opacity: 1, y: 0` | Stagger: 150ms + 40ms per word |
+| Sub-text | `opacity: 0` | `opacity: 1` | 450ms |
+| CTA buttons | `opacity: 0, y: 10px` | `opacity: 1, y: 0` | 550ms (stagger 80ms between) |
+| Sticker 1 | `opacity: 0, scale: 0.8, rotate: -8deg` | `opacity: 1, scale: 1, rotate: -2deg` | 600ms |
+| Sticker 2 | `opacity: 0, scale: 0.8, rotate: 5deg` | `opacity: 1, scale: 1, rotate: 1.5deg` | 700ms |
+| Sticker 3 | `opacity: 0, scale: 0.8, rotate: -5deg` | `opacity: 1, scale: 1, rotate: -1deg` | 800ms |
+| Area marquee | `opacity: 0` | `opacity: 1` | 900ms |
+
+Stickers "land" onto the panel — they animate from a more extreme rotation to their resting rotation, simulating being placed down.
 
 ---
 
@@ -365,12 +499,62 @@ No parallax (layout property, banned). No morphing shapes. No looping background
 
 ---
 
-## Component Inventory (Quick Pass)
+## Physical Motifs (Design System)
+
+These two elements appear across the site and share a common philosophy: borrow the affordance of a real physical object without reproducing it literally. They give the site tactility and distinctiveness against flat/minimal competitors.
+
+---
+
+### Folder Tab Panels
+
+A content panel (white or `--bg-subtle`) that grows folder tabs out of its top edge. Used when content has two meaningful states or audiences. Not a tab bar — the tab is structurally part of the panel shape.
+
+**When to use:** Hero (two audience states), service detail sections with sub-categories, referral form (individual vs. organisation referral).
+
+**When not to use:** Navigation, filtering, data tables. Not everywhere — max 2–3 instances across the site.
+
+**Implementation approach:**
+```
+Option A (CSS): The panel div has `border-radius: 20px` except top-left.
+The active tab is a pseudo-element or sibling div absolutely positioned
+to sit flush with the panel top, with a white bottom border that
+overwrites the panel's top border — classic CSS tab trick.
+
+Option B (SVG clip-path): More flexible for organic tab shapes but
+harder to animate. Use only if Option A produces jaggy edges.
+```
+
+**Inactive tab depth illusion:**
+- `background: oklch(91% 0.02 145)` — slightly darker than the active panel
+- `box-shadow: inset 0 -3px 6px oklch(0% 0 0 / 0.06)` — suggests it sits behind
+- `z-index` lower than active tab
+- Bottom border of inactive tab in `--border-subtle` to show the gap
+
+---
+
+### Sticker Badges
+
+Small label elements that feel physically placed on a surface. Slight rotation, shadow that implies thickness, solid (never gradient) fill. See Hero section (2b) for full CSS spec.
+
+**Rotation values (fixed per badge type, not randomized at runtime):**
+- Primary stickers: -2deg
+- Secondary: +1.5deg
+- Tertiary: -1deg or +3deg
+
+Never rotate more than ±4deg. Beyond that they read as errors, not personality.
+
+**Placement rule:** Always position relative to a panel or section, with at least one sticker overlapping the edge or another element. This breaks the grid intentionally. If all stickers sit neatly inside their container, they've lost the point.
+
+**Animation:** Stickers always "land" — they animate from a more extreme rotation toward their resting rotation. This is the key motion that makes them feel placed rather than rendered.
+
+---
 
 | Component | Location | Notes |
 |---|---|---|
 | `<Nav>` | layout | Sticky, transparent→solid scroll, mobile drawer |
-| `<HeroSection>` | homepage | Aceternity beams, staggered text |
+| `<HeroSection>` | homepage | Aceternity beams, staggered text, document panel |
+| `<FolderPanel>` | homepage hero, referrals | Tab panel with folder-tab top edge, audience switch |
+| `<StickerBadge>` | hero, services, work-for-us, contact | Rotated label badge, lands-on animation |
 | `<ServicesList>` | homepage, /services | Numbered editorial list, expandable rows |
 | `<StatsBand>` | homepage | Magic UI NumberTicker, `--bg-mid` strip |
 | `<HowItWorks>` | homepage | 4-step typographic process |
@@ -378,8 +562,8 @@ No parallax (layout property, banned). No morphing shapes. No looping background
 | `<DualCTA>` | homepage | Two-column CTA block on dark bg |
 | `<Footer>` | layout | 3-column, dark bg |
 | `<ServicePage>` | /services/* | Reusable page template |
-| `<ReferralForm>` | /referrals | shadcn form, validation |
-| `<ContactForm>` | /contact | shadcn form |
+| `<ReferralForm>` | /referrals | shadcn form, FolderPanel for individual/org switch |
+| `<ContactForm>` | /contact | shadcn form + StickerBadge near submit |
 | `<PageHero>` | all inner pages | Smaller hero, dark bg, page title + breadcrumb |
 | `<SectionHeading>` | everywhere | Fraunces display heading, animated on scroll |
 
