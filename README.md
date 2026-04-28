@@ -4,14 +4,41 @@ A health and social care provider offering supported accommodation, staffing sol
 
 ## Project Structure
 
-- `/Website` - All website content, assets, and deployable files
-- `/Workflows` - GitHub Actions workflows for CI/CD
-- `.agents/` - Claude Code agent configurations
-- `.claude/` - Claude Code settings
+This repository maintains a clean root directory with all content organized into focused folders:
 
-## Website
+### Main Directories
 
-For detailed service information, see `/Website/content.txt`.
+- **`/Website`** - All website content and deployable files
+  - `content.txt` - Service information and details
+  - `robots.txt` - Search engine configuration
+  - `/assets` - Images, stylesheets, and JavaScript files
+  
+- **`/Documents`** - Documentation files
+  - Project documentation, guides, and reference materials
+
+- **`.github/workflows`** - GitHub Actions automation
+  - `deploy-to-pages.yml` - Automatic deployment to GitHub Pages
+
+- **`.agents/`** - Claude Code agent configurations
+- **`.claude/`** - Claude Code settings
+
+### Why Keep Root Clean?
+
+The root directory contains only essential files:
+- `README.md` - This file, project overview and instructions
+- `skills-lock.json` - Dependency lock file
+
+This structure keeps the repository organized and makes it easy to find what you need.
+
+## Deployment Pipeline
+
+A GitHub Actions workflow automatically deploys the website when changes are merged to the `main` branch:
+
+- **Trigger:** Push to main branch
+- **Action:** Deploys `/Website` folder to GitHub Pages
+- **Result:** Website is live immediately after merge
+
+To deploy your changes, simply merge or push to the main branch.
 
 ## Contact
 
