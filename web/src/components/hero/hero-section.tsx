@@ -25,21 +25,23 @@ export function HeroSection() {
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full py-14 lg:py-16">
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.1, duration: 0.7, ease }}
-          className="w-12 h-px bg-moss mb-8 lg:mb-9"
-        />
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.12, duration: 0.5, ease }}
+          className="section-kicker text-ink-muted-dark mb-7 lg:mb-8"
+        >
+          Trusted care across England
+        </motion.p>
 
         <h1
           className="font-display text-ink-dark leading-[0.94] tracking-[-0.03em] mb-8 lg:mb-10"
           style={{
             fontSize: 'clamp(2.55rem, 6.4vw, 5.35rem)',
-            fontVariationSettings: '"opsz" 72, "wght" 600',
+            fontVariationSettings: '"opsz" 72, "wght" 620',
           }}
         >
-          {['Professional', 'care,', 'delivered', 'with', 'heart.'].map(
+          {['Care', 'that', 'holds', 'people', 'steady.'].map(
             (word, i) => (
               <motion.span
                 key={i}
@@ -64,25 +66,24 @@ export function HeroSection() {
             className="text-ink-muted-dark leading-relaxed max-w-[50ch]"
             style={{ fontSize: 'clamp(1rem, 1.45vw, 1.13rem)' }}
           >
-            Supported accommodation, home care, and specialist support across
-            England, for referrers, families, and people who need dependable
-            care.
+            Supported accommodation, home care, and specialist support for
+            referrers, families, and people who need a dependable care partner.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 flex-shrink-0">
             <Link
               href="/services"
-              className="group flex items-center gap-3 text-ink-dark text-[14px] font-medium tracking-[0.04em] uppercase"
+              className="group flex items-center gap-3 text-ink-dark text-[13px] font-semibold tracking-[0.08em] uppercase"
             >
               <span className="h-px bg-ink-dark/60 w-6 group-hover:w-10 transition-all duration-300" />
-              Explore Services
+              View Services
             </Link>
 
             <Link
               href="/referrals"
-              className="inline-flex items-center gap-2 bg-moss text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
             >
-              Start a Referral
+              Make a Referral
             </Link>
           </div>
         </motion.div>

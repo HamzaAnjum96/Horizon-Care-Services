@@ -12,9 +12,9 @@ const stats = [
 
 export function StatsBand() {
   return (
-    <section className="bg-deep py-20 lg:py-28">
+    <section className="bg-cream py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-rule-dark">
+        <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-rule-light border-y border-rule-light">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -25,16 +25,15 @@ export function StatsBand() {
               className="flex flex-col gap-3 py-10 md:py-0 md:px-12 first:md:pl-0 last:md:pr-0"
             >
               <p
-                className="font-display text-amber leading-[1.0] whitespace-pre-line tracking-[-0.03em]"
+                className="font-display text-forest leading-[1.0] whitespace-pre-line tracking-[-0.03em]"
                 style={{
-                  fontSize: 'clamp(2.8rem, 5vw, 4.25rem)',
-                  fontVariationSettings: '"opsz" 48, "wght" 600',
-                  fontStyle: 'italic',
+                  fontSize: 'clamp(2.4rem, 4.2vw, 3.8rem)',
+                  fontVariationSettings: '"opsz" 48, "wght" 620',
                 }}
               >
                 {stat.value}
               </p>
-              <p className="text-ink-muted-light text-[12px] font-medium tracking-[0.08em] uppercase leading-snug">
+              <p className="text-ink-muted-dark text-[12px] font-medium tracking-[0.08em] uppercase leading-snug">
                 {stat.label}
               </p>
             </motion.div>

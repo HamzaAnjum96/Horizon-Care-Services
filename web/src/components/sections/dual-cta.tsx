@@ -8,7 +8,7 @@ const ease = [0.16, 1, 0.3, 1] as const
 
 export function DualCTA() {
   return (
-    <section className="bg-deep py-24 lg:py-32">
+    <section className="bg-deep py-24 lg:py-32 border-t border-rule-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-rule-dark">
 
@@ -20,15 +20,14 @@ export function DualCTA() {
             transition={{ duration: 0.55, ease }}
             className="flex flex-col pb-12 md:pb-0 md:pr-14 lg:pr-20"
           >
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-light mb-8">
+            <p className="section-kicker text-ink-muted-light mb-8">
               For referrers
             </p>
             <p
               className="font-display text-ink-light leading-[1.05] tracking-[-0.025em] mb-6"
               style={{
                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                fontVariationSettings: '"opsz" 36, "wght" 500',
-                fontStyle: 'italic',
+                fontVariationSettings: '"opsz" 36, "wght" 560',
               }}
             >
               Refer a person in need.
@@ -55,15 +54,14 @@ export function DualCTA() {
             transition={{ delay: 0.1, duration: 0.55, ease }}
             className="flex flex-col pt-12 md:pt-0 md:pl-14 lg:pl-20"
           >
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-light mb-8">
+            <p className="section-kicker text-ink-muted-light mb-8">
               For care professionals
             </p>
             <p
               className="font-display text-ink-light leading-[1.05] tracking-[-0.025em] mb-6"
               style={{
                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                fontVariationSettings: '"opsz" 36, "wght" 500',
-                fontStyle: 'italic',
+                fontVariationSettings: '"opsz" 36, "wght" 560',
               }}
             >
               Join our care team.
