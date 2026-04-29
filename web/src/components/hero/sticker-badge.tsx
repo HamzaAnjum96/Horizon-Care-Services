@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 
 interface StickerBadgeProps {
   children: React.ReactNode
@@ -29,7 +30,7 @@ export function StickerBadge({
     <motion.span
       initial={{ opacity: 0, scale: 0.65, rotate: rotate * 3.5 }}
       animate={{ opacity: 1, scale: 1, rotate }}
-      transition={{ delay, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ delay, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
       className={cn(
         'inline-block px-3 py-[5px] rounded-[6px]',
         'text-[11px] font-semibold tracking-[0.06em] uppercase whitespace-nowrap',

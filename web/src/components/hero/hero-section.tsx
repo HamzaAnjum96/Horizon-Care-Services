@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
+import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 
 const AREAS = [
   'Bedfordshire',
@@ -14,9 +15,9 @@ const AREAS = [
 
 const marqueeText = AREAS.join('  ·  ') + '  ·  '
 
-const ease = [0.16, 1, 0.3, 1] as const
-
 export function HeroSection() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <section className="relative min-h-[76vh] lg:min-h-[82vh] bg-cream flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-light">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -28,7 +29,7 @@ export function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.12, duration: 0.5, ease }}
+          transition={{ delay: 0.12, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-dark mb-7 lg:mb-8"
         >
           Trusted care across England
@@ -45,9 +46,9 @@ export function HeroSection() {
             (word, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.05, duration: 0.6, ease }}
+                transition={{ delay: 0.2 + i * 0.05, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
                 className="inline-block mr-[0.2em] last:mr-0"
               >
                 {word}
@@ -59,7 +60,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.62, duration: 0.55, ease }}
+          transition={{ delay: 0.62, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16"
         >
           <p
@@ -73,7 +74,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 flex-shrink-0">
             <Link
               href="/services"
-              className="group flex items-center gap-3 text-ink-dark text-[13px] font-semibold tracking-[0.08em] uppercase"
+              className="group interactive-lift flex items-center gap-3 text-ink-dark text-[13px] font-semibold tracking-[0.08em] uppercase"
             >
               <span className="h-px bg-ink-dark/60 w-6 group-hover:w-10 transition-all duration-300" />
               View Services
@@ -81,7 +82,7 @@ export function HeroSection() {
 
             <Link
               href="/referrals"
-              className="inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+              className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
             >
               Make a Referral
             </Link>
@@ -92,7 +93,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.5 }}
+        transition={{ delay: 0.9, duration: MOTION_DURATIONS.base }}
         className="border-t border-rule-light overflow-hidden py-3.5"
         aria-label="Service areas"
       >

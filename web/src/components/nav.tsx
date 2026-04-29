@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
@@ -27,7 +28,7 @@ export function Nav() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-200',
           scrolled
             ? 'border-b border-rule-light/80 bg-cream/94 backdrop-blur-md shadow-[0_8px_28px_-22px_oklch(28%_0.04_160)]'
             : 'border-b border-transparent bg-transparent',
@@ -72,7 +73,7 @@ export function Nav() {
             </Link>
             <Link
               href="/referrals"
-              className="hidden md:inline-flex items-center bg-amber text-deep text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
+              className="interactive-lift hidden md:inline-flex items-center bg-amber text-deep text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
             >
               Make a Referral
             </Link>
@@ -93,7 +94,7 @@ export function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: MOTION_DURATIONS.fast, ease: EASE_OUT_EXPO }}
             className="fixed inset-0 z-[60] bg-deep flex flex-col"
           >
             <div className="flex justify-between items-center px-6 h-16 border-b border-rule-dark">
@@ -121,14 +122,14 @@ export function Nav() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
                       delay: i * 0.06,
-                      duration: 0.3,
-                      ease: [0.16, 1, 0.3, 1],
+                      duration: MOTION_DURATIONS.base,
+                      ease: EASE_OUT_EXPO,
                     }}
                   >
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="font-display text-ink-light text-[2.2rem] font-semibold leading-tight hover:text-moss-soft transition-colors"
+                      className="interactive-lift font-display text-ink-light text-[2.2rem] font-semibold leading-tight hover:text-moss-soft transition-colors"
                       style={{ fontVariationSettings: '"opsz" 36, "wght" 600' }}
                     >
                       {link.label}
@@ -142,7 +143,7 @@ export function Nav() {
               <Link
                 href="/referrals"
                 onClick={() => setMobileOpen(false)}
-                className="block bg-moss text-ink-light text-center font-semibold px-6 py-4 rounded text-lg"
+                className="interactive-lift block bg-moss text-ink-light text-center font-semibold px-6 py-4 rounded text-lg"
               >
                 Make a Referral
               </Link>

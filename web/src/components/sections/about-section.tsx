@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
-const ease = [0.16, 1, 0.3, 1] as const
 
 export function AboutSection() {
   return (
@@ -11,8 +11,8 @@ export function AboutSection() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5 }}
+          viewport={IN_VIEW}
+          transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-dark mb-6"
         >
           Who we are
@@ -21,8 +21,8 @@ export function AboutSection() {
         <motion.blockquote
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease }}
+          viewport={IN_VIEW}
+          transition={{ duration: MOTION_DURATIONS.slow, ease: EASE_OUT_EXPO }}
           className="font-display text-ink-dark leading-[1.05] tracking-[-0.025em] mb-14 lg:mb-16 max-w-[16ch]"
           style={{
             fontSize: 'clamp(2rem, 5.2vw, 4.7rem)',
@@ -36,8 +36,8 @@ export function AboutSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ delay: 0.15, duration: 0.6, ease }}
+          viewport={IN_VIEW}
+          transition={{ delay: 0.15, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
           className="grid lg:grid-cols-3 gap-8 lg:gap-12 border-t border-rule-light pt-10 lg:pt-12"
         >
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">
