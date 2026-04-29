@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const ease = [0.16, 1, 0.3, 1] as const
+import { EASE_OUT_EXPO, IN_VIEW, MOTION } from '@/lib/motion'
 
 const areas = [
   { name: 'Bedfordshire',    wght: 400, size: 'clamp(1.5rem, 3vw, 2rem)',       opsz: 24 },
@@ -22,17 +21,17 @@ export function AreaSection() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5, ease }}
+            viewport={IN_VIEW}
+            transition={{ duration: MOTION.base, ease: EASE_OUT_EXPO }}
           >
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-light mb-12 lg:mb-14">
+            <p className="section-kicker text-ink-muted-light mb-7">
               Coverage
             </p>
             <p
               className="font-display text-ink-light leading-tight tracking-[-0.025em] mb-8"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
-                fontVariationSettings: '"opsz" 36, "wght" 500',
+                fontVariationSettings: '"opsz" 36, "wght" 580',
               }}
             >
               Serving England.
@@ -50,8 +49,12 @@ export function AreaSection() {
                 key={area.name}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ delay: i * 0.07, duration: 0.5, ease }}
+                viewport={IN_VIEW}
+                transition={{
+                  delay: i * MOTION.stagger,
+                  duration: MOTION.base,
+                  ease: EASE_OUT_EXPO,
+                }}
                 className="font-display text-ink-light tracking-[-0.025em]"
                 style={{
                   fontSize: area.size,

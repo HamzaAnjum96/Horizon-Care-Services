@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
+import { EASE_OUT_EXPO, MOTION } from '@/lib/motion'
 
 const AREAS = [
   'Bedfordshire',
@@ -14,9 +15,9 @@ const AREAS = [
 
 const marqueeText = AREAS.join('  ·  ') + '  ·  '
 
-const ease = [0.16, 1, 0.3, 1] as const
-
 export function HeroSection() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <section className="relative min-h-[76vh] lg:min-h-[82vh] bg-cream flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-light">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -25,27 +26,33 @@ export function HeroSection() {
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full py-14 lg:py-16">
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.1, duration: 0.7, ease }}
-          className="w-12 h-px bg-moss mb-8 lg:mb-9"
-        />
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.12, duration: MOTION.base, ease: EASE_OUT_EXPO }}
+          className="section-kicker text-ink-muted-dark mb-7 lg:mb-8"
+        >
+          Trusted care across England
+        </motion.p>
 
         <h1
           className="font-display text-ink-dark leading-[0.94] tracking-[-0.03em] mb-8 lg:mb-10"
           style={{
             fontSize: 'clamp(2.55rem, 6.4vw, 5.35rem)',
-            fontVariationSettings: '"opsz" 72, "wght" 600',
+            fontVariationSettings: '"opsz" 72, "wght" 620',
           }}
         >
-          {['Professional', 'care,', 'delivered', 'with', 'heart.'].map(
+          {['Care', 'that', 'holds', 'people', 'steady.'].map(
             (word, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 28 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.05, duration: 0.6, ease }}
+                transition={{
+                  delay: 0.2 + i * MOTION.stagger,
+                  duration: MOTION.slow,
+                  ease: EASE_OUT_EXPO,
+                }}
                 className="inline-block mr-[0.2em] last:mr-0"
               >
                 {word}
@@ -57,32 +64,31 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.62, duration: 0.55, ease }}
+          transition={{ delay: 0.56, duration: MOTION.slow, ease: EASE_OUT_EXPO }}
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-16"
         >
           <p
             className="text-ink-muted-dark leading-relaxed max-w-[50ch]"
             style={{ fontSize: 'clamp(1rem, 1.45vw, 1.13rem)' }}
           >
-            Supported accommodation, home care, and specialist support across
-            England, for referrers, families, and people who need dependable
-            care.
+            Supported accommodation, home care, and specialist support for
+            referrers, families, and people who need a dependable care partner.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 flex-shrink-0">
             <Link
               href="/services"
-              className="group flex items-center gap-3 text-ink-dark text-[14px] font-medium tracking-[0.04em] uppercase"
+              className="group interactive-lift flex items-center gap-3 text-ink-dark text-[13px] font-semibold tracking-[0.08em] uppercase"
             >
               <span className="h-px bg-ink-dark/60 w-6 group-hover:w-10 transition-all duration-300" />
-              Explore Services
+              View Services
             </Link>
 
             <Link
               href="/referrals"
-              className="inline-flex items-center gap-2 bg-moss text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+              className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90"
             >
-              Start a Referral
+              Make a Referral
             </Link>
           </div>
         </motion.div>
@@ -91,7 +97,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.5 }}
+        transition={{ delay: 0.8, duration: MOTION.base }}
         className="border-t border-rule-light overflow-hidden py-3.5"
         aria-label="Service areas"
       >

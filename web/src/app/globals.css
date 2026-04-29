@@ -2,25 +2,25 @@
 
 /* ─── Tokens ─────────────────────────────────────────── */
 :root {
-  --deep:              oklch(24% 0.028 176);
-  --forest:            oklch(31% 0.038 172);
-  --forest-mid:        oklch(42% 0.045 170);
-  --cream:             oklch(97% 0.012 98);
-  --cream-dim:         oklch(93% 0.014 98);
+  --deep:              oklch(23% 0.03 156);
+  --forest:            oklch(31% 0.05 154);
+  --forest-mid:        oklch(43% 0.07 154);
+  --cream:             oklch(97% 0.009 146);
+  --cream-dim:         oklch(94% 0.014 148);
 
-  --ink-dark:          oklch(25% 0.03 178);
-  --ink-light:         oklch(96% 0.01 102);
-  --ink-muted-dark:    oklch(43% 0.026 176);
-  --ink-muted-light:   oklch(80% 0.015 170);
+  --ink-dark:          oklch(25% 0.038 154);
+  --ink-light:         oklch(96% 0.01 146);
+  --ink-muted-dark:    oklch(43% 0.03 154);
+  --ink-muted-light:   oklch(81% 0.018 148);
 
-  --moss:              oklch(48% 0.075 164);
-  --moss-soft:         oklch(76% 0.04 162);
-  --sky-soft:          oklch(84% 0.03 220);
-  --amber:             oklch(70% 0.11 72);
-  --amber-dim:         oklch(81% 0.06 78);
+  --moss:              oklch(47% 0.094 154);
+  --moss-soft:         oklch(76% 0.054 150);
+  --sky-soft:          oklch(86% 0.018 210);
+  --amber:             oklch(74% 0.124 78);
+  --amber-dim:         oklch(86% 0.066 82);
 
-  --rule-dark:         oklch(38% 0.022 175);
-  --rule-light:        oklch(88% 0.014 176);
+  --rule-dark:         oklch(38% 0.028 154);
+  --rule-light:        oklch(88% 0.017 148);
 }
 
 @theme inline {
@@ -55,9 +55,9 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--cream);
   background-image:
-    radial-gradient(circle at 18% -5%, color-mix(in oklab, var(--moss-soft) 48%, transparent) 0%, transparent 38%),
-    radial-gradient(circle at 90% 14%, color-mix(in oklab, var(--sky-soft) 38%, transparent) 0%, transparent 42%),
-    linear-gradient(180deg, color-mix(in oklab, var(--cream) 96%, var(--moss-soft) 4%) 0%, var(--cream) 72%);
+    radial-gradient(circle at 8% -8%, color-mix(in oklab, var(--moss-soft) 32%, transparent) 0%, transparent 42%),
+    radial-gradient(circle at 92% 10%, color-mix(in oklab, var(--sky-soft) 24%, transparent) 0%, transparent 48%),
+    linear-gradient(180deg, color-mix(in oklab, var(--cream) 98%, var(--moss-soft) 2%) 0%, var(--cream) 74%);
   color: var(--ink-dark);
   font-family: var(--font-bricolage), system-ui, sans-serif;
   line-height: 1.6;
@@ -71,11 +71,37 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.04;
+  opacity: 0.03;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
   background-size: 160px 160px;
   background-repeat: repeat;
+}
+
+@layer components {
+  .section-kicker {
+    @apply text-[11px] font-medium tracking-[0.14em] uppercase;
+  }
+
+  .editorial-title {
+    font-family: var(--font-source-serif), serif;
+    font-variation-settings: "opsz" 40, "wght" 560;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .interactive-lift {
+    transition:
+      transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 180ms linear,
+      border-color 200ms linear;
+  }
+
+  .interactive-lift:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px -16px oklch(26% 0.05 154 / 0.6);
+  }
 }
 
 /* ─── Marquee ─────────────────────────────────────────── */
@@ -92,4 +118,12 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
+  .interactive-lift {
+    transition: none;
+  }
+
+  .interactive-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }

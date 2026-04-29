@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const ease = [0.16, 1, 0.3, 1] as const
+import { EASE_OUT_EXPO, IN_VIEW, MOTION } from '@/lib/motion'
 
 const steps = [
   {
@@ -29,18 +28,24 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="bg-cream py-24 lg:py-32">
+    <section className="bg-cream-dim py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5 }}
-          className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-dark mb-12 lg:mb-16"
+          viewport={IN_VIEW}
+          transition={{ duration: MOTION.base }}
+          className="section-kicker text-ink-muted-dark mb-4"
         >
           The process
         </motion.p>
+        <h2
+          className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
+          style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)' }}
+        >
+          A clear referral and support pathway.
+        </h2>
 
         <div className="grid md:grid-cols-4 border-t border-rule-light">
           {steps.map((step, i) => (
@@ -48,16 +53,19 @@ export function HowItWorks() {
               key={step.num}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease }}
+              viewport={IN_VIEW}
+              transition={{
+                delay: i * (MOTION.stagger + 0.02),
+                duration: MOTION.base,
+                ease: EASE_OUT_EXPO,
+              }}
               className="pt-8 pb-10 pr-8 border-r border-rule-light last:border-r-0 max-md:border-r-0 max-md:border-b max-md:last:border-b-0"
             >
               <p
                 className="font-display text-amber mb-6 leading-none tracking-[-0.02em]"
                 style={{
                   fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                  fontVariationSettings: '"opsz" 36, "wght" 400',
-                  fontStyle: 'italic',
+                  fontVariationSettings: '"opsz" 36, "wght" 520',
                 }}
               >
                 {step.num}

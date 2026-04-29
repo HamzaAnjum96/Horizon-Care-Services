@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { EASE_OUT_EXPO, MOTION } from '@/lib/motion'
 
 const navLinks = [
   { href: '/services', label: 'Services' },
@@ -27,8 +28,10 @@ export function Nav() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-rule-light/70 bg-cream/92 backdrop-blur-md',
-          scrolled && 'shadow-[0_8px_28px_-22px_oklch(28%_0.04_180)]',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          scrolled
+            ? 'border-b border-rule-light/80 bg-cream/94 backdrop-blur-md shadow-[0_8px_28px_-22px_oklch(28%_0.04_160)]'
+            : 'border-b border-transparent bg-transparent',
         )}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between gap-4">
@@ -54,7 +57,7 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-wide"
+                className="text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-[0.04em]"
               >
                 {link.label}
               </Link>
@@ -70,7 +73,7 @@ export function Nav() {
             </Link>
             <Link
               href="/referrals"
-              className="hidden md:inline-flex items-center bg-moss text-ink-light text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
+              className="hidden md:inline-flex interactive-lift items-center bg-amber text-deep text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90"
             >
               Make a Referral
             </Link>
@@ -91,7 +94,7 @@ export function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: MOTION.fast }}
             className="fixed inset-0 z-[60] bg-deep flex flex-col"
           >
             <div className="flex justify-between items-center px-6 h-16 border-b border-rule-dark">
@@ -118,9 +121,9 @@ export function Nav() {
                     initial={{ opacity: 0, x: -16 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
-                      delay: i * 0.06,
-                      duration: 0.3,
-                      ease: [0.16, 1, 0.3, 1],
+                      delay: i * MOTION.stagger,
+                      duration: MOTION.base,
+                      ease: EASE_OUT_EXPO,
                     }}
                   >
                     <Link
@@ -140,7 +143,7 @@ export function Nav() {
               <Link
                 href="/referrals"
                 onClick={() => setMobileOpen(false)}
-                className="block bg-moss text-ink-light text-center font-semibold px-6 py-4 rounded text-lg"
+                className="block interactive-lift bg-moss text-ink-light text-center font-semibold px-6 py-4 rounded text-lg"
               >
                 Make a Referral
               </Link>

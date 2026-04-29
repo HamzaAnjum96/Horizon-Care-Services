@@ -3,12 +3,11 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
-
-const ease = [0.16, 1, 0.3, 1] as const
+import { EASE_OUT_EXPO, IN_VIEW, MOTION } from '@/lib/motion'
 
 export function DualCTA() {
   return (
-    <section className="bg-deep py-24 lg:py-32">
+    <section className="bg-deep py-24 lg:py-32 border-t border-rule-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-rule-dark">
 
@@ -16,19 +15,18 @@ export function DualCTA() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.55, ease }}
+            viewport={IN_VIEW}
+            transition={{ duration: MOTION.slow, ease: EASE_OUT_EXPO }}
             className="flex flex-col pb-12 md:pb-0 md:pr-14 lg:pr-20"
           >
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-light mb-8">
+            <p className="section-kicker text-ink-muted-light mb-8">
               For referrers
             </p>
             <p
               className="font-display text-ink-light leading-[1.05] tracking-[-0.025em] mb-6"
               style={{
                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                fontVariationSettings: '"opsz" 36, "wght" 500',
-                fontStyle: 'italic',
+                fontVariationSettings: '"opsz" 36, "wght" 560',
               }}
             >
               Refer a person in need.
@@ -40,7 +38,7 @@ export function DualCTA() {
             <div>
               <Link
                 href="/referrals"
-                className="inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded text-[14px] font-semibold hover:opacity-90 transition-opacity"
+                className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded text-[14px] font-semibold hover:opacity-90"
               >
                 Start a referral <ArrowUpRight size={14} />
               </Link>
@@ -51,19 +49,22 @@ export function DualCTA() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ delay: 0.1, duration: 0.55, ease }}
+            viewport={IN_VIEW}
+            transition={{
+              delay: 0.08,
+              duration: MOTION.slow,
+              ease: EASE_OUT_EXPO,
+            }}
             className="flex flex-col pt-12 md:pt-0 md:pl-14 lg:pl-20"
           >
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-light mb-8">
+            <p className="section-kicker text-ink-muted-light mb-8">
               For care professionals
             </p>
             <p
               className="font-display text-ink-light leading-[1.05] tracking-[-0.025em] mb-6"
               style={{
                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                fontVariationSettings: '"opsz" 36, "wght" 500',
-                fontStyle: 'italic',
+                fontVariationSettings: '"opsz" 36, "wght" 560',
               }}
             >
               Join our care team.
@@ -75,7 +76,7 @@ export function DualCTA() {
             <div>
               <Link
                 href="/work-for-us"
-                className="inline-flex items-center gap-2 border border-rule-dark text-ink-light px-6 py-3 rounded text-[14px] font-semibold hover:border-ink-muted-light transition-colors"
+                className="interactive-lift inline-flex items-center gap-2 border border-rule-dark text-ink-light px-6 py-3 rounded text-[14px] font-semibold hover:border-ink-muted-light"
               >
                 View opportunities <ArrowUpRight size={14} />
               </Link>
