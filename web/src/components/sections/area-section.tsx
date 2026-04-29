@@ -25,14 +25,14 @@ export function AreaSection() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, ease }}
           >
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-light mb-12 lg:mb-14">
+            <p className="section-kicker text-ink-muted-light mb-7">
               Coverage
             </p>
             <p
               className="font-display text-ink-light leading-tight tracking-[-0.025em] mb-8"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
-                fontVariationSettings: '"opsz" 36, "wght" 500',
+                fontVariationSettings: '"opsz" 36, "wght" 580',
               }}
             >
               Serving England.

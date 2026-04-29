@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -64,19 +64,23 @@ export function ServicesSection() {
   const [expanded, setExpanded] = useState<string | null>(null)
 
   return (
-    <section className="bg-cream py-20 lg:py-28">
+    <section className="bg-cream py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-
-        {/* Label */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5 }}
-          className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-dark mb-12 lg:mb-16"
+          className="section-kicker text-ink-muted-dark mb-4"
         >
           What we provide
         </motion.p>
+        <h2
+          className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
+          style={{ fontSize: 'clamp(2rem, 4.2vw, 3.35rem)' }}
+        >
+          Services shaped around each person.
+        </h2>
 
         {/* Service rows */}
         <div>
@@ -89,7 +93,6 @@ export function ServicesSection() {
               onToggle={() =>
                 setExpanded(expanded === service.num ? null : service.num)
               }
-              isLast={i === services.length - 1}
             />
           ))}
         </div>
@@ -103,13 +106,11 @@ function ServiceRow({
   index,
   isExpanded,
   onToggle,
-  isLast,
 }: {
   service: (typeof services)[0]
   index: number
   isExpanded: boolean
   onToggle: () => void
-  isLast: boolean
 }) {
   return (
     <motion.div
@@ -125,7 +126,7 @@ function ServiceRow({
         onClick={onToggle}
         onKeyDown={(e) => e.key === 'Enter' && onToggle()}
         aria-expanded={isExpanded}
-        className="flex items-center justify-between py-6 lg:py-7 cursor-pointer group outline-none"
+        className="flex items-center justify-between py-7 lg:py-8 cursor-pointer group outline-none"
       >
         {/* Left: ref number + name */}
         <div className="flex items-baseline gap-5 lg:gap-8 min-w-0">
@@ -133,13 +134,13 @@ function ServiceRow({
             {service.num}
           </span>
           <h3
-            className="font-display text-ink-dark group-hover:text-forest transition-colors truncate"
-            style={{
-              fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
-              fontVariationSettings: '"opsz" 24, "wght" 500',
-            }}
-          >
-            {service.name}
+                className="font-display text-ink-dark group-hover:text-forest transition-colors truncate"
+                style={{
+                  fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
+                  fontVariationSettings: '"opsz" 24, "wght" 560',
+                }}
+              >
+                {service.name}
           </h3>
         </div>
 

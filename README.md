@@ -4,32 +4,45 @@ A health and social care provider offering supported accommodation, staffing sol
 
 ## Project Structure
 
-This repository maintains a clean root directory with all content organized into focused folders:
+This repository keeps content organized into focused folders:
 
 ### Main Directories
 
-- **`/Website`** - All website content and deployable files
+- **`/Website`** - Website content and deployable files
   - `content.txt` - Service information and details
   - `robots.txt` - Search engine configuration
   - `/assets` - Images, stylesheets, and JavaScript files
-  
-- **`/Documents`** - Documentation files
-  - Project documentation, guides, and reference materials
-  - [`AI-ASSISTANT.md`](Documents/AI-ASSISTANT.md) - Installed AI assistant skills and reinstall instructions
+
+- **`/Documents`** - Documentation and planning records
+  - [`SITE-DESIGN.md`](Documents/SITE-DESIGN.md) - Design brief and visual direction
+  - [`CLIENT-DEV-DISCUSSION.md`](Documents/CLIENT-DEV-DISCUSSION.md) - Ongoing client and web developer discussion notes for look-and-feel decisions
+  - [`HOMEPAGE-SPRINT-PLAN.md`](Documents/HOMEPAGE-SPRINT-PLAN.md) - Sprint-based execution plan for homepage visual refinement
 
 - **`.github/workflows`** - GitHub Actions automation
   - `deploy-to-pages.yml` - Automatic deployment to GitHub Pages
 
-- **`.agents/`** - AI assistant skills (UI/UX Pro Max, frontend-design, Vercel skills, etc.). See [`Documents/AI-ASSISTANT.md`](Documents/AI-ASSISTANT.md).
-- **`.claude/`** - Claude Code settings and symlinks to the skills above
-
 ### Why Keep Root Clean?
 
 The root directory contains only essential files:
-- `README.md` - This file, project overview and instructions
-- `skills-lock.json` - Dependency lock file
+- `README.md` - Project overview and instructions
+- `skills-lock.json` - Installed skill lock file
 
-This structure keeps the repository organized and makes it easy to find what you need.
+This structure keeps the repository organized and easy to maintain.
+
+## Design Direction Notes
+
+The homepage look and feel is being refined before any page expansion.
+
+Current direction from discussion:
+- Distinctive, crafted visual identity over generic templates
+- Trust-first presentation for referrals and families
+- Selective, purposeful animation rather than heavy motion
+- Short footer on the homepage in this phase
+- No new pages until homepage quality targets are met
+
+See:
+- [`Documents/CLIENT-DEV-DISCUSSION.md`](Documents/CLIENT-DEV-DISCUSSION.md)
+- [`Documents/HOMEPAGE-SPRINT-PLAN.md`](Documents/HOMEPAGE-SPRINT-PLAN.md)
 
 ## Deployment Pipeline
 

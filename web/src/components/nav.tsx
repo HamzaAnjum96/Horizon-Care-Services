@@ -27,8 +27,10 @@ export function Nav() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-rule-light/70 bg-cream/92 backdrop-blur-md',
-          scrolled && 'shadow-[0_8px_28px_-22px_oklch(28%_0.04_180)]',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          scrolled
+            ? 'border-b border-rule-light/80 bg-cream/94 backdrop-blur-md shadow-[0_8px_28px_-22px_oklch(28%_0.04_160)]'
+            : 'border-b border-transparent bg-transparent',
         )}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between gap-4">
@@ -54,7 +56,7 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-wide"
+                className="text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-[0.04em]"
               >
                 {link.label}
               </Link>
@@ -70,7 +72,7 @@ export function Nav() {
             </Link>
             <Link
               href="/referrals"
-              className="hidden md:inline-flex items-center bg-moss text-ink-light text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
+              className="hidden md:inline-flex items-center bg-amber text-deep text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
             >
               Make a Referral
             </Link>

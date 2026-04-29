@@ -29,7 +29,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="bg-cream py-24 lg:py-32">
+    <section className="bg-cream-dim py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         <motion.p
@@ -37,10 +37,16 @@ export function HowItWorks() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5 }}
-          className="text-[11px] font-medium tracking-[0.14em] uppercase text-ink-muted-dark mb-12 lg:mb-16"
+          className="section-kicker text-ink-muted-dark mb-4"
         >
           The process
         </motion.p>
+        <h2
+          className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
+          style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)' }}
+        >
+          A clear referral and support pathway.
+        </h2>
 
         <div className="grid md:grid-cols-4 border-t border-rule-light">
           {steps.map((step, i) => (
@@ -56,8 +62,7 @@ export function HowItWorks() {
                 className="font-display text-amber mb-6 leading-none tracking-[-0.02em]"
                 style={{
                   fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                  fontVariationSettings: '"opsz" 36, "wght" 400',
-                  fontStyle: 'italic',
+                  fontVariationSettings: '"opsz" 36, "wght" 520',
                 }}
               >
                 {step.num}
