@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
-const ease = [0.16, 1, 0.3, 1] as const
 
 const steps = [
   {
@@ -35,8 +35,8 @@ export function HowItWorks() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5 }}
+          viewport={IN_VIEW}
+          transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-dark mb-4"
         >
           The process
@@ -54,8 +54,8 @@ export function HowItWorks() {
               key={step.num}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease }}
+              viewport={IN_VIEW}
+              transition={{ delay: i * 0.08, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
               className="pt-8 pb-10 pr-8 border-r border-rule-light last:border-r-0 max-md:border-r-0 max-md:border-b max-md:last:border-b-0"
             >
               <p

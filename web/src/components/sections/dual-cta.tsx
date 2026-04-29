@@ -3,8 +3,8 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
-const ease = [0.16, 1, 0.3, 1] as const
 
 export function DualCTA() {
   return (
@@ -16,8 +16,8 @@ export function DualCTA() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.55, ease }}
+            viewport={IN_VIEW}
+            transition={{ duration: MOTION_DURATIONS.medium, EASE_OUT_EXPO }}
             className="flex flex-col pb-12 md:pb-0 md:pr-14 lg:pr-20"
           >
             <p className="section-kicker text-ink-muted-light mb-8">
@@ -39,7 +39,7 @@ export function DualCTA() {
             <div>
               <Link
                 href="/referrals"
-                className="inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded text-[14px] font-semibold hover:opacity-90 transition-opacity"
+                className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded text-[14px] font-semibold hover:opacity-90 transition-opacity"
               >
                 Start a referral <ArrowUpRight size={14} />
               </Link>
@@ -50,8 +50,8 @@ export function DualCTA() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ delay: 0.1, duration: 0.55, ease }}
+            viewport={IN_VIEW}
+            transition={{ delay: 0.1, duration: MOTION_DURATIONS.medium, EASE_OUT_EXPO }}
             className="flex flex-col pt-12 md:pt-0 md:pl-14 lg:pl-20"
           >
             <p className="section-kicker text-ink-muted-light mb-8">
@@ -73,7 +73,7 @@ export function DualCTA() {
             <div>
               <Link
                 href="/work-for-us"
-                className="inline-flex items-center gap-2 border border-rule-dark text-ink-light px-6 py-3 rounded text-[14px] font-semibold hover:border-ink-muted-light transition-colors"
+                className="interactive-lift inline-flex items-center gap-2 border border-rule-dark text-ink-light px-6 py-3 rounded text-[14px] font-semibold hover:border-ink-muted-light transition-colors"
               >
                 View opportunities <ArrowUpRight size={14} />
               </Link>

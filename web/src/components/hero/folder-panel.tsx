@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 import { StickerBadge } from './sticker-badge'
 
 type Audience = 'families' | 'professionals'
@@ -35,7 +36,7 @@ export function FolderPanel() {
       <motion.div
         initial={{ opacity: 0, y: 44, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: MOTION_DURATIONS.slow, ease: EASE_OUT_EXPO }}
         className="bg-bg-base rounded-[20px] rounded-tl-none overflow-hidden"
         style={{
           boxShadow: '0 32px 80px oklch(0% 0 0 / 0.45)',
@@ -90,7 +91,7 @@ function FamiliesContent() {
       initial={{ opacity: 0, x: -8 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 8 }}
-      transition={{ duration: 0.2, ease: 'easeOut' }}
+      transition={{ duration: MOTION_DURATIONS.fast, ease: EASE_OUT_EXPO }}
       className="grid md:grid-cols-[1fr_auto]"
     >
       {/* Left: headline + body + CTAs */}
@@ -106,8 +107,8 @@ function FamiliesContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 delay: 0.15 + i * 0.045,
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1],
+                duration: MOTION_DURATIONS.base,
+                ease: EASE_OUT_EXPO,
               }}
               className="inline-block mr-[0.22em] last:mr-0"
             >
@@ -119,7 +120,7 @@ function FamiliesContent() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.46, duration: 0.5 }}
+          transition={{ delay: 0.46, duration: MOTION_DURATIONS.base }}
           className="text-text-muted text-[17px] leading-relaxed max-w-[50ch] mb-8"
         >
           Supported accommodation, home care, and specialist services across
@@ -129,18 +130,18 @@ function FamiliesContent() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.56, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 0.56, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="flex flex-wrap gap-3"
         >
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 bg-green-brand text-text-inv px-5 py-2.5 rounded-lg font-medium text-[14px] hover:bg-green-hover transition-colors"
+            className="interactive-lift inline-flex items-center gap-2 bg-green-brand text-text-inv px-5 py-2.5 rounded-lg font-medium text-[14px] hover:bg-green-hover transition-colors"
           >
             Our Services <ArrowRight size={14} />
           </Link>
           <Link
             href="/referrals"
-            className="inline-flex items-center gap-2 bg-amber text-text-main px-5 py-2.5 rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
+            className="interactive-lift inline-flex items-center gap-2 bg-amber text-text-main px-5 py-2.5 rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
           >
             Make a Referral <ArrowRight size={14} />
           </Link>
@@ -178,7 +179,7 @@ function ProfessionalsContent() {
       initial={{ opacity: 0, x: 8 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -8 }}
-      transition={{ duration: 0.2, ease: 'easeOut' }}
+      transition={{ duration: MOTION_DURATIONS.fast, ease: EASE_OUT_EXPO }}
       className="grid md:grid-cols-[1fr_auto]"
     >
       <div className="px-8 py-10 md:px-12 md:py-14">
@@ -193,8 +194,8 @@ function ProfessionalsContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 delay: i * 0.045,
-                duration: 0.45,
-                ease: [0.16, 1, 0.3, 1],
+                duration: MOTION_DURATIONS.base,
+                ease: EASE_OUT_EXPO,
               }}
               className="inline-block mr-[0.22em] last:mr-0"
             >
@@ -206,7 +207,7 @@ function ProfessionalsContent() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.45 }}
+          transition={{ delay: 0.3, duration: MOTION_DURATIONS.base }}
           className="text-text-muted text-[17px] leading-relaxed max-w-[50ch] mb-8"
         >
           Staffing solutions and referral pathways for NHS trusts, local
@@ -216,18 +217,18 @@ function ProfessionalsContent() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 0.4, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="flex flex-wrap gap-3"
         >
           <Link
             href="/services/staffing"
-            className="inline-flex items-center gap-2 bg-green-brand text-text-inv px-5 py-2.5 rounded-lg font-medium text-[14px] hover:bg-green-hover transition-colors"
+            className="interactive-lift inline-flex items-center gap-2 bg-green-brand text-text-inv px-5 py-2.5 rounded-lg font-medium text-[14px] hover:bg-green-hover transition-colors"
           >
             Staffing Solutions <ArrowRight size={14} />
           </Link>
           <Link
             href="/referrals"
-            className="inline-flex items-center gap-2 bg-amber text-text-main px-5 py-2.5 rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
+            className="interactive-lift inline-flex items-center gap-2 bg-amber text-text-main px-5 py-2.5 rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
           >
             Submit a Referral <ArrowRight size={14} />
           </Link>
@@ -250,7 +251,7 @@ function ProfessionalsContent() {
           <br />
           <a
             href="tel:07572701349"
-            className="font-semibold text-green-brand hover:text-green-hover transition-colors"
+            className="interactive-lift font-semibold text-green-brand hover:text-green-hover transition-colors"
           >
             07572 701 349
           </a>

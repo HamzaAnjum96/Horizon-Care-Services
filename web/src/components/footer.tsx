@@ -38,21 +38,21 @@ export function Footer() {
               <br />
               <a
                 href="tel:07572701349"
-                className="hover:text-ink-light transition-colors"
+                className="interactive-lift hover:text-ink-light transition-colors"
               >
                 07572 701 349
               </a>
               <br />
               <a
                 href="tel:01582354119"
-                className="hover:text-ink-light transition-colors"
+                className="interactive-lift hover:text-ink-light transition-colors"
               >
                 01582 354 119
               </a>
               <br />
               <a
                 href="mailto:admin@horizon-careservices.co.uk"
-                className="hover:text-ink-light transition-colors"
+                className="interactive-lift hover:text-ink-light transition-colors"
               >
                 admin@horizon-careservices.co.uk
               </a>
@@ -68,7 +68,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-ink-muted-light text-[14px] hover:text-ink-light transition-colors"
+                    className="interactive-lift text-ink-muted-light text-[14px] hover:text-ink-light transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -86,7 +86,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-ink-muted-light text-[14px] hover:text-ink-light transition-colors"
+                    className="interactive-lift text-ink-muted-light text-[14px] hover:text-ink-light transition-colors"
                   >
                     {link.label}
                   </Link>

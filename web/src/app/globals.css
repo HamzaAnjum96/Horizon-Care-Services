@@ -91,6 +91,16 @@ body {
   }
 }
 
+  .interactive-lift {
+    @apply transition-transform transition-shadow duration-300;
+  }
+
+  .interactive-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -18px color-mix(in oklab, var(--deep) 70%, transparent);
+  }
+
+
 /* ─── Marquee ─────────────────────────────────────────── */
 .marquee-track {
   display: flex;
@@ -105,4 +115,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
+
+  .interactive-lift,
+  .interactive-lift:hover {
+    transform: none;
+    box-shadow: none;
+    transition-duration: 0.01ms !important;
+  }
 }

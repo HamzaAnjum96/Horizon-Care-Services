@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
 const services = [
   {
@@ -69,8 +70,8 @@ export function ServicesSection() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5 }}
+          viewport={IN_VIEW}
+          transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-dark mb-4"
         >
           What we provide
@@ -116,8 +117,8 @@ function ServiceRow({
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ delay: index * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      viewport={IN_VIEW}
+      transition={{ delay: index * 0.06, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
       className="border-t border-rule-light last:border-b"
     >
       <div
@@ -134,7 +135,7 @@ function ServiceRow({
             {service.num}
           </span>
           <h3
-                className="font-display text-ink-dark group-hover:text-forest transition-colors truncate"
+                className="font-display text-ink-dark group-hover:text-forest interactive-lift transition-colors truncate"
                 style={{
                   fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
                   fontVariationSettings: '"opsz" 24, "wght" 560',
@@ -165,7 +166,7 @@ function ServiceRow({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
             className="overflow-hidden"
           >
             <div className="pb-8 grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-16">
@@ -183,7 +184,7 @@ function ServiceRow({
               <Link
                 href={service.href}
                 onClick={(e) => e.stopPropagation()}
-                className="self-end inline-flex items-center gap-2 text-forest text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
+                className="interactive-lift self-end inline-flex items-center gap-2 text-forest text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
               >
                 Full details <ArrowUpRight size={13} />
               </Link>

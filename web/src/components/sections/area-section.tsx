@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
-const ease = [0.16, 1, 0.3, 1] as const
 
 const areas = [
   { name: 'Bedfordshire',    wght: 400, size: 'clamp(1.5rem, 3vw, 2rem)',       opsz: 24 },
@@ -22,8 +22,8 @@ export function AreaSection() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5, ease }}
+            viewport={IN_VIEW}
+            transition={{ duration: MOTION_DURATIONS.base, EASE_OUT_EXPO }}
           >
             <p className="section-kicker text-ink-muted-light mb-7">
               Coverage
@@ -50,8 +50,8 @@ export function AreaSection() {
                 key={area.name}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ delay: i * 0.07, duration: 0.5, ease }}
+                viewport={IN_VIEW}
+                transition={{ delay: i * 0.07, duration: MOTION_DURATIONS.base, EASE_OUT_EXPO }}
                 className="font-display text-ink-light tracking-[-0.025em]"
                 style={{
                   fontSize: area.size,

@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
-const ease = [0.16, 1, 0.3, 1] as const
 
 const stats = [
   { value: '6', label: 'Service areas across England' },
@@ -20,8 +20,8 @@ export function StatsBand() {
               key={stat.label}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ delay: i * 0.1, duration: 0.5, ease }}
+              viewport={IN_VIEW}
+              transition={{ delay: i * 0.1, duration: MOTION_DURATIONS.base, EASE_OUT_EXPO }}
               className="flex flex-col gap-3 py-10 md:py-0 md:px-12 first:md:pl-0 last:md:pr-0"
             >
               <p
