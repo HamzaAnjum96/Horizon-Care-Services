@@ -20,12 +20,12 @@ export function HeroSection() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section className="relative bg-cream flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-light">
+    <section className="relative bg-deep flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-dark">
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-blob-a" />
         <div className="hero-blob-b" />
         <div className="hero-dot-grid" />
-        <HCSLogoMark className="absolute right-[-6%] top-1/2 -translate-y-[42%] w-[min(44vw,36rem)] text-forest opacity-[0.055] hidden lg:block pointer-events-none select-none z-[2]" />
+        <HCSLogoMark className="absolute right-[-6%] top-1/2 -translate-y-[42%] w-[min(44vw,36rem)] text-ink-light opacity-[0.06] hidden lg:block pointer-events-none select-none z-[2]" />
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full pt-14 pb-12 lg:pt-18 lg:pb-16">
@@ -33,13 +33,13 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-          className="section-kicker text-ink-muted-dark mb-6"
+          className="section-kicker text-ink-muted-light mb-6"
         >
           Trusted care across England
         </motion.p>
 
         <h1
-          className="font-display text-ink-dark leading-[0.94] tracking-[-0.03em] mb-7 lg:mb-8"
+          className="font-display text-ink-light leading-[0.94] tracking-[-0.03em] mb-7 lg:mb-8"
           style={{
             fontSize: 'clamp(2.4rem, 5.6vw, 4.6rem)',
             fontVariationSettings: '"opsz" 64, "wght" 620',
@@ -65,7 +65,7 @@ export function HeroSection() {
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 lg:gap-16"
         >
           <p
-            className="text-ink-muted-dark leading-relaxed max-w-[46ch]"
+            className="text-ink-muted-light leading-relaxed max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
             Supported accommodation, home care, and specialist support across
@@ -75,9 +75,9 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">
             <Link
               href="/services"
-              className="group interactive-lift flex items-center gap-3 text-ink-dark text-[13px] font-semibold tracking-[0.08em] uppercase"
+              className="group interactive-lift flex items-center gap-3 text-ink-light text-[13px] font-semibold tracking-[0.08em] uppercase"
             >
-              <span className="h-px bg-ink-dark/60 w-6 group-hover:w-10 transition-all duration-300" />
+              <span className="h-px bg-ink-light/50 w-6 group-hover:w-10 transition-all duration-300" />
               View Services
             </Link>
             <Link
@@ -94,14 +94,14 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.85, duration: MOTION_DURATIONS.base }}
-        className="relative border-t border-rule-light overflow-hidden py-3.5"
+        className="relative border-t border-rule-dark overflow-hidden py-3.5"
         aria-label="Service areas"
       >
         <div className="marquee-track" aria-hidden="true">
           {[0, 1, 2, 3].map((i) => (
             <span
               key={i}
-              className="text-ink-muted-dark text-[11px] font-medium tracking-[0.14em] uppercase flex-shrink-0 px-6"
+              className="text-ink-muted-light text-[11px] font-medium tracking-[0.14em] uppercase flex-shrink-0 px-6"
             >
               {marqueeText}
             </span>

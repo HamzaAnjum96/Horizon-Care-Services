@@ -20,7 +20,7 @@
   --amber:             oklch(74% 0.124 78);
   --amber-dim:         oklch(86% 0.066 82);
 
-  --rule-dark:         oklch(26% 0.08 24);
+  --rule-dark:         oklch(97% 0.005 56 / 0.14);
   --rule-light:        oklch(88% 0.01 52);
 }
 
@@ -115,7 +115,7 @@ body {
   inset: 0;
   background-image: radial-gradient(
     circle,
-    oklch(16% 0.04 22 / 0.052) 1px,
+    oklch(97% 0.005 56 / 0.07) 1px,
     transparent 1px
   );
   background-size: 28px 28px;
@@ -124,25 +124,25 @@ body {
 
 .hero-blob-a {
   position: absolute;
-  top: -35%;
-  right: -14%;
-  width: 58%;
+  top: -30%;
+  right: -12%;
+  width: 55%;
   aspect-ratio: 1;
   border-radius: 9999px;
-  background: color-mix(in oklab, var(--moss-soft) 80%, transparent);
-  filter: blur(80px);
+  background: oklch(28% 0.14 24);
+  filter: blur(90px);
   animation: hero-drift-a 20s ease-in-out infinite alternate;
 }
 
 .hero-blob-b {
   position: absolute;
-  bottom: -15%;
+  bottom: -18%;
   left: -10%;
-  width: 44%;
+  width: 42%;
   aspect-ratio: 1;
   border-radius: 9999px;
-  background: color-mix(in oklab, var(--amber-dim) 34%, transparent);
-  filter: blur(72px);
+  background: color-mix(in oklab, var(--amber) 28%, transparent);
+  filter: blur(80px);
   animation: hero-drift-b 26s ease-in-out infinite alternate;
 }
 
@@ -159,6 +159,24 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-blob-a,
   .hero-blob-b { animation: none; }
+}
+
+/* ─── Footer texture ────────────────────────────────────── */
+.footer-texture {
+  position: relative;
+}
+
+.footer-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    oklch(97% 0.005 56 / 0.055) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  pointer-events: none;
 }
 
 /* ─── Marquee ─────────────────────────────────────────── */
