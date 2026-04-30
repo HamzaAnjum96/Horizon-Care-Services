@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { HCSLogoMark } from '@/components/hcs-logo'
 
 const serviceLinks = [
   { href: '/services/supported-accommodation', label: 'Supported Accommodation' },
@@ -22,12 +23,15 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-16 lg:pt-20 pb-8">
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 lg:gap-16 mb-14">
           <div>
-            <p
-              className="font-display text-ink-light text-[16px] mb-4"
-              style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
-            >
-              Horizon Care Services
-            </p>
+            <div className="flex items-center gap-3 mb-5">
+              <HCSLogoMark className="h-[26px] w-[26px] flex-shrink-0 text-ink-muted-light" />
+              <p
+                className="font-display text-ink-light text-[16px]"
+                style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
+              >
+                Horizon Care Services
+              </p>
+            </div>
             <p className="text-ink-muted-light text-[14px] mb-5 leading-relaxed max-w-[30ch]">
               Professional health and social care with a calm, personal approach.
             </p>

@@ -3,14 +3,13 @@
 import { motion } from 'framer-motion'
 import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
-
 const areas = [
-  { name: 'Bedfordshire',    wght: 400, size: 'clamp(1.5rem, 3vw, 2rem)',       opsz: 24 },
-  { name: 'Buckinghamshire', wght: 600, size: 'clamp(2rem, 4vw, 2.75rem)',      opsz: 32 },
-  { name: 'Cambridgeshire',  wght: 400, size: 'clamp(1.3rem, 2.5vw, 1.75rem)', opsz: 20 },
-  { name: 'Hertfordshire',   wght: 700, size: 'clamp(2.25rem, 4.5vw, 3.25rem)', opsz: 40 },
-  { name: 'Manchester',      wght: 500, size: 'clamp(1.75rem, 3.5vw, 2.5rem)', opsz: 28 },
-  { name: 'London',          wght: 600, size: 'clamp(2.75rem, 5.5vw, 4rem)',   opsz: 48 },
+  'Bedfordshire',
+  'Buckinghamshire',
+  'Cambridgeshire',
+  'Hertfordshire',
+  'Manchester',
+  'London',
 ]
 
 export function AreaSection() {
@@ -44,24 +43,32 @@ export function AreaSection() {
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <div>
             {areas.map((area, i) => (
-              <motion.span
-                key={area.name}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
+              <motion.div
+                key={area}
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={IN_VIEW}
                 transition={{ delay: i * 0.07, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-                className="font-display text-ink-light tracking-[-0.025em]"
-                style={{
-                  fontSize: area.size,
-                  fontVariationSettings: `"opsz" ${area.opsz}, "wght" ${area.wght}`,
-                }}
+                className="flex items-center justify-between py-[1.1rem] border-b border-ink-light/15 first:border-t first:border-ink-light/15"
               >
-                {area.name}
-              </motion.span>
+                <span
+                  className="font-display text-ink-light leading-tight tracking-[-0.02em]"
+                  style={{
+                    fontSize: 'clamp(1.35rem, 2.4vw, 2rem)',
+                    fontVariationSettings: '"opsz" 22, "wght" 480',
+                  }}
+                >
+                  {area}
+                </span>
+                <span className="text-ink-muted-light text-[11px] font-medium tracking-[0.12em] tabular-nums">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </motion.div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
