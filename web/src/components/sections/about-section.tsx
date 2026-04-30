@@ -8,6 +8,15 @@ export function AboutSection() {
   return (
     <section className="bg-cream-dim py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={IN_VIEW}
+          transition={{ duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+          style={{ originX: 0 }}
+          className="w-10 h-[2px] bg-amber mb-6"
+        />
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -2,12 +2,15 @@
 
 /* ─── Tokens ─────────────────────────────────────────── */
 :root {
-  /* Surfaces — near-black red → rich crimson → warm off-white */
-  --deep:              oklch(13% 0.05 22);
-  --forest:            oklch(28% 0.14 24);
-  --forest-mid:        oklch(40% 0.13 24);
+  /* Surfaces — near-black charcoal → dark charcoal → warm off-white */
+  --deep:              oklch(12% 0.008 50);
+  --forest:            oklch(20% 0.012 50);
+  --forest-mid:        oklch(34% 0.015 50);
   --cream:             oklch(97% 0.006 52);
   --cream-dim:         oklch(93% 0.009 50);
+
+  /* Brand crimson — logo mark only, not for backgrounds */
+  --brand:             oklch(29% 0.14 24);
 
   --ink-dark:          oklch(16% 0.04 22);
   --ink-light:         oklch(97% 0.005 56);
@@ -44,6 +47,7 @@
 
   --color-rule-dark:        var(--rule-dark);
   --color-rule-light:       var(--rule-light);
+  --color-brand:            var(--brand);
 
   --font-display: var(--font-source-serif);
   --font-body:    var(--font-bricolage);
@@ -113,37 +117,37 @@ body {
 .hero-dot-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-    circle,
-    oklch(97% 0.005 56 / 0.07) 1px,
-    transparent 1px
-  );
-  background-size: 28px 28px;
+  background-image:
+    linear-gradient(oklch(97% 0.005 56 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(97% 0.005 56 / 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
   z-index: 1;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 100%);
 }
 
 .hero-blob-a {
   position: absolute;
-  top: -30%;
-  right: -12%;
-  width: 55%;
+  top: -28%;
+  right: -10%;
+  width: 52%;
   aspect-ratio: 1;
   border-radius: 9999px;
-  background: oklch(28% 0.14 24);
-  filter: blur(90px);
-  animation: hero-drift-a 20s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 40% 40%, oklch(34% 0.16 24) 0%, oklch(22% 0.10 24) 60%, transparent 100%);
+  filter: blur(70px);
+  animation: hero-drift-a 22s ease-in-out infinite alternate;
 }
 
 .hero-blob-b {
   position: absolute;
-  bottom: -18%;
-  left: -10%;
-  width: 42%;
+  bottom: -20%;
+  left: -8%;
+  width: 40%;
   aspect-ratio: 1;
   border-radius: 9999px;
-  background: color-mix(in oklab, var(--amber) 28%, transparent);
-  filter: blur(80px);
-  animation: hero-drift-b 26s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 55% 55%, oklch(66% 0.15 78) 0%, oklch(50% 0.10 70) 50%, transparent 100%);
+  filter: blur(85px);
+  animation: hero-drift-b 28s ease-in-out infinite alternate;
 }
 
 @keyframes hero-drift-a {
@@ -170,13 +174,13 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-    circle,
-    oklch(97% 0.005 56 / 0.055) 1px,
-    transparent 1px
-  );
-  background-size: 24px 24px;
+  background-image:
+    linear-gradient(oklch(97% 0.005 56 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(97% 0.005 56 / 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
   pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
 }
 
 /* ─── Marquee ─────────────────────────────────────────── */
