@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
+import { HCSLogoMark } from '@/components/hcs-logo'
 
 const AREAS = [
   'Bedfordshire',
@@ -20,9 +21,10 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[76vh] lg:min-h-[82vh] bg-cream flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-light">
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
         <div className="absolute -top-24 -right-20 h-[22rem] w-[22rem] rounded-full bg-moss-soft/30 blur-3xl" />
         <div className="absolute bottom-10 -left-20 h-[18rem] w-[18rem] rounded-full bg-sky-soft/35 blur-3xl" />
+        <HCSLogoMark className="absolute right-[-6%] top-1/2 -translate-y-[42%] w-[min(44vw,36rem)] text-forest opacity-[0.055] hidden lg:block" />
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full py-14 lg:py-16">

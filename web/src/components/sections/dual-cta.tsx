@@ -73,7 +73,7 @@ export function DualCTA() {
             <div>
               <Link
                 href="/work-for-us"
-                className="interactive-lift inline-flex items-center gap-2 border border-rule-dark text-ink-light px-6 py-3 rounded text-[14px] font-semibold hover:border-ink-muted-light transition-colors"
+                className="interactive-lift inline-flex items-center gap-2 border border-ink-muted-light/30 text-ink-light px-6 py-3 rounded text-[14px] font-semibold hover:border-ink-muted-light/70 transition-colors"
               >
                 View opportunities <ArrowUpRight size={14} />
               </Link>
