@@ -14,7 +14,7 @@ const areas = [
 
 export function AreaSection() {
   return (
-    <section className="bg-forest py-24 lg:py-32">
+    <section className="bg-deep py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-[2fr_3fr] gap-14 lg:gap-24 items-start">
 

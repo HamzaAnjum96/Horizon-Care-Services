@@ -45,7 +45,7 @@ export function Nav() {
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-10 h-14 lg:h-16 flex items-center justify-between gap-3">
           <Link href="/" className="inline-flex items-center gap-2.5 min-w-0">
-            <HCSLogoMark className={cn('h-[28px] w-[28px] lg:h-[30px] lg:w-[30px] flex-shrink-0 transition-colors duration-200', scrolled ? 'text-forest' : 'text-ink-light')} />
+            <HCSLogoMark className={cn('h-[28px] w-[28px] lg:h-[30px] lg:w-[30px] flex-shrink-0 transition-colors duration-200', scrolled ? 'text-brand' : 'text-ink-light')} />
             <span
               className={cn('font-display text-[14px] sm:text-[15px] lg:text-[16px] font-semibold leading-none tracking-[-0.01em] truncate transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
               style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}

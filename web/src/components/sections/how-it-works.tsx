@@ -59,7 +59,7 @@ export function HowItWorks() {
               className="pt-8 pb-10 pr-8 border-r border-rule-light last:border-r-0 max-md:border-r-0 max-md:border-b max-md:last:border-b-0"
             >
               <p
-                className="font-display text-forest mb-6 leading-none tracking-[-0.02em]"
+                className="font-display text-amber mb-6 leading-none tracking-[-0.02em]"
                 style={{
                   fontSize: 'clamp(2rem, 3.5vw, 3rem)',
                   fontVariationSettings: '"opsz" 36, "wght" 520',
@@ -70,8 +70,8 @@ export function HowItWorks() {
               <h3
                 className="font-display text-ink-dark mb-3 leading-tight"
                 style={{
-                  fontSize: 'clamp(1.1rem, 1.6vw, 1.35rem)',
-                  fontVariationSettings: '"opsz" 16, "wght" 600',
+                  fontSize: 'clamp(1.15rem, 1.8vw, 1.45rem)',
+                  fontVariationSettings: '"opsz" 18, "wght" 620',
                 }}
               >
                 {step.title}

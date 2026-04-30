@@ -25,7 +25,7 @@ export function StatsBand() {
               className="flex flex-col gap-3 py-10 md:py-0 md:px-12 first:md:pl-0 last:md:pr-0"
             >
               <p
-                className="font-display text-forest leading-[1.0] whitespace-pre-line tracking-[-0.03em]"
+                className="font-display text-amber leading-[1.0] whitespace-pre-line tracking-[-0.03em]"
                 style={{
                   fontSize: 'clamp(2.4rem, 4.2vw, 3.8rem)',
                   fontVariationSettings: '"opsz" 48, "wght" 620',

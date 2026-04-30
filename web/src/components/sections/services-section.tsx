@@ -125,7 +125,7 @@ function ServiceRow({
         type="button"
         onClick={onToggle}
         aria-expanded={isExpanded}
-        className="flex w-full items-center justify-between py-7 lg:py-8 cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/35 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
+        className="flex w-full items-center justify-between py-7 lg:py-8 cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
       >
         {/* Left: ref number + name */}
         <div className="flex items-baseline gap-5 lg:gap-8 min-w-0">
@@ -133,7 +133,7 @@ function ServiceRow({
             {service.num}
           </span>
               <h3
-                className="font-display text-ink-dark group-hover:text-forest interactive-lift transition-colors"
+                className="font-display text-ink-dark group-hover:text-ink-dark interactive-lift transition-colors"
                 style={{
                   fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
                   fontVariationSettings: '"opsz" 24, "wght" 560',
@@ -150,8 +150,8 @@ function ServiceRow({
           </span>
           <ArrowUpRight
             size={18}
-            className={`text-ink-muted-dark transition-all duration-300 ${
-              isExpanded ? 'rotate-90 text-forest' : 'group-hover:rotate-12'
+            className={`transition-all duration-300 ${
+              isExpanded ? 'rotate-90 text-amber' : 'text-ink-muted-dark group-hover:rotate-12 group-hover:text-ink-dark'
             }`}
           />
         </div>
@@ -182,7 +182,7 @@ function ServiceRow({
               <Link
                 href={service.href}
                 onClick={(e) => e.stopPropagation()}
-                className="interactive-lift self-end inline-flex items-center gap-2 text-forest text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
+                className="interactive-lift self-end inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
               >
                 Full details <ArrowUpRight size={13} />
               </Link>
