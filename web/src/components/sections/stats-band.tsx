@@ -21,7 +21,7 @@ export function StatsBand() {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={IN_VIEW}
-              transition={{ delay: i * 0.1, duration: MOTION_DURATIONS.base, EASE_OUT_EXPO }}
+              transition={{ delay: i * 0.1, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
               className="flex flex-col gap-3 py-10 md:py-0 md:px-12 first:md:pl-0 last:md:pr-0"
             >
               <p
