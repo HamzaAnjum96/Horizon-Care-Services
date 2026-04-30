@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
+import { HCSLogoMark } from '@/components/hcs-logo'
 import { motion, AnimatePresence } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 import { cn } from '@/lib/utils'
@@ -30,20 +30,13 @@ export function Nav() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-200',
           scrolled
-            ? 'border-b border-rule-light/80 bg-cream/94 backdrop-blur-md shadow-[0_8px_28px_-22px_oklch(28%_0.04_160)]'
+            ? 'border-b border-rule-light/80 bg-cream/94 backdrop-blur-md shadow-[0_8px_28px_-22px_oklch(13%_0.06_24)]'
             : 'border-b border-transparent bg-transparent',
         )}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between gap-4">
           <Link href="/" className="inline-flex items-center gap-3 min-w-0">
-            <Image
-              src="/hcs-logo.svg"
-              alt="Horizon Care Services logo"
-              width={34}
-              height={34}
-              className="h-[34px] w-[34px]"
-              priority
-            />
+            <HCSLogoMark className="h-[32px] w-[32px] flex-shrink-0 text-forest" />
             <span
               className="font-display text-ink-dark text-[15px] sm:text-[16px] font-semibold leading-none tracking-[-0.01em] truncate"
               style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
@@ -98,12 +91,15 @@ export function Nav() {
             className="fixed inset-0 z-[60] bg-deep flex flex-col"
           >
             <div className="flex justify-between items-center px-6 h-16 border-b border-rule-dark">
-              <span
-                className="font-display text-ink-light text-[16px] font-semibold"
-                style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
-              >
-                Horizon Care Services
-              </span>
+              <div className="flex items-center gap-3">
+                <HCSLogoMark className="h-[28px] w-[28px] flex-shrink-0 text-ink-light" />
+                <span
+                  className="font-display text-ink-light text-[16px] font-semibold"
+                  style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
+                >
+                  Horizon Care Services
+                </span>
+              </div>
               <button
                 onClick={() => setMobileOpen(false)}
                 className="text-ink-light p-1.5 -mr-1"
@@ -129,7 +125,7 @@ export function Nav() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="interactive-lift font-display text-ink-light text-[2.2rem] font-semibold leading-tight hover:text-moss-soft transition-colors"
+                      className="interactive-lift font-display text-ink-light text-[2.2rem] font-semibold leading-tight hover:text-amber transition-colors"
                       style={{ fontVariationSettings: '"opsz" 36, "wght" 600' }}
                     >
                       {link.label}
