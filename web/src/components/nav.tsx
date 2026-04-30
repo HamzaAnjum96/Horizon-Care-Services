@@ -45,9 +45,9 @@ export function Nav() {
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-10 h-14 lg:h-16 flex items-center justify-between gap-3">
           <Link href="/" className="inline-flex items-center gap-2.5 min-w-0">
-            <HCSLogoMark className="h-[28px] w-[28px] lg:h-[30px] lg:w-[30px] flex-shrink-0 text-forest" />
+            <HCSLogoMark className={cn('h-[28px] w-[28px] lg:h-[30px] lg:w-[30px] flex-shrink-0 transition-colors duration-200', scrolled ? 'text-forest' : 'text-ink-light')} />
             <span
-              className="font-display text-ink-dark text-[14px] sm:text-[15px] lg:text-[16px] font-semibold leading-none tracking-[-0.01em] truncate"
+              className={cn('font-display text-[14px] sm:text-[15px] lg:text-[16px] font-semibold leading-none tracking-[-0.01em] truncate transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
               style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
             >
               Horizon Care Services
@@ -59,7 +59,7 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-[0.04em]"
+                className={cn('text-[13px] font-medium transition-colors tracking-[0.04em]', scrolled ? 'text-ink-muted-dark hover:text-ink-dark' : 'text-ink-muted-light hover:text-ink-light')}
               >
                 {link.label}
               </Link>
@@ -69,7 +69,7 @@ export function Nav() {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden md:block text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-wide"
+              className={cn('hidden md:block text-[13px] font-medium transition-colors tracking-wide', scrolled ? 'text-ink-muted-dark hover:text-ink-dark' : 'text-ink-muted-light hover:text-ink-light')}
             >
               Contact
             </Link>
@@ -89,7 +89,7 @@ export function Nav() {
             </Link>
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-1.5 -mr-1 text-ink-dark"
+              className={cn('md:hidden p-1.5 -mr-1 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
               aria-label="Open menu"
             >
               <Menu size={20} />
