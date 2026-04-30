@@ -24,6 +24,15 @@ export function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
   return (
     <>
       <header
@@ -34,18 +43,18 @@ export function Nav() {
             : 'border-b border-transparent bg-transparent',
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between gap-4">
-          <Link href="/" className="inline-flex items-center gap-3 min-w-0">
-            <HCSLogoMark className="h-[32px] w-[32px] flex-shrink-0 text-forest" />
+        <div className="max-w-7xl mx-auto px-5 lg:px-10 h-14 lg:h-16 flex items-center justify-between gap-3">
+          <Link href="/" className="inline-flex items-center gap-2.5 min-w-0">
+            <HCSLogoMark className="h-[28px] w-[28px] lg:h-[30px] lg:w-[30px] flex-shrink-0 text-forest" />
             <span
-              className="font-display text-ink-dark text-[15px] sm:text-[16px] font-semibold leading-none tracking-[-0.01em] truncate"
+              className="font-display text-ink-dark text-[14px] sm:text-[15px] lg:text-[16px] font-semibold leading-none tracking-[-0.01em] truncate"
               style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
             >
               Horizon Care Services
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8" aria-label="Main">
+          <nav className="hidden md:flex items-center gap-7" aria-label="Main">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -57,7 +66,7 @@ export function Nav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3">
             <Link
               href="/contact"
               className="hidden md:block text-[13px] font-medium text-ink-muted-dark hover:text-ink-dark transition-colors tracking-wide"
@@ -70,12 +79,20 @@ export function Nav() {
             >
               Make a Referral
             </Link>
+
+            {/* Mobile: compact referral pill + hamburger */}
+            <Link
+              href="/referrals"
+              className="md:hidden text-[12px] font-semibold bg-amber text-deep px-3 py-1.5 rounded-md tracking-[0.02em] leading-none"
+            >
+              Refer
+            </Link>
             <button
               onClick={() => setMobileOpen(true)}
               className="md:hidden p-1.5 -mr-1 text-ink-dark"
               aria-label="Open menu"
             >
-              <Menu size={22} />
+              <Menu size={20} />
             </button>
           </div>
         </div>
@@ -84,17 +101,18 @@ export function Nav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: MOTION_DURATIONS.fast, ease: EASE_OUT_EXPO }}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
             className="fixed inset-0 z-[60] bg-deep flex flex-col"
           >
-            <div className="flex justify-between items-center px-6 h-16 border-b border-rule-dark">
-              <div className="flex items-center gap-3">
-                <HCSLogoMark className="h-[28px] w-[28px] flex-shrink-0 text-ink-light" />
+            {/* Mobile menu header */}
+            <div className="flex justify-between items-center px-5 h-14 border-b border-rule-dark flex-shrink-0">
+              <div className="flex items-center gap-2.5">
+                <HCSLogoMark className="h-[26px] w-[26px] flex-shrink-0 text-ink-light" />
                 <span
-                  className="font-display text-ink-light text-[16px] font-semibold"
+                  className="font-display text-ink-light text-[15px] font-semibold"
                   style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}
                 >
                   Horizon Care Services
@@ -105,41 +123,42 @@ export function Nav() {
                 className="text-ink-light p-1.5 -mr-1"
                 aria-label="Close menu"
               >
-                <X size={22} />
+                <X size={20} />
               </button>
             </div>
 
-            <nav className="flex flex-col px-6 py-12 gap-6" aria-label="Mobile">
-              {[...navLinks, { href: '/contact', label: 'Contact' }].map(
-                (link, i) => (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: i * 0.06,
-                      duration: MOTION_DURATIONS.base,
-                      ease: EASE_OUT_EXPO,
-                    }}
+            {/* Nav links */}
+            <nav className="flex flex-col flex-1 overflow-y-auto" aria-label="Mobile">
+              {[...navLinks, { href: '/contact', label: 'Contact' }].map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: 0.06 + i * 0.06,
+                    duration: MOTION_DURATIONS.base,
+                    ease: EASE_OUT_EXPO,
+                  }}
+                  className="border-b border-rule-dark"
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center px-5 py-5 font-display text-ink-light text-[1.6rem] font-semibold leading-none tracking-[-0.02em] hover:text-amber transition-colors"
+                    style={{ fontVariationSettings: '"opsz" 28, "wght" 580' }}
                   >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="interactive-lift font-display text-ink-light text-[2.2rem] font-semibold leading-tight hover:text-amber transition-colors"
-                      style={{ fontVariationSettings: '"opsz" 36, "wght" 600' }}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                ),
-              )}
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
             </nav>
 
-            <div className="px-6 pb-12 mt-auto">
+            {/* Bottom CTA */}
+            <div className="px-5 pb-8 pt-5 flex-shrink-0">
               <Link
                 href="/referrals"
                 onClick={() => setMobileOpen(false)}
-                className="interactive-lift block bg-moss text-ink-light text-center font-semibold px-6 py-4 rounded text-lg"
+                className="interactive-lift block bg-amber text-deep text-center font-semibold px-6 py-4 rounded-md text-[15px] tracking-[0.01em]"
               >
                 Make a Referral
               </Link>

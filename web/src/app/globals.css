@@ -102,6 +102,65 @@ body {
   }
 
 
+/* ─── Hero texture & animated blobs ────────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    oklch(16% 0.04 22 / 0.052) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  z-index: 1;
+}
+
+.hero-blob-a {
+  position: absolute;
+  top: -35%;
+  right: -14%;
+  width: 58%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--moss-soft) 80%, transparent);
+  filter: blur(80px);
+  animation: hero-drift-a 20s ease-in-out infinite alternate;
+}
+
+.hero-blob-b {
+  position: absolute;
+  bottom: -15%;
+  left: -10%;
+  width: 44%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--amber-dim) 34%, transparent);
+  filter: blur(72px);
+  animation: hero-drift-b 26s ease-in-out infinite alternate;
+}
+
+@keyframes hero-drift-a {
+  from { transform: translate(0, 0) scale(1);    opacity: 0.8; }
+  to   { transform: translate(-5%, 7%) scale(1.07); opacity: 1; }
+}
+
+@keyframes hero-drift-b {
+  from { transform: translate(0, 0) scale(1);    opacity: 0.6; }
+  to   { transform: translate(6%, -5%) scale(1.1); opacity: 0.85; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob-a,
+  .hero-blob-b { animation: none; }
+}
+
 /* ─── Marquee ─────────────────────────────────────────── */
 .marquee-track {
   display: flex;
