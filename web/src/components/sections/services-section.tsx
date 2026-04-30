@@ -121,21 +121,19 @@ function ServiceRow({
       transition={{ delay: index * 0.06, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
       className="border-t border-rule-light last:border-b"
     >
-      <div
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
         onClick={onToggle}
-        onKeyDown={(e) => e.key === 'Enter' && onToggle()}
         aria-expanded={isExpanded}
-        className="flex items-center justify-between py-7 lg:py-8 cursor-pointer group outline-none"
+        className="flex w-full items-center justify-between py-7 lg:py-8 cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest/35 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
       >
         {/* Left: ref number + name */}
         <div className="flex items-baseline gap-5 lg:gap-8 min-w-0">
           <span className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark flex-shrink-0 hidden sm:block">
             {service.num}
           </span>
-          <h3
-                className="font-display text-ink-dark group-hover:text-forest interactive-lift transition-colors truncate"
+              <h3
+                className="font-display text-ink-dark group-hover:text-forest interactive-lift transition-colors"
                 style={{
                   fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
                   fontVariationSettings: '"opsz" 24, "wght" 560',
@@ -157,7 +155,7 @@ function ServiceRow({
             }`}
           />
         </div>
-      </div>
+      </button>
 
       {/* Expandable detail */}
       <AnimatePresence>
@@ -170,7 +168,7 @@ function ServiceRow({
             className="overflow-hidden"
           >
             <div className="pb-8 grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-16">
-              <ul className="space-y-2 pl-0 sm:pl-[calc(11px*5+2rem)]">
+              <ul className="space-y-2 pl-0 sm:pl-[calc(11px*5+2rem)] max-w-[72ch]">
                 {service.points.map((pt) => (
                   <li
                     key={pt}
