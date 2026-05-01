@@ -17,7 +17,7 @@ export function DualCTA() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={IN_VIEW}
-            transition={{ duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+            transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
             className="flex flex-col pb-12 md:pb-0 md:pr-14 lg:pr-20"
           >
             <p className="section-kicker text-ink-muted-light mb-8">
@@ -51,7 +51,7 @@ export function DualCTA() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={IN_VIEW}
-            transition={{ delay: 0.1, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+            transition={{ delay: 0.1, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
             className="flex flex-col pt-12 md:pt-0 md:pl-14 lg:pl-20"
           >
             <p className="section-kicker text-ink-muted-light mb-8">

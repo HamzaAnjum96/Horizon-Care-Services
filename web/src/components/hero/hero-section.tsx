@@ -129,7 +129,7 @@ export function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
+          transition={{ delay: 0.06, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-light mb-6"
         >
           Registered health &amp; social care · England
@@ -147,7 +147,7 @@ export function HeroSection() {
               key={i}
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.18 + i * 0.05, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+              transition={{ delay: 0.12 + i * 0.035, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
               className="inline-block mr-[0.2em] last:mr-0"
             >
               {word}
@@ -158,7 +158,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.56, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+          transition={{ delay: 0.34, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 lg:gap-16"
         >
           <p
@@ -190,7 +190,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.85, duration: MOTION_DURATIONS.base }}
+        transition={{ delay: 0.55, duration: MOTION_DURATIONS.base }}
         className="relative border-t border-rule-dark overflow-hidden py-3.5"
         aria-label="Service areas"
       >
