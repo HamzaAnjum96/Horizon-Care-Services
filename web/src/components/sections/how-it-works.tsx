@@ -18,7 +18,7 @@ const steps = [
   {
     num: '03',
     title: 'Placement',
-    desc: 'The right service is matched to the person — accommodation, home care, staffing, or a specialist pathway.',
+    desc: 'The right service is matched to the person: accommodation, home care, staffing, or a specialist pathway.',
   },
   {
     num: '04',
@@ -29,7 +29,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="bg-cream-dim py-24 lg:py-32">
+    <section className="bg-cream py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         <motion.p
@@ -56,7 +56,7 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={IN_VIEW}
               transition={{ delay: i * 0.08, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-              className="pt-8 pb-10 pr-8 border-r border-rule-light last:border-r-0 max-md:border-r-0 max-md:border-b max-md:last:border-b-0"
+              className="pt-8 pb-10 px-8 first:pl-0 last:pr-0 border-r border-rule-light last:border-r-0 max-md:border-r-0 max-md:px-0 max-md:border-b max-md:last:border-b-0 max-md:pb-8"
             >
               <p
                 className="font-display text-amber mb-6 leading-none tracking-[-0.02em]"

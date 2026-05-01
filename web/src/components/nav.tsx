@@ -80,16 +80,9 @@ export function Nav() {
               Make a Referral
             </Link>
 
-            {/* Mobile: compact referral pill + hamburger */}
-            <Link
-              href="/referrals"
-              className="md:hidden text-[12px] font-semibold bg-amber text-deep px-3 py-1.5 rounded-md tracking-[0.02em] leading-none"
-            >
-              Refer
-            </Link>
             <button
               onClick={() => setMobileOpen(true)}
-              className={cn('md:hidden p-1.5 -mr-1 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
+              className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
               aria-label="Open menu"
             >
               <Menu size={20} />
