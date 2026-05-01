@@ -1,10 +1,5 @@
-'use client'
-
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
-
 
 export function DualCTA() {
   return (
@@ -12,14 +7,7 @@ export function DualCTA() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-rule-dark">
 
-          {/* Referrers */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={IN_VIEW}
-            transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-            className="flex flex-col pb-12 md:pb-0 md:pr-14 lg:pr-20"
-          >
+          <div className="flex flex-col pb-12 md:pb-0 md:pr-14 lg:pr-20">
             <p className="section-kicker text-ink-muted-light mb-8">
               Referrers
             </p>
@@ -44,16 +32,9 @@ export function DualCTA() {
                 Start a referral <ArrowUpRight size={14} />
               </Link>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Professionals */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={IN_VIEW}
-            transition={{ delay: 0.1, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-            className="flex flex-col pt-12 md:pt-0 md:pl-14 lg:pl-20"
-          >
+          <div className="flex flex-col pt-12 md:pt-0 md:pl-14 lg:pl-20">
             <p className="section-kicker text-ink-muted-light mb-8">
               Care professionals
             </p>
@@ -78,7 +59,8 @@ export function DualCTA() {
                 View opportunities <ArrowUpRight size={14} />
               </Link>
             </div>
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

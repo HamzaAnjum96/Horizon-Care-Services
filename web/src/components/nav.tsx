@@ -122,18 +122,8 @@ export function Nav() {
 
             {/* Nav links */}
             <nav className="flex flex-col flex-1 overflow-y-auto" aria-label="Mobile">
-              {[...navLinks, { href: '/contact', label: 'Contact' }].map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: i * 0.04,
-                    duration: MOTION_DURATIONS.base,
-                    ease: EASE_OUT_EXPO,
-                  }}
-                  className="border-b border-rule-dark"
-                >
+              {[...navLinks, { href: '/contact', label: 'Contact' }].map((link) => (
+                <div key={link.href} className="border-b border-rule-dark">
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
@@ -142,7 +132,7 @@ export function Nav() {
                   >
                     {link.label}
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </nav>
 
