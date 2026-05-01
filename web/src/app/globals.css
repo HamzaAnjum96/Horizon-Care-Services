@@ -145,6 +145,53 @@ body {
   .hero-pulse { animation: none; opacity: 0.7; }
 }
 
+/* ─── Hero ring decoration ──────────────────────────────── */
+.hero-ring-outer {
+  opacity: 0.06;
+  animation: hero-ring-breathe 14s ease-in-out infinite;
+}
+
+.hero-ring-inner {
+  opacity: 0.06;
+  animation: hero-ring-breathe 14s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+@keyframes hero-ring-breathe {
+  0%, 100% { opacity: 0.055; }
+  50%       { opacity: 0.12; }
+}
+
+.hero-orbit-outer {
+  transform-box: view-box;
+  transform-origin: 200px 200px;
+  animation: hero-orbit-cw 40s linear infinite;
+}
+
+.hero-orbit-inner {
+  transform-box: view-box;
+  transform-origin: 200px 200px;
+  animation: hero-orbit-cw 65s linear infinite;
+  animation-delay: -32.5s;
+}
+
+@keyframes hero-orbit-cw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ring-outer,
+  .hero-ring-inner {
+    animation: none;
+    opacity: 0.07;
+  }
+  .hero-orbit-outer,
+  .hero-orbit-inner {
+    animation: none;
+  }
+}
+
 /* ─── Footer texture ────────────────────────────────────── */
 .footer-texture {
   position: relative;

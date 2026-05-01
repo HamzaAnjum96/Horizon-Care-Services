@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
-import { HCSLogoMark } from '@/components/hcs-logo'
 
 const AREAS = [
   'Bedfordshire',
@@ -24,7 +23,39 @@ export function HeroSection() {
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-pulse" />
         <div className="hero-dot-grid" />
-        <HCSLogoMark className="absolute right-[-6%] top-1/2 -translate-y-[42%] w-[min(44vw,36rem)] text-ink-light opacity-[0.06] hidden lg:block pointer-events-none select-none z-[2]" />
+        {/* Ring decoration — orbit dots trace the logo's circular dot motif */}
+        <svg
+          viewBox="0 0 400 400"
+          aria-hidden="true"
+          className="absolute right-[-6%] top-1/2 -translate-y-[44%] w-[min(50vw,36rem)] text-ink-light hidden lg:block pointer-events-none select-none z-[2]"
+        >
+          {/* Outer ring + cardinal ticks */}
+          <g className="hero-ring-outer">
+            <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" strokeWidth="0.6" />
+            <line x1="200" y1="20"  x2="200" y2="33"  stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            <line x1="380" y1="200" x2="367" y2="200" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            <line x1="200" y1="380" x2="200" y2="367" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            <line x1="20"  y1="200" x2="33"  y2="200" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+          </g>
+
+          {/* Inner ring */}
+          <g className="hero-ring-inner">
+            <circle cx="200" cy="200" r="116" fill="none" stroke="currentColor" strokeWidth="0.45" />
+          </g>
+
+          {/* Center registration dot */}
+          <circle cx="200" cy="200" r="1.5" fill="currentColor" style={{ opacity: 0.18 }} />
+
+          {/* Main orbit dot — outer ring, clockwise 40 s */}
+          <g className="hero-orbit-outer" style={{ opacity: 0.14 }}>
+            <circle cx="200" cy="20" r="4.5" fill="currentColor" />
+          </g>
+
+          {/* Secondary orbit dot — inner ring, 180° phase offset */}
+          <g className="hero-orbit-inner" style={{ opacity: 0.10 }}>
+            <circle cx="200" cy="84" r="2.5" fill="currentColor" />
+          </g>
+        </svg>
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full pt-14 pb-12 lg:pt-18 lg:pb-16">
