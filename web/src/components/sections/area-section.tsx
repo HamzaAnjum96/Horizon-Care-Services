@@ -25,7 +25,7 @@ export function AreaSection() {
             transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           >
             <p className="section-kicker text-ink-muted-light mb-7">
-              Coverage
+              Where we work
             </p>
             <p
               className="font-display text-ink-light leading-tight tracking-[-0.025em] mb-8"

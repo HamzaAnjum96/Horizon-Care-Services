@@ -34,7 +34,7 @@ export function HeroSection() {
           transition={{ delay: 0.1, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-light mb-6"
         >
-          Trusted care across England
+          Registered health &amp; social care · England
         </motion.p>
 
         <h1

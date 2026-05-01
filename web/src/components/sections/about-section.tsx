@@ -14,7 +14,7 @@ export function AboutSection() {
           viewport={IN_VIEW}
           transition={{ duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
           style={{ originX: 0 }}
-          className="w-10 h-[2px] bg-amber mb-6"
+          className="w-10 h-[2px] bg-amber mb-3"
         />
 
         <motion.p

@@ -12,8 +12,8 @@ const services = [
     name: 'Supported Accommodation',
     href: '/services/supported-accommodation',
     points: [
-      'Adult Placement Scheme — 6 months to 2 years',
-      'Short-Term Support — 1 to 6 months',
+      'Adult Placement Scheme: 6 months to 2 years',
+      'Short-Term Support: 1 to 6 months',
       'Step-Down Transitional Support for hospital discharge',
       'Outreach Floating Support for community integration',
       'Current properties in Hatfield, Hertfordshire',
@@ -83,7 +83,6 @@ export function ServicesSection() {
           Services shaped around each person.
         </h2>
 
-        {/* Service rows */}
         <div>
           {services.map((service, i) => (
             <ServiceRow
@@ -127,23 +126,21 @@ function ServiceRow({
         aria-expanded={isExpanded}
         className="flex w-full items-center justify-between py-7 lg:py-8 cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
       >
-        {/* Left: ref number + name */}
         <div className="flex items-baseline gap-5 lg:gap-8 min-w-0">
           <span className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark flex-shrink-0 hidden sm:block">
             {service.num}
           </span>
-              <h3
-                className="font-display text-ink-dark group-hover:text-ink-dark interactive-lift transition-colors"
-                style={{
-                  fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
-                  fontVariationSettings: '"opsz" 24, "wght" 560',
-                }}
-              >
-                {service.name}
+          <h3
+            className="font-display text-ink-dark transition-opacity duration-200 group-hover:opacity-75"
+            style={{
+              fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
+              fontVariationSettings: '"opsz" 24, "wght" 560',
+            }}
+          >
+            {service.name}
           </h3>
         </div>
 
-        {/* Right: note + arrow */}
         <div className="flex items-center gap-4 lg:gap-8 flex-shrink-0 pl-4">
           <span className="hidden lg:block text-[12px] text-ink-muted-dark tracking-[0.03em]">
             {service.note}
@@ -151,13 +148,14 @@ function ServiceRow({
           <ArrowUpRight
             size={18}
             className={`transition-all duration-300 ${
-              isExpanded ? 'rotate-90 text-amber' : 'text-ink-muted-dark group-hover:rotate-12 group-hover:text-ink-dark'
+              isExpanded
+                ? 'rotate-90 text-amber'
+                : 'text-ink-muted-dark group-hover:rotate-12 group-hover:text-ink-dark'
             }`}
           />
         </div>
       </button>
 
-      {/* Expandable detail */}
       <AnimatePresence>
         {isExpanded && (
           <motion.div
@@ -182,7 +180,7 @@ function ServiceRow({
               <Link
                 href={service.href}
                 onClick={(e) => e.stopPropagation()}
-                className="interactive-lift self-end inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
+                className="interactive-lift self-end inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/40 rounded-sm"
               >
                 Full details <ArrowUpRight size={13} />
               </Link>
