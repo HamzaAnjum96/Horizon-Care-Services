@@ -22,8 +22,7 @@ export function HeroSection() {
   return (
     <section className="relative bg-deep flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-dark">
       <div className="hero-bg" aria-hidden="true">
-        <div className="hero-blob-a" />
-        <div className="hero-blob-b" />
+        <div className="hero-pulse" />
         <div className="hero-dot-grid" />
         <HCSLogoMark className="absolute right-[-6%] top-1/2 -translate-y-[42%] w-[min(44vw,36rem)] text-ink-light opacity-[0.06] hidden lg:block pointer-events-none select-none z-[2]" />
       </div>

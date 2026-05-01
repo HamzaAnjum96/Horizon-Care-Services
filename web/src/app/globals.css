@@ -20,8 +20,8 @@
   --moss:              oklch(28% 0.14 24);
   --moss-soft:         oklch(87% 0.03 18);
   --sky-soft:          oklch(92% 0.007 58);
-  --amber:             oklch(74% 0.124 78);
-  --amber-dim:         oklch(86% 0.066 82);
+  --amber:             oklch(67% 0.13 40);
+  --amber-dim:         oklch(80% 0.09 42);
 
   --rule-dark:         oklch(97% 0.005 56 / 0.14);
   --rule-light:        oklch(88% 0.01 52);
@@ -126,43 +126,23 @@ body {
   -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 40%, transparent 100%);
 }
 
-.hero-blob-a {
+.hero-pulse {
   position: absolute;
-  top: -28%;
-  right: -10%;
-  width: 52%;
-  aspect-ratio: 1;
-  border-radius: 9999px;
-  background: radial-gradient(circle at 40% 40%, oklch(34% 0.16 24) 0%, oklch(22% 0.10 24) 60%, transparent 100%);
-  filter: blur(70px);
-  animation: hero-drift-a 22s ease-in-out infinite alternate;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 75% -15%, oklch(28% 0.11 24 / 0.75) 0%, transparent 58%),
+    radial-gradient(ellipse 75% 60% at -5% 105%, oklch(67% 0.10 40 / 0.20) 0%, transparent 55%);
+  animation: hero-breathe 10s ease-in-out infinite;
+  will-change: opacity;
 }
 
-.hero-blob-b {
-  position: absolute;
-  bottom: -20%;
-  left: -8%;
-  width: 40%;
-  aspect-ratio: 1;
-  border-radius: 9999px;
-  background: radial-gradient(circle at 55% 55%, oklch(66% 0.15 78) 0%, oklch(50% 0.10 70) 50%, transparent 100%);
-  filter: blur(85px);
-  animation: hero-drift-b 28s ease-in-out infinite alternate;
-}
-
-@keyframes hero-drift-a {
-  from { transform: translate(0, 0) scale(1);    opacity: 0.8; }
-  to   { transform: translate(-5%, 7%) scale(1.07); opacity: 1; }
-}
-
-@keyframes hero-drift-b {
-  from { transform: translate(0, 0) scale(1);    opacity: 0.6; }
-  to   { transform: translate(6%, -5%) scale(1.1); opacity: 0.85; }
+@keyframes hero-breathe {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-blob-a,
-  .hero-blob-b { animation: none; }
+  .hero-pulse { animation: none; opacity: 0.7; }
 }
 
 /* ─── Footer texture ────────────────────────────────────── */
