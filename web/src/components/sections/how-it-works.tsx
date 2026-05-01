@@ -52,10 +52,10 @@ export function HowItWorks() {
           {steps.map((step, i) => (
             <motion.div
               key={step.num}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={IN_VIEW}
-              transition={{ delay: i * 0.08, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
+              transition={{ delay: i * 0.05, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
               className="pt-8 pb-10 px-8 first:pl-0 last:pr-0 border-r border-rule-light last:border-r-0 max-md:border-r-0 max-md:px-0 max-md:border-b max-md:last:border-b-0 max-md:pb-8"
             >
               <p

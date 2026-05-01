@@ -128,7 +128,7 @@ export function Nav() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
-                    delay: 0.06 + i * 0.06,
+                    delay: i * 0.04,
                     duration: MOTION_DURATIONS.base,
                     ease: EASE_OUT_EXPO,
                   }}

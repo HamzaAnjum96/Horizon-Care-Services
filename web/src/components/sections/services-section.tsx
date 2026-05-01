@@ -114,10 +114,10 @@ function ServiceRow({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={IN_VIEW}
-      transition={{ delay: index * 0.06, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
+      transition={{ delay: index * 0.04, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
       className="border-t border-rule-light last:border-b"
     >
       <button
