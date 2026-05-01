@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
@@ -15,6 +16,105 @@ const AREAS = [
 
 const marqueeText = AREAS.join('  ·  ') + '  ·  '
 
+// Canvas: slowly drifting, subtly undulating horizontal lines.
+// Each line has a unique sine-wave frequency and phase so they never
+// synchronise. The whole field drifts upward at ~0.35 px/s, wrapping
+// seamlessly. A CSS radial mask fades edges to transparent.
+// Reduced-motion preference → one static frame, RAF cancelled.
+function HeroCanvas() {
+  const ref = useRef<HTMLCanvasElement>(null)
+  const reduced = useReducedMotion()
+
+  useEffect(() => {
+    const canvas = ref.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let raf: number
+    let start = 0
+
+    function setup() {
+      const dpr = window.devicePixelRatio || 1
+      const w = canvas!.offsetWidth
+      const h = canvas!.offsetHeight
+      if (!w || !h) return
+      canvas!.width = Math.round(w * dpr)
+      canvas!.height = Math.round(h * dpr)
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
+
+    setup()
+    const ro = new ResizeObserver(setup)
+    ro.observe(canvas)
+
+    function draw(ts: number) {
+      if (!start) start = ts
+      const t = reduced ? 0 : (ts - start) / 1000
+
+      const w = canvas!.offsetWidth
+      const h = canvas!.offsetHeight
+      if (!w || !h) {
+        if (!reduced) raf = requestAnimationFrame(draw)
+        return
+      }
+      ctx!.clearRect(0, 0, w, h)
+
+      const spacing = 20
+      // No vertical motion or wave amplitude for reduced-motion users
+      const amp = reduced ? 0 : 2.5
+      const drift = reduced ? 0 : (t * 0.35) % spacing
+      const lineCount = Math.ceil(h / spacing) + 2
+      const steps = Math.ceil(w / 6) + 2
+
+      ctx!.strokeStyle = 'rgba(245, 244, 241, 0.052)'
+      ctx!.lineWidth = 0.65
+
+      for (let i = 0; i < lineCount; i++) {
+        // Wrap-around vertical position
+        const raw = i * spacing - drift
+        const wrap = lineCount * spacing
+        const baseY = ((raw % wrap) + wrap) % wrap - spacing
+
+        // Each line: unique wavelength + independent slow phase drift
+        const freq = (Math.PI * 2) / (230 + i * 14)
+        const phase = i * 0.58 + t * 0.10
+
+        ctx!.beginPath()
+        for (let s = 0; s <= steps; s++) {
+          const x = s * 6
+          const y = baseY + Math.sin(x * freq + phase) * amp
+          s === 0 ? ctx!.moveTo(x, y) : ctx!.lineTo(x, y)
+        }
+        ctx!.stroke()
+      }
+
+      if (!reduced) raf = requestAnimationFrame(draw)
+    }
+
+    raf = requestAnimationFrame(draw)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+    }
+  }, [reduced])
+
+  return (
+    <canvas
+      ref={ref}
+      aria-hidden="true"
+      className="absolute inset-0 w-full h-full pointer-events-none select-none"
+      style={{
+        maskImage:
+          'radial-gradient(ellipse 90% 80% at 50% 52%, black 10%, transparent 80%)',
+        WebkitMaskImage:
+          'radial-gradient(ellipse 90% 80% at 50% 52%, black 10%, transparent 80%)',
+      }}
+    />
+  )
+}
+
 export function HeroSection() {
   const reduceMotion = useReducedMotion()
 
@@ -22,40 +122,7 @@ export function HeroSection() {
     <section className="relative bg-deep flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-dark">
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-pulse" />
-        <div className="hero-dot-grid" />
-        {/* Ring decoration — orbit dots trace the logo's circular dot motif */}
-        <svg
-          viewBox="0 0 400 400"
-          aria-hidden="true"
-          className="absolute right-[-6%] top-1/2 -translate-y-[44%] w-[min(50vw,36rem)] text-ink-light hidden lg:block pointer-events-none select-none z-[2]"
-        >
-          {/* Outer ring + cardinal ticks */}
-          <g className="hero-ring-outer">
-            <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" strokeWidth="0.6" />
-            <line x1="200" y1="20"  x2="200" y2="33"  stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            <line x1="380" y1="200" x2="367" y2="200" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            <line x1="200" y1="380" x2="200" y2="367" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            <line x1="20"  y1="200" x2="33"  y2="200" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-          </g>
-
-          {/* Inner ring */}
-          <g className="hero-ring-inner">
-            <circle cx="200" cy="200" r="116" fill="none" stroke="currentColor" strokeWidth="0.45" />
-          </g>
-
-          {/* Center registration dot */}
-          <circle cx="200" cy="200" r="1.5" fill="currentColor" style={{ opacity: 0.18 }} />
-
-          {/* Main orbit dot — outer ring, clockwise 40 s */}
-          <g className="hero-orbit-outer" style={{ opacity: 0.14 }}>
-            <circle cx="200" cy="20" r="4.5" fill="currentColor" />
-          </g>
-
-          {/* Secondary orbit dot — inner ring, 180° phase offset */}
-          <g className="hero-orbit-inner" style={{ opacity: 0.10 }}>
-            <circle cx="200" cy="84" r="2.5" fill="currentColor" />
-          </g>
-        </svg>
+        <HeroCanvas />
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full pt-14 pb-12 lg:pt-18 lg:pb-16">
