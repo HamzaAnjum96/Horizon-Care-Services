@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
+import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 
 const services = [
   {
@@ -67,15 +67,9 @@ export function ServicesSection() {
   return (
     <section className="bg-cream py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={IN_VIEW}
-          transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-          className="section-kicker text-ink-muted-dark mb-4"
-        >
+        <p className="section-kicker text-ink-muted-dark mb-4">
           What we provide
-        </motion.p>
+        </p>
         <h2
           className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
           style={{ fontSize: 'clamp(2rem, 4.2vw, 3.35rem)' }}
@@ -84,11 +78,10 @@ export function ServicesSection() {
         </h2>
 
         <div>
-          {services.map((service, i) => (
+          {services.map((service) => (
             <ServiceRow
               key={service.num}
               service={service}
-              index={i}
               isExpanded={expanded === service.num}
               onToggle={() =>
                 setExpanded(expanded === service.num ? null : service.num)
@@ -103,23 +96,15 @@ export function ServicesSection() {
 
 function ServiceRow({
   service,
-  index,
   isExpanded,
   onToggle,
 }: {
   service: (typeof services)[0]
-  index: number
   isExpanded: boolean
   onToggle: () => void
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={IN_VIEW}
-      transition={{ delay: index * 0.04, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-      className="border-t border-rule-light last:border-b"
-    >
+    <div className="border-t border-rule-light last:border-b">
       <button
         type="button"
         onClick={onToggle}
@@ -188,6 +173,6 @@ function ServiceRow({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   )
 }
