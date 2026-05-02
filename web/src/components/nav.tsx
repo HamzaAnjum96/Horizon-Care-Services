@@ -73,12 +73,6 @@ export function Nav() {
             >
               Contact
             </Link>
-            <Link
-              href="/referrals"
-              className="interactive-lift hidden md:inline-flex items-center bg-amber text-deep text-[13px] font-semibold px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
-            >
-              Make a Referral
-            </Link>
 
             <button
               onClick={() => setMobileOpen(true)}
@@ -136,15 +130,16 @@ export function Nav() {
               ))}
             </nav>
 
-            {/* Bottom CTA */}
-            <div className="px-5 pb-8 pt-5 flex-shrink-0">
-              <Link
-                href="/referrals"
-                onClick={() => setMobileOpen(false)}
-                className="interactive-lift block bg-amber text-deep text-center font-semibold px-6 py-4 rounded-md text-[15px] tracking-[0.01em]"
+            {/* Bottom contact strip */}
+            <div className="px-5 pb-8 pt-5 border-t border-rule-dark flex-shrink-0 space-y-2">
+              <a
+                href="tel:07572701349"
+                className="block text-ink-light font-display text-[1.15rem] font-semibold hover:text-amber transition-colors"
+                style={{ fontVariationSettings: '"opsz" 18, "wght" 580' }}
               >
-                Make a Referral
-              </Link>
+                07572 701 349
+              </a>
+              <p className="text-ink-muted-light text-[11px] tracking-[0.1em] uppercase">Urgent, 24/7</p>
             </div>
           </motion.div>
         )}
