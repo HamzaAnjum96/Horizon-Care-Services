@@ -19,7 +19,7 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   title: 'Horizon Care Services',
   description:
-    'Health and social care provider offering supported accommodation, staffing solutions, and home care across England.',
+    'Health and social care provider offering staffing solutions, home care, and specialist support across England.',
 }
 
 export default function RootLayout({
@@ -37,7 +37,7 @@ export default function RootLayout({
           className="fixed bottom-0 left-0 right-0 z-30 bg-ink-dark/95 backdrop-blur-sm border-t border-rule-dark py-1.5 px-4 text-center pointer-events-none"
         >
           <p className="text-[10px] font-medium text-ink-muted-light tracking-[0.1em] uppercase">
-            Development preview — content is not final and may contain placeholders
+            Development preview: content is not final and may contain placeholders
           </p>
         </div>
         {children}

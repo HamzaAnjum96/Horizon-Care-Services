@@ -34,17 +34,17 @@ export default function ReferralsPage() {
                     fontVariationSettings: '"opsz" 28, "wght" 560',
                   }}
                 >
-                  Call or email — we make it straightforward.
+                  Call or email. We make it straightforward.
                 </p>
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
-                    To make a referral, call us on <a href="tel:01582354119" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">01582 354 119</a> or email <a href="mailto:admin@horizoncareservices.org" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">admin@horizoncareservices.org</a>. For urgent situations, call <a href="tel:07572701349" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">07572 701 349</a> — that line is staffed 24/7.
+                    To make a referral, call us on <a href="tel:01582354119" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">01582 354 119</a> or email <a href="mailto:admin@horizoncareservices.org" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">admin@horizoncareservices.org</a>. For urgent situations, call <a href="tel:07572701349" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">07572 701 349</a>. That line is staffed 24/7.
                   </p>
                   <p>
                     Once we receive a referral, we will contact you within 2 working days to discuss the person&rsquo;s needs, confirm what we can offer, and agree next steps. For urgent hospital discharge situations, we can often respond the same day.
                   </p>
                   <p>
-                    We work with NHS trusts, local authorities, social workers, and GPs. Families can also refer directly — we will explain the assessment process and funding options clearly so there are no surprises.
+                    We work with NHS trusts, local authorities, social workers, and GPs. Families can also refer directly. We will explain the assessment process and funding options clearly so there are no surprises.
                   </p>
                 </div>
               </div>
@@ -129,7 +129,7 @@ export default function ReferralsPage() {
                 <div>
                   <p className="section-kicker text-ink-muted-dark mb-4">Coverage</p>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                    We operate across Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Manchester, and London. Contact us if you&rsquo;re outside these areas — we can often extend.
+                    We operate across Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Manchester, and London. Contact us if you&rsquo;re outside these areas. We can often extend.
                   </p>
                 </div>
               </div>

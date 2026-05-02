@@ -56,18 +56,18 @@ export default function PrivacyPolicyPage() {
             <Section title="2. What information we collect">
               <p>We may collect the following categories of personal information:</p>
               <ul>
-                <li><strong>Contact details</strong> — name, telephone number, email address, postal address.</li>
-                <li><strong>Referral information</strong> — details about the person being referred, including relevant health, social care, and accommodation needs, provided by NHS professionals, Local Authority staff, or families.</li>
-                <li><strong>Employment enquiries</strong> — CVs, qualifications, and professional registration details submitted by job applicants.</li>
-                <li><strong>Website usage data</strong> — browser type, pages visited, and access times, collected via server logs. We do not use tracking cookies or third-party analytics tools.</li>
-                <li><strong>Communications</strong> — any information you send us by email or telephone.</li>
+                <li><strong>Contact details:</strong> name, telephone number, email address, postal address.</li>
+                <li><strong>Referral information:</strong> details about the person being referred, including relevant health, social care, and support needs, provided by NHS professionals, Local Authority staff, or families.</li>
+                <li><strong>Employment enquiries:</strong> CVs, qualifications, and professional registration details submitted by job applicants.</li>
+                <li><strong>Website usage data:</strong> browser type, pages visited, and access times, collected via server logs. We do not use tracking cookies or third-party analytics tools.</li>
+                <li><strong>Communications:</strong> any information you send us by email or telephone.</li>
               </ul>
             </Section>
 
             <Section title="3. How we use your information">
               <p>We use personal information to:</p>
               <ul>
-                <li>Assess and process referrals for our care and accommodation services.</li>
+                <li>Assess and process referrals for our care and support services.</li>
                 <li>Arrange and deliver care, staffing, or support services.</li>
                 <li>Respond to enquiries from families, professionals, and commissioners.</li>
                 <li>Process employment applications and manage relationships with staff.</li>
@@ -79,11 +79,11 @@ export default function PrivacyPolicyPage() {
             <Section title="4. Legal basis for processing">
               <p>We rely on the following lawful bases under UK GDPR:</p>
               <ul>
-                <li><strong>Legitimate interests</strong> — for responding to general enquiries and operating our website.</li>
-                <li><strong>Contract performance</strong> — for delivering services and managing employment relationships.</li>
-                <li><strong>Legal obligation</strong> — where processing is required to comply with law or regulation.</li>
-                <li><strong>Vital interests</strong> — in circumstances where processing is necessary to protect the life or safety of a service user.</li>
-                <li><strong>Explicit consent</strong> — where we rely on consent, we will ask for it clearly and separately.</li>
+                <li><strong>Legitimate interests:</strong> responding to general enquiries and operating our website.</li>
+                <li><strong>Contract performance:</strong> delivering services and managing employment relationships.</li>
+                <li><strong>Legal obligation:</strong> where processing is required to comply with law or regulation.</li>
+                <li><strong>Vital interests:</strong> where processing is necessary to protect the life or safety of a service user.</li>
+                <li><strong>Explicit consent:</strong> where we rely on consent, we will ask for it clearly and separately.</li>
               </ul>
               <p>
                 Where we process special category data (health or care information), we rely on Article 9(2)(h) UK GDPR (healthcare purposes) and Schedule 1, Part 1(2) of the Data Protection Act 2018.

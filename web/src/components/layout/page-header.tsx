@@ -1,5 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 
 interface PageHeaderProps {
   kicker: string
@@ -12,18 +16,35 @@ export function PageHeader({ kicker, title, intro, cta }: PageHeaderProps) {
   return (
     <div className="bg-deep border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <p className="section-kicker text-ink-muted-light mb-5">{kicker}</p>
-        <h1
-          className="font-display text-ink-light leading-[0.96] tracking-[-0.03em] mb-0"
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
+          className="section-kicker text-ink-muted-light mb-5"
+        >
+          {kicker}
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+          className="font-display text-ink-light leading-[0.96] tracking-[-0.03em]"
           style={{
             fontSize: 'clamp(2.4rem, 5.2vw, 4.2rem)',
             fontVariationSettings: '"opsz" 56, "wght" 600',
           }}
         >
           {title}
-        </h1>
+        </motion.h1>
+
         {(intro || cta) && (
-          <div className="mt-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.22, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+            className="mt-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
+          >
             {intro && (
               <p
                 className="text-ink-muted-light leading-relaxed max-w-[50ch]"
@@ -40,7 +61,7 @@ export function PageHeader({ kicker, title, intro, cta }: PageHeaderProps) {
                 {cta.label} <ArrowUpRight size={14} />
               </Link>
             )}
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

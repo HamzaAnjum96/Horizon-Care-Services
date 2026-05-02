@@ -25,7 +25,7 @@ const careTypes = [
   },
   {
     title: 'Meal preparation',
-    desc: 'Nutritious meals planned around dietary needs, cultural preferences, and the person\'s own tastes. Not a standard menu — food that someone actually wants to eat.',
+    desc: 'Nutritious meals planned around dietary needs, cultural preferences, and the person\'s own tastes. Not a standard menu: food that someone actually wants to eat.',
   },
   {
     title: 'Housekeeping and shopping',
@@ -72,7 +72,7 @@ export default function HomeCarePage() {
                     Every care package starts with a thorough assessment: the person&rsquo;s needs, their daily routines, their preferences, and what they want their life to look like. That assessment shapes the care plan, and the plan is reviewed regularly so it stays accurate as circumstances change.
                   </p>
                   <p>
-                    We cover Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Manchester, and London. For families or referrers outside those areas, contact us — we can often extend depending on geography.
+                    We cover Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Manchester, and London. For families or referrers outside those areas, contact us. We can often extend depending on geography.
                   </p>
                 </div>
               </div>

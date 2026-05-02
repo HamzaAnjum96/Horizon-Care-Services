@@ -36,7 +36,7 @@ export default function StaffingPage() {
         <PageHeader
           kicker="Services / Staffing Solutions"
           title="The right people, where you need them."
-          intro="Skilled care professionals deployed to hospitals, care homes, and community settings across England. Available for single shifts, short-term contracts, and long-term placements — with 24/7 cover when it matters most."
+          intro="Skilled care professionals deployed to hospitals, care homes, and community settings across England. Available for single shifts, short-term contracts, and long-term placements, with 24/7 cover when it matters most."
           cta={{ label: 'Make a referral', href: '/referrals' }}
         />
 
@@ -147,7 +147,7 @@ export default function StaffingPage() {
                 >
                   07572 701 349
                 </a>
-                <p className="text-ink-muted-light text-[13px]">Urgent staffing — 24/7</p>
+                <p className="text-ink-muted-light text-[13px]">Urgent staffing, 24/7</p>
                 <div className="pt-2">
                   <Link
                     href="/referrals"

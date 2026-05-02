@@ -165,8 +165,8 @@ export function HeroSection() {
             className="text-ink-muted-light leading-relaxed max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
-            Supported accommodation, home care, and specialist support across
-            England. For NHS referrers, local authorities, and families.
+            Home care, specialist support, and clinical staffing across England.
+            For NHS referrers, local authorities, and families.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">

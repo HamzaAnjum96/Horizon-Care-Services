@@ -24,7 +24,7 @@ const services = [
     name: 'Home Care',
     href: '/services/home-care',
     summary:
-      'Personal care, companionship, medication management, and respite support delivered at home. A consistent, familiar carer wherever possible — because continuity matters to the people we support.',
+      'Personal care, companionship, medication management, and respite support delivered at home. A consistent, familiar carer wherever possible, because continuity matters to the people we support.',
     tags: ['Personal care', 'Medication management', 'Respite'],
   },
   {
@@ -32,7 +32,7 @@ const services = [
     name: 'Specialist Care',
     href: '/services/specialist',
     summary:
-      'Dementia and Alzheimer\'s support, hospice care, and end-of-life planning. Care that requires not just competence but real sensitivity — and professionals with the experience to provide both.',
+      'Dementia and Alzheimer\'s support, hospice care, and end-of-life planning. Care that requires not just competence but real sensitivity, and professionals with the experience to provide both.',
     tags: ['Dementia', 'Hospice', 'End-of-life'],
   },
 ]

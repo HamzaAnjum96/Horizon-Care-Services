@@ -109,7 +109,7 @@ export default function AboutPage() {
                     Honest communication
                   </h3>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                    We tell referrers what we can and cannot do. We keep families informed. We report changes in condition promptly and accurately. Trust in care services is hard-won and quickly lost — we don&rsquo;t take it for granted.
+                    We tell referrers what we can and cannot do. We keep families informed. We report changes in condition promptly and accurately. Trust in care services is hard-won and quickly lost. We don&rsquo;t take it for granted.
                   </p>
                 </div>
               </div>

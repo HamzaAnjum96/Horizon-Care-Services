@@ -16,7 +16,7 @@ export default function ContactPage() {
         <PageHeader
           kicker="Contact"
           title="Get in touch."
-          intro="Whether you're making a referral, enquiring about care, or looking for staffing cover — we respond quickly and give you a straight answer."
+          intro="Whether you're making a referral, enquiring about care, or looking for staffing cover: we respond quickly and give you a straight answer."
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -114,7 +114,7 @@ export default function ContactPage() {
                   <div className="space-y-3">
                     {[
                       'Your name and organisation (if applicable)',
-                      'The nature of your enquiry — staffing, care, referral, or other',
+                      'The nature of your enquiry: staffing, care, referral, or other',
                       'A contact number in case we need to respond quickly',
                       'For referrals: service user initials, location, and level of urgency',
                     ].map((item) => (
