@@ -9,19 +9,6 @@ import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 const services = [
   {
     num: 'No. 01',
-    name: 'Supported Accommodation',
-    href: '/services/supported-accommodation',
-    points: [
-      'Adult Placement Scheme: 6 months to 2 years',
-      'Short-Term Support: 1 to 6 months',
-      'Step-Down Transitional Support for hospital discharge',
-      'Outreach Floating Support for community integration',
-      'Current properties in Hatfield, Hertfordshire',
-    ],
-    note: 'Mental health and learning disability focus',
-  },
-  {
-    num: 'No. 02',
     name: 'Staffing Solutions',
     href: '/services/staffing',
     points: [
@@ -34,7 +21,7 @@ const services = [
     note: '24/7 availability',
   },
   {
-    num: 'No. 03',
+    num: 'No. 02',
     name: 'Home Care',
     href: '/services/home-care',
     points: [
@@ -47,7 +34,7 @@ const services = [
     note: 'Person-centred, at home',
   },
   {
-    num: 'No. 04',
+    num: 'No. 03',
     name: 'Specialist Care',
     href: '/services/specialist',
     points: [

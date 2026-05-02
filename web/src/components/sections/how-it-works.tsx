@@ -11,8 +11,8 @@ const steps = [
   },
   {
     num: '03',
-    title: 'Placement',
-    desc: 'The right service is matched to the person: accommodation, home care, staffing, or a specialist pathway.',
+    title: 'Service match',
+    desc: 'The right service is matched to the person: home care, specialist support, clinical staffing, or a combined pathway.',
   },
   {
     num: '04',

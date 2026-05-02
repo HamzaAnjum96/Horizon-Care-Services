@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="footer-texture bg-deep border-t border-rule-dark">
       <div className="max-w-4xl mx-auto px-6 lg:px-10 pt-14 pb-8">
 
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-10 lg:gap-16 mb-0">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
 
           {/* Brand column */}
           <div>
@@ -25,22 +25,23 @@ export function Footer() {
           </div>
 
           {/* Contact column */}
-          <address className="not-italic text-ink-muted-light text-[14px] leading-[1.9] lg:text-right flex-shrink-0">
-            475B Cheetham Hill Road, Cheetham Hill
-            <br />
-            Manchester, M8 9LR
-            <br />
-            <a href="tel:07572701349" className="hover:text-ink-light transition-colors">
-              07572 701 349
-            </a>
-            <span className="mx-2 opacity-40">·</span>
-            <a href="tel:01582354119" className="hover:text-ink-light transition-colors">
-              01582 354 119
-            </a>
-            <br />
-            <a href="mailto:admin@horizoncareservices.org" className="hover:text-ink-light transition-colors">
-              admin@horizoncareservices.org
-            </a>
+          <address className="not-italic text-ink-muted-light text-[14px] leading-[1.75]">
+            <p>475B Cheetham Hill Road, Cheetham Hill</p>
+            <p className="mb-3">Manchester, M8 9LR</p>
+            <p>
+              <a href="tel:07572701349" className="hover:text-ink-light transition-colors">
+                07572 701 349
+              </a>
+              <span className="mx-2 opacity-40">·</span>
+              <a href="tel:01582354119" className="hover:text-ink-light transition-colors">
+                01582 354 119
+              </a>
+            </p>
+            <p>
+              <a href="mailto:admin@horizoncareservices.org" className="hover:text-ink-light transition-colors">
+                admin@horizoncareservices.org
+              </a>
+            </p>
           </address>
 
         </div>
