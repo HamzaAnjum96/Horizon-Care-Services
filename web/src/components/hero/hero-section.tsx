@@ -178,10 +178,10 @@ export function HeroSection() {
               View Services
             </Link>
             <Link
-              href="/referrals"
-              className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+              href="/contact"
+              className="interactive-lift inline-flex items-center gap-2 border border-ink-light/30 text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:border-ink-light/60 hover:bg-ink-light/5 transition-colors"
             >
-              Make a Referral
+              Contact Us
             </Link>
           </div>
         </motion.div>

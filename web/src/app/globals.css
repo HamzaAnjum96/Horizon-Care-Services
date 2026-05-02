@@ -175,3 +175,46 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ─── Legal page prose ──────────────────────────────────── */
+.prose-legal a {
+  color: var(--ink-dark);
+  text-decoration: underline;
+  text-decoration-color: oklch(40% 0.05 22 / 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease;
+}
+
+.prose-legal a:hover {
+  text-decoration-color: var(--ink-dark);
+}
+
+.prose-legal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose-legal ul li {
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.prose-legal ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: oklch(40% 0.05 22 / 0.45);
+}
+
+.prose-legal strong {
+  font-weight: 600;
+  color: var(--ink-dark);
+}
