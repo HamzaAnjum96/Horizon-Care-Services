@@ -56,7 +56,7 @@ export function PageHeader({ kicker, title, intro, cta }: PageHeaderProps) {
             {cta && (
               <Link
                 href={cta.href}
-                className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
+                className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
               >
                 {cta.label} <ArrowUpRight size={14} />
               </Link>

@@ -9,7 +9,7 @@ export function DualCTA() {
 
           <div className="flex flex-col pb-12 md:pb-0 md:pr-14 lg:pr-20">
             <p className="section-kicker text-ink-muted-light mb-8">
-              Organisations
+              Referrers
             </p>
             <p
               className="font-display text-ink-light leading-[1.05] tracking-[-0.025em] mb-6"
@@ -18,19 +18,18 @@ export function DualCTA() {
                 fontVariationSettings: '"opsz" 36, "wght" 560',
               }}
             >
-              Commission our services.
+              Refer a person in need.
             </p>
             <p className="text-ink-muted-light text-[15px] leading-relaxed mb-10 max-w-[44ch]">
-              We work with NHS trusts, local authorities, care homes, and
-              councils. Flexible staffing, home care, and specialist support
-              contracted around your requirements.
+              For NHS trusts, local authorities, social workers, and other
+              professionals. We respond within 2 working days with a thorough, person-centred assessment.
             </p>
             <div>
               <Link
                 href="/contact"
-                className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+                className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
               >
-                Get in touch <ArrowUpRight size={14} />
+                Start a referral <ArrowUpRight size={14} />
               </Link>
             </div>
           </div>
@@ -49,9 +48,8 @@ export function DualCTA() {
               Join our care team.
             </p>
             <p className="text-ink-muted-light text-[15px] leading-relaxed mb-10 max-w-[44ch]">
-              We employ registered nurses, social workers, occupational
-              therapists, healthcare assistants, and support workers.
-              Competitive rates, flexible shifts, and ongoing professional development.
+              We recruit registered nurses, social workers, occupational
+              therapists, healthcare assistants, and support workers. Competitive rates, flexible shifts, and ongoing professional development.
             </p>
             <div>
               <Link

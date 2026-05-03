@@ -8,7 +8,7 @@ import { LocationMap } from '@/components/location-map'
 
 export const metadata: Metadata = {
   title: 'Contact — Horizon Care Services',
-  description: 'Get in touch with Horizon Care Services. Urgent staffing cover, care enquiries, and general contact.',
+  description: 'Get in touch with Horizon Care Services. Urgent staffing, referrals, care enquiries, and general contact.',
 }
 
 export default function ContactPage() {
@@ -19,17 +19,17 @@ export default function ContactPage() {
         <PageHeader
           kicker="Contact"
           title="Get in touch."
-          intro="Whether you're enquiring about our services, need urgent staffing cover, or want to join our team: we respond quickly and give you a straight answer."
+          intro="Whether you're making a referral, enquiring about care, or looking for staffing cover: we respond quickly and give you a straight answer."
         />
 
         <section className="bg-cream py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
-            {/* Two contact channels */}
-            <div className="grid sm:grid-cols-2 gap-10 lg:gap-12 mb-20 lg:mb-28">
+            {/* Three contact channels */}
+            <div className="grid sm:grid-cols-3 gap-10 lg:gap-12 mb-20 lg:mb-28">
 
               <div className="border-t-2 border-amber pt-7">
-                <p className="section-kicker text-ink-muted-dark mb-3">Phone</p>
+                <p className="section-kicker text-ink-muted-dark mb-3">Urgent staffing</p>
                 <p
                   className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-4"
                   style={{
@@ -37,17 +37,43 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  All enquiries
+                  Available 24/7
                 </p>
                 <a
-                  href="tel:02037572767"
+                  href="tel:07572701349"
                   className="font-display text-ink-dark hover:text-amber transition-colors block"
                   style={{
                     fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
                     fontVariationSettings: '"opsz" 22, "wght" 560',
                   }}
                 >
-                  020 3757 2767
+                  07572 701 349
+                </a>
+                <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
+                  Same-day and short-notice cover
+                </p>
+              </div>
+
+              <div className="border-t-2 border-rule-light pt-7">
+                <p className="section-kicker text-ink-muted-dark mb-3">Office</p>
+                <p
+                  className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-4"
+                  style={{
+                    fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)',
+                    fontVariationSettings: '"opsz" 18, "wght" 620',
+                  }}
+                >
+                  Referrals and care enquiries
+                </p>
+                <a
+                  href="tel:01582354119"
+                  className="font-display text-ink-dark hover:text-amber transition-colors block"
+                  style={{
+                    fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+                    fontVariationSettings: '"opsz" 22, "wght" 560',
+                  }}
+                >
+                  01582 354 119
                 </a>
                 <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
                   Monday to Friday, 9am to 5pm
@@ -66,10 +92,10 @@ export default function ContactPage() {
                   All enquiries
                 </p>
                 <a
-                  href="mailto:contact@horizoncareservices.org"
+                  href="mailto:admin@horizoncareservices.org"
                   className="text-ink-dark text-[15px] font-medium hover:text-amber transition-colors break-all block"
                 >
-                  contact@horizoncareservices.org
+                  admin@horizoncareservices.org
                 </a>
                 <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
                   Response within 2 working days
@@ -78,10 +104,9 @@ export default function ContactPage() {
 
             </div>
 
-            {/* Our office */}
+            {/* Address + Map */}
             <div className="border-t border-rule-light pt-16 lg:pt-20">
-              <p className="section-kicker text-ink-muted-dark mb-8">Our office</p>
-              <div className="grid sm:grid-cols-2 gap-8 items-start">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
                 <address className="not-italic">
                   <p
@@ -101,15 +126,16 @@ export default function ContactPage() {
                   <p className="text-ink-muted-dark text-[12px] mb-5">Company No. 14615041</p>
                   <Link
                     href="/services"
-                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-5 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
+                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-5 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Our services <ArrowUpRight size={13} />
                   </Link>
                 </address>
 
                 {/* Map */}
-                <div className="relative rounded-lg overflow-hidden border border-rule-light h-[240px] sm:h-[260px]">
+                <div className="relative rounded-lg overflow-hidden border border-rule-light aspect-[4/3] lg:aspect-auto lg:min-h-[420px]">
                   <LocationMap />
+                  {/* Get directions overlay link */}
                   <a
                     href="https://www.google.com/maps/dir/?api=1&destination=475B+Cheetham+Hill+Road+Manchester+M8+9LR"
                     target="_blank"

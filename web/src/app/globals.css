@@ -20,8 +20,8 @@
   --moss:              oklch(28% 0.14 24);
   --moss-soft:         oklch(87% 0.03 18);
   --sky-soft:          oklch(92% 0.007 58);
-  --amber:             oklch(67% 0.13 40);
-  --amber-dim:         oklch(80% 0.09 42);
+  --amber:             oklch(44% 0.15 12);
+  --amber-dim:         oklch(62% 0.11 12);
 
   --rule-dark:         oklch(97% 0.005 56 / 0.14);
   --rule-light:        oklch(88% 0.01 52);
@@ -120,7 +120,7 @@ body {
   inset: 0;
   background:
     radial-gradient(ellipse 90% 70% at 75% -15%, oklch(28% 0.11 24 / 0.75) 0%, transparent 58%),
-    radial-gradient(ellipse 75% 60% at -5% 105%, oklch(67% 0.10 40 / 0.20) 0%, transparent 55%);
+    radial-gradient(ellipse 75% 60% at -5% 105%, oklch(44% 0.12 12 / 0.18) 0%, transparent 55%);
   animation: hero-breathe 10s ease-in-out infinite;
   will-change: opacity;
 }
@@ -128,6 +128,11 @@ body {
 @keyframes hero-breathe {
   0%, 100% { opacity: 0.45; }
   50%       { opacity: 1; }
+}
+
+@keyframes hcs-breathe {
+  0%, 100% { transform: scale(0.84); }
+  50%       { transform: scale(1.16); }
 }
 
 @media (prefers-reduced-motion: reduce) {
