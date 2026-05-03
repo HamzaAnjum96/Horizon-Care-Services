@@ -11,7 +11,7 @@ export function Footer() {
           {/* Brand column */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <HCSLogoMark className="h-[24px] w-[24px] flex-shrink-0 text-ink-muted-light" />
+              <HCSLogoMark className="h-[24px] w-[24px] flex-shrink-0 text-ink-light" />
               <p
                 className="font-display text-ink-light text-[15px]"
                 style={{ fontVariationSettings: '"opsz" 14, "wght" 600' }}

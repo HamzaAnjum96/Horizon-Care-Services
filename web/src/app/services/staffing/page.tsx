@@ -37,7 +37,7 @@ export default function StaffingPage() {
           kicker="Services / Staffing Solutions"
           title="The right people, where you need them."
           intro="Skilled care professionals deployed to hospitals, care homes, and community settings across England. Available for single shifts, short-term contracts, and long-term placements, with 24/7 cover when it matters most."
-          cta={{ label: 'Make a referral', href: '/referrals' }}
+          cta={{ label: 'Get in touch', href: '/contact' }}
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -136,7 +136,7 @@ export default function StaffingPage() {
                   Need cover or a longer-term staffing solution?
                 </p>
                 <p className="text-ink-muted-light text-[15px] leading-relaxed max-w-[48ch]">
-                  Call us directly for urgent requirements. For planned cover, email or use the referral form and we&rsquo;ll respond within 2 working hours.
+                  Call us directly for urgent requirements. For planned cover, email us and we&rsquo;ll respond within 2 working hours.
                 </p>
               </div>
               <div className="space-y-4">
@@ -150,10 +150,10 @@ export default function StaffingPage() {
                 <p className="text-ink-muted-light text-[13px]">Urgent staffing, 24/7</p>
                 <div className="pt-2">
                   <Link
-                    href="/referrals"
+                    href="/contact"
                     className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Submit a request <ArrowUpRight size={14} />
+                    Get in touch <ArrowUpRight size={14} />
                   </Link>
                 </div>
               </div>

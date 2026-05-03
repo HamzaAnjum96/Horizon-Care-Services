@@ -56,7 +56,7 @@ export default function AboutPage() {
                     { label: 'Regulated by', value: 'Care Quality Commission (CQC)' },
                     { label: 'Company number', value: '14615041' },
                     { label: 'Coverage', value: 'Bedfordshire, Bucks, Cambridgeshire, Hertfordshire, Manchester, London' },
-                    { label: 'Referral response', value: 'Within 2 working days' },
+                    { label: 'Response time', value: 'Within 2 working days' },
                   ].map(({ label, value }) => (
                     <div key={label} className="border-t border-rule-light pt-5">
                       <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
@@ -109,7 +109,7 @@ export default function AboutPage() {
                     Honest communication
                   </h3>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                    We tell referrers what we can and cannot do. We keep families informed. We report changes in condition promptly and accurately. Trust in care services is hard-won and quickly lost. We don&rsquo;t take it for granted.
+                    We are transparent with every organisation and family we work with about what we can and cannot provide. We keep people informed and report changes promptly. Trust in care services is hard-won and quickly lost. We don&rsquo;t take it for granted.
                   </p>
                 </div>
               </div>
@@ -118,15 +118,15 @@ export default function AboutPage() {
             <div className="border-t border-rule-light pt-16 lg:pt-20">
               <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
                 <div>
-                  <p className="section-kicker text-ink-muted-dark mb-4">For NHS and Local Authority referrers</p>
+                  <p className="section-kicker text-ink-muted-dark mb-4">For organisations</p>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                    We understand the pressures discharge planners and social workers operate under. We respond to referrals promptly, provide clear written assessments, and keep you informed at every stage.
+                    We understand the pressures discharge planners, commissioners, and social workers operate under. We respond promptly, provide clear written proposals, and keep you informed at every stage.
                   </p>
                   <Link
-                    href="/referrals"
+                    href="/contact"
                     className="interactive-lift inline-flex items-center gap-2 mt-6 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Make a referral <ArrowUpRight size={14} />
+                    Get in touch <ArrowUpRight size={14} />
                   </Link>
                 </div>
                 <div>

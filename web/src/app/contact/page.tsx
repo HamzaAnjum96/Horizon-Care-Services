@@ -8,7 +8,7 @@ import { LocationMap } from '@/components/location-map'
 
 export const metadata: Metadata = {
   title: 'Contact — Horizon Care Services',
-  description: 'Get in touch with Horizon Care Services. Urgent staffing, referrals, care enquiries, and general contact.',
+  description: 'Get in touch with Horizon Care Services. Urgent staffing cover, care enquiries, and general contact.',
 }
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
         <PageHeader
           kicker="Contact"
           title="Get in touch."
-          intro="Whether you're making a referral, enquiring about care, or looking for staffing cover: we respond quickly and give you a straight answer."
+          intro="Whether you're enquiring about our services, need urgent staffing cover, or want to join our team: we respond quickly and give you a straight answer."
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -63,7 +63,7 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Referrals and care enquiries
+                  Care and service enquiries
                 </p>
                 <a
                   href="tel:01582354119"
@@ -126,10 +126,10 @@ export default function ContactPage() {
                   </p>
                   <p className="text-ink-muted-dark text-[12px] mb-5">Company No. 14615041</p>
                   <Link
-                    href="/referrals"
+                    href="/services"
                     className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-5 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Make a referral <ArrowUpRight size={13} />
+                    Our services <ArrowUpRight size={13} />
                   </Link>
                 </address>
 

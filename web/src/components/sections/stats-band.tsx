@@ -6,7 +6,7 @@ import { EASE_OUT_EXPO, IN_VIEW, MOTION_DURATIONS } from '@/lib/motion'
 
 const stats = [
   { value: '6', label: 'Service areas across England' },
-  { value: '2 working\ndays', label: 'Maximum referral response time' },
+  { value: '2 working\ndays', label: 'Response time for all enquiries' },
   { value: '7 days\na week', label: 'On-site staffing availability' },
 ]
 

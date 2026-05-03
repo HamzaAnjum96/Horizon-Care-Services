@@ -166,7 +166,7 @@ export function HeroSection() {
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
             Home care, specialist support, and clinical staffing across England.
-            For NHS referrers, local authorities, and families.
+            For councils, NHS trusts, and care organisations — and the professionals who want to join us.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">
