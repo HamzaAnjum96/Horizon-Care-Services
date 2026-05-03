@@ -39,19 +39,22 @@ function buildIcons(): IconSpec[] {
     'cross', 'cross',
     'ring', 'ring',
     'dot', 'dot', 'dot',
-    'square', 'square',
+    'square',
     'diamond',
     'hex',
     'asterisk',
-    'shield',
-    'logo',
+    'shield', 'shield', 'shield',
+    'logo', 'logo', 'logo',
   ]
   // offset seed so arrangement differs from the old 7×5 layout
   let s = 137
 
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      if (seededFloat(s++) < 0.18) continue
+      // density gradient: sparse on left, dense on right
+      const t = col / (COLS - 1)
+      const skipChance = 0.72 - t * 0.62   // left ~72% skip → right ~10% skip
+      if (seededFloat(s++) < skipChance) continue
 
       const cw = 100 / COLS
       const ch = 100 / ROWS
