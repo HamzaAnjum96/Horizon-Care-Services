@@ -26,7 +26,8 @@ export function Footer() {
 
           {/* Contact column */}
           <address className="not-italic text-ink-muted-light text-[14px] leading-[1.75]">
-            <p>475B Cheetham Hill Road, Cheetham Hill</p>
+            <p>475B Cheetham Hill Road,</p>
+            <p>Cheetham Hill</p>
             <p className="mb-3">Manchester, M8 9LR</p>
             <p>
               <a href="tel:07572701349" className="hover:text-ink-light transition-colors">
