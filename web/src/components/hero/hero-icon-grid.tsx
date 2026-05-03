@@ -8,12 +8,24 @@ function seededFloat(seed: number): number {
   return x - Math.floor(x)
 }
 
-const COLS = 7
-const ROWS = 5
+const COLS = 11
+const ROWS = 7
+
+type IconType =
+  | 'cross'
+  | 'ring'
+  | 'dot'
+  | 'logo'
+  | 'heartbeat'
+  | 'pill'
+  | 'diamond'
+  | 'hex'
+  | 'asterisk'
+  | 'shield'
 
 interface IconSpec {
   id: string
-  type: 'cross' | 'ring' | 'dot' | 'logo'
+  type: IconType
   left: number
   top: number
   size: number
@@ -24,19 +36,31 @@ interface IconSpec {
 
 function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
-  const pool: IconSpec['type'][] = ['cross', 'ring', 'dot', 'logo', 'cross', 'ring', 'dot']
+  // weighted pool — simpler shapes more common, logo rare
+  const pool: IconType[] = [
+    'cross', 'cross',
+    'ring', 'ring',
+    'dot', 'dot',
+    'heartbeat',
+    'pill',
+    'diamond',
+    'hex',
+    'asterisk',
+    'shield',
+    'logo',
+  ]
   let s = 0
 
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      if (seededFloat(s++) < 0.30) continue
+      if (seededFloat(s++) < 0.22) continue
 
       const cw = 100 / COLS
       const ch = 100 / ROWS
       const left = col * cw + seededFloat(s++) * cw * 0.8 + cw * 0.1
       const top  = row * ch + seededFloat(s++) * ch * 0.8 + ch * 0.1
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
-      const size = 20 + Math.floor(seededFloat(s++) * 58)
+      const size = 18 + Math.floor(seededFloat(s++) * 48)
       const opacity  = 0.04 + seededFloat(s++) * 0.07
       const duration = 4   + seededFloat(s++) * 5
       const delay    = -(seededFloat(s++) * 9)
@@ -49,7 +73,7 @@ function buildIcons(): IconSpec[] {
 
 const ICONS = buildIcons()
 
-function IconShape({ type, size }: { type: IconSpec['type']; size: number }) {
+function IconShape({ type, size }: { type: IconType; size: number }) {
   if (type === 'logo') {
     return (
       <div style={{ width: size, height: size }}>
@@ -72,11 +96,82 @@ function IconShape({ type, size }: { type: IconSpec['type']; size: number }) {
       </svg>
     )
   }
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-      <circle cx="12" cy="12" r="4.5" fill="currentColor" />
-    </svg>
-  )
+  if (type === 'dot') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <circle cx="12" cy="12" r="4.5" fill="currentColor" />
+      </svg>
+    )
+  }
+  if (type === 'heartbeat') {
+    // ECG / pulse wave
+    return (
+      <svg viewBox="0 0 36 18" width={size * 1.8} height={size * 0.9} aria-hidden="true">
+        <polyline
+          points="0,9 6,9 9,3 12,15 15,6 18,12 21,9 36,9"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      </svg>
+    )
+  }
+  if (type === 'pill') {
+    // horizontal capsule
+    const w = size * 1.7
+    const h = size * 0.7
+    const r = h / 2
+    return (
+      <svg viewBox={`0 0 ${w} ${h}`} width={w} height={h} aria-hidden="true">
+        <rect x={0} y={0} width={w} height={h} rx={r} ry={r}
+          stroke="currentColor" strokeWidth="1.2" fill="none" />
+        <line x1={w / 2} y1={h * 0.2} x2={w / 2} y2={h * 0.8}
+          stroke="currentColor" strokeWidth="1" />
+      </svg>
+    )
+  }
+  if (type === 'diamond') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <polygon
+          points="12,2 22,12 12,22 2,12"
+          stroke="currentColor" strokeWidth="1.2" fill="none"
+        />
+      </svg>
+    )
+  }
+  if (type === 'hex') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <polygon
+          points="12,2 20.66,7 20.66,17 12,22 3.34,17 3.34,7"
+          stroke="currentColor" strokeWidth="1.2" fill="none"
+        />
+      </svg>
+    )
+  }
+  if (type === 'asterisk') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <line x1="12" y1="2"  x2="12" y2="22" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="2.5" y1="7"   x2="21.5" y2="17" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="21.5" y1="7"  x2="2.5"  y2="17" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      </svg>
+    )
+  }
+  if (type === 'shield') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <path
+          d="M12 2 L20 5.5 L20 11 C20 15.5 16.5 19.5 12 21 C7.5 19.5 4 15.5 4 11 L4 5.5 Z"
+          stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinejoin="round"
+        />
+      </svg>
+    )
+  }
+  return null
 }
 
 export function HeroIconGrid() {
@@ -88,9 +183,9 @@ export function HeroIconGrid() {
       className="absolute inset-0 pointer-events-none select-none text-ink-light"
       style={{
         maskImage:
-          'radial-gradient(ellipse 88% 78% at 50% 50%, black 15%, transparent 78%)',
+          'radial-gradient(ellipse 92% 82% at 50% 50%, black 10%, transparent 80%)',
         WebkitMaskImage:
-          'radial-gradient(ellipse 88% 78% at 50% 50%, black 15%, transparent 78%)',
+          'radial-gradient(ellipse 92% 82% at 50% 50%, black 10%, transparent 80%)',
       }}
     >
       {ICONS.map((icon) => (
