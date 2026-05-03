@@ -25,7 +25,7 @@ export function Footer() {
           </div>
 
           {/* Contact column */}
-          <address className="not-italic text-ink-muted-light text-[14px] leading-[1.75] text-left">
+          <address className="not-italic text-ink-muted-light text-[14px] leading-[1.75] text-right sm:text-right">
             <p>475B Cheetham Hill Road,</p>
             <p>Cheetham Hill</p>
             <p className="mb-3">Manchester, M8 9LR</p>

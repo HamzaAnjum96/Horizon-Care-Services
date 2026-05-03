@@ -25,11 +25,11 @@ export default function ContactPage() {
         <section className="bg-cream py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
-            {/* Three contact channels */}
-            <div className="grid sm:grid-cols-3 gap-10 lg:gap-12 mb-20 lg:mb-28">
+            {/* Two contact channels */}
+            <div className="grid sm:grid-cols-2 gap-10 lg:gap-12 mb-20 lg:mb-28">
 
               <div className="border-t-2 border-amber pt-7">
-                <p className="section-kicker text-ink-muted-dark mb-3">Urgent staffing</p>
+                <p className="section-kicker text-ink-muted-dark mb-3">Phone</p>
                 <p
                   className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-4"
                   style={{
@@ -37,43 +37,17 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Available 24/7
+                  All enquiries
                 </p>
                 <a
-                  href="tel:07572701349"
+                  href="tel:02037572767"
                   className="font-display text-ink-dark hover:text-amber transition-colors block"
                   style={{
                     fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
                     fontVariationSettings: '"opsz" 22, "wght" 560',
                   }}
                 >
-                  07572 701 349
-                </a>
-                <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
-                  Same-day and short-notice cover
-                </p>
-              </div>
-
-              <div className="border-t-2 border-rule-light pt-7">
-                <p className="section-kicker text-ink-muted-dark mb-3">Office</p>
-                <p
-                  className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-4"
-                  style={{
-                    fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)',
-                    fontVariationSettings: '"opsz" 18, "wght" 620',
-                  }}
-                >
-                  Referrals and care enquiries
-                </p>
-                <a
-                  href="tel:01582354119"
-                  className="font-display text-ink-dark hover:text-amber transition-colors block"
-                  style={{
-                    fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
-                    fontVariationSettings: '"opsz" 22, "wght" 560',
-                  }}
-                >
-                  01582 354 119
+                  020 3757 2767
                 </a>
                 <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
                   Monday to Friday, 9am to 5pm
@@ -92,10 +66,10 @@ export default function ContactPage() {
                   All enquiries
                 </p>
                 <a
-                  href="mailto:admin@horizoncareservices.org"
+                  href="mailto:contact@horizoncareservices.org"
                   className="text-ink-dark text-[15px] font-medium hover:text-amber transition-colors break-all block"
                 >
-                  admin@horizoncareservices.org
+                  contact@horizoncareservices.org
                 </a>
                 <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
                   Response within 2 working days
