@@ -22,6 +22,7 @@ type IconType =
   | 'hex'
   | 'asterisk'
   | 'shield'
+  | 'square'
 
 interface IconSpec {
   id: string
@@ -41,6 +42,7 @@ function buildIcons(): IconSpec[] {
     'cross', 'cross',
     'ring', 'ring',
     'dot', 'dot',
+    'square', 'square',
     'heartbeat',
     'pill',
     'diamond',
@@ -93,7 +95,7 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
   if (type === 'ring') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.8" fill="none" />
+        <circle cx="12" cy="12" r="9.5" fill="currentColor" />
       </svg>
     )
   }
@@ -157,6 +159,13 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
         <line x1="12" y1="2"  x2="12" y2="22" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
         <line x1="2.5" y1="7"   x2="21.5" y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
         <line x1="21.5" y1="7"  x2="2.5"  y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    )
+  }
+  if (type === 'square') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <rect x="2.5" y="2.5" width="19" height="19" rx="2" fill="currentColor" />
       </svg>
     )
   }
