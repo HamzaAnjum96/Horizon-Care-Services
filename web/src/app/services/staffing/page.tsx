@@ -150,8 +150,8 @@ export default function StaffingPage() {
                 <p className="text-ink-muted-light text-[13px]">Urgent staffing, 24/7</p>
                 <div className="pt-2">
                   <Link
-                    href="/referrals"
-                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+                    href="/contact"
+                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Submit a request <ArrowUpRight size={14} />
                   </Link>

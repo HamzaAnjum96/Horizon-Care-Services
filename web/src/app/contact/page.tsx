@@ -108,56 +108,29 @@ export default function ContactPage() {
             <div className="border-t border-rule-light pt-16 lg:pt-20">
               <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-                <div>
-                  <p className="section-kicker text-ink-muted-dark mb-6">Address</p>
-                  <address className="not-italic mb-8">
-                    <p
-                      className="font-display text-ink-dark mb-3 leading-tight tracking-[-0.02em]"
-                      style={{
-                        fontSize: 'clamp(1.1rem, 1.8vw, 1.4rem)',
-                        fontVariationSettings: '"opsz" 20, "wght" 600',
-                      }}
-                    >
-                      Horizon Care Services Ltd
-                    </p>
-                    <p className="text-ink-muted-dark text-[15px] leading-[1.8]">
-                      475B Cheetham Hill Road<br />
-                      Manchester<br />
-                      M8 9LR
-                    </p>
-                  </address>
-
-                  <div className="space-y-3 mb-8">
-                    <div>
-                      <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">Telephone</p>
-                      <div className="flex flex-wrap gap-x-4 gap-y-1">
-                        <a href="tel:07572701349" className="text-ink-dark text-[15px] font-medium hover:text-amber transition-colors">
-                          07572 701 349
-                        </a>
-                        <a href="tel:01582354119" className="text-ink-dark text-[15px] font-medium hover:text-amber transition-colors">
-                          01582 354 119
-                        </a>
-                      </div>
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">Email</p>
-                      <a href="mailto:admin@horizoncareservices.org" className="text-ink-dark text-[15px] font-medium hover:text-amber transition-colors">
-                        admin@horizoncareservices.org
-                      </a>
-                    </div>
-                  </div>
-
-                  <p className="text-ink-muted-dark text-[12px]">Company No. 14615041</p>
-
-                  <div className="mt-6">
-                    <Link
-                      href="/referrals"
-                      className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-5 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
-                    >
-                      Make a referral <ArrowUpRight size={13} />
-                    </Link>
-                  </div>
-                </div>
+                <address className="not-italic">
+                  <p
+                    className="font-display text-ink-dark mb-3 leading-tight tracking-[-0.02em]"
+                    style={{
+                      fontSize: 'clamp(1rem, 1.6vw, 1.25rem)',
+                      fontVariationSettings: '"opsz" 18, "wght" 620',
+                    }}
+                  >
+                    Horizon Care Services Ltd
+                  </p>
+                  <p className="text-ink-muted-dark text-[15px] leading-[1.8] mb-5">
+                    475B Cheetham Hill Road<br />
+                    Manchester<br />
+                    M8 9LR
+                  </p>
+                  <p className="text-ink-muted-dark text-[12px] mb-5">Company No. 14615041</p>
+                  <Link
+                    href="/services"
+                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-5 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
+                  >
+                    Our services <ArrowUpRight size={13} />
+                  </Link>
+                </address>
 
                 {/* Map */}
                 <div className="relative rounded-lg overflow-hidden border border-rule-light aspect-[4/3] lg:aspect-auto lg:min-h-[420px]">

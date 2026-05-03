@@ -123,8 +123,8 @@ export default function AboutPage() {
                     We understand the pressures discharge planners and social workers operate under. We respond to referrals promptly, provide clear written assessments, and keep you informed at every stage.
                   </p>
                   <Link
-                    href="/referrals"
-                    className="interactive-lift inline-flex items-center gap-2 mt-6 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+                    href="/contact"
+                    className="interactive-lift inline-flex items-center gap-2 mt-6 bg-amber text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Make a referral <ArrowUpRight size={14} />
                   </Link>

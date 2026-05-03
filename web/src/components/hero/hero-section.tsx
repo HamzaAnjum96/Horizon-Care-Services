@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
+import { HeroIconGrid } from '@/components/hero/hero-icon-grid'
 
 const AREAS = [
   'Bedfordshire',
@@ -122,6 +123,7 @@ export function HeroSection() {
     <section className="relative bg-deep flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-dark">
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-pulse" />
+        <HeroIconGrid />
         <HeroCanvas />
       </div>
 

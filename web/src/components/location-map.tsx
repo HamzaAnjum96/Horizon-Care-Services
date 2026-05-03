@@ -13,18 +13,18 @@ const MARKER_HTML = `
 <div style="display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 3px 10px rgba(0,0,0,0.8));">
   <div style="
     width:42px;height:42px;border-radius:50%;
-    background:oklch(12% 0.008 50);
-    border:2px solid oklch(67% 0.13 40);
+    background:oklch(97% 0.006 52);
+    border:2px solid oklch(44% 0.15 12);
     display:flex;align-items:center;justify-content:center;
     padding:9px;box-sizing:border-box;
   ">
     <svg viewBox="0 0 1024 1024" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-      <path fill="oklch(67% 0.13 40)" fill-rule="evenodd" clip-rule="evenodd" d="${LOGO_PATH}"/>
-      <circle cx="511.4" cy="201.7" r="99.6" fill="oklch(67% 0.13 40)"/>
+      <path fill="oklch(44% 0.15 12)" fill-rule="evenodd" clip-rule="evenodd" d="${LOGO_PATH}"/>
+      <circle cx="511.4" cy="201.7" r="99.6" fill="oklch(44% 0.15 12)"/>
     </svg>
   </div>
-  <div style="width:2px;height:8px;background:oklch(67% 0.13 40);margin-top:-1px;"></div>
-  <div style="width:5px;height:5px;border-radius:50%;background:oklch(67% 0.13 40);margin-top:-1px;"></div>
+  <div style="width:2px;height:8px;background:oklch(44% 0.15 12);margin-top:-1px;"></div>
+  <div style="width:5px;height:5px;border-radius:50%;background:oklch(44% 0.15 12);margin-top:-1px;"></div>
 </div>
 `
 
