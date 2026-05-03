@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
+import { HeroIconGrid } from '@/components/hero/hero-icon-grid'
 
 interface PageHeaderProps {
   kicker: string
@@ -14,8 +15,9 @@ interface PageHeaderProps {
 
 export function PageHeader({ kicker, title, intro, cta }: PageHeaderProps) {
   return (
-    <div className="bg-deep border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <div className="relative bg-deep border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+      <HeroIconGrid />
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}

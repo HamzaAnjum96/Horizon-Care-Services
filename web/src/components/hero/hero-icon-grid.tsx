@@ -8,16 +8,14 @@ function seededFloat(seed: number): number {
   return x - Math.floor(x)
 }
 
-const COLS = 11
-const ROWS = 7
+const COLS = 13
+const ROWS = 8
 
 type IconType =
   | 'cross'
   | 'ring'
   | 'dot'
   | 'logo'
-  | 'heartbeat'
-  | 'pill'
   | 'diamond'
   | 'hex'
   | 'asterisk'
@@ -37,33 +35,33 @@ interface IconSpec {
 
 function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
-  // weighted pool — simpler shapes more common, logo rare
   const pool: IconType[] = [
     'cross', 'cross',
     'ring', 'ring',
-    'dot', 'dot',
+    'dot', 'dot', 'dot',
     'square', 'square',
-    'heartbeat',
-    'pill',
     'diamond',
     'hex',
     'asterisk',
     'shield',
     'logo',
   ]
-  let s = 0
+  // offset seed so arrangement differs from the old 7×5 layout
+  let s = 137
 
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      if (seededFloat(s++) < 0.22) continue
+      if (seededFloat(s++) < 0.18) continue
 
       const cw = 100 / COLS
       const ch = 100 / ROWS
       const left = col * cw + seededFloat(s++) * cw * 0.8 + cw * 0.1
       const top  = row * ch + seededFloat(s++) * ch * 0.8 + ch * 0.1
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
-      const size = 18 + Math.floor(seededFloat(s++) * 48)
-      const opacity  = 0.04 + seededFloat(s++) * 0.07
+      // power skew: most icons small, few large
+      const raw  = Math.pow(seededFloat(s++), 1.7)
+      const size = Math.floor(raw * 62) + 11
+      const opacity  = 0.04 + seededFloat(s++) * 0.09
       const duration = 4   + seededFloat(s++) * 5
       const delay    = -(seededFloat(s++) * 9)
 
@@ -84,7 +82,6 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
     )
   }
   if (type === 'cross') {
-    // Bold filled medical cross — arm width ~8/24 (Red Cross proportion)
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <rect x="8" y="2" width="8" height="20" rx="1.5" fill="currentColor" />
@@ -103,33 +100,6 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <circle cx="12" cy="12" r="4.5" fill="currentColor" />
-      </svg>
-    )
-  }
-  if (type === 'heartbeat') {
-    return (
-      <svg viewBox="0 0 36 18" width={size * 1.8} height={size * 0.9} aria-hidden="true">
-        <polyline
-          points="0,9 6,9 9,3 12,15 15,6 18,12 21,9 36,9"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-      </svg>
-    )
-  }
-  if (type === 'pill') {
-    const w = size * 1.7
-    const h = size * 0.7
-    const r = h / 2
-    return (
-      <svg viewBox={`0 0 ${w} ${h}`} width={w} height={h} aria-hidden="true">
-        <rect x={0} y={0} width={w} height={h} rx={r} ry={r}
-          stroke="currentColor" strokeWidth="1.8" fill="none" />
-        <line x1={w / 2} y1={h * 0.2} x2={w / 2} y2={h * 0.8}
-          stroke="currentColor" strokeWidth="1.8" />
       </svg>
     )
   }
@@ -162,20 +132,20 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       </svg>
     )
   }
-  if (type === 'square') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <rect x="2.5" y="2.5" width="19" height="19" rx="2" fill="currentColor" />
-      </svg>
-    )
-  }
   if (type === 'shield') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <path
           d="M12 2 L20 5.5 L20 11 C20 15.5 16.5 19.5 12 21 C7.5 19.5 4 15.5 4 11 L4 5.5 Z"
-          stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinejoin="round"
+          fill="currentColor"
         />
+      </svg>
+    )
+  }
+  if (type === 'square') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <rect x="2.5" y="2.5" width="19" height="19" rx="2" fill="currentColor" />
       </svg>
     )
   }
@@ -188,8 +158,9 @@ export function HeroIconGrid() {
   return (
     <div
       aria-hidden="true"
-      className="absolute inset-0 pointer-events-none select-none text-ink-light"
+      className="absolute inset-0 pointer-events-none select-none"
       style={{
+        color: 'oklch(42% 0.10 20)',
         maskImage:
           'radial-gradient(ellipse 92% 82% at 50% 50%, black 10%, transparent 80%)',
         WebkitMaskImage:

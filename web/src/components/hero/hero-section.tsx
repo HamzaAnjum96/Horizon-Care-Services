@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
@@ -17,105 +16,6 @@ const AREAS = [
 
 const marqueeText = AREAS.join('  ·  ') + '  ·  '
 
-// Canvas: slowly drifting, subtly undulating horizontal lines.
-// Each line has a unique sine-wave frequency and phase so they never
-// synchronise. The whole field drifts upward at ~0.35 px/s, wrapping
-// seamlessly. A CSS radial mask fades edges to transparent.
-// Reduced-motion preference → one static frame, RAF cancelled.
-function HeroCanvas() {
-  const ref = useRef<HTMLCanvasElement>(null)
-  const reduced = useReducedMotion()
-
-  useEffect(() => {
-    const canvas = ref.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    let raf: number
-    let start = 0
-
-    function setup() {
-      const dpr = window.devicePixelRatio || 1
-      const w = canvas!.offsetWidth
-      const h = canvas!.offsetHeight
-      if (!w || !h) return
-      canvas!.width = Math.round(w * dpr)
-      canvas!.height = Math.round(h * dpr)
-      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0)
-    }
-
-    setup()
-    const ro = new ResizeObserver(setup)
-    ro.observe(canvas)
-
-    function draw(ts: number) {
-      if (!start) start = ts
-      const t = reduced ? 0 : (ts - start) / 1000
-
-      const w = canvas!.offsetWidth
-      const h = canvas!.offsetHeight
-      if (!w || !h) {
-        if (!reduced) raf = requestAnimationFrame(draw)
-        return
-      }
-      ctx!.clearRect(0, 0, w, h)
-
-      const spacing = 20
-      // No vertical motion or wave amplitude for reduced-motion users
-      const amp = reduced ? 0 : 2.5
-      const drift = reduced ? 0 : (t * 0.35) % spacing
-      const lineCount = Math.ceil(h / spacing) + 2
-      const steps = Math.ceil(w / 6) + 2
-
-      ctx!.strokeStyle = 'rgba(245, 244, 241, 0.052)'
-      ctx!.lineWidth = 0.65
-
-      for (let i = 0; i < lineCount; i++) {
-        // Wrap-around vertical position
-        const raw = i * spacing - drift
-        const wrap = lineCount * spacing
-        const baseY = ((raw % wrap) + wrap) % wrap - spacing
-
-        // Each line: unique wavelength + independent slow phase drift
-        const freq = (Math.PI * 2) / (230 + i * 14)
-        const phase = i * 0.58 + t * 0.10
-
-        ctx!.beginPath()
-        for (let s = 0; s <= steps; s++) {
-          const x = s * 6
-          const y = baseY + Math.sin(x * freq + phase) * amp
-          s === 0 ? ctx!.moveTo(x, y) : ctx!.lineTo(x, y)
-        }
-        ctx!.stroke()
-      }
-
-      if (!reduced) raf = requestAnimationFrame(draw)
-    }
-
-    raf = requestAnimationFrame(draw)
-
-    return () => {
-      cancelAnimationFrame(raf)
-      ro.disconnect()
-    }
-  }, [reduced])
-
-  return (
-    <canvas
-      ref={ref}
-      aria-hidden="true"
-      className="absolute inset-0 w-full h-full pointer-events-none select-none"
-      style={{
-        maskImage:
-          'radial-gradient(ellipse 90% 80% at 50% 52%, black 10%, transparent 80%)',
-        WebkitMaskImage:
-          'radial-gradient(ellipse 90% 80% at 50% 52%, black 10%, transparent 80%)',
-      }}
-    />
-  )
-}
-
 export function HeroSection() {
   const reduceMotion = useReducedMotion()
 
@@ -124,7 +24,6 @@ export function HeroSection() {
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-pulse" />
         <HeroIconGrid />
-        <HeroCanvas />
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full pt-14 pb-12 lg:pt-18 lg:pb-16">
