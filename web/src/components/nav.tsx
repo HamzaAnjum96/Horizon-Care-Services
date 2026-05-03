@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
   { href: '/work-for-us', label: 'Work For Us' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export function Nav() {
@@ -67,13 +68,6 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className={cn('hidden md:block text-[13px] font-medium transition-colors tracking-wide', scrolled ? 'text-ink-muted-dark hover:text-ink-dark' : 'text-ink-muted-light hover:text-ink-light')}
-            >
-              Contact
-            </Link>
-
             <button
               onClick={() => setMobileOpen(true)}
               className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
@@ -116,7 +110,7 @@ export function Nav() {
 
             {/* Nav links */}
             <nav className="flex flex-col flex-1 overflow-y-auto" aria-label="Mobile">
-              {[...navLinks, { href: '/contact', label: 'Contact' }].map((link) => (
+              {navLinks.map((link) => (
                 <div key={link.href} className="border-b border-rule-dark">
                   <Link
                     href={link.href}
