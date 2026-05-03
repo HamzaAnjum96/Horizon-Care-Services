@@ -61,7 +61,7 @@ function buildIcons(): IconSpec[] {
       // power skew: most icons small, few large
       const raw  = Math.pow(seededFloat(s++), 1.7)
       const size = Math.floor(raw * 62) + 11
-      const opacity  = 0.04 + seededFloat(s++) * 0.09
+      const opacity  = 0.12 + seededFloat(s++) * 0.18
       const duration = 4   + seededFloat(s++) * 5
       const delay    = -(seededFloat(s++) * 9)
 
@@ -160,7 +160,7 @@ export function HeroIconGrid() {
       aria-hidden="true"
       className="absolute inset-0 pointer-events-none select-none"
       style={{
-        color: 'oklch(42% 0.10 20)',
+        color: 'oklch(55% 0.12 20)',
         maskImage:
           'radial-gradient(ellipse 92% 82% at 50% 50%, black 10%, transparent 80%)',
         WebkitMaskImage:
