@@ -82,17 +82,18 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
     )
   }
   if (type === 'cross') {
+    // Bold filled medical cross — arm width ~8/24 (Red Cross proportion)
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor" />
-        <rect x="2" y="10.5" width="20" height="3" rx="0.75" fill="currentColor" />
+        <rect x="8" y="2" width="8" height="20" rx="1.5" fill="currentColor" />
+        <rect x="2" y="8" width="20" height="8" rx="1.5" fill="currentColor" />
       </svg>
     )
   }
   if (type === 'ring') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+        <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.8" fill="none" />
       </svg>
     )
   }
@@ -104,13 +105,12 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
     )
   }
   if (type === 'heartbeat') {
-    // ECG / pulse wave
     return (
       <svg viewBox="0 0 36 18" width={size * 1.8} height={size * 0.9} aria-hidden="true">
         <polyline
           points="0,9 6,9 9,3 12,15 15,6 18,12 21,9 36,9"
           stroke="currentColor"
-          strokeWidth="1.4"
+          strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
@@ -119,16 +119,15 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
     )
   }
   if (type === 'pill') {
-    // horizontal capsule
     const w = size * 1.7
     const h = size * 0.7
     const r = h / 2
     return (
       <svg viewBox={`0 0 ${w} ${h}`} width={w} height={h} aria-hidden="true">
         <rect x={0} y={0} width={w} height={h} rx={r} ry={r}
-          stroke="currentColor" strokeWidth="1.2" fill="none" />
+          stroke="currentColor" strokeWidth="1.8" fill="none" />
         <line x1={w / 2} y1={h * 0.2} x2={w / 2} y2={h * 0.8}
-          stroke="currentColor" strokeWidth="1" />
+          stroke="currentColor" strokeWidth="1.8" />
       </svg>
     )
   }
@@ -137,7 +136,7 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <polygon
           points="12,2 22,12 12,22 2,12"
-          stroke="currentColor" strokeWidth="1.2" fill="none"
+          stroke="currentColor" strokeWidth="1.8" fill="none"
         />
       </svg>
     )
@@ -147,7 +146,7 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <polygon
           points="12,2 20.66,7 20.66,17 12,22 3.34,17 3.34,7"
-          stroke="currentColor" strokeWidth="1.2" fill="none"
+          stroke="currentColor" strokeWidth="1.8" fill="none"
         />
       </svg>
     )
@@ -155,9 +154,9 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
   if (type === 'asterisk') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <line x1="12" y1="2"  x2="12" y2="22" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        <line x1="2.5" y1="7"   x2="21.5" y2="17" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        <line x1="21.5" y1="7"  x2="2.5"  y2="17" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <line x1="12" y1="2"  x2="12" y2="22" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <line x1="2.5" y1="7"   x2="21.5" y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <line x1="21.5" y1="7"  x2="2.5"  y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     )
   }
@@ -166,7 +165,7 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <path
           d="M12 2 L20 5.5 L20 11 C20 15.5 16.5 19.5 12 21 C7.5 19.5 4 15.5 4 11 L4 5.5 Z"
-          stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinejoin="round"
+          stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinejoin="round"
         />
       </svg>
     )
