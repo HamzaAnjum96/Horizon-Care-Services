@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
+import { LocationMap } from '@/components/location-map'
 
 export const metadata: Metadata = {
   title: 'Contact — Horizon Care Services',
@@ -121,7 +122,6 @@ export default function ContactPage() {
                     </p>
                     <p className="text-ink-muted-dark text-[15px] leading-[1.8]">
                       475B Cheetham Hill Road<br />
-                      Cheetham Hill<br />
                       Manchester<br />
                       M8 9LR
                     </p>
@@ -161,24 +161,13 @@ export default function ContactPage() {
 
                 {/* Map */}
                 <div className="relative rounded-lg overflow-hidden border border-rule-light aspect-[4/3] lg:aspect-auto lg:min-h-[420px]">
-                  <iframe
-                    title="Horizon Care Services office location"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=-2.2550%2C53.4930%2C-2.2200%2C53.5130&layer=mapnik&marker=53.5030%2C-2.2390"
-                    width="100%"
-                    height="100%"
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full"
-                    style={{
-                      filter: 'invert(93%) hue-rotate(180deg) sepia(22%) saturate(60%) brightness(84%)',
-                      border: 'none',
-                    }}
-                  />
+                  <LocationMap />
                   {/* Get directions overlay link */}
                   <a
                     href="https://www.google.com/maps/dir/?api=1&destination=475B+Cheetham+Hill+Road+Manchester+M8+9LR"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-deep/90 backdrop-blur-sm text-ink-light text-[11px] font-medium tracking-[0.05em] px-3 py-1.5 rounded hover:bg-deep transition-colors"
+                    className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-deep/90 backdrop-blur-sm text-ink-light text-[11px] font-medium tracking-[0.05em] px-3 py-1.5 rounded hover:bg-deep transition-colors z-[1000]"
                   >
                     Get directions <ArrowUpRight size={11} />
                   </a>
