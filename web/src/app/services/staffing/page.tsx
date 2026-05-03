@@ -141,11 +141,11 @@ export default function StaffingPage() {
               </div>
               <div className="space-y-4">
                 <a
-                  href="tel:07572701349"
+                  href="tel:02037572767"
                   className="block text-ink-light font-display text-[1.3rem] hover:text-amber transition-colors"
                   style={{ fontVariationSettings: '"opsz" 20, "wght" 560' }}
                 >
-                  07572 701 349
+                  020 3757 2767
                 </a>
                 <p className="text-ink-muted-light text-[13px]">Urgent staffing, 24/7</p>
                 <div className="pt-2">

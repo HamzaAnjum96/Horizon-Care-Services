@@ -144,7 +144,7 @@ export default function HomeCarePage() {
                   Get in touch <ArrowUpRight size={14} />
                 </Link>
                 <p className="text-ink-muted-dark text-[13px] mt-4">
-                  Or call <a href="tel:01582354119" className="underline underline-offset-2 hover:text-ink-dark transition-colors">01582 354 119</a>
+                  Or call <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">020 3757 2767</a>
                 </p>
               </div>
             </div>

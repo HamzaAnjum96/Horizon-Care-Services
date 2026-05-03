@@ -25,22 +25,18 @@ export function Footer() {
           </div>
 
           {/* Contact column */}
-          <address className="not-italic text-ink-muted-light text-[14px] leading-[1.75]">
+          <address className="not-italic text-ink-muted-light text-[14px] leading-[1.75] text-left">
             <p>475B Cheetham Hill Road,</p>
             <p>Cheetham Hill</p>
             <p className="mb-3">Manchester, M8 9LR</p>
             <p>
-              <a href="tel:07572701349" className="hover:text-ink-light transition-colors">
-                07572 701 349
-              </a>
-              <span className="mx-2 opacity-40">·</span>
-              <a href="tel:01582354119" className="hover:text-ink-light transition-colors">
-                01582 354 119
+              <a href="tel:02037572767" className="hover:text-ink-light transition-colors">
+                020 3757 2767
               </a>
             </p>
             <p>
-              <a href="mailto:admin@horizoncareservices.org" className="hover:text-ink-light transition-colors">
-                admin@horizoncareservices.org
+              <a href="mailto:contact@horizoncareservices.org" className="hover:text-ink-light transition-colors">
+                contact@horizoncareservices.org
               </a>
             </p>
           </address>

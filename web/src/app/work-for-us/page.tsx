@@ -40,11 +40,16 @@ const roles = [
     title: 'Support Worker',
     note: 'Trained support workers for residential, community, and domiciliary settings.',
   },
+  {
+    code: 'HCS-CV-000',
+    title: 'Speculative CV',
+    note: "Don't see your role listed? Send your CV and we'll be in touch if a suitable position arises.",
+  },
 ]
 
 function applyHref(code: string, title: string) {
   const subject = encodeURIComponent(`Application: ${code} ${title}`)
-  return `mailto:admin@horizoncareservices.org?subject=${subject}`
+  return `mailto:careers@horizoncareservices.org?subject=${subject}`
 }
 
 export default function WorkForUsPage() {
@@ -157,10 +162,10 @@ export default function WorkForUsPage() {
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[54ch]">
                     Click Apply on any role above, or email{' '}
                     <a
-                      href="mailto:admin@horizoncareservices.org"
+                      href="mailto:careers@horizoncareservices.org"
                       className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity"
                     >
-                      admin@horizoncareservices.org
+                      careers@horizoncareservices.org
                     </a>{' '}
                     directly with your CV, the role reference, your availability, and preferred locations. We will respond within 2 working days.
                   </p>
@@ -170,15 +175,15 @@ export default function WorkForUsPage() {
                 </div>
                 <div className="space-y-4">
                   <a
-                    href="mailto:admin@horizoncareservices.org"
+                    href="mailto:careers@horizoncareservices.org"
                     className="interactive-lift inline-flex items-center gap-2 bg-amber text-deep px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Email your CV <ArrowUpRight size={14} />
                   </a>
                   <p className="text-ink-muted-dark text-[13px]">
                     Or call us on{' '}
-                    <a href="tel:01582354119" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
-                      01582 354 119
+                    <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
+                      020 3757 2767
                     </a>
                   </p>
                 </div>

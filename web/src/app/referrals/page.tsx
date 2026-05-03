@@ -39,12 +39,10 @@ export default function WorkWithUsPage() {
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
                     To discuss a requirement, call us on{' '}
-                    <a href="tel:01582354119" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">01582 354 119</a>
+                    <a href="tel:02037572767" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">020 3757 2767</a>
                     {' '}or email{' '}
-                    <a href="mailto:admin@horizoncareservices.org" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">admin@horizoncareservices.org</a>.
-                    For urgent staffing cover, call{' '}
-                    <a href="tel:07572701349" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">07572 701 349</a>.
-                    That line is staffed 24/7.
+                    <a href="mailto:contact@horizoncareservices.org" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">contact@horizoncareservices.org</a>.
+                    For urgent cover, we can often respond the same day.
                   </p>
                   <p>
                     Once we understand your requirements, we will confirm what we can provide, outline the right service model, and agree next steps. For urgent cover we can often turn around same day.
@@ -59,21 +57,15 @@ export default function WorkWithUsPage() {
                 <p className="section-kicker text-ink-muted-dark mb-5">Contact us</p>
                 <div className="space-y-6">
                   <div className="border-t border-rule-light pt-5">
-                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-2">Urgent cover (24/7)</p>
-                    <a href="tel:07572701349" className="font-display text-ink-dark text-[1.3rem] hover:text-amber transition-colors block" style={{ fontVariationSettings: '"opsz" 20, "wght" 560' }}>
-                      07572 701 349
-                    </a>
-                  </div>
-                  <div className="border-t border-rule-light pt-5">
-                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-2">Office (Mon–Fri, 9–5)</p>
-                    <a href="tel:01582354119" className="font-display text-ink-dark text-[1.3rem] hover:text-amber transition-colors block" style={{ fontVariationSettings: '"opsz" 20, "wght" 560' }}>
-                      01582 354 119
+                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-2">Phone (Mon–Fri, 9–5)</p>
+                    <a href="tel:02037572767" className="font-display text-ink-dark text-[1.3rem] hover:text-amber transition-colors block" style={{ fontVariationSettings: '"opsz" 20, "wght" 560' }}>
+                      020 3757 2767
                     </a>
                   </div>
                   <div className="border-t border-rule-light pt-5">
                     <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-2">Email</p>
-                    <a href="mailto:admin@horizoncareservices.org" className="text-ink-dark text-[14px] font-medium hover:text-amber transition-colors break-all">
-                      admin@horizoncareservices.org
+                    <a href="mailto:contact@horizoncareservices.org" className="text-ink-dark text-[14px] font-medium hover:text-amber transition-colors break-all">
+                      contact@horizoncareservices.org
                     </a>
                   </div>
                   <div className="border-t border-rule-light pt-5">

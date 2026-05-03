@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 If you have questions about how we handle your personal data, contact us at{' '}
-                <a href="mailto:admin@horizoncareservices.org">admin@horizoncareservices.org</a>.
+                <a href="mailto:contact@horizoncareservices.org">contact@horizoncareservices.org</a>.
               </p>
             </Section>
 
@@ -121,7 +121,7 @@ export default function PrivacyPolicyPage() {
               </ul>
               <p>
                 To exercise any of these rights, write to us at the address above or email{' '}
-                <a href="mailto:admin@horizoncareservices.org">admin@horizoncareservices.org</a>. We will respond within one calendar month.
+                <a href="mailto:contact@horizoncareservices.org">contact@horizoncareservices.org</a>. We will respond within one calendar month.
               </p>
             </Section>
 

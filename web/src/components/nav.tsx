@@ -127,13 +127,13 @@ export function Nav() {
             {/* Bottom contact strip */}
             <div className="px-5 pb-8 pt-5 border-t border-rule-dark flex-shrink-0 space-y-2">
               <a
-                href="tel:07572701349"
+                href="tel:02037572767"
                 className="block text-ink-light font-display text-[1.15rem] font-semibold hover:text-amber transition-colors"
                 style={{ fontVariationSettings: '"opsz" 18, "wght" 580' }}
               >
-                07572 701 349
+                020 3757 2767
               </a>
-              <p className="text-ink-muted-light text-[11px] tracking-[0.1em] uppercase">Urgent, 24/7</p>
+              <p className="text-ink-muted-light text-[11px] tracking-[0.1em] uppercase">Get in touch</p>
             </div>
           </motion.div>
         )}
