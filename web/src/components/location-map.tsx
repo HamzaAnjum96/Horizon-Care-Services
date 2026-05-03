@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 
-const LAT = 53.5032
-const LNG = -2.2388
+const LAT = 53.5077
+const LNG = -2.2408
 const TILE_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
 
 // Inline the logo path so we can use it inside Leaflet's DivIcon HTML
@@ -84,5 +84,14 @@ export function LocationMap() {
     }
   }, [])
 
-  return <div ref={containerRef} className="w-full h-full" aria-label="Map showing Horizon Care Services office location" />
+  return (
+    <div className="w-full h-full relative">
+      <div
+        ref={containerRef}
+        className="w-full h-full"
+        aria-label="Map showing Horizon Care Services office location"
+        style={{ filter: 'sepia(18%) saturate(70%) brightness(103%)' }}
+      />
+    </div>
+  )
 }
