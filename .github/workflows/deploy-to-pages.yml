@@ -30,10 +30,7 @@ jobs:
           cache-dependency-path: web/package-lock.json
 
       - name: Install dependencies
-        # Prefer the strict, reproducible `npm ci`. Fall back to `npm install`
-        # if the lockfile has drifted from package.json so the deploy isn't
-        # blocked by an out-of-sync lockfile.
-        run: npm ci --prefer-offline --no-audit --no-fund || npm install --no-audit --no-fund
+        run: npm ci
         working-directory: web
 
       - name: Build
