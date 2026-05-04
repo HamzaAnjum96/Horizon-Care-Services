@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
@@ -48,8 +49,8 @@ const roles = [
 ]
 
 function applyHref(code: string, title: string) {
-  const subject = encodeURIComponent(`Application: ${code} ${title}`)
-  return `mailto:careers@horizoncareservices.org?subject=${subject}`
+  const params = new URLSearchParams({ code, title })
+  return `/work-for-us/apply?${params.toString()}`
 }
 
 export default function WorkForUsPage() {
@@ -135,12 +136,12 @@ export default function WorkForUsPage() {
                       </div>
                       <p className="text-ink-muted-dark text-[13px] leading-snug">{role.note}</p>
                     </div>
-                    <a
+                    <Link
                       href={applyHref(role.code, role.title)}
                       className="interactive-lift inline-flex items-center gap-2 border border-rule-light text-ink-dark px-4 py-2 rounded-md text-[12px] font-semibold tracking-[0.02em] hover:border-amber hover:text-amber transition-colors flex-shrink-0 self-start sm:self-center"
                     >
                       Apply <ArrowUpRight size={12} />
-                    </a>
+                    </Link>
                   </div>
                 ))}
               </div>
