@@ -206,23 +206,41 @@ function sectionTitle(doc: Doc, c: Cursor, kicker: string, title: string) {
 
 function field(doc: Doc, c: Cursor, label: string, value: string, colW = CONTENT_W, x = PAGE.marginX) {
   const v = value && value.trim() ? value : '—'
+
   doc.setFont(FONT.body, 'bold')
   doc.setFontSize(6.8)
   setInk(doc, BRAND.inkSoft)
-  doc.text(label.toUpperCase(), x, c.y, { charSpace: 0.5 })
+  // Wrap labels too — uppercase + 0.5mm charSpace makes them ~10–12% wider
+  // than splitTextToSize accounts for, so reserve a bit of slack.
+  const labelLines = doc.splitTextToSize(label.toUpperCase(), Math.max(colW - 2, 10))
+  doc.text(labelLines, x, c.y, { charSpace: 0.5 })
+  const labelH = labelLines.length * 3.2
 
   doc.setFont(FONT.body, 'normal')
   doc.setFontSize(9.5)
   setInk(doc, BRAND.ink)
   const wrapped = doc.splitTextToSize(v, colW)
-  doc.text(wrapped, x, c.y + 4)
-  return 4 + wrapped.length * 4 + 2
+  doc.text(wrapped, x, c.y + labelH + 1)
+  return labelH + 1 + wrapped.length * 4 + 2
 }
 
 function fieldRow(doc: Doc, c: Cursor, fields: Array<{ label: string; value: string }>) {
   const colCount = fields.length
   const gap = 4
   const colW = (CONTENT_W - gap * (colCount - 1)) / colCount
+
+  // Pre-compute the row height so we can keep label+value together when
+  // a page break is needed.
+  const heights = fields.map((f) => {
+    const labelLines = doc.splitTextToSize(f.label.toUpperCase(), Math.max(colW - 2, 10))
+    const valueLines = doc.splitTextToSize(
+      f.value && f.value.trim() ? f.value : '—',
+      colW,
+    )
+    return labelLines.length * 3.2 + 1 + valueLines.length * 4 + 2
+  })
+  const rowH = Math.max(...heights)
+  ensureSpace(doc, c, rowH + 2)
 
   let maxAdvance = 0
   fields.forEach((f, i) => {
@@ -231,11 +249,20 @@ function fieldRow(doc: Doc, c: Cursor, fields: Array<{ label: string; value: str
     if (advance > maxAdvance) maxAdvance = advance
   })
   c.y += maxAdvance + 2
-  ensureSpace(doc, c, 0)
 }
 
 function paragraph(doc: Doc, c: Cursor, label: string, value: string) {
   const v = value && value.trim() ? value : '—'
+
+  // Pre-compute wrap so we can ensureSpace BEFORE drawing the label —
+  // otherwise the label can end up orphaned at the bottom of the page
+  // while its value lands on the next.
+  doc.setFont(FONT.body, 'normal')
+  doc.setFontSize(9.5)
+  const wrapped = doc.splitTextToSize(v, CONTENT_W)
+  const totalH = 3.2 + 1 + wrapped.length * 4 + 4
+  ensureSpace(doc, c, totalH)
+
   doc.setFont(FONT.body, 'bold')
   doc.setFontSize(6.8)
   setInk(doc, BRAND.inkSoft)
@@ -244,8 +271,6 @@ function paragraph(doc: Doc, c: Cursor, label: string, value: string) {
   doc.setFont(FONT.body, 'normal')
   doc.setFontSize(9.5)
   setInk(doc, BRAND.ink)
-  const wrapped = doc.splitTextToSize(v, CONTENT_W)
-  ensureSpace(doc, c, 4 + wrapped.length * 4 + 4)
   doc.text(wrapped, PAGE.marginX, c.y + 4)
   c.y += 4 + wrapped.length * 4 + 4
 }
@@ -606,15 +631,15 @@ export function generateApplicationPdf(data: ApplicationData): jsPDF {
   sectionTitle(doc, c, 'Section 16', 'Health & safeguarding declarations')
   fieldRow(doc, c, [
     {
-      label: 'Unspent criminal convictions',
+      label: 'Unspent convictions',
       value: yn(data.declarations.convictions),
     },
     {
-      label: 'Safeguarding referrals / dismissals',
+      label: 'Safeguarding referrals',
       value: yn(data.declarations.safeguarding),
     },
     {
-      label: 'Health condition affecting role',
+      label: 'Health condition',
       value: yn(data.declarations.healthCondition),
     },
   ])

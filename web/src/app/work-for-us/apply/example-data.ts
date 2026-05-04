@@ -51,7 +51,7 @@ export function exampleApplication(role: { code: string; title: string }): Appli
       shareCode: '',
     },
     identification: {
-      niNumber: 'QQ123456C',
+      niNumber: 'AB123456C',
     },
     dbs: {
       status: 'yes',

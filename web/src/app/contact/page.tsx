@@ -78,21 +78,32 @@ export default function ContactPage() {
 
             </div>
 
-            {/* Address + Map */}
+            {/* Our offices */}
             <div className="border-t border-rule-light pt-16 lg:pt-20">
-              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              <p className="section-kicker text-ink-muted-dark mb-5">Our offices</p>
+              <h2
+                className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-10"
+                style={{
+                  fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
+                  fontVariationSettings: '"opsz" 24, "wght" 560',
+                }}
+              >
+                Visit us in Manchester.
+              </h2>
 
-                <address className="not-italic">
+              <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-5 sm:gap-8 lg:gap-12 items-start">
+
+                <address className="not-italic min-w-0">
                   <p
                     className="font-display text-ink-dark mb-3 leading-tight tracking-[-0.02em]"
                     style={{
-                      fontSize: 'clamp(1rem, 1.6vw, 1.25rem)',
+                      fontSize: 'clamp(0.95rem, 1.4vw, 1.2rem)',
                       fontVariationSettings: '"opsz" 18, "wght" 620',
                     }}
                   >
                     Horizon Care Services Ltd
                   </p>
-                  <p className="text-ink-muted-dark text-[15px] leading-[1.8] mb-5">
+                  <p className="text-ink-muted-dark text-[14px] sm:text-[15px] leading-[1.7] mb-4">
                     475B Cheetham Hill Road<br />
                     Manchester<br />
                     M8 9LR
@@ -100,21 +111,21 @@ export default function ContactPage() {
                   <p className="text-ink-muted-dark text-[12px] mb-5">Company No. 14615041</p>
                   <Link
                     href="/services"
-                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-5 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
+                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-4 sm:px-5 py-2 sm:py-2.5 rounded-md text-[12.5px] sm:text-[13px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Our services <ArrowUpRight size={13} />
                   </Link>
                 </address>
 
-                {/* Map */}
-                <div className="relative rounded-lg overflow-hidden border border-rule-light aspect-[4/3] lg:aspect-auto lg:min-h-[420px]">
+                {/* Map — compact thumbnail beside the address */}
+                <div className="relative rounded-lg overflow-hidden border border-rule-light aspect-square sm:aspect-[4/3] lg:aspect-[5/4] max-h-[260px] sm:max-h-[300px] lg:max-h-[340px]">
                   <LocationMap />
                   {/* Get directions overlay link */}
                   <a
                     href="https://www.google.com/maps/dir/?api=1&destination=475B+Cheetham+Hill+Road+Manchester+M8+9LR"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-deep/90 backdrop-blur-sm text-ink-light text-[11px] font-medium tracking-[0.05em] px-3 py-1.5 rounded hover:bg-deep transition-colors z-[1000]"
+                    className="absolute bottom-2 right-2 inline-flex items-center gap-1.5 bg-deep/90 backdrop-blur-sm text-ink-light text-[10px] sm:text-[11px] font-medium tracking-[0.05em] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded hover:bg-deep transition-colors z-[1000]"
                   >
                     Get directions <ArrowUpRight size={11} />
                   </a>
