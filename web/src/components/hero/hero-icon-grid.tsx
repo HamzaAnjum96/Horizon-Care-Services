@@ -13,14 +13,10 @@ const ROWS = 8
 
 type IconType =
   | 'cross'
-  | 'ring'
+  | 'heart'
   | 'dot'
   | 'logo'
-  | 'diamond'
-  | 'hex'
-  | 'asterisk'
   | 'shield'
-  | 'square'
 
 interface IconSpec {
   id: string
@@ -37,12 +33,8 @@ function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
   const pool: IconType[] = [
     'cross', 'cross',
-    'ring', 'ring',
+    'heart', 'heart',
     'dot', 'dot', 'dot',
-    'square',
-    'diamond',
-    'hex',
-    'asterisk',
     'shield', 'shield', 'shield',
     'logo', 'logo', 'logo',
   ]
@@ -92,10 +84,13 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       </svg>
     )
   }
-  if (type === 'ring') {
+  if (type === 'heart') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <circle cx="12" cy="12" r="9.5" fill="currentColor" />
+        <path
+          d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z"
+          fill="currentColor"
+        />
       </svg>
     )
   }
@@ -106,35 +101,6 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       </svg>
     )
   }
-  if (type === 'diamond') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <polygon
-          points="12,2 22,12 12,22 2,12"
-          stroke="currentColor" strokeWidth="1.8" fill="none"
-        />
-      </svg>
-    )
-  }
-  if (type === 'hex') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <polygon
-          points="12,2 20.66,7 20.66,17 12,22 3.34,17 3.34,7"
-          stroke="currentColor" strokeWidth="1.8" fill="none"
-        />
-      </svg>
-    )
-  }
-  if (type === 'asterisk') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <line x1="12" y1="2"  x2="12" y2="22" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="2.5" y1="7"   x2="21.5" y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="21.5" y1="7"  x2="2.5"  y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    )
-  }
   if (type === 'shield') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
@@ -142,13 +108,6 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
           d="M12 2 L20 5.5 L20 11 C20 15.5 16.5 19.5 12 21 C7.5 19.5 4 15.5 4 11 L4 5.5 Z"
           fill="currentColor"
         />
-      </svg>
-    )
-  }
-  if (type === 'square') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <rect x="2.5" y="2.5" width="19" height="19" rx="2" fill="currentColor" />
       </svg>
     )
   }
