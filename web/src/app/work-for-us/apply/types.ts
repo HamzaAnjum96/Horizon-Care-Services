@@ -29,6 +29,7 @@ export type ApplicationData = {
   }
   rightToWork: {
     nationality: string
+    nationalityOther: string
     hasRightToWork: 'yes' | 'no' | ''
     rightToWorkBasis: string
     visaStatus: string
@@ -39,9 +40,6 @@ export type ApplicationData = {
   }
   identification: {
     niNumber: string
-    siaApplicable: 'yes' | 'no' | ''
-    siaNumber: string
-    siaExpiry: string
   }
   dbs: {
     status: 'yes' | 'no' | 'pending' | ''
@@ -216,6 +214,7 @@ export function emptyApplication(role: { code: string; title: string }): Applica
     },
     rightToWork: {
       nationality: '',
+      nationalityOther: '',
       hasRightToWork: '',
       rightToWorkBasis: '',
       visaStatus: '',
@@ -224,7 +223,7 @@ export function emptyApplication(role: { code: string; title: string }): Applica
       documentRef: '',
       shareCode: '',
     },
-    identification: { niNumber: '', siaApplicable: '', siaNumber: '', siaExpiry: '' },
+    identification: { niNumber: '' },
     dbs: { status: '', certificateNumber: '', issueDate: '', onUpdateService: '' },
     driving: {
       hasLicence: '',
@@ -290,3 +289,33 @@ export function emptyReference(): ReferenceEntry {
     yearsKnown: '',
   }
 }
+
+// Curated nationality list — common nationalities in the UK care workforce.
+// "Other" is the final entry; selecting it reveals a free-text input.
+export const NATIONALITIES = [
+  'British',
+  'Irish',
+  'Polish',
+  'Romanian',
+  'Lithuanian',
+  'Bulgarian',
+  'Italian',
+  'Portuguese',
+  'Spanish',
+  'French',
+  'German',
+  'Indian',
+  'Pakistani',
+  'Bangladeshi',
+  'Nepalese',
+  'Sri Lankan',
+  'Filipino',
+  'Nigerian',
+  'Ghanaian',
+  'Kenyan',
+  'Zimbabwean',
+  'South African',
+  'Jamaican',
+  'Other',
+] as const
+

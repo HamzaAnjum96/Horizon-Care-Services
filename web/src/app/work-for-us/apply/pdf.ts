@@ -443,7 +443,13 @@ export function generateApplicationPdf(data: ApplicationData): jsPDF {
   // ── Section: Right to Work ──────────────────────────────────
   sectionTitle(doc, c, 'Section 05', 'Right to work in the UK')
   fieldRow(doc, c, [
-    { label: 'Nationality', value: data.rightToWork.nationality },
+    {
+      label: 'Nationality',
+      value:
+        data.rightToWork.nationality === 'Other'
+          ? data.rightToWork.nationalityOther
+          : data.rightToWork.nationality,
+    },
     { label: 'Right to work', value: yn(data.rightToWork.hasRightToWork) },
     { label: 'Basis', value: data.rightToWork.rightToWorkBasis },
   ])
@@ -468,9 +474,6 @@ export function generateApplicationPdf(data: ApplicationData): jsPDF {
   sectionTitle(doc, c, 'Section 06', 'Identification')
   fieldRow(doc, c, [
     { label: 'NI number', value: data.identification.niNumber.toUpperCase() },
-    { label: 'SIA applicable', value: yn(data.identification.siaApplicable) },
-    { label: 'SIA badge no.', value: data.identification.siaNumber },
-    { label: 'SIA expiry', value: fmtDate(data.identification.siaExpiry) },
   ])
 
   // ── Section: DBS ────────────────────────────────────────────
@@ -557,29 +560,36 @@ export function generateApplicationPdf(data: ApplicationData): jsPDF {
   }
 
   // ── Section: References ─────────────────────────────────────
-  sectionTitle(doc, c, 'Section 14', 'References')
-  data.references.forEach((r, i) => {
-    if (i > 0) divider(doc, c)
-    ensureSpace(doc, c, 24)
-    doc.setFont(FONT.body, 'bold')
-    doc.setFontSize(7)
-    setInk(doc, BRAND.inkSoft)
-    doc.text(`Referee ${i + 1}`, PAGE.marginX, c.y, { charSpace: 0.5 })
-    c.y += 4
-    fieldRow(doc, c, [
-      { label: 'Name', value: r.name },
-      { label: 'Role', value: r.role },
-      { label: 'Organisation', value: r.organisation },
-    ])
-    fieldRow(doc, c, [
-      { label: 'Relationship', value: r.relationship },
-      { label: 'Years known', value: r.yearsKnown },
-    ])
-    fieldRow(doc, c, [
-      { label: 'Email', value: r.email },
-      { label: 'Phone', value: r.phone },
-    ])
-  })
+  // References are gathered later in the process — only render the block
+  // if the applicant has actually filled at least one referee.
+  const hasReferees = data.references.some(
+    (r) => r.name.trim() || r.organisation.trim() || r.email.trim() || r.phone.trim(),
+  )
+  if (hasReferees) {
+    sectionTitle(doc, c, 'Section 14', 'References')
+    data.references.forEach((r, i) => {
+      if (i > 0) divider(doc, c)
+      ensureSpace(doc, c, 24)
+      doc.setFont(FONT.body, 'bold')
+      doc.setFontSize(7)
+      setInk(doc, BRAND.inkSoft)
+      doc.text(`Referee ${i + 1}`, PAGE.marginX, c.y, { charSpace: 0.5 })
+      c.y += 4
+      fieldRow(doc, c, [
+        { label: 'Name', value: r.name },
+        { label: 'Role', value: r.role },
+        { label: 'Organisation', value: r.organisation },
+      ])
+      fieldRow(doc, c, [
+        { label: 'Relationship', value: r.relationship },
+        { label: 'Years known', value: r.yearsKnown },
+      ])
+      fieldRow(doc, c, [
+        { label: 'Email', value: r.email },
+        { label: 'Phone', value: r.phone },
+      ])
+    })
+  }
 
   // ── Section: Emergency ──────────────────────────────────────
   sectionTitle(doc, c, 'Section 15', 'Emergency contact')

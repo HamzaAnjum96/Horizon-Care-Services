@@ -2,8 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { ArrowLeft, ArrowUpRight, Check, Plus, Trash2, Download, FileText } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, Check, Plus, Trash2, Download, FileText, Beaker } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
   ApplicationData,
@@ -11,11 +10,13 @@ import {
   emptyEducation,
   emptyEmployment,
   DAYS,
+  NATIONALITIES,
   SETTINGS_OPTIONS,
   SHIFT_OPTIONS,
   SKILL_OPTIONS,
   TRAINING_OPTIONS,
 } from './types'
+import { exampleApplication } from './example-data'
 import { validate, ValidationErrors } from './validation'
 import {
   Field,
@@ -28,7 +29,11 @@ import {
   FieldGrid,
 } from './fields'
 
-const SECTIONS = [
+// References are hidden for now — kept in the codebase for re-enable later.
+const SHOW_REFERENCES = false
+
+type SectionDef = { id: string; label: string }
+const SECTIONS: SectionDef[] = [
   { id: 'role', label: 'Role' },
   { id: 'personal', label: 'Personal' },
   { id: 'contact', label: 'Contact' },
@@ -42,35 +47,70 @@ const SECTIONS = [
   { id: 'education', label: 'Education' },
   { id: 'training', label: 'Training' },
   { id: 'skills', label: 'Skills' },
-  { id: 'references', label: 'References' },
+  ...(SHOW_REFERENCES ? [{ id: 'references', label: 'References' }] : []),
   { id: 'emergency', label: 'Emergency' },
   { id: 'declarations', label: 'Declarations' },
   { id: 'consent', label: 'Consent' },
-] as const
+]
 
 const YN: Array<{ value: string; label: string }> = [
   { value: 'yes', label: 'Yes' },
   { value: 'no', label: 'No' },
 ]
 
-export function ApplyClient() {
-  const params = useSearchParams()
-  const code = (params?.get('code') || '').trim()
-  const title = (params?.get('title') || '').trim()
+function readRoleFromUrl(): { code: string; title: string } {
+  if (typeof window === 'undefined') return { code: '', title: '' }
+  const sp = new URLSearchParams(window.location.search)
+  return {
+    code: (sp.get('code') || '').trim(),
+    title: (sp.get('title') || '').trim(),
+  }
+}
 
-  const [data, setData] = useState<ApplicationData>(() => emptyApplication({ code, title }))
+export function ApplyClient() {
+  const [data, setData] = useState<ApplicationData>(() => emptyApplication(readRoleFromUrl()))
   const [errors, setErrors] = useState<ValidationErrors>({})
   const [phase, setPhase] = useState<'form' | 'review' | 'done'>('form')
   const [submitting, setSubmitting] = useState(false)
   const [downloadName, setDownloadName] = useState<string>('')
   const errorBannerRef = useRef<HTMLDivElement | null>(null)
+  const [roleLocked, setRoleLocked] = useState<{ code: boolean; title: boolean }>({
+    code: false,
+    title: false,
+  })
 
-  // If the URL params change (re-entry), keep the role in sync.
+  // On mount in the browser, re-read the URL. This guarantees the role is
+  // populated even if the static-export prerender resolved Suspense before
+  // the URL was visible.
   useEffect(() => {
+    const { code, title } = readRoleFromUrl()
     if (code || title) {
-      setData((d) => ({ ...d, role: { code: code || d.role.code, title: title || d.role.title } }))
+      setData((d) => ({
+        ...d,
+        role: { code: code || d.role.code, title: title || d.role.title },
+      }))
+      setRoleLocked({ code: Boolean(code), title: Boolean(title) })
     }
-  }, [code, title])
+    // Listen for back/forward navigation that changes the query string.
+    const onPop = () => {
+      const next = readRoleFromUrl()
+      if (next.code || next.title) {
+        setData((d) => ({
+          ...d,
+          role: { code: next.code || d.role.code, title: next.title || d.role.title },
+        }))
+        setRoleLocked({ code: Boolean(next.code), title: Boolean(next.title) })
+      }
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
+  const fillExampleData = () => {
+    setData(exampleApplication(data.role))
+    setErrors({})
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   const update = <K extends keyof ApplicationData>(
     key: K,
@@ -192,6 +232,26 @@ export function ApplyClient() {
         }}
         className="space-y-16"
       >
+        {/* Test App — fills the form with example data for QA / preview.
+            Remove or guard with NODE_ENV when going fully live. */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border border-amber/30 bg-amber/5 rounded-md px-5 py-4">
+          <div>
+            <p className="text-[11px] font-semibold tracking-[0.1em] text-amber uppercase mb-1">
+              Test mode
+            </p>
+            <p className="text-[13px] text-ink-muted-dark leading-snug">
+              Auto-fill the entire form with realistic example data for testing the PDF output.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={fillExampleData}
+            className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-4 py-2 rounded-md text-[12.5px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
+          >
+            <Beaker size={13} /> Fill with test data
+          </button>
+        </div>
+
         {/* Error banner */}
         {errorList.length > 0 && (
           <div
@@ -219,7 +279,7 @@ export function ApplyClient() {
                 id="role-code"
                 value={data.role.code}
                 onChange={(v) => setRole({ code: v })}
-                readOnly={Boolean(code)}
+                readOnly={roleLocked.code}
                 invalid={Boolean(errors['role.code'])}
               />
             </Field>
@@ -228,12 +288,12 @@ export function ApplyClient() {
                 id="role-title"
                 value={data.role.title}
                 onChange={(v) => setRole({ title: v })}
-                readOnly={Boolean(title)}
+                readOnly={roleLocked.title}
                 invalid={Boolean(errors['role.title'])}
               />
             </Field>
           </FieldGrid>
-          {(code || title) && (
+          {(roleLocked.code || roleLocked.title) && (
             <p className="mt-3 text-[12px] text-ink-muted-dark/80">
               These details have been filled in from the role you selected. To apply for a different role, use the back link below.
             </p>
@@ -464,11 +524,21 @@ export function ApplyClient() {
               htmlFor="r-nat"
               error={errors['rightToWork.nationality']}
             >
-              <TextInput
+              <Select
                 id="r-nat"
                 value={data.rightToWork.nationality}
-                onChange={(v) => setRTW({ nationality: v })}
+                onChange={(v) =>
+                  setRTW({
+                    nationality: v,
+                    nationalityOther:
+                      v === 'Other' ? data.rightToWork.nationalityOther : '',
+                  })
+                }
                 invalid={Boolean(errors['rightToWork.nationality'])}
+                options={[
+                  { value: '', label: 'Select…' },
+                  ...NATIONALITIES.map((n) => ({ value: n, label: n })),
+                ]}
               />
             </Field>
             <Field
@@ -497,6 +567,23 @@ export function ApplyClient() {
               />
             </Field>
           </FieldGrid>
+          {data.rightToWork.nationality === 'Other' && (
+            <FieldGrid>
+              <Field
+                label="Specify nationality"
+                required
+                htmlFor="r-nat-other"
+                error={errors['rightToWork.nationalityOther']}
+              >
+                <TextInput
+                  id="r-nat-other"
+                  value={data.rightToWork.nationalityOther}
+                  onChange={(v) => setRTW({ nationalityOther: v })}
+                  invalid={Boolean(errors['rightToWork.nationalityOther'])}
+                />
+              </Field>
+            </FieldGrid>
+          )}
           {data.rightToWork.hasRightToWork === 'yes' && (
             <>
               <FieldGrid cols={2}>
@@ -574,7 +661,7 @@ export function ApplyClient() {
 
         {/* 06 — Identification */}
         <Section id="identification" number="06" title="Identification">
-          <FieldGrid cols={4}>
+          <FieldGrid cols={2}>
             <Field
               label="National Insurance number"
               required
@@ -590,40 +677,6 @@ export function ApplyClient() {
                 maxLength={13}
               />
             </Field>
-            <Field label="SIA badge applicable?">
-              <RadioGroup
-                name="sia-app"
-                value={data.identification.siaApplicable}
-                onChange={(v) =>
-                  setID({ siaApplicable: v as 'yes' | 'no' })
-                }
-                options={YN}
-              />
-            </Field>
-            {data.identification.siaApplicable === 'yes' && (
-              <>
-                <Field
-                  label="SIA badge number"
-                  htmlFor="sia"
-                  error={errors['identification.siaNumber']}
-                >
-                  <TextInput
-                    id="sia"
-                    value={data.identification.siaNumber}
-                    onChange={(v) => setID({ siaNumber: v })}
-                    invalid={Boolean(errors['identification.siaNumber'])}
-                  />
-                </Field>
-                <Field label="SIA expiry" htmlFor="sia-exp">
-                  <TextInput
-                    id="sia-exp"
-                    type="date"
-                    value={data.identification.siaExpiry}
-                    onChange={(v) => setID({ siaExpiry: v })}
-                  />
-                </Field>
-              </>
-            )}
           </FieldGrid>
         </Section>
 
@@ -1126,7 +1179,8 @@ export function ApplyClient() {
           </Field>
         </Section>
 
-        {/* 14 — References */}
+        {/* 14 — References (hidden — gathered later in the process) */}
+        {SHOW_REFERENCES && (
         <Section
           id="references"
           number="14"
@@ -1269,6 +1323,7 @@ export function ApplyClient() {
             ))}
           </div>
         </Section>
+        )}
 
         {/* 15 — Emergency */}
         <Section id="emergency" number="15" title="Emergency contact">
@@ -1644,7 +1699,14 @@ function ReviewScreen({
             <ReviewItem label="Years at address" value={data.address.yearsAtAddress} />
           </ReviewBlock>
           <ReviewBlock title="Right to work">
-            <ReviewItem label="Nationality" value={data.rightToWork.nationality} />
+            <ReviewItem
+              label="Nationality"
+              value={
+                data.rightToWork.nationality === 'Other'
+                  ? data.rightToWork.nationalityOther
+                  : data.rightToWork.nationality
+              }
+            />
             <ReviewItem label="Right to work" value={data.rightToWork.hasRightToWork} />
             <ReviewItem label="Visa status" value={data.rightToWork.visaStatus} />
             <ReviewItem label="Document type" value={data.rightToWork.documentType} />
@@ -1652,14 +1714,6 @@ function ReviewScreen({
           </ReviewBlock>
           <ReviewBlock title="Identification & checks">
             <ReviewItem label="NI number" value={data.identification.niNumber} />
-            <ReviewItem
-              label="SIA"
-              value={
-                data.identification.siaApplicable === 'yes'
-                  ? `${data.identification.siaNumber} (exp. ${data.identification.siaExpiry || '—'})`
-                  : 'Not applicable'
-              }
-            />
             <ReviewItem label="Enhanced DBS" value={data.dbs.status} />
             <ReviewItem label="DBS update service" value={data.dbs.onUpdateService} />
             <ReviewItem label="Driving licence" value={data.driving.hasLicence} />
@@ -1687,18 +1741,19 @@ function ReviewScreen({
             <ReviewItem label="Shifts" value={data.skills.shiftPreferences.join(', ')} />
             <ReviewItem label="Earliest start" value={data.skills.earliestStart} />
           </ReviewBlock>
-          <ReviewBlock title="References & contact">
-            {data.references.map((r, i) => (
-              <ReviewItem
-                key={i}
-                label={`Referee ${i + 1}`}
-                value={`${r.name || '—'} · ${r.organisation || '—'}`}
-              />
-            ))}
+          <ReviewBlock title="Emergency contact">
             <ReviewItem
               label="Emergency contact"
               value={`${data.emergency.name || '—'} (${data.emergency.relationship || '—'}) · ${data.emergency.phone || '—'}`}
             />
+            {SHOW_REFERENCES &&
+              data.references.map((r, i) => (
+                <ReviewItem
+                  key={i}
+                  label={`Referee ${i + 1}`}
+                  value={`${r.name || '—'} · ${r.organisation || '—'}`}
+                />
+              ))}
           </ReviewBlock>
           <ReviewBlock title="Declarations">
             <ReviewItem

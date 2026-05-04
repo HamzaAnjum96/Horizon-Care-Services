@@ -41,8 +41,14 @@ export function validate(data: ApplicationData): ValidationErrors {
   }
 
   // Right to work
-  if (!data.rightToWork.nationality.trim())
+  if (!data.rightToWork.nationality.trim()) {
     errors['rightToWork.nationality'] = 'Nationality is required'
+  } else if (
+    data.rightToWork.nationality === 'Other' &&
+    !data.rightToWork.nationalityOther.trim()
+  ) {
+    errors['rightToWork.nationalityOther'] = 'Please enter your nationality'
+  }
   if (!data.rightToWork.hasRightToWork)
     errors['rightToWork.hasRightToWork'] = 'Please confirm your right to work in the UK'
   if (data.rightToWork.hasRightToWork === 'yes' && !data.rightToWork.documentType) {
@@ -67,9 +73,6 @@ export function validate(data: ApplicationData): ValidationErrors {
   } else if (!NI_REGEX.test(data.identification.niNumber.replace(/\s+/g, ''))) {
     errors['identification.niNumber'] = 'Enter a valid UK National Insurance number'
   }
-  if (data.identification.siaApplicable === 'yes' && !data.identification.siaNumber.trim()) {
-    errors['identification.siaNumber'] = 'SIA badge number is required'
-  }
 
   // DBS
   if (!data.dbs.status) errors['dbs.status'] = 'Please indicate your DBS status'
@@ -91,18 +94,19 @@ export function validate(data: ApplicationData): ValidationErrors {
     errors['employment.0'] = 'At least one employment entry is required (most recent)'
   }
 
-  // References — both required
-  data.references.forEach((ref, i) => {
-    if (!ref.name.trim()) errors[`references.${i}.name`] = 'Referee name is required'
-    if (!ref.organisation.trim())
-      errors[`references.${i}.organisation`] = 'Organisation is required'
-    if (!ref.email.trim() && !ref.phone.trim()) {
-      errors[`references.${i}.contact`] = 'Provide at least an email or a phone number'
-    }
-    if (ref.email.trim() && !EMAIL_REGEX.test(ref.email.trim())) {
-      errors[`references.${i}.email`] = 'Enter a valid email address'
-    }
-  })
+  // References — currently hidden in the UI. Re-enable by setting
+  // SHOW_REFERENCES=true in apply-client.tsx. Validation kept here in case.
+  // data.references.forEach((ref, i) => {
+  //   if (!ref.name.trim()) errors[`references.${i}.name`] = 'Referee name is required'
+  //   if (!ref.organisation.trim())
+  //     errors[`references.${i}.organisation`] = 'Organisation is required'
+  //   if (!ref.email.trim() && !ref.phone.trim()) {
+  //     errors[`references.${i}.contact`] = 'Provide at least an email or a phone number'
+  //   }
+  //   if (ref.email.trim() && !EMAIL_REGEX.test(ref.email.trim())) {
+  //     errors[`references.${i}.email`] = 'Enter a valid email address'
+  //   }
+  // })
 
   // Emergency
   if (!data.emergency.name.trim()) errors['emergency.name'] = 'Emergency contact name is required'
