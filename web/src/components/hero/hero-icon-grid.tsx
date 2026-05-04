@@ -13,7 +13,6 @@ const ROWS = 8
 
 type IconType =
   | 'cross'
-  | 'heart'
   | 'dot'
   | 'logo'
   | 'shield'
@@ -32,8 +31,7 @@ interface IconSpec {
 function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
   const pool: IconType[] = [
-    'cross', 'cross',
-    'heart', 'heart',
+    'cross', 'cross', 'cross',
     'dot', 'dot', 'dot',
     'shield', 'shield', 'shield',
     'logo', 'logo', 'logo',
@@ -81,16 +79,6 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <rect x="8" y="2" width="8" height="20" rx="1.5" fill="currentColor" />
         <rect x="2" y="8" width="20" height="8" rx="1.5" fill="currentColor" />
-      </svg>
-    )
-  }
-  if (type === 'heart') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <path
-          d="M12 21C12 21 3 14.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 13 5.08C14.09 3.81 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 14.5 12 21 12 21Z"
-          fill="currentColor"
-        />
       </svg>
     )
   }
