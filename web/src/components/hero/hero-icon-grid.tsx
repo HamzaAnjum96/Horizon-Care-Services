@@ -9,7 +9,7 @@ function seededFloat(seed: number): number {
 }
 
 const COLS = 15
-const ROWS = 9
+const ROWS = 10
 
 type IconType = 'cross' | 'dot' | 'logo' | 'shield' | 'heart' | 'ring'
 
@@ -20,28 +20,31 @@ interface IconSpec {
   top: number
   size: number
   opacity: number
-  pulse: boolean
   duration: number
   delay: number
 }
 
 function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
+  // Track placed icons for overlap rejection (left/top in %, cPct = clearance radius in %)
+  const placed: { left: number; top: number; cPct: number }[] = []
+
   const pool: IconType[] = [
     'cross', 'cross', 'cross', 'cross',
     'dot', 'dot', 'dot',
-    'shield', 'shield', 'shield',
+    'shield', 'shield',
     'heart', 'heart',
     'ring',
-    'logo', 'logo',
+    'logo',
   ]
   let s = 419
 
-  // ── Pulsing icons: flood from right, cap density so far-right isn't crowded ──
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      const t = col / (COLS - 1)
-      const fillProb = Math.min(Math.pow(t, 2.0) * 0.96, 0.60)
+      const t = col / (COLS - 1) // 0 = left, 1 = right
+
+      // More icons on the left (small, faint), fewer on the right (large, bright)
+      const fillProb = 0.18 + (1 - t) * 0.44 // ~0.62 left → ~0.18 right
       if (seededFloat(s++) > fillProb) continue
 
       const cw = 100 / COLS
@@ -50,36 +53,34 @@ function buildIcons(): IconSpec[] {
       const top  = row * ch + seededFloat(s++) * ch * 1.10 - ch * 0.05
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
       const raw  = Math.pow(seededFloat(s++), 1.5)
-      const size = Math.floor(10 + t * 82 + raw * 28)
-      const opacity  = 0.09 + seededFloat(s++) * 0.24
+
+      // Size: tiny on the left (~6px), large on the right (~100px)
+      const size = Math.floor(6 + t * 94 + raw * 12)
+
+      // Clearance radius in % of canvas width (larger icons need more room)
+      const cPct = size / 13
+
+      // Reject if this icon overlaps any already-placed icon
+      // Vertical distances are scaled up (canvas is wider than tall)
+      const overlaps = placed.some(p => {
+        const dx = left - p.left
+        const dy = (top - p.top) * 1.7
+        return Math.sqrt(dx * dx + dy * dy) < cPct + p.cPct
+      })
+      if (overlaps) {
+        // Still consume the remaining seeds for this cell to keep sequence stable
+        s += 3
+        continue
+      }
+
+      const opacity  = (0.04 + t * 0.24) + seededFloat(s++) * 0.09
       const duration = 4.5 + seededFloat(s++) * 7
       const delay    = -(seededFloat(s++) * 12)
 
-      icons.push({ id: `p-${row}-${col}`, type, left, top, size, opacity, pulse: true, duration, delay })
+      placed.push({ left, top, cPct })
+      icons.push({ id: `${row}-${col}`, type, left, top, size, opacity, duration, delay })
     }
   }
-
-  // ── Tiny static icons: scattered across the whole canvas ──
-  const tinyPool: IconType[] = ['dot', 'cross', 'ring', 'dot', 'dot', 'cross']
-  let ts = 919
-
-  for (let row = 0; row < ROWS; row++) {
-    for (let col = 0; col < COLS; col++) {
-      // Flat ~30% chance everywhere so they appear throughout, not just the right
-      if (seededFloat(ts++) > 0.30) continue
-
-      const cw = 100 / COLS
-      const ch = 100 / ROWS
-      const left = col * cw + seededFloat(ts++) * cw * 1.2 - cw * 0.1
-      const top  = row * ch + seededFloat(ts++) * ch * 1.2 - ch * 0.1
-      const type = tinyPool[Math.floor(seededFloat(ts++) * tinyPool.length)]
-      const size = Math.floor(4 + seededFloat(ts++) * 7) // 4–11 px
-      const opacity = 0.06 + seededFloat(ts++) * 0.12
-
-      icons.push({ id: `t-${row}-${col}`, type, left, top, size, opacity, pulse: false, duration: 0, delay: 0 })
-    }
-  }
-
   return icons
 }
 
@@ -148,9 +149,9 @@ export function HeroIconGrid() {
       style={{
         color: 'oklch(55% 0.12 20)',
         maskImage:
-          'radial-gradient(ellipse 46% 52% at 78% 50%, black 2%, transparent 88%)',
+          'radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%)',
         WebkitMaskImage:
-          'radial-gradient(ellipse 46% 52% at 78% 50%, black 2%, transparent 88%)',
+          'radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%)',
       }}
     >
       {ICONS.map((icon) => (
@@ -163,10 +164,10 @@ export function HeroIconGrid() {
             marginLeft: -icon.size / 2,
             marginTop: -icon.size / 2,
             opacity: icon.opacity,
-            animation: icon.pulse && !reduced
-              ? `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`
-              : 'none',
-            willChange: icon.pulse && !reduced ? 'transform' : 'auto',
+            animation: reduced
+              ? 'none'
+              : `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`,
+            willChange: reduced ? 'auto' : 'transform',
           }}
         >
           <IconShape type={icon.type} size={icon.size} />
