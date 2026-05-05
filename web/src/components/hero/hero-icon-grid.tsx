@@ -20,6 +20,7 @@ interface IconSpec {
   top: number
   size: number
   opacity: number
+  pulse: boolean
   duration: number
   delay: number
 }
@@ -36,12 +37,12 @@ function buildIcons(): IconSpec[] {
   ]
   let s = 419
 
+  // ── Pulsing icons: flood from right, cap density so far-right isn't crowded ──
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
       const t = col / (COLS - 1)
-      // Slightly more generous than original (2.0 vs 2.2) for a few extra icons
-      const skipChance = 1 - Math.pow(t, 2.0) * 0.96
-      if (seededFloat(s++) < skipChance) continue
+      const fillProb = Math.min(Math.pow(t, 2.0) * 0.96, 0.60)
+      if (seededFloat(s++) > fillProb) continue
 
       const cw = 100 / COLS
       const ch = 100 / ROWS
@@ -49,17 +50,36 @@ function buildIcons(): IconSpec[] {
       const top  = row * ch + seededFloat(s++) * ch * 1.10 - ch * 0.05
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
       const raw  = Math.pow(seededFloat(s++), 1.5)
-
-      // Size scales with column position: small left → large right
       const size = Math.floor(10 + t * 82 + raw * 28)
-
       const opacity  = 0.09 + seededFloat(s++) * 0.24
       const duration = 4.5 + seededFloat(s++) * 7
       const delay    = -(seededFloat(s++) * 12)
 
-      icons.push({ id: `${row}-${col}`, type, left, top, size, opacity, duration, delay })
+      icons.push({ id: `p-${row}-${col}`, type, left, top, size, opacity, pulse: true, duration, delay })
     }
   }
+
+  // ── Tiny static icons: scattered across the whole canvas ──
+  const tinyPool: IconType[] = ['dot', 'cross', 'ring', 'dot', 'dot', 'cross']
+  let ts = 919
+
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+      // Flat ~30% chance everywhere so they appear throughout, not just the right
+      if (seededFloat(ts++) > 0.30) continue
+
+      const cw = 100 / COLS
+      const ch = 100 / ROWS
+      const left = col * cw + seededFloat(ts++) * cw * 1.2 - cw * 0.1
+      const top  = row * ch + seededFloat(ts++) * ch * 1.2 - ch * 0.1
+      const type = tinyPool[Math.floor(seededFloat(ts++) * tinyPool.length)]
+      const size = Math.floor(4 + seededFloat(ts++) * 7) // 4–11 px
+      const opacity = 0.06 + seededFloat(ts++) * 0.12
+
+      icons.push({ id: `t-${row}-${col}`, type, left, top, size, opacity, pulse: false, duration: 0, delay: 0 })
+    }
+  }
+
   return icons
 }
 
@@ -143,10 +163,10 @@ export function HeroIconGrid() {
             marginLeft: -icon.size / 2,
             marginTop: -icon.size / 2,
             opacity: icon.opacity,
-            animation: reduced
-              ? 'none'
-              : `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`,
-            willChange: reduced ? 'auto' : 'transform',
+            animation: icon.pulse && !reduced
+              ? `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`
+              : 'none',
+            willChange: icon.pulse && !reduced ? 'transform' : 'auto',
           }}
         >
           <IconShape type={icon.type} size={icon.size} />
