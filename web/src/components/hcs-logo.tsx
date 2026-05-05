@@ -1,4 +1,6 @@
-export function HCSLogoMark({ className }: { className?: string }) {
+import type { CSSProperties } from 'react'
+
+export function HCSLogoMark({ className, style }: { className?: string; style?: CSSProperties }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +8,7 @@ export function HCSLogoMark({ className }: { className?: string }) {
       aria-hidden="true"
       focusable="false"
       className={className}
+      style={style}
     >
       <path
         fill="currentColor"
