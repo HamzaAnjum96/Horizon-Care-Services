@@ -20,8 +20,10 @@ const COLOR_VARIANTS: ColorVariant[] = [
   { id: 'mono',     label: 'Mono',     fg: '#1C1814', bg: '#FFFFFF', hasBorder: true  },
 ]
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) {
-  const file = `/brand/hcs-${type}-${variant.id}.png`
+  const file = `${BASE}/brand/hcs-${type}-${variant.id}.png`
 
   return (
     <div
