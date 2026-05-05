@@ -1,9 +1,17 @@
+'use client'
+
+import { useReducedMotion } from 'framer-motion'
 import { HCSLogoMark } from '@/components/hcs-logo'
 
-const COLS = 17
-const ROWS = 11
+function seededFloat(seed: number): number {
+  const x = Math.sin(seed + 1) * 10000
+  return x - Math.floor(x)
+}
 
-type IconType = 'cross' | 'dot' | 'logo' | 'shield' | 'heart' | 'ring' | 'diamond'
+const COLS = 15
+const ROWS = 9
+
+type IconType = 'cross' | 'dot' | 'logo' | 'shield' | 'heart' | 'ring'
 
 interface IconSpec {
   id: string
@@ -12,31 +20,27 @@ interface IconSpec {
   top: number
   size: number
   opacity: number
-}
-
-function seededFloat(seed: number): number {
-  const x = Math.sin(seed + 1) * 10000
-  return x - Math.floor(x)
+  duration: number
+  delay: number
 }
 
 function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
   const pool: IconType[] = [
     'cross', 'cross', 'cross', 'cross',
-    'dot', 'dot', 'dot', 'dot',
-    'shield', 'shield',
-    'heart', 'heart', 'heart',
-    'ring', 'ring',
-    'diamond',
-    'logo',
+    'dot', 'dot', 'dot',
+    'shield', 'shield', 'shield',
+    'heart', 'heart',
+    'ring',
+    'logo', 'logo',
   ]
   let s = 419
 
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      const t = col / (COLS - 1) // 0 = leftmost, 1 = rightmost
-      // Density builds from the middle outward to the right
-      const skipChance = 1 - Math.pow(t, 1.5) * 0.97
+      const t = col / (COLS - 1)
+      // Slightly more generous than original (2.0 vs 2.2) for a few extra icons
+      const skipChance = 1 - Math.pow(t, 2.0) * 0.96
       if (seededFloat(s++) < skipChance) continue
 
       const cw = 100 / COLS
@@ -44,13 +48,16 @@ function buildIcons(): IconSpec[] {
       const left = col * cw + seededFloat(s++) * cw * 1.15 - cw * 0.08
       const top  = row * ch + seededFloat(s++) * ch * 1.10 - ch * 0.05
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
-      const raw  = seededFloat(s++)
+      const raw  = Math.pow(seededFloat(s++), 1.5)
 
-      // Size grows strongly with column: ~10px far left → ~120px far right
-      const size = Math.floor(10 + t * 112 + raw * 20)
-      const opacity = 0.07 + seededFloat(s++) * 0.22
+      // Size scales with column position: small left → large right
+      const size = Math.floor(10 + t * 82 + raw * 28)
 
-      icons.push({ id: `${row}-${col}`, type, left, top, size, opacity })
+      const opacity  = 0.09 + seededFloat(s++) * 0.24
+      const duration = 4.5 + seededFloat(s++) * 7
+      const delay    = -(seededFloat(s++) * 12)
+
+      icons.push({ id: `${row}-${col}`, type, left, top, size, opacity, duration, delay })
     }
   }
   return icons
@@ -108,17 +115,12 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       </svg>
     )
   }
-  if (type === 'diamond') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <rect x="5" y="5" width="14" height="14" rx="1" fill="currentColor" transform="rotate(45 12 12)" />
-      </svg>
-    )
-  }
   return null
 }
 
 export function HeroIconGrid() {
+  const reduced = useReducedMotion()
+
   return (
     <div
       aria-hidden="true"
@@ -126,9 +128,9 @@ export function HeroIconGrid() {
       style={{
         color: 'oklch(55% 0.12 20)',
         maskImage:
-          'radial-gradient(ellipse 54% 64% at 80% 50%, black 2%, transparent 88%)',
+          'radial-gradient(ellipse 46% 52% at 78% 50%, black 2%, transparent 88%)',
         WebkitMaskImage:
-          'radial-gradient(ellipse 54% 64% at 80% 50%, black 2%, transparent 88%)',
+          'radial-gradient(ellipse 46% 52% at 78% 50%, black 2%, transparent 88%)',
       }}
     >
       {ICONS.map((icon) => (
@@ -141,6 +143,10 @@ export function HeroIconGrid() {
             marginLeft: -icon.size / 2,
             marginTop: -icon.size / 2,
             opacity: icon.opacity,
+            animation: reduced
+              ? 'none'
+              : `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`,
+            willChange: reduced ? 'auto' : 'transform',
           }}
         >
           <IconShape type={icon.type} size={icon.size} />
