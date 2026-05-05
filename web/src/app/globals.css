@@ -131,8 +131,8 @@ body {
 }
 
 @keyframes hcs-breathe {
-  0%, 100% { transform: scale(0.84); }
-  50%       { transform: scale(1.16); }
+  0%, 100% { transform: scale(0.82) rotate(-2deg); }
+  50%       { transform: scale(1.19) rotate(2deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {

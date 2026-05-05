@@ -8,8 +8,8 @@ function seededFloat(seed: number): number {
   return x - Math.floor(x)
 }
 
-const COLS = 13
-const ROWS = 8
+const COLS = 15
+const ROWS = 9
 
 type IconType =
   | 'cross'
@@ -31,32 +31,31 @@ interface IconSpec {
 function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
   const pool: IconType[] = [
-    'cross', 'cross', 'cross',
+    'cross', 'cross', 'cross', 'cross',
     'dot', 'dot', 'dot',
     'shield', 'shield', 'shield',
-    'logo', 'logo', 'logo',
+    'logo', 'logo',
   ]
-  // offset seed so arrangement differs from the old 7×5 layout
-  let s = 137
+  let s = 419
 
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      // density gradient: sparse on left, dense on right
       const t = col / (COLS - 1)
-      const skipChance = 0.72 - t * 0.62   // left ~72% skip → right ~10% skip
+      // Steep right-heavy cliff: left ~93% skip → right ~3% skip
+      const skipChance = 0.93 - t * 0.90
       if (seededFloat(s++) < skipChance) continue
 
       const cw = 100 / COLS
       const ch = 100 / ROWS
-      const left = col * cw + seededFloat(s++) * cw * 0.8 + cw * 0.1
-      const top  = row * ch + seededFloat(s++) * ch * 0.8 + ch * 0.1
+      // Extended jitter: icons bleed slightly across cell boundaries for organic clustering
+      const left = col * cw + seededFloat(s++) * cw * 1.15 - cw * 0.08
+      const top  = row * ch + seededFloat(s++) * ch * 1.10 - ch * 0.05
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
-      // power skew: most icons small, few large
-      const raw  = Math.pow(seededFloat(s++), 1.7)
-      const size = Math.floor(raw * 62) + 11
-      const opacity  = 0.12 + seededFloat(s++) * 0.18
-      const duration = 4   + seededFloat(s++) * 5
-      const delay    = -(seededFloat(s++) * 9)
+      const raw  = Math.pow(seededFloat(s++), 1.5)
+      const size = Math.floor(raw * 72) + 9
+      const opacity  = 0.09 + seededFloat(s++) * 0.24
+      const duration = 4.5 + seededFloat(s++) * 7
+      const delay    = -(seededFloat(s++) * 12)
 
       icons.push({ id: `${row}-${col}`, type, left, top, size, opacity, duration, delay })
     }
@@ -112,9 +111,9 @@ export function HeroIconGrid() {
       style={{
         color: 'oklch(55% 0.12 20)',
         maskImage:
-          'radial-gradient(ellipse 92% 82% at 50% 50%, black 10%, transparent 80%)',
+          'radial-gradient(ellipse 78% 86% at 74% 50%, black 0%, transparent 90%)',
         WebkitMaskImage:
-          'radial-gradient(ellipse 92% 82% at 50% 50%, black 10%, transparent 80%)',
+          'radial-gradient(ellipse 78% 86% at 74% 50%, black 0%, transparent 90%)',
       }}
     >
       {ICONS.map((icon) => (
