@@ -13,10 +13,10 @@ interface ColorVariant {
 }
 
 const COLOR_VARIANTS: ColorVariant[] = [
-  { id: 'primary',  label: 'Primary',  fg: '#9B0D14', bg: '#FFFFFF', hasBorder: true  },
-  { id: 'reversed', label: 'Reversed', fg: '#FFFFFF', bg: '#9B0D14', hasBorder: false },
+  { id: 'primary',  label: 'Primary',  fg: '#5C1020', bg: '#FFFFFF', hasBorder: true  },
+  { id: 'reversed', label: 'Reversed', fg: '#FFFFFF', bg: '#5C1020', hasBorder: false },
   { id: 'dark',     label: 'Dark',     fg: '#FFFFFF', bg: '#1C1814', hasBorder: false },
-  { id: 'cream',    label: 'On Cream', fg: '#9B0D14', bg: '#F7F3EE', hasBorder: true  },
+  { id: 'cream',    label: 'On Cream', fg: '#5C1020', bg: '#F7F3EE', hasBorder: true  },
   { id: 'mono',     label: 'Mono',     fg: '#1C1814', bg: '#FFFFFF', hasBorder: true  },
 ]
 
@@ -156,7 +156,7 @@ export function BrandingGrid() {
           <p className="section-kicker text-ink-muted-dark mb-8">Brand Colours</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
-              { name: 'Crimson',  hex: '#9B0D14', role: 'Primary brand' },
+              { name: 'Midnight Red', hex: '#5C1020', role: 'Primary brand' },
               { name: 'White',    hex: '#FFFFFF',  role: 'Primary base',  border: true },
               { name: 'Cream',    hex: '#F7F3EE',  role: 'Warm base',     border: true },
               { name: 'Charcoal', hex: '#1C1814',  role: 'Dark base' },

@@ -9,8 +9,8 @@
   --cream:             oklch(97% 0.006 52);
   --cream-dim:         oklch(93% 0.009 50);
 
-  /* Brand crimson — logo mark only, not for backgrounds */
-  --brand:             oklch(29% 0.14 24);
+  /* Brand midnight red — logo mark only, not for backgrounds */
+  --brand:             oklch(21% 0.10 9);
 
   --ink-dark:          oklch(16% 0.04 22);
   --ink-light:         oklch(97% 0.005 56);
@@ -119,7 +119,7 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 70% at 75% -15%, oklch(28% 0.11 24 / 0.75) 0%, transparent 58%),
+    radial-gradient(ellipse 90% 70% at 75% -15%, oklch(21% 0.10 9 / 0.75) 0%, transparent 58%),
     radial-gradient(ellipse 75% 60% at -5% 105%, oklch(44% 0.12 12 / 0.18) 0%, transparent 55%);
   animation: hero-breathe 10s ease-in-out infinite;
   will-change: opacity;

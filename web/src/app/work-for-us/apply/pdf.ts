@@ -10,7 +10,7 @@ const BRAND = {
   cream:   [248, 246, 242] as const, // ~ cream
   deep:    [28, 24, 22] as const,    // ~ deep
   amber:   [173, 73, 50] as const,   // ~ amber
-  brand:   [155, 13, 20] as const,   // ~ #9B0D14 logo crimson
+  brand:   [92, 16, 32] as const,    // ~ #5C1020 midnight red
 }
 
 const FONT = {
