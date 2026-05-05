@@ -1,21 +1,9 @@
-'use client'
-
-import { useReducedMotion } from 'framer-motion'
 import { HCSLogoMark } from '@/components/hcs-logo'
 
-function seededFloat(seed: number): number {
-  const x = Math.sin(seed + 1) * 10000
-  return x - Math.floor(x)
-}
+const COLS = 17
+const ROWS = 11
 
-const COLS = 15
-const ROWS = 9
-
-type IconType =
-  | 'cross'
-  | 'dot'
-  | 'logo'
-  | 'shield'
+type IconType = 'cross' | 'dot' | 'logo' | 'shield' | 'heart' | 'ring' | 'diamond'
 
 interface IconSpec {
   id: string
@@ -24,40 +12,45 @@ interface IconSpec {
   top: number
   size: number
   opacity: number
-  duration: number
-  delay: number
+}
+
+function seededFloat(seed: number): number {
+  const x = Math.sin(seed + 1) * 10000
+  return x - Math.floor(x)
 }
 
 function buildIcons(): IconSpec[] {
   const icons: IconSpec[] = []
   const pool: IconType[] = [
     'cross', 'cross', 'cross', 'cross',
-    'dot', 'dot', 'dot',
-    'shield', 'shield', 'shield',
-    'logo', 'logo',
+    'dot', 'dot', 'dot', 'dot',
+    'shield', 'shield',
+    'heart', 'heart', 'heart',
+    'ring', 'ring',
+    'diamond',
+    'logo',
   ]
   let s = 419
 
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      const t = col / (COLS - 1)
-      // Power curve: stays nearly empty until the right third, then floods
-      const skipChance = 1 - Math.pow(t, 2.2) * 0.96
+      const t = col / (COLS - 1) // 0 = leftmost, 1 = rightmost
+      // Density builds from the middle outward to the right
+      const skipChance = 1 - Math.pow(t, 1.5) * 0.97
       if (seededFloat(s++) < skipChance) continue
 
       const cw = 100 / COLS
       const ch = 100 / ROWS
-      // Extended jitter: icons bleed slightly across cell boundaries for organic clustering
       const left = col * cw + seededFloat(s++) * cw * 1.15 - cw * 0.08
       const top  = row * ch + seededFloat(s++) * ch * 1.10 - ch * 0.05
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
-      const raw  = Math.pow(seededFloat(s++), 1.5)
-      const size = Math.floor(raw * 72) + 9
-      const opacity  = 0.09 + seededFloat(s++) * 0.24
-      const duration = 4.5 + seededFloat(s++) * 7
-      const delay    = -(seededFloat(s++) * 12)
+      const raw  = seededFloat(s++)
 
-      icons.push({ id: `${row}-${col}`, type, left, top, size, opacity, duration, delay })
+      // Size grows strongly with column: ~10px far left → ~120px far right
+      const size = Math.floor(10 + t * 112 + raw * 20)
+      const opacity = 0.07 + seededFloat(s++) * 0.22
+
+      icons.push({ id: `${row}-${col}`, type, left, top, size, opacity })
     }
   }
   return icons
@@ -98,12 +91,34 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       </svg>
     )
   }
+  if (type === 'heart') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <path
+          d="M12 20.5 C12 20.5 2.5 14 2.5 8.5 C2.5 5.5 4.9 3 8 3 C9.9 3 11.6 4 12 5.2 C12.4 4 14.1 3 16 3 C19.1 3 21.5 5.5 21.5 8.5 C21.5 14 12 20.5 12 20.5 Z"
+          fill="currentColor"
+        />
+      </svg>
+    )
+  }
+  if (type === 'ring') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      </svg>
+    )
+  }
+  if (type === 'diamond') {
+    return (
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <rect x="5" y="5" width="14" height="14" rx="1" fill="currentColor" transform="rotate(45 12 12)" />
+      </svg>
+    )
+  }
   return null
 }
 
 export function HeroIconGrid() {
-  const reduced = useReducedMotion()
-
   return (
     <div
       aria-hidden="true"
@@ -111,9 +126,9 @@ export function HeroIconGrid() {
       style={{
         color: 'oklch(55% 0.12 20)',
         maskImage:
-          'radial-gradient(ellipse 42% 48% at 76% 50%, black 2%, transparent 88%)',
+          'radial-gradient(ellipse 54% 64% at 80% 50%, black 2%, transparent 88%)',
         WebkitMaskImage:
-          'radial-gradient(ellipse 42% 48% at 76% 50%, black 2%, transparent 88%)',
+          'radial-gradient(ellipse 54% 64% at 80% 50%, black 2%, transparent 88%)',
       }}
     >
       {ICONS.map((icon) => (
@@ -126,10 +141,6 @@ export function HeroIconGrid() {
             marginLeft: -icon.size / 2,
             marginTop: -icon.size / 2,
             opacity: icon.opacity,
-            animation: reduced
-              ? 'none'
-              : `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`,
-            willChange: reduced ? 'auto' : 'transform',
           }}
         >
           <IconShape type={icon.type} size={icon.size} />
