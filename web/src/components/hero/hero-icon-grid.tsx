@@ -11,7 +11,7 @@ function seededFloat(seed: number): number {
 const COLS = 15
 const ROWS = 10
 
-type IconType = 'cross' | 'dot' | 'logo' | 'shield' | 'heart' | 'ring' | 'spike'
+type IconType = 'cross' | 'dot' | 'logo' | 'shield' | 'heart' | 'ring'
 
 interface IconSpec {
   id: string
@@ -31,12 +31,11 @@ function buildIcons(): IconSpec[] {
 
   const pool: IconType[] = [
     'cross', 'cross',
-    'spike', 'spike', 'spike',
+    'logo', 'logo', 'logo', 'logo',
     'dot', 'dot', 'dot',
     'shield', 'shield',
     'heart', 'heart',
     'ring',
-    'logo',
   ]
   let s = 419
 
@@ -134,18 +133,6 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
-      </svg>
-    )
-  }
-  if (type === 'spike') {
-    return (
-      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <g transform="translate(12,12)">
-          <rect x="-2.2" y="-10" width="4.4" height="10.5" rx="2" fill="currentColor" />
-          <rect x="-2.2" y="-10" width="4.4" height="10.5" rx="2" fill="currentColor" transform="rotate(120)" />
-          <rect x="-2.2" y="-10" width="4.4" height="10.5" rx="2" fill="currentColor" transform="rotate(240)" />
-          <circle cx="0" cy="0" r="3" fill="currentColor" />
-        </g>
       </svg>
     )
   }
