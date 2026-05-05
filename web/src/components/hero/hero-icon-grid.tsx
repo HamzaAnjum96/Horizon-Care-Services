@@ -41,8 +41,8 @@ function buildIcons(): IconSpec[] {
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
       const t = col / (COLS - 1)
-      // Steep right-heavy cliff: left ~93% skip → right ~3% skip
-      const skipChance = 0.93 - t * 0.90
+      // Power curve: stays nearly empty until the right third, then floods
+      const skipChance = 1 - Math.pow(t, 2.2) * 0.96
       if (seededFloat(s++) < skipChance) continue
 
       const cw = 100 / COLS
@@ -111,9 +111,9 @@ export function HeroIconGrid() {
       style={{
         color: 'oklch(55% 0.12 20)',
         maskImage:
-          'radial-gradient(ellipse 78% 86% at 74% 50%, black 0%, transparent 90%)',
+          'radial-gradient(ellipse 42% 48% at 76% 50%, black 2%, transparent 88%)',
         WebkitMaskImage:
-          'radial-gradient(ellipse 78% 86% at 74% 50%, black 0%, transparent 90%)',
+          'radial-gradient(ellipse 42% 48% at 76% 50%, black 2%, transparent 88%)',
       }}
     >
       {ICONS.map((icon) => (
