@@ -22,17 +22,59 @@ const COLOR_VARIANTS: ColorVariant[] = [
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
+function DlBtn({ href, filename, label, children }: {
+  href: string
+  filename: string
+  label: string
+  children: React.ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      download={filename}
+      className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-[0.07em] uppercase px-2.5 py-1.5 rounded-md transition-colors text-ink-dark hover:bg-ink-dark/6 active:bg-ink-dark/10"
+      aria-label={label}
+    >
+      <Download size={10} />
+      {children}
+    </a>
+  )
+}
+
+function CardFooter({ variant, hdHref, hdFilename, uhdHref, uhdFilename, hdLabel, uhdLabel }: {
+  variant: ColorVariant
+  hdHref: string
+  hdFilename: string
+  uhdHref: string
+  uhdFilename: string
+  hdLabel: string
+  uhdLabel: string
+}) {
+  return (
+    <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
+      <div className="flex items-center gap-2 min-w-0">
+        <span
+          className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
+          style={{ backgroundColor: variant.fg }}
+        />
+        <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
+          {variant.label}
+        </span>
+      </div>
+      <div className="flex items-center gap-0.5 flex-shrink-0">
+        <DlBtn href={hdHref} filename={hdFilename} label={hdLabel}>HD</DlBtn>
+        <DlBtn href={uhdHref} filename={uhdFilename} label={uhdLabel}>Ultra HD</DlBtn>
+      </div>
+    </div>
+  )
+}
+
 function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) {
-  const file = `${BASE}/brand/hcs-${type}-${variant.id}.png`
+  const hdFile  = `${BASE}/brand/hcs-${type}-${variant.id}@2x.png`
+  const uhdFile = `${BASE}/brand/hcs-${type}-${variant.id}@4x.png`
 
   return (
-    <div
-      className={cn(
-        'rounded-xl overflow-hidden flex flex-col',
-        variant.hasBorder ? 'ring-1 ring-rule-light' : '',
-      )}
-    >
-      {/* Preview */}
+    <div className={cn('rounded-xl overflow-hidden flex flex-col', variant.hasBorder ? 'ring-1 ring-rule-light' : '')}>
       <div
         className="flex-1 flex items-center justify-center p-8"
         style={{ backgroundColor: variant.bg, minHeight: type === 'lockup' ? 120 : 200 }}
@@ -40,7 +82,6 @@ function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) 
         {type === 'mark' && (
           <HCSLogoMark className="w-20 h-20" style={{ color: variant.fg }} />
         )}
-
         {type === 'stacked' && (
           <div className="flex flex-col items-center gap-3">
             <HCSLogoMark className="w-16 h-16" style={{ color: variant.fg }} />
@@ -52,7 +93,6 @@ function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) 
             </span>
           </div>
         )}
-
         {type === 'lockup' && (
           <div className="flex items-center gap-3">
             <HCSLogoMark className="w-10 h-10 flex-shrink-0" style={{ color: variant.fg }} />
@@ -65,37 +105,53 @@ function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) 
           </div>
         )}
       </div>
-
-      {/* Footer */}
-      <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <span
-            className="w-3 h-3 rounded-full flex-shrink-0 ring-1 ring-black/10"
-            style={{ backgroundColor: variant.fg }}
-          />
-          <span className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
-            {variant.label}
-          </span>
-        </div>
-        <a
-          href={file}
-          download={`hcs-logo-${type}-${variant.id}.png`}
-          className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.06em] uppercase px-3 py-1.5 rounded-md transition-colors text-ink-dark hover:bg-ink-dark/6 active:bg-ink-dark/10"
-          aria-label={`Download ${variant.label} ${type} PNG`}
-        >
-          <Download size={11} />
-          PNG
-        </a>
-      </div>
+      <CardFooter
+        variant={variant}
+        hdHref={hdFile}  hdFilename={`hcs-logo-${type}-${variant.id}-hd.png`}
+        uhdHref={uhdFile} uhdFilename={`hcs-logo-${type}-${variant.id}-ultrahd.png`}
+        hdLabel={`Download ${variant.label} ${type} HD`}
+        uhdLabel={`Download ${variant.label} ${type} Ultra HD`}
+      />
     </div>
   )
 }
 
-const SECTIONS: { type: LogoType; heading: string; sub: string }[] = [
+// Size ladder for app icon preview: small → large, bottom-aligned
+const ICON_SIZES = [24, 40, 64, 96]
+
+function AppIconCard({ variant }: { variant: ColorVariant }) {
+  const hdFile  = `${BASE}/brand/hcs-icon-${variant.id}.png`
+  const uhdFile = `${BASE}/brand/hcs-icon-${variant.id}@2x.png`
+
+  return (
+    <div className={cn('rounded-xl overflow-hidden flex flex-col', variant.hasBorder ? 'ring-1 ring-rule-light' : '')}>
+      <div
+        className="flex-1 flex items-end justify-center gap-2.5 px-4 pb-5 pt-8"
+        style={{ backgroundColor: variant.bg, minHeight: 200 }}
+      >
+        {ICON_SIZES.map((size) => (
+          <HCSLogoMark
+            key={size}
+            style={{ color: variant.fg, width: size, height: size, flexShrink: 0 }}
+          />
+        ))}
+      </div>
+      <CardFooter
+        variant={variant}
+        hdHref={hdFile}  hdFilename={`hcs-icon-${variant.id}-1024.png`}
+        uhdHref={uhdFile} uhdFilename={`hcs-icon-${variant.id}-2048.png`}
+        hdLabel={`Download ${variant.label} app icon 1024 px`}
+        uhdLabel={`Download ${variant.label} app icon 2048 px`}
+      />
+    </div>
+  )
+}
+
+const LOGO_SECTIONS: { type: LogoType; heading: string; sub: string }[] = [
   {
     type: 'stacked',
     heading: 'Logo — Stacked',
-    sub: 'Mark with name below. Use for square-format placements, app icons, and profile images.',
+    sub: 'Mark with name below. Use for square-format placements and profile images.',
   },
   {
     type: 'lockup',
@@ -114,28 +170,23 @@ export function BrandingGrid() {
     <section className="bg-cream py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-20 lg:space-y-28">
 
-        {SECTIONS.map(({ type, heading, sub }) => (
+        {/* ── Logo sections ── */}
+        {LOGO_SECTIONS.map(({ type, heading, sub }) => (
           <div key={type}>
             <div className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
               <div>
                 <h2
                   className="font-display text-ink-dark mb-2"
-                  style={{
-                    fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)',
-                    fontVariationSettings: '"opsz" 22, "wght" 620',
-                  }}
+                  style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
                 >
                   {heading}
                 </h2>
-                <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">
-                  {sub}
-                </p>
+                <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">{sub}</p>
               </div>
               <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
                 5 colour variants
               </p>
             </div>
-
             <div
               className={cn(
                 'grid gap-4',
@@ -151,16 +202,42 @@ export function BrandingGrid() {
           </div>
         ))}
 
-        {/* Colour reference */}
+        {/* ── App Icons ── */}
+        <div>
+          <div className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div>
+              <h2
+                className="font-display text-ink-dark mb-2"
+                style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
+              >
+                App Icons
+              </h2>
+              <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">
+                Tight-padded square mark for favicons, app store listings, and platform profile images.
+                HD exports at 1024 × 1024 px; Ultra HD at 2048 × 2048 px.
+              </p>
+            </div>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
+              5 colour variants
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {COLOR_VARIANTS.map((variant) => (
+              <AppIconCard key={variant.id} variant={variant} />
+            ))}
+          </div>
+        </div>
+
+        {/* ── Brand Colours ── */}
         <div className="border-t border-rule-light pt-14">
           <p className="section-kicker text-ink-muted-dark mb-8">Brand Colours</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
               { name: 'Midnight Red', hex: '#5C1020', role: 'Primary brand' },
-              { name: 'White',    hex: '#FFFFFF',  role: 'Primary base',  border: true },
-              { name: 'Cream',    hex: '#F7F3EE',  role: 'Warm base',     border: true },
-              { name: 'Charcoal', hex: '#1C1814',  role: 'Dark base' },
-              { name: 'Deep',     hex: '#0E0C0A',  role: 'Deepest dark' },
+              { name: 'White',        hex: '#FFFFFF', role: 'Primary base',  border: true },
+              { name: 'Cream',        hex: '#F7F3EE', role: 'Warm base',     border: true },
+              { name: 'Charcoal',     hex: '#1C1814', role: 'Dark base' },
+              { name: 'Deep',         hex: '#0E0C0A', role: 'Deepest dark' },
             ].map(({ name, hex, role, border }) => (
               <div key={hex} className="space-y-3">
                 <div
@@ -177,7 +254,96 @@ export function BrandingGrid() {
           </div>
         </div>
 
-        {/* Usage notes */}
+        {/* ── Typography ── */}
+        <div className="border-t border-rule-light pt-14">
+          <p className="section-kicker text-ink-muted-dark mb-10">Typography</p>
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
+
+            {/* Source Serif 4 */}
+            <div>
+              <div className="mb-5 flex items-baseline gap-3">
+                <p className="text-ink-dark text-[15px] font-semibold">Source Serif 4</p>
+                <span className="text-[11px] font-mono tracking-wide text-ink-muted-dark uppercase">Display</span>
+              </div>
+              <div className="space-y-2 mb-7 overflow-hidden">
+                <p
+                  className="font-display text-ink-dark leading-none"
+                  style={{ fontSize: '3rem', fontVariationSettings: '"opsz" 40, "wght" 600' }}
+                >
+                  Horizon Care
+                </p>
+                <p
+                  className="font-display text-ink-dark"
+                  style={{ fontSize: '1.5rem', fontVariationSettings: '"opsz" 24, "wght" 400' }}
+                >
+                  Compassionate care, every day.
+                </p>
+                <p
+                  className="font-display text-ink-muted-dark"
+                  style={{ fontSize: '1rem', fontVariationSettings: '"opsz" 10, "wght" 300' }}
+                >
+                  Supporting families across Greater Manchester
+                </p>
+              </div>
+              <dl className="space-y-2 text-[12px]">
+                <div className="flex gap-3">
+                  <dt className="text-ink-muted-dark font-medium w-14 flex-shrink-0">Axes</dt>
+                  <dd className="text-ink-dark font-mono">opsz 8–60 · wght 200–900</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="text-ink-muted-dark font-medium w-14 flex-shrink-0">Use for</dt>
+                  <dd className="text-ink-muted-dark">Page titles, section headings, hero text, pull quotes, editorial display</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="text-ink-muted-dark font-medium w-14 flex-shrink-0">Avoid</dt>
+                  <dd className="text-ink-muted-dark">Body copy under 14 px, data tables, UI controls</dd>
+                </div>
+              </dl>
+            </div>
+
+            {/* Bricolage Grotesque */}
+            <div>
+              <div className="mb-5 flex items-baseline gap-3">
+                <p className="text-ink-dark text-[15px] font-semibold">Bricolage Grotesque</p>
+                <span className="text-[11px] font-mono tracking-wide text-ink-muted-dark uppercase">Body · UI</span>
+              </div>
+              <div className="space-y-2 mb-7">
+                <p
+                  className="text-ink-dark leading-tight"
+                  style={{ fontSize: '2rem', fontWeight: 700 }}
+                >
+                  Supporting families
+                </p>
+                <p
+                  className="text-ink-dark"
+                  style={{ fontSize: '1.25rem', fontWeight: 500 }}
+                >
+                  Across Greater Manchester.
+                </p>
+                <p className="text-ink-muted-dark text-sm">
+                  Our care workers are selected for both clinical skill and the warmth that makes a real difference to daily life.
+                </p>
+              </div>
+              <dl className="space-y-2 text-[12px]">
+                <div className="flex gap-3">
+                  <dt className="text-ink-muted-dark font-medium w-14 flex-shrink-0">Axes</dt>
+                  <dd className="text-ink-dark font-mono">wdth 75–100 · wght 200–800</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="text-ink-muted-dark font-medium w-14 flex-shrink-0">Use for</dt>
+                  <dd className="text-ink-muted-dark">Body copy, navigation, labels, buttons, captions, forms</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="text-ink-muted-dark font-medium w-14 flex-shrink-0">Avoid</dt>
+                  <dd className="text-ink-muted-dark">Display sizes above 48 px, decorative editorial headings</dd>
+                </div>
+              </dl>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ── Usage notes ── */}
         <div className="border-t border-rule-light pt-14 grid md:grid-cols-3 gap-10">
           {[
             {
@@ -186,7 +352,7 @@ export function BrandingGrid() {
             },
             {
               heading: 'Minimum size',
-              body: 'The horizontal lockup should not be reproduced smaller than 120px wide. The standalone mark should not be smaller than 24px.',
+              body: 'The horizontal lockup should not be reproduced smaller than 120 px wide. The standalone mark should not be smaller than 24 px.',
             },
             {
               heading: 'Misuse',
