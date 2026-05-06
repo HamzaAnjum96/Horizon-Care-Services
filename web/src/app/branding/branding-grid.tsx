@@ -116,6 +116,99 @@ function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) 
   )
 }
 
+// ─── Banner cards ─────────────────────────────────────────────
+
+const BANNER_BG   = '#0E0C0A'
+const BANNER_INK  = '#F5F1EE'
+const BANNER_MUTED = '#A29893'
+const BANNER_ICON  = '#A64E51'
+
+function BannerCard({ type, label, description }: {
+  type: 'hero' | 'logo'
+  label: string
+  description: string
+}) {
+  const hdFile  = `${BASE}/brand/hcs-banner-${type}.png`
+  const uhdFile = `${BASE}/brand/hcs-banner-${type}@2x.png`
+
+  return (
+    <div className="rounded-xl overflow-hidden flex flex-col ring-1 ring-rule-light">
+      {/* Preview — 3:1 aspect, dark background matching the actual banner */}
+      <div className="relative overflow-hidden" style={{ aspectRatio: '3 / 1', backgroundColor: BANNER_BG }}>
+        {/* Icon grid echo — single large logo on right, fading in */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            maskImage: 'radial-gradient(ellipse 55% 70% at 82% 50%, black 0%, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 55% 70% at 82% 50%, black 0%, transparent 85%)',
+          }}
+        >
+          <div className="absolute right-[8%] top-1/2 -translate-y-1/2">
+            <HCSLogoMark style={{ color: BANNER_ICON, width: 80, height: 80, opacity: 0.22 }} />
+          </div>
+        </div>
+
+        {type === 'hero' && (
+          <div className="absolute inset-0 flex flex-col justify-center px-8 gap-2">
+            <p
+              className="text-[7px] font-medium tracking-[0.13em] uppercase"
+              style={{ color: BANNER_MUTED }}
+            >
+              Registered Health &amp; Social Care · England
+            </p>
+            <p
+              className="font-display leading-tight"
+              style={{
+                fontSize: 'clamp(1.05rem, 2.6vw, 1.55rem)',
+                fontVariationSettings: '"opsz" 64, "wght" 620',
+                color: BANNER_INK,
+              }}
+            >
+              Care that holds<br />people steady.
+            </p>
+            <p className="text-[7px] leading-relaxed" style={{ color: BANNER_MUTED }}>
+              Home care, specialist support, and clinical staffing across England.
+            </p>
+          </div>
+        )}
+
+        {type === 'logo' && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+            <HCSLogoMark style={{ color: BANNER_INK, width: 36, height: 36 }} />
+            <p
+              className="font-display"
+              style={{
+                fontSize: 'clamp(0.85rem, 2vw, 1.3rem)',
+                fontVariationSettings: '"opsz" 64, "wght" 580',
+                color: BANNER_INK,
+              }}
+            >
+              Horizon Care Services
+            </p>
+            <p className="text-[7px] tracking-[0.13em] uppercase" style={{ color: BANNER_MUTED }}>
+              Registered Health &amp; Social Care · England
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Footer */}
+      <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-[12px] font-semibold text-ink-dark">{label}</p>
+          <p className="text-[11px] text-ink-muted-dark mt-0.5">{description}</p>
+        </div>
+        <div className="flex items-center gap-0.5 flex-shrink-0">
+          <DlBtn href={hdFile} filename={`hcs-banner-${type}.png`} label={`Download ${label} HD`}>HD</DlBtn>
+          <DlBtn href={uhdFile} filename={`hcs-banner-${type}@2x.png`} label={`Download ${label} Ultra HD`}>Ultra HD</DlBtn>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── App icon size ladder ─────────────────────────────────────
+
 // Size ladder for app icon preview: small → large, bottom-aligned
 const ICON_SIZES = [24, 40, 64, 96]
 
@@ -225,6 +318,39 @@ export function BrandingGrid() {
             {COLOR_VARIANTS.map((variant) => (
               <AppIconCard key={variant.id} variant={variant} />
             ))}
+          </div>
+        </div>
+
+        {/* ── Banners ── */}
+        <div>
+          <div className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div>
+              <h2
+                className="font-display text-ink-dark mb-2"
+                style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
+              >
+                Banners
+              </h2>
+              <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">
+                Full-width banner exports at 1920 × 640 px for social media headers, presentations, and documents.
+                HD at 1×; Ultra HD at 2×.
+              </p>
+            </div>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
+              2 layouts
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <BannerCard
+              type="hero"
+              label="Hero — Text"
+              description='Headline "Care that holds people steady." with kicker and service areas strip.'
+            />
+            <BannerCard
+              type="logo"
+              label="Hero — Logo"
+              description="Centred logo mark with name at display size and registered care subtitle."
+            />
           </div>
         </div>
 
