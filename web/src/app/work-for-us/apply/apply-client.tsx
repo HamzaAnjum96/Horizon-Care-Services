@@ -31,7 +31,7 @@ import {
   PhoneField,
   NiNumberField,
   AddressFields,
-} from './fields'
+} from '../fields'
 
 // References are hidden for now — kept in the codebase for re-enable later.
 const SHOW_REFERENCES = false
