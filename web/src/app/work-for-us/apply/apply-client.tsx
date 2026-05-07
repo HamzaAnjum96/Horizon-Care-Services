@@ -183,7 +183,7 @@ export function ApplyClient() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (err) {
       console.error('PDF generation failed', err)
-      alert('Sorry — we couldn’t generate your PDF. Please try again.')
+      alert("Sorry — we couldn’t generate your PDF. Please try again.")
     } finally {
       setSubmitting(false)
     }
