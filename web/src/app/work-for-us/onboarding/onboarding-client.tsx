@@ -111,7 +111,7 @@ export function OnboardingClient() {
     setSubmitting(true)
     try {
       const { generateOnboardingPdf, buildPdfFilename } = await import('./pdf')
-      const doc = generateOnboardingPdf(data)
+      const doc = await generateOnboardingPdf(data)
       const filename = buildPdfFilename(data)
       doc.save(filename)
       setDownloadName(filename)

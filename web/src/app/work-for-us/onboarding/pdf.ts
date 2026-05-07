@@ -1,15 +1,15 @@
 import jsPDF from 'jspdf'
 import type { OnboardingData } from './types'
 
-// Brand tokens — matched to globals.css and branding-grid.tsx
+// Brand tokens — matched to globals.css / branding-grid.tsx exact hex values
 const BRAND = {
   ink:     [38,  28,  28 ] as const,   // --ink-dark
   inkSoft: [88,  78,  78 ] as const,   // --ink-muted-dark
   rule:    [220, 215, 210] as const,   // --rule-light
   cream:   [247, 243, 238] as const,   // #F7F3EE  --cream
-  deep:    [28,  24,  20 ] as const,   // #1C1814  --deep
+  deep:    [28,  24,  20 ] as const,   // #1C1814  --deep  (cover band)
   amber:   [173, 73,  50 ] as const,   // --amber
-  brand:   [92,  16,  32 ] as const,   // #5C1020  --brand (logo mark only)
+  brand:   [92,  16,  32 ] as const,   // #5C1020  --brand  (logo primary)
 }
 
 const FONT = { display: 'times', body: 'helvetica' }
@@ -20,90 +20,31 @@ const CONTENT_W = PAGE.w - PAGE.marginX * 2
 type Doc = jsPDF
 type Cursor = { y: number; page: number }
 
-// ── Logo ─────────────────────────────────────────────────────────
-// Actual SVG path from hcs-logo.tsx — uses cubic Bézier curves (C) and
-// fillRule="evenodd" so the inner shapes punch through the outer body.
-const LOGO_SVG_PATH =
-  'M515.40 396.40C576.24 342.59 644.61 277.25 728.29 263.36C851.52 242.90 951.60 377.80 950.91 490.87C950.46 565.17 919.50 634.46 880.18 696.31C790.82 836.84 645.82 933.72 475.58 920.80C290.64 906.76 89.27 699.94 75.56 516.69C64.58 369.86 194.72 216.68 348.24 278.17C411.57 303.54 463.95 353.25 515.40 396.40Z M578.00 466.90C610.43 496.81 642.74 527.23 680.35 550.69C697.92 561.66 717.01 571.30 737.20 576.43C874.16 611.22 877.82 389.94 749.56 377.46C727.71 375.33 705.92 381.52 686.21 390.43C645.56 408.79 611.76 438.46 578.00 466.90Z M792.40 657.50C770.53 663.58 748.89 669.14 725.96 667.27C606.30 657.54 503.24 529.99 422.10 454.36C388.13 422.71 343.75 376.20 293.10 375.24C272.85 374.86 252.53 382.08 235.89 393.34C167.11 439.88 179.12 531.41 209.11 597.12C231.19 645.48 262.44 689.53 301.78 725.39C416.34 829.83 536.96 841.51 671.24 764.17C719.05 736.64 756.48 698.66 792.40 657.50Z'
-const LOGO_CIRCLE = { cx: 511.4, cy: 201.7, r: 99.6 }
+// ── Logo images ──────────────────────────────────────────────────
+// Pre-exported PNGs from /public/brand/ — same files used by branding-grid.tsx.
+// Loaded once before PDF creation, stored as data-URLs for doc.addImage().
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
-// Parse SVG M/C/Z path into PDF content-stream operators.
-// Coordinates are left untransformed — the cm matrix handles scale+flip.
-function svgPathToPdfOps(d: string): string {
-  const tokens = d.match(/[MCZmcz]|[-+]?\d*\.?\d+/g) || []
-  const ops: string[] = []
-  let i = 0
-  while (i < tokens.length) {
-    const cmd = tokens[i]
-    if (cmd === 'M') {
-      ops.push(`${tokens[i + 1]} ${tokens[i + 2]} m`)
-      i += 3
-    } else if (cmd === 'C') {
-      i += 1
-      // C can be followed by implicit repetitions (6 numbers per curve)
-      while (i < tokens.length && /^[-+\d]/.test(tokens[i])) {
-        ops.push(
-          `${tokens[i]} ${tokens[i+1]} ${tokens[i+2]} ${tokens[i+3]} ${tokens[i+4]} ${tokens[i+5]} c`,
-        )
-        i += 6
-      }
-    } else if (cmd === 'Z' || cmd === 'z') {
-      ops.push('h')
-      i += 1
-    } else {
-      i += 1
-    }
-  }
-  return ops.join(' ')
+async function fetchDataUrl(path: string): Promise<string> {
+  const res = await fetch(path)
+  if (!res.ok) throw new Error(`Failed to load logo image: ${path}`)
+  const blob = await res.blob()
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(reader.result as string)
+    reader.onerror = reject
+    reader.readAsDataURL(blob)
+  })
 }
 
-// Draw the HCS logo mark at (x, y) mm (top-left), sized size×size mm.
-// Uses raw PDF operators so Bézier curves and even-odd fill are exact.
-function drawLogoMark(
-  doc: Doc,
-  x: number,
-  y: number,
-  size: number,
-  color: readonly [number, number, number],
-) {
-  // jsPDF scaleFactor: user units (mm) → PDF points
-  const sf = doc.internal.scaleFactor
-  // Page height in PDF points (PDF origin is bottom-left)
-  const pageH_pt = doc.internal.pageSize.height * sf
-
-  // Scale from SVG units (0–1024) to PDF points, with Y-axis flip
-  const s = (size * sf) / 1024
-  const tx = x * sf
-  const ty = pageH_pt - y * sf // top of logo in PDF coords
-
-  // Normalise RGB 0-255 → 0-1 for PDF rg operator
-  const r = (color[0] / 255).toFixed(4)
-  const g = (color[1] / 255).toFixed(4)
-  const b = (color[2] / 255).toFixed(4)
-
-  const w = (s: string) => doc.internal.write(s)
-
-  w('q')
-  // Transformation matrix: scale + flip Y so SVG Y-down maps to PDF Y-up
-  w(`${s.toFixed(6)} 0 0 ${(-s).toFixed(6)} ${tx.toFixed(3)} ${ty.toFixed(3)} cm`)
-  w(`${r} ${g} ${b} rg`) // non-stroking fill colour
-
-  // Compound path with even-odd fill — inner shapes cut through outer body
-  w(svgPathToPdfOps(LOGO_SVG_PATH))
-  w('f*') // f* = fill with even-odd rule
-
-  // Circle (separate SVG element — just a plain filled circle)
-  const { cx, cy, r: cr } = LOGO_CIRCLE
-  const k = cr * 0.5523 // cubic Bézier approximation constant
-  w(
-    `${cx + cr} ${cy} m ` +
-    `${cx + cr} ${cy + k} ${cx + k} ${cy + cr} ${cx} ${cy + cr} c ` +
-    `${cx - k} ${cy + cr} ${cx - cr} ${cy + k} ${cx - cr} ${cy} c ` +
-    `${cx - cr} ${cy - k} ${cx - k} ${cy - cr} ${cx} ${cy - cr} c ` +
-    `${cx + k} ${cy - cr} ${cx + cr} ${cy - k} ${cx + cr} ${cy} c h f`,
-  )
-
-  w('Q')
+// primary = brand-red mark (for use on cream/white backgrounds)
+// reversed = cream/white mark (for use on deep/dark cover band)
+async function loadLogos(): Promise<{ primary: string; reversed: string }> {
+  const [primary, reversed] = await Promise.all([
+    fetchDataUrl(`${BASE_PATH}/brand/hcs-mark-primary.png`),
+    fetchDataUrl(`${BASE_PATH}/brand/hcs-mark-reversed.png`),
+  ])
+  return { primary, reversed }
 }
 
 // ── Layout helpers ────────────────────────────────────────────────
@@ -123,8 +64,8 @@ function setRule(doc: Doc, rgb: readonly [number, number, number]) {
   doc.setDrawColor(rgb[0], rgb[1], rgb[2])
 }
 
-function drawHeader(doc: Doc, workerName: string) {
-  drawLogoMark(doc, PAGE.marginX, 11, 13, BRAND.brand)
+function drawHeader(doc: Doc, logos: { primary: string }, workerName: string) {
+  doc.addImage(logos.primary, 'PNG', PAGE.marginX, 11, 13, 13)
 
   doc.setFont(FONT.display, 'normal')
   doc.setFontSize(11)
@@ -286,7 +227,9 @@ function fullName(d: OnboardingData) {
 }
 
 // ── Main entry ────────────────────────────────────────────────────
-export function generateOnboardingPdf(data: OnboardingData): jsPDF {
+export async function generateOnboardingPdf(data: OnboardingData): Promise<jsPDF> {
+  const logos = await loadLogos()
+
   const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: true })
   const c: Cursor = { y: PAGE.marginTop, page: 1 }
   const name = fullName(data)
@@ -295,8 +238,8 @@ export function generateOnboardingPdf(data: OnboardingData): jsPDF {
   doc.setFillColor(BRAND.deep[0], BRAND.deep[1], BRAND.deep[2])
   doc.rect(0, 0, PAGE.w, 76, 'F')
 
-  // Logo mark on cover — render on deep background (reversed variant: white mark)
-  drawLogoMark(doc, PAGE.marginX, 20, 20, [245, 240, 232])
+  // Reversed (cream) mark on dark cover band
+  doc.addImage(logos.reversed, 'PNG', PAGE.marginX, 20, 20, 20)
 
   doc.setFont(FONT.display, 'normal')
   doc.setFontSize(11)
@@ -319,7 +262,6 @@ export function generateOnboardingPdf(data: OnboardingData): jsPDF {
   const submittedDate = fmtDate(data.declaration.date) || fmtDate(new Date().toISOString().slice(0, 10))
   doc.text(`Submitted ${submittedDate}`, PAGE.marginX, 65)
 
-  // Employment start date badge
   if (data.personal.employmentStartDate) {
     const badge = `Start: ${fmtDate(data.personal.employmentStartDate)}`
     doc.setFont(FONT.body, 'bold')
@@ -414,7 +356,7 @@ export function generateOnboardingPdf(data: OnboardingData): jsPDF {
     { label: 'Bank / building society', value: data.bank.bankName },
   ])
 
-  // 05 — Tax & payroll (HMRC Starter Checklist)
+  // 05 — Tax & payroll
   sectionTitle(doc, c, 'Section 05', 'Tax & payroll (HMRC Starter Checklist)')
   fieldRow(doc, c, [
     { label: 'National Insurance number', value: data.payroll.niNumber.toUpperCase() },
@@ -498,7 +440,7 @@ export function generateOnboardingPdf(data: OnboardingData): jsPDF {
   const totalPages = doc.getNumberOfPages()
   for (let p = 1; p <= totalPages; p++) {
     doc.setPage(p)
-    if (p > 1) drawHeader(doc, name)
+    if (p > 1) drawHeader(doc, logos, name)
     drawFooter(doc, p, totalPages, name)
   }
 
