@@ -3,7 +3,6 @@
 import { useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, ArrowUpRight, Check, Download, FileText } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import {
   OnboardingData,
   emptyOnboarding,
