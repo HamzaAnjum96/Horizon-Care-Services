@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, ArrowUpRight, Check, Download, FileText } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, Beaker, Check, Download, FileText } from 'lucide-react'
 import {
   OnboardingData,
   emptyOnboarding,
@@ -12,6 +12,7 @@ import {
   SKILL_OPTIONS,
 } from './types'
 import { validate, ValidationErrors } from './validation'
+import { exampleOnboarding } from './example-data'
 import {
   Field,
   TextInput,
@@ -75,6 +76,12 @@ export function OnboardingClient() {
   const setPreferences  = (p: Partial<OnboardingData['preferences']>)  => update('preferences', p)
   const setTransport    = (p: Partial<OnboardingData['transport']>)    => update('transport', p)
   const setDeclaration  = (p: Partial<OnboardingData['declaration']>)  => update('declaration', p)
+
+  const fillExampleData = () => {
+    setData(exampleOnboarding())
+    setErrors({})
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   const errorList = useMemo(
     () => Object.entries(errors).map(([k, v]) => ({ key: k, msg: v })),
@@ -162,6 +169,25 @@ export function OnboardingClient() {
         onSubmit={(e) => { e.preventDefault(); goToReview() }}
         className="space-y-16"
       >
+        {/* Test mode — fill form with example data for QA / PDF preview */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border border-amber/30 bg-amber/5 rounded-md px-5 py-4">
+          <div>
+            <p className="text-[11px] font-semibold tracking-[0.1em] text-amber uppercase mb-1">
+              Test mode
+            </p>
+            <p className="text-[13px] text-ink-muted-dark leading-snug">
+              Auto-fill the entire form with realistic example data for testing the PDF output.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={fillExampleData}
+            className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-4 py-2 rounded-md text-[12.5px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
+          >
+            <Beaker size={13} /> Fill with test data
+          </button>
+        </div>
+
         {/* Error banner */}
         {errorList.length > 0 && (
           <div
