@@ -328,3 +328,199 @@ export function FieldGrid({
       : 'grid-cols-1 sm:grid-cols-2'
   return <div className={cn('grid gap-x-5 gap-y-5', colClass)}>{children}</div>
 }
+
+// ── Domain-specific field components ───────────────────────────
+// Each one encodes the label, input type, autocomplete, formatting
+// and validation props in one place so every usage stays consistent.
+
+export function EmailField({
+  id,
+  label = 'Email',
+  required,
+  value,
+  onChange,
+  error,
+  autoComplete = 'email',
+}: {
+  id?: string
+  label?: string
+  required?: boolean
+  value: string
+  onChange: (v: string) => void
+  error?: string
+  autoComplete?: string
+}) {
+  return (
+    <Field label={label} required={required} htmlFor={id} error={error}>
+      <TextInput
+        id={id}
+        type="email"
+        inputMode="email"
+        autoComplete={autoComplete}
+        value={value}
+        onChange={onChange}
+        invalid={Boolean(error)}
+      />
+    </Field>
+  )
+}
+
+export function PhoneField({
+  id,
+  label = 'Phone',
+  required,
+  value,
+  onChange,
+  error,
+  placeholder,
+  autoComplete,
+}: {
+  id?: string
+  label?: string
+  required?: boolean
+  value: string
+  onChange: (v: string) => void
+  error?: string
+  placeholder?: string
+  autoComplete?: string
+}) {
+  return (
+    <Field label={label} required={required} htmlFor={id} error={error}>
+      <TextInput
+        id={id}
+        type="tel"
+        inputMode="tel"
+        autoComplete={autoComplete}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        invalid={Boolean(error)}
+      />
+    </Field>
+  )
+}
+
+export function NiNumberField({
+  id,
+  value,
+  onChange,
+  error,
+}: {
+  id?: string
+  value: string
+  onChange: (v: string) => void
+  error?: string
+}) {
+  return (
+    <Field
+      label="National Insurance number"
+      required
+      htmlFor={id}
+      error={error}
+      hint="Format: AB 12 34 56 C"
+    >
+      <TextInput
+        id={id}
+        value={value}
+        onChange={(v) => onChange(v.toUpperCase())}
+        invalid={Boolean(error)}
+        maxLength={13}
+      />
+    </Field>
+  )
+}
+
+export type AddressValue = {
+  line1: string
+  line2: string
+  town: string
+  county: string
+  postcode: string
+  yearsAtAddress: string
+  previousAddress: string
+}
+
+export function AddressFields({
+  value,
+  onChange,
+  errors = {},
+  idPrefix = 'addr',
+}: {
+  value: AddressValue
+  onChange: (patch: Partial<AddressValue>) => void
+  errors?: { line1?: string; town?: string; postcode?: string }
+  idPrefix?: string
+}) {
+  return (
+    <div className="space-y-6">
+      <FieldGrid>
+        <Field label="Address line 1" required htmlFor={`${idPrefix}-1`} error={errors.line1}>
+          <TextInput
+            id={`${idPrefix}-1`}
+            autoComplete="address-line1"
+            value={value.line1}
+            onChange={(v) => onChange({ line1: v })}
+            invalid={Boolean(errors.line1)}
+          />
+        </Field>
+        <Field label="Address line 2" htmlFor={`${idPrefix}-2`}>
+          <TextInput
+            id={`${idPrefix}-2`}
+            autoComplete="address-line2"
+            value={value.line2}
+            onChange={(v) => onChange({ line2: v })}
+          />
+        </Field>
+      </FieldGrid>
+      <FieldGrid cols={4}>
+        <Field label="Town / city" required htmlFor={`${idPrefix}-town`} error={errors.town}>
+          <TextInput
+            id={`${idPrefix}-town`}
+            autoComplete="address-level2"
+            value={value.town}
+            onChange={(v) => onChange({ town: v })}
+            invalid={Boolean(errors.town)}
+          />
+        </Field>
+        <Field label="County" htmlFor={`${idPrefix}-county`}>
+          <TextInput
+            id={`${idPrefix}-county`}
+            autoComplete="address-level1"
+            value={value.county}
+            onChange={(v) => onChange({ county: v })}
+          />
+        </Field>
+        <Field label="Postcode" required htmlFor={`${idPrefix}-postcode`} error={errors.postcode}>
+          <TextInput
+            id={`${idPrefix}-postcode`}
+            autoComplete="postal-code"
+            placeholder="LU3 3JG"
+            value={value.postcode}
+            onChange={(v) => onChange({ postcode: v.toUpperCase() })}
+            invalid={Boolean(errors.postcode)}
+          />
+        </Field>
+        <Field label="Years at this address" htmlFor={`${idPrefix}-years`}>
+          <TextInput
+            id={`${idPrefix}-years`}
+            inputMode="numeric"
+            value={value.yearsAtAddress}
+            onChange={(v) => onChange({ yearsAtAddress: v })}
+          />
+        </Field>
+      </FieldGrid>
+      <Field
+        label="Previous address"
+        htmlFor={`${idPrefix}-prev`}
+        hint="Required if less than 3 years at current address"
+      >
+        <TextArea
+          id={`${idPrefix}-prev`}
+          rows={3}
+          value={value.previousAddress}
+          onChange={(v) => onChange({ previousAddress: v })}
+        />
+      </Field>
+    </div>
+  )
+}

@@ -27,6 +27,10 @@ import {
   CheckboxGroup,
   Checkbox,
   FieldGrid,
+  EmailField,
+  PhoneField,
+  NiNumberField,
+  AddressFields,
 } from './fields'
 
 // References are hidden for now — kept in the codebase for re-enable later.
@@ -398,116 +402,45 @@ export function ApplyClient() {
         {/* 03 — Contact */}
         <Section id="contact" number="03" title="Contact details">
           <FieldGrid cols={3}>
-            <Field label="Email" required htmlFor="c-email" error={errors['contact.email']}>
-              <TextInput
-                id="c-email"
-                type="email"
-                autoComplete="email"
-                inputMode="email"
-                value={data.contact.email}
-                onChange={(v) => setContact({ email: v })}
-                invalid={Boolean(errors['contact.email'])}
-              />
-            </Field>
-            <Field label="Mobile" required htmlFor="c-mobile" error={errors['contact.mobile']}>
-              <TextInput
-                id="c-mobile"
-                type="tel"
-                autoComplete="tel"
-                inputMode="tel"
-                placeholder="07700 000000"
-                value={data.contact.mobile}
-                onChange={(v) => setContact({ mobile: v })}
-                invalid={Boolean(errors['contact.mobile'])}
-              />
-            </Field>
-            <Field label="Telephone (alternative)" htmlFor="c-tel">
-              <TextInput
-                id="c-tel"
-                type="tel"
-                inputMode="tel"
-                value={data.contact.telephone}
-                onChange={(v) => setContact({ telephone: v })}
-              />
-            </Field>
+            <EmailField
+              id="c-email"
+              label="Email"
+              required
+              value={data.contact.email}
+              onChange={(v) => setContact({ email: v })}
+              error={errors['contact.email']}
+              autoComplete="email"
+            />
+            <PhoneField
+              id="c-mobile"
+              label="Mobile"
+              required
+              value={data.contact.mobile}
+              onChange={(v) => setContact({ mobile: v })}
+              error={errors['contact.mobile']}
+              placeholder="07700 000000"
+              autoComplete="tel"
+            />
+            <PhoneField
+              id="c-tel"
+              label="Telephone (alternative)"
+              value={data.contact.telephone}
+              onChange={(v) => setContact({ telephone: v })}
+            />
           </FieldGrid>
         </Section>
 
         {/* 04 — Address */}
         <Section id="address" number="04" title="Address">
-          <FieldGrid>
-            <Field label="Address line 1" required htmlFor="a-1" error={errors['address.line1']}>
-              <TextInput
-                id="a-1"
-                autoComplete="address-line1"
-                value={data.address.line1}
-                onChange={(v) => setAddress({ line1: v })}
-                invalid={Boolean(errors['address.line1'])}
-              />
-            </Field>
-            <Field label="Address line 2" htmlFor="a-2">
-              <TextInput
-                id="a-2"
-                autoComplete="address-line2"
-                value={data.address.line2}
-                onChange={(v) => setAddress({ line2: v })}
-              />
-            </Field>
-          </FieldGrid>
-          <FieldGrid cols={4}>
-            <Field label="Town / city" required htmlFor="a-town" error={errors['address.town']}>
-              <TextInput
-                id="a-town"
-                autoComplete="address-level2"
-                value={data.address.town}
-                onChange={(v) => setAddress({ town: v })}
-                invalid={Boolean(errors['address.town'])}
-              />
-            </Field>
-            <Field label="County" htmlFor="a-county">
-              <TextInput
-                id="a-county"
-                autoComplete="address-level1"
-                value={data.address.county}
-                onChange={(v) => setAddress({ county: v })}
-              />
-            </Field>
-            <Field
-              label="Postcode"
-              required
-              htmlFor="a-postcode"
-              error={errors['address.postcode']}
-            >
-              <TextInput
-                id="a-postcode"
-                autoComplete="postal-code"
-                placeholder="LU3 3JG"
-                value={data.address.postcode}
-                onChange={(v) => setAddress({ postcode: v.toUpperCase() })}
-                invalid={Boolean(errors['address.postcode'])}
-              />
-            </Field>
-            <Field label="Years at this address" htmlFor="a-years">
-              <TextInput
-                id="a-years"
-                inputMode="numeric"
-                value={data.address.yearsAtAddress}
-                onChange={(v) => setAddress({ yearsAtAddress: v })}
-              />
-            </Field>
-          </FieldGrid>
-          <Field
-            label="Previous address"
-            htmlFor="a-prev"
-            hint="Required if less than 3 years at current address"
-          >
-            <TextArea
-              id="a-prev"
-              rows={3}
-              value={data.address.previousAddress}
-              onChange={(v) => setAddress({ previousAddress: v })}
-            />
-          </Field>
+          <AddressFields
+            value={data.address}
+            onChange={setAddress}
+            errors={{
+              line1: errors['address.line1'],
+              town: errors['address.town'],
+              postcode: errors['address.postcode'],
+            }}
+          />
         </Section>
 
         {/* 05 — Right to work */}
@@ -662,21 +595,12 @@ export function ApplyClient() {
         {/* 06 — Identification */}
         <Section id="identification" number="06" title="Identification">
           <FieldGrid cols={2}>
-            <Field
-              label="National Insurance number"
-              required
-              htmlFor="ni"
+            <NiNumberField
+              id="ni"
+              value={data.identification.niNumber}
+              onChange={(v) => setID({ niNumber: v })}
               error={errors['identification.niNumber']}
-              hint="Format: AB 12 34 56 C"
-            >
-              <TextInput
-                id="ni"
-                value={data.identification.niNumber}
-                onChange={(v) => setID({ niNumber: v.toUpperCase() })}
-                invalid={Boolean(errors['identification.niNumber'])}
-                maxLength={13}
-              />
-            </Field>
+            />
           </FieldGrid>
         </Section>
 
@@ -1279,45 +1203,32 @@ export function ApplyClient() {
                   </Field>
                 </FieldGrid>
                 <FieldGrid cols={2}>
-                  <Field
+                  <EmailField
                     label="Email"
-                    error={
-                      errors[`references.${i}.email`] || errors[`references.${i}.contact`]
+                    value={ref.email}
+                    onChange={(v) =>
+                      setData((d) => ({
+                        ...d,
+                        references: d.references.map((r, j) =>
+                          j === i ? { ...r, email: v } : r,
+                        ),
+                      }))
                     }
-                  >
-                    <TextInput
-                      type="email"
-                      inputMode="email"
-                      value={ref.email}
-                      onChange={(v) =>
-                        setData((d) => ({
-                          ...d,
-                          references: d.references.map((r, j) =>
-                            j === i ? { ...r, email: v } : r,
-                          ),
-                        }))
-                      }
-                      invalid={Boolean(
-                        errors[`references.${i}.email`] || errors[`references.${i}.contact`],
-                      )}
-                    />
-                  </Field>
-                  <Field label="Phone">
-                    <TextInput
-                      type="tel"
-                      inputMode="tel"
-                      value={ref.phone}
-                      onChange={(v) =>
-                        setData((d) => ({
-                          ...d,
-                          references: d.references.map((r, j) =>
-                            j === i ? { ...r, phone: v } : r,
-                          ),
-                        }))
-                      }
-                      invalid={Boolean(errors[`references.${i}.contact`])}
-                    />
-                  </Field>
+                    error={errors[`references.${i}.email`] || errors[`references.${i}.contact`]}
+                  />
+                  <PhoneField
+                    label="Phone"
+                    value={ref.phone}
+                    onChange={(v) =>
+                      setData((d) => ({
+                        ...d,
+                        references: d.references.map((r, j) =>
+                          j === i ? { ...r, phone: v } : r,
+                        ),
+                      }))
+                    }
+                    error={errors[`references.${i}.contact`]}
+                  />
                 </FieldGrid>
               </div>
             ))}
@@ -1348,23 +1259,18 @@ export function ApplyClient() {
             </Field>
           </FieldGrid>
           <FieldGrid cols={2}>
-            <Field label="Phone" required error={errors['emergency.phone']}>
-              <TextInput
-                type="tel"
-                inputMode="tel"
-                value={data.emergency.phone}
-                onChange={(v) => setEmergency({ phone: v })}
-                invalid={Boolean(errors['emergency.phone'])}
-              />
-            </Field>
-            <Field label="Email">
-              <TextInput
-                type="email"
-                inputMode="email"
-                value={data.emergency.email}
-                onChange={(v) => setEmergency({ email: v })}
-              />
-            </Field>
+            <PhoneField
+              label="Phone"
+              required
+              value={data.emergency.phone}
+              onChange={(v) => setEmergency({ phone: v })}
+              error={errors['emergency.phone']}
+            />
+            <EmailField
+              label="Email"
+              value={data.emergency.email}
+              onChange={(v) => setEmergency({ email: v })}
+            />
           </FieldGrid>
         </Section>
 
