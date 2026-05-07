@@ -272,7 +272,49 @@ export function OnboardingClient() {
                 invalid={Boolean(errors['personal.dob'])}
               />
             </Field>
-            <Field label="Gender" htmlFor="p-gender">
+            <Field
+              label="Sex"
+              required
+              error={errors['personal.sex']}
+              hint="As shown on your birth certificate or gender recognition certificate"
+            >
+              <RadioGroup
+                name="p-sex"
+                value={data.personal.sex}
+                onChange={(v) => setPersonal({ sex: v as 'male' | 'female' })}
+                options={[
+                  { value: 'female', label: 'Female' },
+                  { value: 'male',   label: 'Male' },
+                ]}
+                invalid={Boolean(errors['personal.sex'])}
+              />
+            </Field>
+            <Field label="Pronouns" htmlFor="p-pronouns">
+              <TextInput
+                id="p-pronouns"
+                placeholder="e.g. she/her"
+                value={data.personal.pronouns}
+                onChange={(v) => setPersonal({ pronouns: v })}
+              />
+            </Field>
+          </FieldGrid>
+          <FieldGrid cols={4}>
+            <Field
+              label="Employment start date"
+              required
+              htmlFor="p-start"
+              error={errors['personal.employmentStartDate']}
+              hint="The agreed date you will begin working"
+            >
+              <TextInput
+                id="p-start"
+                type="date"
+                value={data.personal.employmentStartDate}
+                onChange={(v) => setPersonal({ employmentStartDate: v })}
+                invalid={Boolean(errors['personal.employmentStartDate'])}
+              />
+            </Field>
+            <Field label="Gender identity (optional)" htmlFor="p-gender">
               <Select
                 id="p-gender"
                 value={data.personal.gender}
@@ -284,14 +326,6 @@ export function OnboardingClient() {
                   { value: 'Non-binary',    label: 'Non-binary' },
                   { value: 'Self-describe', label: 'Self-describe' },
                 ]}
-              />
-            </Field>
-            <Field label="Pronouns" htmlFor="p-pronouns">
-              <TextInput
-                id="p-pronouns"
-                placeholder="e.g. she/her"
-                value={data.personal.pronouns}
-                onChange={(v) => setPersonal({ pronouns: v })}
               />
             </Field>
           </FieldGrid>
@@ -336,6 +370,16 @@ export function OnboardingClient() {
             }}
             idPrefix="ob-addr"
           />
+          <FieldGrid cols={4}>
+            <Field label="Country" htmlFor="ob-country">
+              <TextInput
+                id="ob-country"
+                placeholder="e.g. England"
+                value={data.address.country}
+                onChange={(v) => setAddress({ country: v })}
+              />
+            </Field>
+          </FieldGrid>
         </Section>
 
         {/* 03 — Emergency contact */}
@@ -496,15 +540,15 @@ export function OnboardingClient() {
               options={[
                 {
                   value: 'A',
-                  label: 'A — First job since 6 April, no state benefit or occupational pension',
+                  label: 'A — This is my first job since 6 April and I have not received Jobseeker\'s Allowance, Employment and Support Allowance, or Incapacity Benefit since 6 April',
                 },
                 {
                   value: 'B',
-                  label: 'B — Only job now, but had another job or received state benefit / pension since 6 April',
+                  label: 'B — Since 6 April I have had another job (but no P45), and/or I have received JSA, ESA, or Incapacity Benefit',
                 },
                 {
                   value: 'C',
-                  label: 'C — I have another job or receive a state or occupational pension',
+                  label: 'C — I have another job, or I receive a State, workplace, or private pension',
                 },
               ]}
               invalid={Boolean(errors['payroll.starterDeclaration'])}
@@ -512,7 +556,7 @@ export function OnboardingClient() {
           </Field>
 
           <FieldGrid cols={2}>
-            <Field label="Do you have a student loan?" error={errors['payroll.studentLoan']}>
+            <Field label="Do you have a student or postgraduate loan?" error={errors['payroll.studentLoan']}>
               <RadioGroup
                 name="student-loan"
                 value={data.payroll.studentLoan}
@@ -520,32 +564,52 @@ export function OnboardingClient() {
                   setPayroll({
                     studentLoan: v as 'yes' | 'no',
                     studentLoanPlan: v === 'no' ? '' : data.payroll.studentLoanPlan,
+                    studentLoanNotRepaying: v === 'no' ? '' : data.payroll.studentLoanNotRepaying,
                   })
                 }
                 options={YN}
               />
             </Field>
             {data.payroll.studentLoan === 'yes' && (
-              <Field label="Student loan plan" htmlFor="sl-plan">
-                <Select
-                  id="sl-plan"
-                  value={data.payroll.studentLoanPlan}
+              <Field
+                label="Does any of the following apply?"
+                hint="Still studying · Left course after 6 April · Already repaid in full · Repaying by Direct Debit"
+              >
+                <RadioGroup
+                  name="sl-not-repaying"
+                  value={data.payroll.studentLoanNotRepaying}
                   onChange={(v) =>
                     setPayroll({
-                      studentLoanPlan: v as OnboardingData['payroll']['studentLoanPlan'],
+                      studentLoanNotRepaying: v as 'yes' | 'no',
+                      studentLoanPlan: v === 'yes' ? '' : data.payroll.studentLoanPlan,
                     })
                   }
-                  options={[
-                    { value: '',        label: 'Select…' },
-                    { value: 'plan1',   label: 'Plan 1 (pre-Sept 2012 / NI / Scottish)' },
-                    { value: 'plan2',   label: 'Plan 2 (post-Sept 2012 England/Wales)' },
-                    { value: 'plan4',   label: 'Plan 4 (Scottish loan from 2021)' },
-                    { value: 'postgrad', label: 'Postgraduate loan' },
-                  ]}
+                  options={YN}
                 />
               </Field>
             )}
           </FieldGrid>
+          {data.payroll.studentLoan === 'yes' && data.payroll.studentLoanNotRepaying === 'no' && (
+            <Field label="Student loan plan type" htmlFor="sl-plan" hint="Select the plan you are currently repaying. You can also add a postgraduate loan alongside a plan type.">
+              <Select
+                id="sl-plan"
+                value={data.payroll.studentLoanPlan}
+                onChange={(v) =>
+                  setPayroll({
+                    studentLoanPlan: v as OnboardingData['payroll']['studentLoanPlan'],
+                  })
+                }
+                options={[
+                  { value: '',         label: 'Select…' },
+                  { value: 'plan1',    label: 'Plan 1 — started before Sept 2012 (England/Wales) or NI or Scotland pre-2021' },
+                  { value: 'plan2',    label: 'Plan 2 — started Sept 2012–July 2023 (England/Wales)' },
+                  { value: 'plan4',    label: 'Plan 4 — Student Awards Agency Scotland (from 2021)' },
+                  { value: 'plan5',    label: 'Plan 5 — started on or after 1 August 2023 (England)' },
+                  { value: 'postgrad', label: 'Postgraduate loan (masters or doctoral)' },
+                ]}
+              />
+            </Field>
+          )}
         </Section>
 
         {/* 06 — Contract preference */}
@@ -918,7 +982,8 @@ function ReviewScreen({
           <ReviewBlock title="Personal details">
             <ReviewItem label="Full name" value={name} />
             <ReviewItem label="Date of birth" value={data.personal.dob} />
-            <ReviewItem label="Gender" value={data.personal.gender} />
+            <ReviewItem label="Sex (HMRC)" value={data.personal.sex === 'male' ? 'Male' : data.personal.sex === 'female' ? 'Female' : ''} />
+            <ReviewItem label="Employment start date" value={data.personal.employmentStartDate} />
           </ReviewBlock>
           <ReviewBlock title="Contact">
             <ReviewItem label="Email" value={data.contact.email} />
@@ -930,6 +995,7 @@ function ReviewScreen({
                 data.address.line2,
                 data.address.town,
                 data.address.postcode,
+                data.address.country,
               ]
                 .filter(Boolean)
                 .join(', ')}

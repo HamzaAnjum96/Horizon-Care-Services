@@ -16,6 +16,8 @@ export function validate(data: OnboardingData): ValidationErrors {
   if (!data.personal.firstName.trim()) errors['personal.firstName'] = 'First name is required'
   if (!data.personal.surname.trim()) errors['personal.surname'] = 'Surname is required'
   if (!data.personal.dob) errors['personal.dob'] = 'Date of birth is required'
+  if (!data.personal.sex) errors['personal.sex'] = 'Sex is required for HMRC payroll'
+  if (!data.personal.employmentStartDate) errors['personal.employmentStartDate'] = 'Employment start date is required'
 
   // Contact
   if (!data.contact.email.trim()) {

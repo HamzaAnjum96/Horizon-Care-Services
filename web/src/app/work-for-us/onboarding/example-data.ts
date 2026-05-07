@@ -16,8 +16,10 @@ export function exampleOnboarding(): OnboardingData {
       surname: 'Carter',
       preferredName: 'Amelia',
       dob: '1992-04-18',
+      sex: 'female',
       gender: 'Female',
       pronouns: 'she/her',
+      employmentStartDate: nextWeek,
     },
     contact: {
       email: 'amelia.carter@example.co.uk',
@@ -30,6 +32,7 @@ export function exampleOnboarding(): OnboardingData {
       town: 'Luton',
       county: 'Bedfordshire',
       postcode: 'LU1 2AB',
+      country: 'England',
       yearsAtAddress: '4',
       previousAddress: '',
     },
@@ -50,6 +53,7 @@ export function exampleOnboarding(): OnboardingData {
       starterDeclaration: 'A',
       studentLoan: 'no',
       studentLoanPlan: '',
+      studentLoanNotRepaying: '',
       hasPreviousP45: 'no',
     },
     contract: {

@@ -6,8 +6,10 @@ export type OnboardingData = {
     surname: string
     preferredName: string
     dob: string
+    sex: 'male' | 'female' | ''
     gender: string
     pronouns: string
+    employmentStartDate: string
   }
   contact: {
     email: string
@@ -20,6 +22,7 @@ export type OnboardingData = {
     town: string
     county: string
     postcode: string
+    country: string
     yearsAtAddress: string
     previousAddress: string
   }
@@ -43,7 +46,8 @@ export type OnboardingData = {
     // C = Have another job or receive a state / occupational pension
     starterDeclaration: 'A' | 'B' | 'C' | ''
     studentLoan: 'yes' | 'no' | ''
-    studentLoanPlan: 'plan1' | 'plan2' | 'plan4' | 'postgrad' | ''
+    studentLoanPlan: 'plan1' | 'plan2' | 'plan4' | 'plan5' | 'postgrad' | ''
+    studentLoanNotRepaying: 'yes' | 'no' | ''
     hasPreviousP45: 'yes' | 'no' | ''
   }
   contract: {
@@ -84,8 +88,10 @@ export function emptyOnboarding(): OnboardingData {
       surname: '',
       preferredName: '',
       dob: '',
+      sex: '',
       gender: '',
       pronouns: '',
+      employmentStartDate: '',
     },
     contact: { email: '', mobile: '', telephone: '' },
     address: {
@@ -94,6 +100,7 @@ export function emptyOnboarding(): OnboardingData {
       town: '',
       county: '',
       postcode: '',
+      country: '',
       yearsAtAddress: '',
       previousAddress: '',
     },
@@ -104,6 +111,7 @@ export function emptyOnboarding(): OnboardingData {
       starterDeclaration: '',
       studentLoan: '',
       studentLoanPlan: '',
+      studentLoanNotRepaying: '',
       hasPreviousP45: '',
     },
     contract: { type: 'zero-hours', hoursMin: '', hoursMax: '', earliestStart: '' },
