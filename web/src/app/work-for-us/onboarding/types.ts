@@ -137,7 +137,7 @@ export const SETTINGS_OPTIONS = [
   'Hospice / end-of-life',
   'Mental health',
   'Learning disabilities',
-  'Dementia / Alzheimer's',
+  "Dementia / Alzheimer's",
   'Children & young people',
 ] as const
 
