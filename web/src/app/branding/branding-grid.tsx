@@ -207,6 +207,84 @@ function BannerCard({ type, label, description }: {
   )
 }
 
+// ─── Transparent-background PNG card ─────────────────────────
+
+const CHECKER = [
+  'linear-gradient(45deg, #d4d4d4 25%, transparent 25%)',
+  'linear-gradient(-45deg, #d4d4d4 25%, transparent 25%)',
+  'linear-gradient(45deg, transparent 75%, #d4d4d4 75%)',
+  'linear-gradient(-45deg, transparent 75%, #d4d4d4 75%)',
+].join(', ')
+
+function TransparentCard({ variant, href, filename }: {
+  variant: ColorVariant
+  href: string
+  filename: string
+}) {
+  return (
+    <div className="rounded-xl overflow-hidden flex flex-col ring-1 ring-rule-light">
+      <div
+        className="flex-1 flex items-center justify-center p-8"
+        style={{
+          backgroundImage: CHECKER,
+          backgroundSize: '16px 16px',
+          backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
+          minHeight: 200,
+        }}
+      >
+        <HCSLogoMark className="w-20 h-20" style={{ color: variant.fg }} />
+      </div>
+      <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <span
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
+            style={{ backgroundColor: variant.fg }}
+          />
+          <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
+            {variant.label} · Transparent
+          </span>
+        </div>
+        <DlBtn href={href} filename={filename} label={`Download ${variant.label} mark, transparent background`}>
+          PNG
+        </DlBtn>
+      </div>
+    </div>
+  )
+}
+
+// ─── SVG mark card ────────────────────────────────────────────
+
+function SvgCard({ variant, href, filename }: {
+  variant: ColorVariant
+  href: string
+  filename: string
+}) {
+  return (
+    <div className={cn('rounded-xl overflow-hidden flex flex-col', variant.hasBorder ? 'ring-1 ring-rule-light' : '')}>
+      <div
+        className="flex-1 flex items-center justify-center p-8"
+        style={{ backgroundColor: variant.bg, minHeight: 200 }}
+      >
+        <HCSLogoMark className="w-20 h-20" style={{ color: variant.fg }} />
+      </div>
+      <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <span
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
+            style={{ backgroundColor: variant.fg }}
+          />
+          <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
+            {variant.label}
+          </span>
+        </div>
+        <DlBtn href={href} filename={filename} label={`Download ${variant.label} mark SVG`}>
+          SVG
+        </DlBtn>
+      </div>
+    </div>
+  )
+}
+
 // ─── App icon size ladder ─────────────────────────────────────
 
 // Size ladder for app icon preview: small → large, bottom-aligned
@@ -294,6 +372,68 @@ export function BrandingGrid() {
             </div>
           </div>
         ))}
+
+        {/* ── Transparent-background PNGs ── */}
+        <div>
+          <div className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div>
+              <h2
+                className="font-display text-ink-dark mb-2"
+                style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
+              >
+                Logo Mark — No Background
+              </h2>
+              <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">
+                High-resolution PNG with a transparent background. Use when placing the mark over a custom colour, image, or surface.
+              </p>
+            </div>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
+              2 colour variants
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            <TransparentCard
+              variant={{ id: 'primary', label: 'Primary', fg: '#5C1020', bg: '', hasBorder: true }}
+              href={`${BASE}/brand/hcs-mark-primary-tr.png`}
+              filename="hcs-mark-primary-transparent.png"
+            />
+            <TransparentCard
+              variant={{ id: 'cream', label: 'On Cream', fg: '#F7F3EE', bg: '', hasBorder: true }}
+              href={`${BASE}/brand/hcs-mark-cream-tr.png`}
+              filename="hcs-mark-cream-transparent.png"
+            />
+          </div>
+        </div>
+
+        {/* ── SVG Mark ── */}
+        <div>
+          <div className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div>
+              <h2
+                className="font-display text-ink-dark mb-2"
+                style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
+              >
+                Logo Mark — SVG
+              </h2>
+              <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">
+                Vector format for print, large-format reproduction, and use in design software. Each file is transparent-background with the colour baked in.
+              </p>
+            </div>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
+              5 colour variants
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {COLOR_VARIANTS.map((variant) => (
+              <SvgCard
+                key={variant.id}
+                variant={variant}
+                href={`${BASE}/brand/hcs-mark-${variant.id}.svg`}
+                filename={`hcs-mark-${variant.id}.svg`}
+              />
+            ))}
+          </div>
+        </div>
 
         {/* ── App Icons ── */}
         <div>

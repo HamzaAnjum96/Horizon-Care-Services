@@ -17,7 +17,7 @@ export default function BrandingPage() {
         <PageHeader
           kicker="Brand Assets"
           title="Logo & Branding"
-          intro="Download the Horizon Care Services logo in all approved formats and colour variants. Each file exports as a high-resolution PNG."
+          intro="Download the Horizon Care Services logo in all approved formats and colour variants. Exports include high-resolution PNG, transparent-background PNG, and scalable SVG."
         />
         <BrandingGrid />
       </main>
