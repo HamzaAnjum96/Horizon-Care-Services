@@ -171,15 +171,21 @@ export function RadioGroup({
   onChange,
   options,
   invalid,
+  vertical,
 }: {
   name: string
   value: string
   onChange: (v: string) => void
   options: Array<{ value: string; label: string }>
   invalid?: boolean
+  vertical?: boolean
 }) {
   return (
-    <div role="radiogroup" aria-invalid={invalid || undefined} className="flex flex-wrap gap-2">
+    <div
+      role="radiogroup"
+      aria-invalid={invalid || undefined}
+      className={cn(vertical ? 'flex flex-col gap-2' : 'flex flex-wrap gap-2')}
+    >
       {options.map((o) => {
         const active = value === o.value
         return (
@@ -187,6 +193,7 @@ export function RadioGroup({
             key={o.value}
             className={cn(
               'cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-md border text-[13px] font-medium transition-colors select-none',
+              vertical && 'items-start w-full py-3 gap-3 leading-snug',
               active
                 ? 'bg-deep text-ink-light border-deep'
                 : 'bg-cream text-ink-dark border-rule-light hover:border-ink-muted-dark/40',
@@ -203,7 +210,8 @@ export function RadioGroup({
             />
             <span
               className={cn(
-                'inline-block w-3 h-3 rounded-full border',
+                'inline-block w-3 h-3 rounded-full border flex-shrink-0',
+                vertical && 'mt-0.5',
                 active ? 'border-ink-light bg-amber' : 'border-rule-light bg-transparent',
               )}
               aria-hidden="true"
