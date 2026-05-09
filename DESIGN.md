@@ -137,7 +137,19 @@ Uses Leaflet with CartoDB dark tiles. The map container **must** have `isolate` 
 | Layer | Value |
 |---|---|
 | Page content | `z-0` (default) |
+| Dev preview banner | `z-30` |
 | Nav header | `z-50` |
 | Mobile menu overlay | `z-[60]` |
+| Cookie consent banner | `z-[100]` |
 | Grain overlay | `z-[9999]` |
 | Map internal (contained) | `z-[1000]` (scoped by `isolate`) |
+
+## Cookie Consent
+
+`web/src/lib/cookie-consent.ts` exposes a small helper around `localStorage` (key: `hcs-consent-v1`). The `CookieBanner` component (`web/src/components/cookie-banner.tsx`) is mounted in the root layout and shows automatically on first visit (skipped on `/privacy-policy` so users can read the policy first).
+
+Two categories: **strictly necessary** (always on, just the consent record itself) and **functional** (loading the Leaflet map from CartoDB + unpkg). No analytics, advertising, or cross-site tracking exists in the codebase.
+
+Components that depend on third-party content must call `useConsent()` and gate behind `consent?.functional === true`. When consent has not been hydrated yet the hook returns `undefined` — render a neutral placeholder so layout doesn't shift. The `LocationMap` component is the reference implementation.
+
+Users can revisit their choice via the `CookiePreferencesLink` in the footer, which dispatches `hcs:open-cookie-preferences`.

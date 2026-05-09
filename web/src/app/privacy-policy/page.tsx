@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy
           </h1>
           <p className="text-ink-muted-dark text-[14px]">
-            Last updated: 1 May 2025
+            Last updated: 9 May 2026
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong>Contact details:</strong> name, telephone number, email address, postal address.</li>
                 <li><strong>Referral information:</strong> details about the person being referred, including relevant health, social care, and support needs, provided by NHS professionals, Local Authority staff, or families.</li>
                 <li><strong>Employment enquiries:</strong> CVs, qualifications, and professional registration details submitted by job applicants.</li>
-                <li><strong>Website usage data:</strong> browser type, pages visited, and access times, collected via server logs. We do not use tracking cookies or third-party analytics tools.</li>
+                <li><strong>Website usage data:</strong> browser type, pages visited, and access times, collected via server logs. We do not use analytics, advertising, or any cross-site tracking. Limited details on cookies and third-party content are set out in section 9.</li>
                 <li><strong>Communications:</strong> any information you send us by email or telephone.</li>
               </ul>
             </Section>
@@ -133,7 +133,22 @@ export default function PrivacyPolicyPage() {
               </p>
             </Section>
 
-            <Section title="9. Changes to this policy">
+            <Section title="9. Cookies and similar technologies">
+              <p>
+                We do not set any tracking cookies. We do not use analytics, advertising, or cross-site profiling.
+              </p>
+              <p>
+                If you interact with the cookie banner on this site, we save a single entry in your browser&rsquo;s local storage to remember the choice you made. This is strictly necessary for the banner to work and is not shared with any third party.
+              </p>
+              <p>
+                <strong>Third-party content (functional).</strong> On the contact page we offer an interactive map. The map tiles are served by CartoDB and the Leaflet library is served by unpkg. These providers may receive your IP address and basic request information when the map is loaded. The map only loads if you have given consent through the cookie banner. You can change or withdraw your consent at any time using the &ldquo;Cookie Preferences&rdquo; link in the footer.
+              </p>
+              <p>
+                When functional content is off, we display a static placeholder and our office address remains accessible without contacting any third-party service.
+              </p>
+            </Section>
+
+            <Section title="10. Changes to this policy">
               <p>
                 We may update this policy when our practices change or when required by law. Material changes will be noted at the top of this page with a revised date.
               </p>
