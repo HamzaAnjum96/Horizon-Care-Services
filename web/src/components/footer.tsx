@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { HCSLogoMark } from '@/components/hcs-logo'
+import { CookiePreferencesLink } from '@/components/cookie-preferences-link'
 
 export function Footer() {
   return (
@@ -62,6 +63,7 @@ export function Footer() {
             >
               Privacy Policy
             </Link>
+            <CookiePreferencesLink className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors" />
           </div>
         </div>
 

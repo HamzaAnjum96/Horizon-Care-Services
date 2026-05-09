@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Source_Serif_4, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
+import { CookieBanner } from '@/components/cookie-banner'
 
 const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
@@ -41,6 +42,7 @@ export default function RootLayout({
           </p>
         </div>
         {children}
+        <CookieBanner />
       </body>
     </html>
   )

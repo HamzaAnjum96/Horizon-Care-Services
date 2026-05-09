@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { MapPin } from 'lucide-react'
+import { openCookiePreferences, useConsent } from '@/lib/cookie-consent'
 
 const LAT = 53.5032
 const LNG = -2.2388
@@ -29,6 +31,46 @@ const MARKER_HTML = `
 `
 
 export function LocationMap() {
+  const consent = useConsent()
+
+  // Pre-hydration: render a neutral surface so the layout doesn't shift.
+  if (consent === undefined) {
+    return <div className="w-full h-full bg-deep" aria-hidden="true" />
+  }
+
+  if (!consent || !consent.functional) {
+    return <ConsentGate />
+  }
+
+  return <LeafletMap />
+}
+
+function ConsentGate() {
+  return (
+    <div className="w-full h-full bg-deep flex flex-col items-center justify-center text-center px-5 gap-3">
+      <div className="w-9 h-9 rounded-full bg-amber/15 text-amber inline-flex items-center justify-center">
+        <MapPin size={16} strokeWidth={2} />
+      </div>
+      <div className="max-w-[28ch]">
+        <p className="text-[12.5px] font-medium text-ink-light leading-snug mb-1">
+          The interactive map is off.
+        </p>
+        <p className="text-[11.5px] text-ink-muted-light leading-snug">
+          It loads tiles from a third-party service. Enable to view it here.
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={openCookiePreferences}
+        className="text-[11px] font-semibold tracking-[0.05em] uppercase text-amber hover:text-ink-light transition-colors mt-1"
+      >
+        Manage preferences
+      </button>
+    </div>
+  )
+}
+
+function LeafletMap() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
