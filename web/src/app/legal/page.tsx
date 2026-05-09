@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
+import { PageHeader } from '@/components/layout/page-header'
 
 export const metadata: Metadata = {
   title: 'Legal Notice — Horizon Care Services',
@@ -12,32 +13,11 @@ export default function LegalNoticePage() {
   return (
     <>
       <Nav />
-      <main className="pt-24 pb-20">
-
-        {/* Page header */}
-        <div className="max-w-3xl mx-auto px-6 lg:px-10 mb-14">
-          <p className="section-kicker text-ink-muted-dark mb-4">Legal</p>
-          <h1
-            className="font-display text-ink-dark leading-[1.0] tracking-[-0.025em] mb-5"
-            style={{
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontVariationSettings: '"opsz" 48, "wght" 580',
-            }}
-          >
-            Legal Notice
-          </h1>
-          <p className="text-ink-muted-dark text-[14px]">
-            Last updated: 1 May 2025
-          </p>
-        </div>
-
-        {/* Divider */}
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <div className="h-px bg-rule-light mb-12" />
-        </div>
+      <main className="pb-20">
+        <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 1 May 2025" />
 
         {/* Content */}
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-14">
           <div className="prose-legal">
 
             <Section title="Company information">
