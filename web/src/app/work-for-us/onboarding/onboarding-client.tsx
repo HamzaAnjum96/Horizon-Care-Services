@@ -537,10 +537,11 @@ export function OnboardingClient() {
                   starterDeclaration: v as 'A' | 'B' | 'C',
                 })
               }
+              vertical
               options={[
                 {
                   value: 'A',
-                  label: 'A — This is my first job since 6 April and I have not received Jobseeker\'s Allowance, Employment and Support Allowance, or Incapacity Benefit since 6 April',
+                  label: "A — This is my first job since 6 April and I have not received Jobseeker's Allowance, Employment and Support Allowance, or Incapacity Benefit since 6 April",
                 },
                 {
                   value: 'B',

@@ -8,10 +8,18 @@ This repository keeps content organized into focused folders:
 
 ### Main Directories
 
-- **`/Website`** - Website content and deployable files
+- **`/web`** - Next.js application (active production site)
+  - `src/app/` - App Router pages and layouts
+  - `src/components/` - Shared components (Nav, Footer, Hero, LocationMap, etc.)
+  - `src/app/work-for-us/apply/` - Job application form (multi-section, PDF output)
+  - `src/app/work-for-us/onboarding/` - Staff onboarding form (multi-section, PDF output)
+  - `src/app/work-for-us/fields.tsx` - Shared form field components
+  - `src/app/contact/` - Contact page with embedded map
+
+- **`/Website`** - Legacy static website files (superseded by `/web`)
   - `content.txt` - Service information and details
   - `robots.txt` - Search engine configuration
-  - `/assets` - Images, stylesheets, and JavaScript files
+  - `/assets` - Images, stylesheets, and JavaScript assets
 
 - **`/Documents`** - Documentation and planning records
   - [`SITE-DESIGN.md`](Documents/SITE-DESIGN.md) - Design brief and visual direction
@@ -21,10 +29,11 @@ This repository keeps content organized into focused folders:
 - **`.github/workflows`** - GitHub Actions automation
   - `deploy-to-pages.yml` - Automatic deployment to GitHub Pages
 
-### Why Keep Root Clean?
+### Root files
 
-The root directory contains only essential files:
 - `README.md` - Project overview and instructions
+- `PRODUCT.md` - Brand, users, tone, strategic principles (used by AI design tools)
+- `DESIGN.md` - Design system: tokens, typography, components, patterns
 - `skills-lock.json` - Installed skill lock file
 
 This structure keeps the repository organized and easy to maintain.

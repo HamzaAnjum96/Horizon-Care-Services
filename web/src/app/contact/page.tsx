@@ -118,7 +118,7 @@ export default function ContactPage() {
                 </address>
 
                 {/* Map — compact thumbnail beside the address */}
-                <div className="relative rounded-lg overflow-hidden border border-rule-light aspect-square sm:aspect-[4/3] lg:aspect-[5/4] max-h-[260px] sm:max-h-[300px] lg:max-h-[340px]">
+                <div className="relative isolate rounded-lg overflow-hidden border border-rule-light aspect-square sm:aspect-[4/3] lg:aspect-[5/4] max-h-[260px] sm:max-h-[300px] lg:max-h-[340px]">
                   <LocationMap />
                   {/* Get directions overlay link */}
                   <a
