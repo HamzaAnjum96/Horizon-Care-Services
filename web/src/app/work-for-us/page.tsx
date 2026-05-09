@@ -177,7 +177,7 @@ export default function WorkForUsPage() {
                 <div className="space-y-4">
                   <a
                     href="mailto:careers@horizoncareservices.org"
-                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
+                    className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Email your CV <ArrowUpRight size={14} />
                   </a>

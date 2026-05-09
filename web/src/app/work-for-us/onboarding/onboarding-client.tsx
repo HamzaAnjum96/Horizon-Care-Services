@@ -182,7 +182,7 @@ export function OnboardingClient() {
           <button
             type="button"
             onClick={fillExampleData}
-            className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-4 py-2 rounded-md text-[12.5px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
+            className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-4 py-2 rounded-md text-[12.5px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
           >
             <Beaker size={13} /> Fill with test data
           </button>
@@ -866,7 +866,7 @@ export function OnboardingClient() {
           </Link>
           <button
             type="submit"
-            className="interactive-lift inline-flex items-center gap-2 bg-deep text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:bg-ink-dark transition-colors"
+            className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
           >
             Review & download <ArrowUpRight size={14} />
           </button>
@@ -1052,7 +1052,7 @@ function ReviewScreen({
           type="button"
           onClick={onConfirm}
           disabled={submitting}
-          className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-wait"
+          className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-wait"
         >
           {submitting ? (
             <>Generating PDF…</>
