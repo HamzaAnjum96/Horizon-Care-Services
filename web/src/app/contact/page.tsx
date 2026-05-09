@@ -111,7 +111,7 @@ export default function ContactPage() {
                   <p className="text-ink-muted-dark text-[12px] mb-5">Company No. 14615041</p>
                   <Link
                     href="/services"
-                    className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-4 sm:px-5 py-2 sm:py-2.5 rounded-md text-[12.5px] sm:text-[13px] font-semibold hover:opacity-90 transition-opacity"
+                    className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-4 sm:px-5 py-2 sm:py-2.5 rounded-md text-[12.5px] sm:text-[13px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Our services <ArrowUpRight size={13} />
                   </Link>

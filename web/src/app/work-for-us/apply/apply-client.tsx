@@ -250,7 +250,7 @@ export function ApplyClient() {
           <button
             type="button"
             onClick={fillExampleData}
-            className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-4 py-2 rounded-md text-[12.5px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
+            className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-4 py-2 rounded-md text-[12.5px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
           >
             <Beaker size={13} /> Fill with test data
           </button>
@@ -1480,7 +1480,7 @@ export function ApplyClient() {
           </Link>
           <button
             type="submit"
-            className="interactive-lift inline-flex items-center gap-2 bg-deep text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:bg-ink-dark transition-colors"
+            className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
           >
             Review application <ArrowUpRight size={14} />
           </button>
@@ -1696,7 +1696,7 @@ function ReviewScreen({
           type="button"
           onClick={onConfirm}
           disabled={submitting}
-          className="interactive-lift inline-flex items-center gap-2 bg-amber text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-wait"
+          className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-7 py-3.5 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-wait"
         >
           {submitting ? (
             <>Generating PDF…</>
@@ -1786,7 +1786,7 @@ function DoneScreen({
         </button>
         <Link
           href="/work-for-us"
-          className="interactive-lift inline-flex items-center gap-2 bg-deep text-ink-light px-5 py-2.5 rounded-md text-[13px] font-semibold hover:bg-ink-dark transition-colors"
+          className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-5 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
         >
           Back to roles <ArrowUpRight size={13} />
         </Link>
