@@ -32,7 +32,7 @@ async function fetchDataUrl(path: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader()
     reader.onload = () => resolve(reader.result as string)
-    reader.onerror = reject
+    reader.onerror = () => reject(new Error(`Failed to read image: ${path}`))
     reader.readAsDataURL(blob)
   })
 }
@@ -41,8 +41,8 @@ async function fetchDataUrl(path: string): Promise<string> {
 // reversed = cream/white mark (for use on deep/dark cover band)
 async function loadLogos(): Promise<{ primary: string; reversed: string }> {
   const [primary, reversed] = await Promise.all([
-    fetchDataUrl(`${BASE_PATH}/brand/hcs-mark-primary.png`),
-    fetchDataUrl(`${BASE_PATH}/brand/hcs-mark-reversed.png`),
+    fetchDataUrl(`${BASE_PATH}/brand/hcs-mark-primary-tr.png`),
+    fetchDataUrl(`${BASE_PATH}/brand/hcs-mark-cream-tr.png`),
   ])
   return { primary, reversed }
 }
@@ -105,7 +105,7 @@ function sectionTitle(doc: Doc, c: Cursor, kicker: string, title: string) {
   doc.setFont(FONT.body, 'bold')
   doc.setFontSize(7)
   setInk(doc, BRAND.amber)
-  doc.text(kicker.toUpperCase(), PAGE.marginX, c.y, { charSpace: 0.6 })
+  doc.text(kicker.toUpperCase(), PAGE.marginX, c.y, { charSpace: 0.8 })
   doc.setFont(FONT.display, 'normal')
   doc.setFontSize(13)
   setInk(doc, BRAND.ink)
@@ -140,7 +140,7 @@ function fieldRow(doc: Doc, c: Cursor, fields: Array<{ label: string; value: str
     const labelH = ll.length * 3.4
 
     doc.setFont(FONT.body, 'normal')
-    doc.setFontSize(9.5)
+    doc.setFontSize(10)
     setInk(doc, BRAND.ink)
     doc.text(doc.splitTextToSize(v, colW), x, c.y + labelH + 1.5)
   })
@@ -150,15 +150,15 @@ function fieldRow(doc: Doc, c: Cursor, fields: Array<{ label: string; value: str
 function paragraph(doc: Doc, c: Cursor, label: string, value: string) {
   const v = value && value.trim() ? value : '—'
   doc.setFont(FONT.body, 'normal')
-  doc.setFontSize(9.5)
+  doc.setFontSize(10)
   const wrapped = doc.splitTextToSize(v, CONTENT_W)
   ensureSpace(doc, c, 3.4 + 1.5 + wrapped.length * 4.5 + 5)
   doc.setFont(FONT.body, 'bold')
   doc.setFontSize(6.8)
   setInk(doc, BRAND.inkSoft)
-  doc.text(label.toUpperCase(), PAGE.marginX, c.y, { charSpace: 0.5 })
+  doc.text(label.toUpperCase(), PAGE.marginX, c.y, { charSpace: 0.6 })
   doc.setFont(FONT.body, 'normal')
-  doc.setFontSize(9.5)
+  doc.setFontSize(10)
   setInk(doc, BRAND.ink)
   doc.text(wrapped, PAGE.marginX, c.y + 5)
   c.y += 5 + wrapped.length * 4.5 + 5
@@ -195,9 +195,10 @@ function chips(doc: Doc, c: Cursor, label: string, items: string[]) {
       c.y += rowH + 2
       ensureSpace(doc, c, rowH + 6)
     }
+    doc.setFillColor(239, 235, 229)
     setRule(doc, BRAND.rule)
     doc.setLineWidth(0.2)
-    doc.roundedRect(x, c.y, w, rowH, 0.9, 0.9, 'S')
+    doc.roundedRect(x, c.y, w, rowH, 0.9, 0.9, 'FD')
     doc.text(item, x + padX, c.y + 3.8)
     x += w + 2.5
   }
@@ -238,29 +239,29 @@ export async function generateOnboardingPdf(data: OnboardingData): Promise<jsPDF
   doc.setFillColor(BRAND.deep[0], BRAND.deep[1], BRAND.deep[2])
   doc.rect(0, 0, PAGE.w, 76, 'F')
 
-  // Reversed (cream) mark on dark cover band
-  doc.addImage(logos.reversed, 'PNG', PAGE.marginX, 20, 20, 20)
+  // Cream mark on dark cover band — transparent PNG, no background box
+  doc.addImage(logos.reversed, 'PNG', PAGE.marginX, 18, 24, 24)
 
   doc.setFont(FONT.display, 'normal')
   doc.setFontSize(11)
   doc.setTextColor(245, 240, 232)
-  doc.text('Horizon Care Services', PAGE.marginX + 26, 29)
+  doc.text('Horizon Care Services', PAGE.marginX + 29, 29)
 
   doc.setFont(FONT.body, 'normal')
   doc.setFontSize(7.5)
   doc.setTextColor(190, 180, 170)
-  doc.text('New worker onboarding record', PAGE.marginX + 26, 34)
+  doc.text('New worker onboarding record', PAGE.marginX + 29, 34)
 
   doc.setFont(FONT.display, 'normal')
-  doc.setFontSize(28)
+  doc.setFontSize(32)
   doc.setTextColor(248, 246, 242)
-  doc.text(name || 'New Worker', PAGE.marginX, 58)
+  doc.text(name || 'New Worker', PAGE.marginX, 62)
 
   doc.setFont(FONT.body, 'normal')
   doc.setFontSize(9)
   doc.setTextColor(190, 180, 170)
   const submittedDate = fmtDate(data.declaration.date) || fmtDate(new Date().toISOString().slice(0, 10))
-  doc.text(`Submitted ${submittedDate}`, PAGE.marginX, 65)
+  doc.text(`Submitted ${submittedDate}`, PAGE.marginX, 70)
 
   if (data.personal.employmentStartDate) {
     const badge = `Start: ${fmtDate(data.personal.employmentStartDate)}`
@@ -273,13 +274,17 @@ export async function generateOnboardingPdf(data: OnboardingData): Promise<jsPDF
     doc.text(badge, PAGE.w - PAGE.marginX - 4, 26.2, { align: 'right' })
   }
 
-  c.y = 92
+  c.y = 96
+
+  // Summary background panel — subtle warm tint to distinguish from section content
+  doc.setFillColor(239, 235, 229)
+  doc.rect(0, 76, PAGE.w, 64, 'F')
 
   // Summary strip
   doc.setFont(FONT.body, 'bold')
   doc.setFontSize(7)
   setInk(doc, BRAND.amber)
-  doc.text('SUMMARY', PAGE.marginX, c.y, { charSpace: 0.6 })
+  doc.text('SUMMARY', PAGE.marginX, c.y, { charSpace: 0.8 })
   c.y += 10
 
   fieldRow(doc, c, [
