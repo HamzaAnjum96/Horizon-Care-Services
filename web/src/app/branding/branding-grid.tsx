@@ -9,15 +9,16 @@ interface ColorVariant {
   label: string
   fg: string
   bg: string
+  trFg: string  // mark colour for transparent-background exports and previews
   hasBorder: boolean
 }
 
 const COLOR_VARIANTS: ColorVariant[] = [
-  { id: 'primary',  label: 'Primary',  fg: '#5C1020', bg: '#FFFFFF', hasBorder: true  },
-  { id: 'reversed', label: 'Reversed', fg: '#FFFFFF', bg: '#5C1020', hasBorder: false },
-  { id: 'dark',     label: 'Dark',     fg: '#FFFFFF', bg: '#1C1814', hasBorder: false },
-  { id: 'cream',    label: 'On Cream', fg: '#5C1020', bg: '#F7F3EE', hasBorder: true  },
-  { id: 'mono',     label: 'Mono',     fg: '#1C1814', bg: '#FFFFFF', hasBorder: true  },
+  { id: 'primary',  label: 'Primary',  fg: '#5C1020', bg: '#FFFFFF', trFg: '#5C1020', hasBorder: true  },
+  { id: 'reversed', label: 'Reversed', fg: '#FFFFFF', bg: '#5C1020', trFg: '#FFFFFF', hasBorder: false },
+  { id: 'dark',     label: 'Dark',     fg: '#FFFFFF', bg: '#1C1814', trFg: '#FFFFFF', hasBorder: false },
+  { id: 'cream',    label: 'On Cream', fg: '#5C1020', bg: '#F7F3EE', trFg: '#F7F3EE', hasBorder: true  },
+  { id: 'mono',     label: 'Mono',     fg: '#1C1814', bg: '#FFFFFF', trFg: '#1C1814', hasBorder: true  },
 ]
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
@@ -234,13 +235,13 @@ function SvgCard({ variant, href, filename }: {
           minHeight: 200,
         }}
       >
-        <HCSLogoMark className="w-20 h-20" style={{ color: variant.fg }} />
+        <HCSLogoMark className="w-20 h-20" style={{ color: variant.trFg }} />
       </div>
       <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <span
             className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
-            style={{ backgroundColor: variant.fg }}
+            style={{ backgroundColor: variant.trFg }}
           />
           <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
             {variant.label}
@@ -272,14 +273,14 @@ function TransparentLogoCard({ type, variant }: { type: LogoType; variant: Color
         }}
       >
         {type === 'mark' && (
-          <HCSLogoMark className="w-20 h-20" style={{ color: variant.fg }} />
+          <HCSLogoMark className="w-20 h-20" style={{ color: variant.trFg }} />
         )}
         {type === 'stacked' && (
           <div className="flex flex-col items-center gap-3">
-            <HCSLogoMark className="w-16 h-16" style={{ color: variant.fg }} />
+            <HCSLogoMark className="w-16 h-16" style={{ color: variant.trFg }} />
             <span
               className="font-display font-semibold text-[13px] leading-tight tracking-[-0.01em] whitespace-nowrap"
-              style={{ color: variant.fg, fontVariationSettings: '"opsz" 14, "wght" 560' }}
+              style={{ color: variant.trFg, fontVariationSettings: '"opsz" 14, "wght" 560' }}
             >
               Horizon Care Services
             </span>
@@ -287,10 +288,10 @@ function TransparentLogoCard({ type, variant }: { type: LogoType; variant: Color
         )}
         {type === 'lockup' && (
           <div className="flex items-center gap-3">
-            <HCSLogoMark className="w-10 h-10 flex-shrink-0" style={{ color: variant.fg }} />
+            <HCSLogoMark className="w-10 h-10 flex-shrink-0" style={{ color: variant.trFg }} />
             <span
               className="font-display font-semibold text-[16px] leading-none tracking-[-0.01em] whitespace-nowrap"
-              style={{ color: variant.fg, fontVariationSettings: '"opsz" 16, "wght" 560' }}
+              style={{ color: variant.trFg, fontVariationSettings: '"opsz" 16, "wght" 560' }}
             >
               Horizon Care Services
             </span>
@@ -360,7 +361,7 @@ function TransparentAppIconCard() {
         {ICON_SIZES.map((size) => (
           <HCSLogoMark
             key={size}
-            style={{ color: variant.fg, width: size, height: size, flexShrink: 0 }}
+            style={{ color: variant.trFg, width: size, height: size, flexShrink: 0 }}
           />
         ))}
       </div>

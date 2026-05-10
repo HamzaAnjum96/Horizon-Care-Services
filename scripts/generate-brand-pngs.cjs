@@ -12,12 +12,16 @@ const MARK_PATH =
   ' M792.40 657.50C770.53 663.58 748.89 669.14 725.96 667.27C606.30 657.54 503.24 529.99 422.10 454.36C388.13 422.71 343.75 376.20 293.10 375.24C272.85 374.86 252.53 382.08 235.89 393.34C167.11 439.88 179.12 531.41 209.11 597.12C231.19 645.48 262.44 689.53 301.78 725.39C416.34 829.83 536.96 841.51 671.24 764.17C719.05 736.64 756.48 698.66 792.40 657.50Z'
 
 // ─── Colour variants ─────────────────────────────────────────
+// trFg: mark colour for transparent-background exports.
+// For 'cream' this is the cream colour itself (#F7F3EE) because the
+// transparent asset represents a warm-cream mark for dark-background use,
+// matching hcs-mark-cream.svg. All other variants keep fg unchanged.
 const VARIANTS = [
-  { id: 'primary',  fg: '#5C1020', bg: '#FFFFFF' },
-  { id: 'reversed', fg: '#FFFFFF', bg: '#5C1020' },
-  { id: 'dark',     fg: '#FFFFFF', bg: '#1C1814' },
-  { id: 'cream',    fg: '#5C1020', bg: '#F7F3EE' },
-  { id: 'mono',     fg: '#1C1814', bg: '#FFFFFF' },
+  { id: 'primary',  fg: '#5C1020', bg: '#FFFFFF', trFg: '#5C1020' },
+  { id: 'reversed', fg: '#FFFFFF', bg: '#5C1020', trFg: '#FFFFFF' },
+  { id: 'dark',     fg: '#FFFFFF', bg: '#1C1814', trFg: '#FFFFFF' },
+  { id: 'cream',    fg: '#5C1020', bg: '#F7F3EE', trFg: '#F7F3EE' },
+  { id: 'mono',     fg: '#1C1814', bg: '#FFFFFF', trFg: '#1C1814' },
 ]
 
 function svgMarkTr(fg, s = 1) {
@@ -291,24 +295,18 @@ async function main() {
       jobs.push({ file: `hcs-stacked-${v.id}${suffix}.png`, svg: svgStacked(v.fg, v.bg, fontB64, s) })
       jobs.push({ file: `hcs-lockup-${v.id}${suffix}.png`,  svg: svgLockup(v.fg, v.bg, fontB64, s) })
     }
-    // Transparent-background variants — HD (1×) and Ultra HD (2×)
+    // Transparent-background logo variants — 1× and 2× (use trFg, not fg)
     for (const [s, suffix] of [[1, ''], [2, '@2x']]) {
-      jobs.push({ file: `hcs-mark-${v.id}-tr${suffix}.png`,    svg: svgMarkTr(v.fg, s) })
-      jobs.push({ file: `hcs-stacked-${v.id}-tr${suffix}.png`, svg: svgStackedTr(v.fg, fontB64, s) })
-      jobs.push({ file: `hcs-lockup-${v.id}-tr${suffix}.png`,  svg: svgLockupTr(v.fg, fontB64, s) })
+      jobs.push({ file: `hcs-mark-${v.id}-tr${suffix}.png`,    svg: svgMarkTr(v.trFg, s) })
+      jobs.push({ file: `hcs-stacked-${v.id}-tr${suffix}.png`, svg: svgStackedTr(v.trFg, fontB64, s) })
+      jobs.push({ file: `hcs-lockup-${v.id}-tr${suffix}.png`,  svg: svgLockupTr(v.trFg, fontB64, s) })
     }
     // App icons — HD (1024×1024), Ultra HD (2048×2048)
     jobs.push({ file: `hcs-icon-${v.id}.png`,    svg: svgIcon(v.fg, v.bg, 1) })
     jobs.push({ file: `hcs-icon-${v.id}@2x.png`, svg: svgIcon(v.fg, v.bg, 2) })
-    // Transparent-background logo variants — 1× and 2×
-    for (const [s, suffix] of [[1, ''], [2, '@2x']]) {
-      jobs.push({ file: `hcs-mark-${v.id}-tr${suffix}.png`,    svg: svgMarkTr(v.fg, s) })
-      jobs.push({ file: `hcs-stacked-${v.id}-tr${suffix}.png`, svg: svgStackedTr(v.fg, fontB64, s) })
-      jobs.push({ file: `hcs-lockup-${v.id}-tr${suffix}.png`,  svg: svgLockupTr(v.fg, fontB64, s) })
-    }
-    // Transparent-background app icon — 1× and 2×
-    jobs.push({ file: `hcs-icon-${v.id}-tr.png`,    svg: svgIconTr(v.fg, 1) })
-    jobs.push({ file: `hcs-icon-${v.id}-tr@2x.png`, svg: svgIconTr(v.fg, 2) })
+    // Transparent-background app icon — 1× and 2× (use trFg)
+    jobs.push({ file: `hcs-icon-${v.id}-tr.png`,    svg: svgIconTr(v.trFg, 1) })
+    jobs.push({ file: `hcs-icon-${v.id}-tr@2x.png`, svg: svgIconTr(v.trFg, 2) })
   }
 
   // Banners — 1920×640 at 1× and 2×
