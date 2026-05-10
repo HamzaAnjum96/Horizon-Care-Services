@@ -71,8 +71,8 @@ function CardFooter({ variant, hdHref, hdFilename, uhdHref, uhdFilename, hdLabel
 }
 
 function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) {
-  const hdFile  = `${BASE}/brand/hcs-${type}-${variant.id}@2x.png`
-  const uhdFile = `${BASE}/brand/hcs-${type}-${variant.id}@4x.png`
+  const trFile  = `${BASE}/brand/hcs-${type}-${variant.id}-tr@2x.png`
+  const wbgFile = `${BASE}/brand/hcs-${type}-${variant.id}@4x.png`
 
   return (
     <div className={cn('rounded-xl overflow-hidden flex flex-col', variant.hasBorder ? 'ring-1 ring-rule-light' : '')}>
@@ -106,13 +106,29 @@ function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) 
           </div>
         )}
       </div>
-      <CardFooter
-        variant={variant}
-        hdHref={hdFile}  hdFilename={`hcs-logo-${type}-${variant.id}-hd.png`}
-        uhdHref={uhdFile} uhdFilename={`hcs-logo-${type}-${variant.id}-ultrahd.png`}
-        hdLabel={`Download ${variant.label} ${type} HD`}
-        uhdLabel={`Download ${variant.label} ${type} Ultra HD`}
-      />
+      <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <span
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
+            style={{ backgroundColor: variant.fg }}
+          />
+          <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
+            {variant.label}
+          </span>
+        </div>
+        <div className="flex items-center gap-0.5 flex-shrink-0">
+          <DlBtn
+            href={trFile}
+            filename={`hcs-logo-${type}-${variant.id}-nobg.png`}
+            label={`Download ${variant.label} ${type} no background`}
+          >No-BG</DlBtn>
+          <DlBtn
+            href={wbgFile}
+            filename={`hcs-logo-${type}-${variant.id}-ultrahd.png`}
+            label={`Download ${variant.label} ${type} with background`}
+          >W/BG</DlBtn>
+        </div>
+      </div>
     </div>
   )
 }
@@ -255,60 +271,6 @@ function SvgCard({ variant, href, filename }: {
   )
 }
 
-// ─── Transparent logo card (6th slot in each logo section) ────
-
-function TransparentLogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) {
-  const hdFile  = `${BASE}/brand/hcs-${type}-${variant.id}-tr.png`
-  const uhdFile = `${BASE}/brand/hcs-${type}-${variant.id}-tr@2x.png`
-
-  return (
-    <div className="rounded-xl overflow-hidden flex flex-col ring-1 ring-rule-light">
-      <div
-        className="flex-1 flex items-center justify-center p-8"
-        style={{
-          backgroundImage: CHECKER,
-          backgroundSize: '16px 16px',
-          backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
-          minHeight: type === 'lockup' ? 120 : 200,
-        }}
-      >
-        {type === 'mark' && (
-          <HCSLogoMark className="w-20 h-20" style={{ color: variant.trFg }} />
-        )}
-        {type === 'stacked' && (
-          <div className="flex flex-col items-center gap-3">
-            <HCSLogoMark className="w-16 h-16" style={{ color: variant.trFg }} />
-            <span
-              className="font-display font-semibold text-[13px] leading-tight tracking-[-0.01em] whitespace-nowrap"
-              style={{ color: variant.trFg, fontVariationSettings: '"opsz" 14, "wght" 560' }}
-            >
-              Horizon Care Services
-            </span>
-          </div>
-        )}
-        {type === 'lockup' && (
-          <div className="flex items-center gap-3">
-            <HCSLogoMark className="w-10 h-10 flex-shrink-0" style={{ color: variant.trFg }} />
-            <span
-              className="font-display font-semibold text-[16px] leading-none tracking-[-0.01em] whitespace-nowrap"
-              style={{ color: variant.trFg, fontVariationSettings: '"opsz" 16, "wght" 560' }}
-            >
-              Horizon Care Services
-            </span>
-          </div>
-        )}
-      </div>
-      <CardFooter
-        variant={variant}
-        hdHref={hdFile}  hdFilename={`hcs-logo-${type}-${variant.id}-transparent-hd.png`}
-        uhdHref={uhdFile} uhdFilename={`hcs-logo-${type}-${variant.id}-transparent-ultrahd.png`}
-        hdLabel={`Download ${variant.label} ${type} transparent HD`}
-        uhdLabel={`Download ${variant.label} ${type} transparent Ultra HD`}
-      />
-    </div>
-  )
-}
-
 // ─── App icon size ladder ─────────────────────────────────────
 
 // Size ladder for app icon preview: small → large, bottom-aligned
@@ -413,21 +375,20 @@ export function BrandingGrid() {
                 <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">{sub}</p>
               </div>
               <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
-                5 colour · 1 transparent
+                5 colour variants
               </p>
             </div>
             <div
               className={cn(
                 'grid gap-4',
                 type === 'lockup'
-                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6'
-                  : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6',
+                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'
+                  : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5',
               )}
             >
               {COLOR_VARIANTS.map((variant) => (
                 <LogoCard key={variant.id} type={type} variant={variant} />
               ))}
-              <TransparentLogoCard type={type} variant={COLOR_VARIANTS[0]} />
             </div>
           </div>
         ))}
