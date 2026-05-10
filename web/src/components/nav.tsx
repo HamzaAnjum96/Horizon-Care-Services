@@ -9,6 +9,7 @@ import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
   { href: '/work-for-us', label: 'Work For Us' },
@@ -67,15 +68,13 @@ export function Nav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setMobileOpen(true)}
-              className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
-              aria-label="Open menu"
-            >
-              <Menu size={20} />
-            </button>
-          </div>
+          <button
+            onClick={() => setMobileOpen(true)}
+            className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
+            aria-label="Open menu"
+          >
+            <Menu size={20} />
+          </button>
         </div>
       </header>
 

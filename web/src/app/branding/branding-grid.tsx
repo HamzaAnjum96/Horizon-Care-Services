@@ -341,6 +341,40 @@ function AppIconCard({ variant }: { variant: ColorVariant }) {
   )
 }
 
+function TransparentAppIconCard() {
+  const hdFile  = `${BASE}/brand/hcs-icon-primary-tr.png`
+  const uhdFile = `${BASE}/brand/hcs-icon-primary-tr@2x.png`
+  const variant = COLOR_VARIANTS[0]
+
+  return (
+    <div className="rounded-xl overflow-hidden flex flex-col ring-1 ring-rule-light">
+      <div
+        className="flex-1 flex items-end justify-center gap-2.5 px-4 pb-5 pt-8"
+        style={{
+          backgroundImage: CHECKER,
+          backgroundSize: '16px 16px',
+          backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
+          minHeight: 200,
+        }}
+      >
+        {ICON_SIZES.map((size) => (
+          <HCSLogoMark
+            key={size}
+            style={{ color: variant.fg, width: size, height: size, flexShrink: 0 }}
+          />
+        ))}
+      </div>
+      <CardFooter
+        variant={variant}
+        hdHref={hdFile}  hdFilename="hcs-icon-transparent-1024.png"
+        uhdHref={uhdFile} uhdFilename="hcs-icon-transparent-2048.png"
+        hdLabel="Download transparent app icon 1024 px"
+        uhdLabel="Download transparent app icon 2048 px"
+      />
+    </div>
+  )
+}
+
 const LOGO_SECTIONS: { type: LogoType; heading: string; sub: string }[] = [
   {
     type: 'stacked',
@@ -443,13 +477,14 @@ export function BrandingGrid() {
               </p>
             </div>
             <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
-              5 colour variants
+              5 colour · 1 transparent
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
             {COLOR_VARIANTS.map((variant) => (
               <AppIconCard key={variant.id} variant={variant} />
             ))}
+            <TransparentAppIconCard />
           </div>
         </div>
 

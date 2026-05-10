@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
     <>
       <Nav />
       <main className="pb-20">
-        <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 9 May 2026" />
+        <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 9 May 2026" showGrid={false} />
 
         {/* Content */}
         <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-14">

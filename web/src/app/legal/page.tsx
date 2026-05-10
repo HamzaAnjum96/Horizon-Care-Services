@@ -14,7 +14,7 @@ export default function LegalNoticePage() {
     <>
       <Nav />
       <main className="pb-20">
-        <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 1 May 2025" />
+        <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 1 May 2025" showGrid={false} />
 
         {/* Content */}
         <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-14">
