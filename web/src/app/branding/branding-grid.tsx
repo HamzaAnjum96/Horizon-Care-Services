@@ -216,7 +216,9 @@ const CHECKER = [
   'linear-gradient(-45deg, transparent 75%, #d4d4d4 75%)',
 ].join(', ')
 
-function TransparentCard({ variant, href, filename }: {
+// ─── SVG mark card ────────────────────────────────────────────
+
+function SvgCard({ variant, href, filename }: {
   variant: ColorVariant
   href: string
   filename: string
@@ -241,39 +243,6 @@ function TransparentCard({ variant, href, filename }: {
             style={{ backgroundColor: variant.fg }}
           />
           <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
-            {variant.label} · Transparent
-          </span>
-        </div>
-        <DlBtn href={href} filename={filename} label={`Download ${variant.label} mark, transparent background`}>
-          PNG
-        </DlBtn>
-      </div>
-    </div>
-  )
-}
-
-// ─── SVG mark card ────────────────────────────────────────────
-
-function SvgCard({ variant, href, filename }: {
-  variant: ColorVariant
-  href: string
-  filename: string
-}) {
-  return (
-    <div className={cn('rounded-xl overflow-hidden flex flex-col', variant.hasBorder ? 'ring-1 ring-rule-light' : '')}>
-      <div
-        className="flex-1 flex items-center justify-center p-8"
-        style={{ backgroundColor: variant.bg, minHeight: 200 }}
-      >
-        <HCSLogoMark className="w-20 h-20" style={{ color: variant.fg }} />
-      </div>
-      <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
-          <span
-            className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
-            style={{ backgroundColor: variant.fg }}
-          />
-          <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
             {variant.label}
           </span>
         </div>
@@ -281,6 +250,60 @@ function SvgCard({ variant, href, filename }: {
           SVG
         </DlBtn>
       </div>
+    </div>
+  )
+}
+
+// ─── Transparent logo card (6th slot in each logo section) ────
+
+function TransparentLogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) {
+  const hdFile  = `${BASE}/brand/hcs-${type}-${variant.id}-tr.png`
+  const uhdFile = `${BASE}/brand/hcs-${type}-${variant.id}-tr@2x.png`
+
+  return (
+    <div className="rounded-xl overflow-hidden flex flex-col ring-1 ring-rule-light">
+      <div
+        className="flex-1 flex items-center justify-center p-8"
+        style={{
+          backgroundImage: CHECKER,
+          backgroundSize: '16px 16px',
+          backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
+          minHeight: type === 'lockup' ? 120 : 200,
+        }}
+      >
+        {type === 'mark' && (
+          <HCSLogoMark className="w-20 h-20" style={{ color: variant.fg }} />
+        )}
+        {type === 'stacked' && (
+          <div className="flex flex-col items-center gap-3">
+            <HCSLogoMark className="w-16 h-16" style={{ color: variant.fg }} />
+            <span
+              className="font-display font-semibold text-[13px] leading-tight tracking-[-0.01em] whitespace-nowrap"
+              style={{ color: variant.fg, fontVariationSettings: '"opsz" 14, "wght" 560' }}
+            >
+              Horizon Care Services
+            </span>
+          </div>
+        )}
+        {type === 'lockup' && (
+          <div className="flex items-center gap-3">
+            <HCSLogoMark className="w-10 h-10 flex-shrink-0" style={{ color: variant.fg }} />
+            <span
+              className="font-display font-semibold text-[16px] leading-none tracking-[-0.01em] whitespace-nowrap"
+              style={{ color: variant.fg, fontVariationSettings: '"opsz" 16, "wght" 560' }}
+            >
+              Horizon Care Services
+            </span>
+          </div>
+        )}
+      </div>
+      <CardFooter
+        variant={variant}
+        hdHref={hdFile}  hdFilename={`hcs-logo-${type}-${variant.id}-transparent-hd.png`}
+        uhdHref={uhdFile} uhdFilename={`hcs-logo-${type}-${variant.id}-transparent-ultrahd.png`}
+        hdLabel={`Download ${variant.label} ${type} transparent HD`}
+        uhdLabel={`Download ${variant.label} ${type} transparent Ultra HD`}
+      />
     </div>
   )
 }
@@ -355,55 +378,24 @@ export function BrandingGrid() {
                 <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">{sub}</p>
               </div>
               <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
-                5 colour variants
+                5 colour · 1 transparent
               </p>
             </div>
             <div
               className={cn(
                 'grid gap-4',
                 type === 'lockup'
-                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'
-                  : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5',
+                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6'
+                  : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6',
               )}
             >
               {COLOR_VARIANTS.map((variant) => (
                 <LogoCard key={variant.id} type={type} variant={variant} />
               ))}
+              <TransparentLogoCard type={type} variant={COLOR_VARIANTS[0]} />
             </div>
           </div>
         ))}
-
-        {/* ── Transparent-background PNGs ── */}
-        <div>
-          <div className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-            <div>
-              <h2
-                className="font-display text-ink-dark mb-2"
-                style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
-              >
-                Logo Mark — No Background
-              </h2>
-              <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">
-                High-resolution PNG with a transparent background. Use when placing the mark over a custom colour, image, or surface.
-              </p>
-            </div>
-            <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
-              2 colour variants
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            <TransparentCard
-              variant={{ id: 'primary', label: 'Primary', fg: '#5C1020', bg: '', hasBorder: true }}
-              href={`${BASE}/brand/hcs-mark-primary-tr.png`}
-              filename="hcs-mark-primary-transparent.png"
-            />
-            <TransparentCard
-              variant={{ id: 'cream', label: 'On Cream', fg: '#F7F3EE', bg: '', hasBorder: true }}
-              href={`${BASE}/brand/hcs-mark-cream-tr.png`}
-              filename="hcs-mark-cream-transparent.png"
-            />
-          </div>
-        </div>
 
         {/* ── SVG Mark ── */}
         <div>
