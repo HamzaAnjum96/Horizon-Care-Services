@@ -15,7 +15,7 @@ export function CookieBanner() {
   const pathname = usePathname()
   const [show, setShow] = useState(false)
   const [view, setView] = useState<View>('main')
-  const [functional, setFunctional] = useState(true)
+  const [functional, setFunctional] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 
   // Show on first visit (no recorded decision). Skip auto-show on the
@@ -30,7 +30,7 @@ export function CookieBanner() {
   useEffect(() => {
     const onOpen = () => {
       const current = readConsent()
-      setFunctional(current?.functional ?? true)
+      setFunctional(current?.functional ?? false)
       setView('main')
       setShow(true)
     }
@@ -106,6 +106,7 @@ export function CookieBanner() {
                 onAccept={acceptAll}
                 onReject={rejectAll}
                 onCustomize={() => setView('preferences')}
+                onClose={() => setShow(false)}
               />
             ) : (
               <PreferencesView
@@ -126,10 +127,12 @@ function MainView({
   onAccept,
   onReject,
   onCustomize,
+  onClose,
 }: {
   onAccept: () => void
   onReject: () => void
   onCustomize: () => void
+  onClose: () => void
 }) {
   return (
     <div className="p-7 sm:p-8">
@@ -181,6 +184,7 @@ function MainView({
         </button>
         <Link
           href="/privacy-policy"
+          onClick={onClose}
           className="text-[12px] text-ink-muted-dark hover:text-ink-dark transition-colors inline-flex items-center gap-1"
         >
           Privacy policy <ArrowUpRight size={11} />
