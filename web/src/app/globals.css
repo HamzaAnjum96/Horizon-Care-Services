@@ -9,7 +9,7 @@
   --cream:             oklch(97% 0.006 52);
   --cream-dim:         oklch(93% 0.009 50);
 
-  /* Brand midnight red — logo mark only, not for backgrounds */
+  /* Brand midnight red — primary brand colour; use for buttons, accents, and the logo mark */
   --brand:             oklch(21% 0.10 9);
 
   --ink-dark:          oklch(16% 0.04 22);
