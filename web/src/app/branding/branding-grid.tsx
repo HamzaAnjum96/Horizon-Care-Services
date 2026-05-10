@@ -9,16 +9,17 @@ interface ColorVariant {
   label: string
   fg: string
   bg: string
-  trFg: string  // mark colour for transparent-background exports and previews
+  trFg: string      // mark colour for transparent-background exports and previews
   hasBorder: boolean
+  lightMark: boolean // true when trFg is light — SVG preview needs a dark checker
 }
 
 const COLOR_VARIANTS: ColorVariant[] = [
-  { id: 'primary',  label: 'Primary',  fg: '#5C1020', bg: '#FFFFFF', trFg: '#5C1020', hasBorder: true  },
-  { id: 'reversed', label: 'Reversed', fg: '#FFFFFF', bg: '#5C1020', trFg: '#FFFFFF', hasBorder: false },
-  { id: 'dark',     label: 'Dark',     fg: '#FFFFFF', bg: '#1C1814', trFg: '#FFFFFF', hasBorder: false },
-  { id: 'cream',    label: 'On Cream', fg: '#5C1020', bg: '#F7F3EE', trFg: '#F7F3EE', hasBorder: true  },
-  { id: 'mono',     label: 'Mono',     fg: '#1C1814', bg: '#FFFFFF', trFg: '#1C1814', hasBorder: true  },
+  { id: 'primary',  label: 'Primary',  fg: '#5C1020', bg: '#FFFFFF', trFg: '#5C1020', hasBorder: true,  lightMark: false },
+  { id: 'reversed', label: 'Reversed', fg: '#FFFFFF', bg: '#5C1020', trFg: '#FFFFFF', hasBorder: false, lightMark: true  },
+  { id: 'dark',     label: 'Dark',     fg: '#FFFFFF', bg: '#1C1814', trFg: '#FFFFFF', hasBorder: false, lightMark: true  },
+  { id: 'cream',    label: 'On Cream', fg: '#5C1020', bg: '#F7F3EE', trFg: '#F7F3EE', hasBorder: true,  lightMark: true  },
+  { id: 'mono',     label: 'Mono',     fg: '#1C1814', bg: '#FFFFFF', trFg: '#1C1814', hasBorder: true,  lightMark: false },
 ]
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
@@ -42,33 +43,6 @@ function DlBtn({ href, filename, label, children }: {
   )
 }
 
-function CardFooter({ variant, hdHref, hdFilename, uhdHref, uhdFilename, hdLabel, uhdLabel }: {
-  variant: ColorVariant
-  hdHref: string
-  hdFilename: string
-  uhdHref: string
-  uhdFilename: string
-  hdLabel: string
-  uhdLabel: string
-}) {
-  return (
-    <div className="bg-cream-dim border-t border-rule-light px-4 py-3 flex items-center justify-between gap-2">
-      <div className="flex items-center gap-2 min-w-0">
-        <span
-          className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
-          style={{ backgroundColor: variant.fg }}
-        />
-        <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
-          {variant.label}
-        </span>
-      </div>
-      <div className="flex items-center gap-0.5 flex-shrink-0">
-        <DlBtn href={hdHref} filename={hdFilename} label={hdLabel}>HD</DlBtn>
-        <DlBtn href={uhdHref} filename={uhdFilename} label={uhdLabel}>Ultra HD</DlBtn>
-      </div>
-    </div>
-  )
-}
 
 function LogoCard({ type, variant }: { type: LogoType; variant: ColorVariant }) {
   const trFile  = `${BASE}/brand/hcs-${type}-${variant.id}-tr@2x.png`
@@ -224,13 +198,20 @@ function BannerCard({ type, label, description }: {
   )
 }
 
-// ─── Transparent-background PNG card ─────────────────────────
+// ─── Checkerboard patterns for transparent previews ──────────
 
 const CHECKER = [
   'linear-gradient(45deg, #d4d4d4 25%, transparent 25%)',
   'linear-gradient(-45deg, #d4d4d4 25%, transparent 25%)',
   'linear-gradient(45deg, transparent 75%, #d4d4d4 75%)',
   'linear-gradient(-45deg, transparent 75%, #d4d4d4 75%)',
+].join(', ')
+
+const DARK_CHECKER = [
+  'linear-gradient(45deg, #2a2522 25%, transparent 25%)',
+  'linear-gradient(-45deg, #2a2522 25%, transparent 25%)',
+  'linear-gradient(45deg, transparent 75%, #2a2522 75%)',
+  'linear-gradient(-45deg, transparent 75%, #2a2522 75%)',
 ].join(', ')
 
 // ─── SVG mark card ────────────────────────────────────────────
@@ -240,12 +221,16 @@ function SvgCard({ variant, href, filename }: {
   href: string
   filename: string
 }) {
+  const checkerBg = variant.lightMark ? DARK_CHECKER : CHECKER
+  const checkerBase = variant.lightMark ? '#181412' : undefined
+
   return (
     <div className="rounded-xl overflow-hidden flex flex-col ring-1 ring-rule-light">
       <div
         className="flex-1 flex items-center justify-center p-8"
         style={{
-          backgroundImage: CHECKER,
+          backgroundImage: checkerBg,
+          backgroundColor: checkerBase,
           backgroundSize: '16px 16px',
           backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
           minHeight: 200,
@@ -271,72 +256,6 @@ function SvgCard({ variant, href, filename }: {
   )
 }
 
-// ─── App icon size ladder ─────────────────────────────────────
-
-// Size ladder for app icon preview: small → large, bottom-aligned
-const ICON_SIZES = [24, 40, 64, 96]
-
-function AppIconCard({ variant }: { variant: ColorVariant }) {
-  const hdFile  = `${BASE}/brand/hcs-icon-${variant.id}.png`
-  const uhdFile = `${BASE}/brand/hcs-icon-${variant.id}@2x.png`
-
-  return (
-    <div className={cn('rounded-xl overflow-hidden flex flex-col', variant.hasBorder ? 'ring-1 ring-rule-light' : '')}>
-      <div
-        className="flex-1 flex items-end justify-center gap-2.5 px-4 pb-5 pt-8"
-        style={{ backgroundColor: variant.bg, minHeight: 200 }}
-      >
-        {ICON_SIZES.map((size) => (
-          <HCSLogoMark
-            key={size}
-            style={{ color: variant.fg, width: size, height: size, flexShrink: 0 }}
-          />
-        ))}
-      </div>
-      <CardFooter
-        variant={variant}
-        hdHref={hdFile}  hdFilename={`hcs-icon-${variant.id}-1024.png`}
-        uhdHref={uhdFile} uhdFilename={`hcs-icon-${variant.id}-2048.png`}
-        hdLabel={`Download ${variant.label} app icon 1024 px`}
-        uhdLabel={`Download ${variant.label} app icon 2048 px`}
-      />
-    </div>
-  )
-}
-
-function TransparentAppIconCard() {
-  const hdFile  = `${BASE}/brand/hcs-icon-primary-tr.png`
-  const uhdFile = `${BASE}/brand/hcs-icon-primary-tr@2x.png`
-  const variant = COLOR_VARIANTS[0]
-
-  return (
-    <div className="rounded-xl overflow-hidden flex flex-col ring-1 ring-rule-light">
-      <div
-        className="flex-1 flex items-end justify-center gap-2.5 px-4 pb-5 pt-8"
-        style={{
-          backgroundImage: CHECKER,
-          backgroundSize: '16px 16px',
-          backgroundPosition: '0 0, 0 8px, 8px -8px, -8px 0px',
-          minHeight: 200,
-        }}
-      >
-        {ICON_SIZES.map((size) => (
-          <HCSLogoMark
-            key={size}
-            style={{ color: variant.trFg, width: size, height: size, flexShrink: 0 }}
-          />
-        ))}
-      </div>
-      <CardFooter
-        variant={variant}
-        hdHref={hdFile}  hdFilename="hcs-icon-transparent-1024.png"
-        uhdHref={uhdFile} uhdFilename="hcs-icon-transparent-2048.png"
-        hdLabel="Download transparent app icon 1024 px"
-        uhdLabel="Download transparent app icon 2048 px"
-      />
-    </div>
-  )
-}
 
 const LOGO_SECTIONS: { type: LogoType; heading: string; sub: string }[] = [
   {
@@ -420,33 +339,6 @@ export function BrandingGrid() {
                 filename={`hcs-mark-${variant.id}.svg`}
               />
             ))}
-          </div>
-        </div>
-
-        {/* ── App Icons ── */}
-        <div>
-          <div className="mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-            <div>
-              <h2
-                className="font-display text-ink-dark mb-2"
-                style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
-              >
-                App Icons
-              </h2>
-              <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[60ch]">
-                Tight-padded square mark for favicons, app store listings, and platform profile images.
-                HD exports at 1024 × 1024 px; Ultra HD at 2048 × 2048 px.
-              </p>
-            </div>
-            <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
-              5 colour · 1 transparent
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-            {COLOR_VARIANTS.map((variant) => (
-              <AppIconCard key={variant.id} variant={variant} />
-            ))}
-            <TransparentAppIconCard />
           </div>
         </div>
 
