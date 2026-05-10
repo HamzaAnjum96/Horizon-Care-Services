@@ -94,6 +94,28 @@ function svgIcon(fg, bg, s = 1) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, pad, pad, markSize, markSize)}</svg>`
 }
 
+function svgIconTr(fg, s = 1) {
+  const W = 1024 * s, H = 1024 * s
+  const pad = Math.round(51 * s)
+  const markSize = W - pad * 2
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${markEl(fg, pad, pad, markSize, markSize)}</svg>`
+}
+
+function svgMarkTr(fg, s = 1) {
+  const W = 1024 * s, H = 1024 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${markEl(fg, 80 * s, 80 * s, 864 * s, 864 * s)}</svg>`
+}
+
+function svgStackedTr(fg, fontB64, s = 1) {
+  const W = 900 * s, H = 760 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 170 * s, 20 * s, 560 * s, 560 * s)}${textEl(fg, 450 * s, 636 * s, 48 * s, 'middle', 'auto', 'Horizon Care Services')}</svg>`
+}
+
+function svgLockupTr(fg, fontB64, s = 1) {
+  const W = 1400 * s, H = 280 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 60 * s, 40 * s, 200 * s, 200 * s)}${textEl(fg, 302 * s, 140 * s, 80 * s, 'start', 'middle', 'Horizon Care Services')}</svg>`
+}
+
 // ─── Hero icon grid (replicates hero-icon-grid.tsx logic) ────
 function seededFloat(seed) {
   const x = Math.sin(seed + 1) * 10000
@@ -278,6 +300,15 @@ async function main() {
     // App icons — HD (1024×1024), Ultra HD (2048×2048)
     jobs.push({ file: `hcs-icon-${v.id}.png`,    svg: svgIcon(v.fg, v.bg, 1) })
     jobs.push({ file: `hcs-icon-${v.id}@2x.png`, svg: svgIcon(v.fg, v.bg, 2) })
+    // Transparent-background logo variants — 1× and 2×
+    for (const [s, suffix] of [[1, ''], [2, '@2x']]) {
+      jobs.push({ file: `hcs-mark-${v.id}-tr${suffix}.png`,    svg: svgMarkTr(v.fg, s) })
+      jobs.push({ file: `hcs-stacked-${v.id}-tr${suffix}.png`, svg: svgStackedTr(v.fg, fontB64, s) })
+      jobs.push({ file: `hcs-lockup-${v.id}-tr${suffix}.png`,  svg: svgLockupTr(v.fg, fontB64, s) })
+    }
+    // Transparent-background app icon — 1× and 2×
+    jobs.push({ file: `hcs-icon-${v.id}-tr.png`,    svg: svgIconTr(v.fg, 1) })
+    jobs.push({ file: `hcs-icon-${v.id}-tr@2x.png`, svg: svgIconTr(v.fg, 2) })
   }
 
   // Banners — 1920×640 at 1× and 2×

@@ -11,12 +11,13 @@ interface PageHeaderProps {
   title: string
   intro?: string
   cta?: { label: string; href: string }
+  showGrid?: boolean
 }
 
-export function PageHeader({ kicker, title, intro, cta }: PageHeaderProps) {
+export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageHeaderProps) {
   return (
     <div className="relative bg-deep border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
-      <HeroIconGrid />
+      {showGrid && <HeroIconGrid />}
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 6 }}
