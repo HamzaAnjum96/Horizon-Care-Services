@@ -104,6 +104,11 @@ const jsonLd = [
       addressCountry: 'GB',
     },
     openingHours: 'Mo-Fr 09:00-17:00',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 53.507937,
+      longitude: -2.241688,
+    },
     contactPoint: [
       {
         '@type': 'ContactPoint',
