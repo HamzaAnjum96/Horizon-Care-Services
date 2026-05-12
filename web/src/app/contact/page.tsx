@@ -59,7 +59,7 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 22, "wght" 540',
                   }}
                 >
-                  020 3757 2767
+                  020 37 57 27 67
                 </a>
                 <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
                   Monday to Friday, 9am to 5pm
@@ -97,7 +97,7 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 22, "wght" 540',
                   }}
                 >
-                  020 3757 2767
+                  020 37 57 27 67
                 </a>
                 <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
                   Quick responses, 7 days a week
