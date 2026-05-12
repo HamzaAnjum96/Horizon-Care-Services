@@ -57,17 +57,14 @@ export const metadata: Metadata = {
     title: 'Horizon Care Services',
     description:
       'Registered health and social care provider offering staffing solutions, home care, and specialist support across England.',
-    images: [{ url: '/brand/hcs-banner-hero-primary-2x.png', width: 1200, height: 630, alt: 'Horizon Care Services' }],
+    images: [{ url: '/brand/hcs-banner-hero@2x.png', width: 1920, height: 640, alt: 'Horizon Care Services' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Horizon Care Services',
     description:
       'Registered health and social care provider offering staffing solutions, home care, and specialist support across England.',
-    images: ['/brand/hcs-banner-hero-primary-2x.png'],
-  },
-  alternates: {
-    canonical: siteUrl,
+    images: ['/brand/hcs-banner-hero@2x.png'],
   },
   manifest: '/site.webmanifest',
   icons: {
@@ -188,7 +185,10 @@ const jsonLd = [
     ],
     sameAs: [
       'https://find-and-update.company-information.service.gov.uk/company/14615041',
+      'https://www.horizon-careservices.co.uk',
+      'https://horizon-careservices.co.uk',
     ],
+    alternateName: 'Horizon Care Services (formerly horizon-careservices.co.uk)',
   },
   {
     '@context': 'https://schema.org',
@@ -219,14 +219,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <div className="grain-overlay" aria-hidden="true" />
-        <div
-          role="status"
-          className="fixed bottom-0 left-0 right-0 z-30 bg-ink-dark/95 backdrop-blur-sm border-t border-rule-dark py-1.5 px-4 text-center pointer-events-none"
-        >
-          <p className="text-[10px] font-medium text-ink-muted-light tracking-[0.1em] uppercase">
-            Development preview: content is not final and may contain placeholders
-          </p>
-        </div>
         {children}
         <CookieBanner />
       </body>

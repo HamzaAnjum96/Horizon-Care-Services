@@ -1,10 +1,7 @@
 User-agent: *
-Allow: /
+Disallow:
 
 # AI search crawlers — explicitly welcome
-# Allowing AI crawlers improves brand visibility in AI-generated answers
-
-# OpenAI: GPTBot = model training, ChatGPT-User = live browsing/citations
 User-agent: GPTBot
 Allow: /
 
@@ -14,41 +11,33 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# Anthropic
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
-# Google: Googlebot = search index, Google-Extended = Gemini training
 User-agent: Google-Extended
 Allow: /
 
-# ByteDance / TikTok
 User-agent: Bytespider
 Allow: /
 
-# Apple
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# You.com
 User-agent: YouBot
 Allow: /
 
-# Meta
 User-agent: Meta-ExternalAgent
 Allow: /
 
-# Common Crawl (used by many open AI training datasets)
 User-agent: CCBot
 Allow: /
 
