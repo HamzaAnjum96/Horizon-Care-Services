@@ -193,7 +193,7 @@ export default function WorkForUsPage() {
                   <p className="text-ink-muted-dark text-[13px]">
                     Or call us on{' '}
                     <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
-                      020 37 57 27 67
+                      020 3757 2767
                     </a>
                   </p>
                 </div>

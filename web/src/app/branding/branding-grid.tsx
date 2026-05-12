@@ -259,7 +259,7 @@ function SvgCard({ variant, href, filename }: {
 
 // ─── Merch cards ─────────────────────────────────────────────
 
-const PHONE = '02037572767'
+const PHONE = '020 3757 2767'
 const WEBSITE = 'www.horizoncareservices.org'
 
 function MerchCard({ format, variant, withPhone }: {

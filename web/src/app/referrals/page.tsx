@@ -48,7 +48,7 @@ export default function WorkWithUsPage() {
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
                     To discuss a requirement, call us on{' '}
-                    <a href="tel:02037572767" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">020 37 57 27 67</a>
+                    <a href="tel:02037572767" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">020 3757 2767</a>
                     {' '}or email{' '}
                     <a href="mailto:contact@horizoncareservices.org" className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity">contact@horizoncareservices.org</a>.
                     For urgent cover, we can often respond the same day.
@@ -68,7 +68,7 @@ export default function WorkWithUsPage() {
                   <div className="border-t border-rule-light pt-5">
                     <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-2">Phone (Mon–Fri, 9–5)</p>
                     <a href="tel:02037572767" className="font-display text-ink-dark text-[1.3rem] hover:text-amber transition-colors block" style={{ fontVariationSettings: '"opsz" 20, "wght" 560' }}>
-                      020 37 57 27 67
+                      020 3757 2767
                     </a>
                   </div>
                   <div className="border-t border-rule-light pt-5">
