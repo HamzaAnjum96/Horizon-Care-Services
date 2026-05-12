@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Source_Serif_4, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import { CookieBanner } from '@/components/cookie-banner'
+import { BackToTop } from '@/components/back-to-top'
 
 const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
@@ -230,6 +231,7 @@ export default function RootLayout({
         <div className="grain-overlay" aria-hidden="true" />
         {children}
         <CookieBanner />
+        <BackToTop />
       </body>
     </html>
   )

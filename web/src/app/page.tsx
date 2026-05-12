@@ -1,6 +1,5 @@
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
-import { BackToTop } from '@/components/back-to-top'
 import { HeroSection } from '@/components/hero/hero-section'
 import { ServicesSection } from '@/components/sections/services-section'
 import { AboutSection } from '@/components/sections/about-section'
@@ -21,7 +20,6 @@ export default function Home() {
         <DualCTA />
       </main>
       <Footer />
-      <BackToTop />
     </>
   )
 }
