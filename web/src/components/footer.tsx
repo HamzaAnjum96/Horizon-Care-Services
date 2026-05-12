@@ -32,7 +32,7 @@ export function Footer() {
             <p className="mb-3">Manchester, M8 9LR</p>
             <p>
               <a href="tel:02037572767" className="hover:text-ink-light transition-colors">
-                020 37 57 27 67
+                020 3757 2767
               </a>
             </p>
             <p>

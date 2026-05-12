@@ -28,7 +28,7 @@ export default function LegalNoticePage() {
                 <Row label="Registered name" value="Horizon Care Services Ltd" />
                 <Row label="Company number" value="14615041" />
                 <Row label="Registered address" value="475B Cheetham Hill Road, Cheetham Hill, Manchester, M8 9LR" />
-                <Row label="Telephone" value="020 37 57 27 67" href="tel:02037572767" />
+                <Row label="Telephone" value="020 3757 2767" href="tel:02037572767" />
                 <Row label="Email" value="contact@horizoncareservices.org" href="mailto:contact@horizoncareservices.org" />
               </dl>
             </Section>
@@ -79,7 +79,7 @@ export default function LegalNoticePage() {
               <p>
                 If you have a question about the information on this page, contact us at{' '}
                 <a href="mailto:contact@horizoncareservices.org">contact@horizoncareservices.org</a>{' '}
-                or call <a href="tel:02037572767">020 37 57 27 67</a>.
+                or call <a href="tel:02037572767">020 3757 2767</a>.
               </p>
             </Section>
 

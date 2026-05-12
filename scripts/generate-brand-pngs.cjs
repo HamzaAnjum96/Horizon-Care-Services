@@ -220,7 +220,7 @@ function svgMerchPen(fg, bg, fontB64, s, withPhone) {
     const yPhone = Math.round(230 * s), szPhone = Math.round(28 * s)
     textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
               `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
-              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">02037572767</text>`
+              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
 }
@@ -245,7 +245,7 @@ function svgMerchPenTr(fg, fontB64, s, withPhone) {
     const yPhone = Math.round(230 * s), szPhone = Math.round(28 * s)
     textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
               `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
-              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">02037572767</text>`
+              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
 }
@@ -272,7 +272,7 @@ function svgMerchMug(fg, bg, fontB64, s, withPhone) {
     const yPhone = Math.round(642 * s), szPhone = Math.round(28 * s)
     textEls = `<text x="${cx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" text-anchor="middle" fill="${fg}">Horizon Care Services</text>` +
               `<text x="${cx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
-              `<text x="${cx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">02037572767</text>`
+              `<text x="${cx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
 }
@@ -297,7 +297,7 @@ function svgMerchMugTr(fg, fontB64, s, withPhone) {
     const yPhone = Math.round(642 * s), szPhone = Math.round(28 * s)
     textEls = `<text x="${cx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" text-anchor="middle" fill="${fg}">Horizon Care Services</text>` +
               `<text x="${cx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
-              `<text x="${cx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">02037572767</text>`
+              `<text x="${cx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
 }
