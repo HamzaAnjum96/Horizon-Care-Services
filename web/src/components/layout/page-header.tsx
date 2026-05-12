@@ -61,7 +61,7 @@ export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageH
                 href={cta.href}
                 className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity flex-shrink-0"
               >
-                {cta.label} <ArrowUpRight size={14} />
+                {cta.label} <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
             )}
           </motion.div>

@@ -26,7 +26,7 @@ export function BackToTop() {
           className="fixed bottom-10 right-5 lg:right-7 z-40 h-10 w-10 rounded-full bg-forest text-ink-light flex items-center justify-center shadow-[0_4px_20px_-6px_oklch(13%_0.06_24)] hover:opacity-80 transition-opacity"
           aria-label="Back to top"
         >
-          <ArrowUp size={15} strokeWidth={2.5} />
+          <ArrowUp size={15} strokeWidth={2.5} aria-hidden="true" />
         </motion.button>
       )}
     </AnimatePresence>

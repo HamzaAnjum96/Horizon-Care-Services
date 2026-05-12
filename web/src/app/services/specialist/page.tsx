@@ -5,16 +5,57 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Specialist Care — Horizon Care Services',
-  description: 'Dementia and Alzheimer\'s care, hospice support, and end-of-life care across England. Delivered by experienced, compassionate professionals.',
+  title: { absolute: 'Specialist Care — Dementia & Hospice | Horizon Care Services' },
+  description: 'Dementia and Alzheimer\'s care, hospice support, and end-of-life care across England. Experienced, compassionate professionals. CQC-regulated.',
+  alternates: { canonical: `${siteUrl}/services/specialist` },
+  openGraph: {
+    title: 'Specialist Care — Dementia & Hospice | Horizon Care Services',
+    description: 'Dementia and Alzheimer\'s care, hospice support, and end-of-life care across England. Experienced, compassionate professionals.',
+    url: `${siteUrl}/services/specialist`,
+    type: 'website',
+  },
 }
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${siteUrl}/services/specialist#service`,
+    name: 'Specialist Care',
+    serviceType: 'Specialist Care',
+    provider: { '@id': `${siteUrl}/#organization` },
+    description:
+      'Specialist support for people living with dementia and Alzheimer\'s, and those with life-limiting conditions including hospice and end-of-life care, across England.',
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'Bedfordshire' },
+      { '@type': 'AdministrativeArea', name: 'Buckinghamshire' },
+      { '@type': 'AdministrativeArea', name: 'Cambridgeshire' },
+      { '@type': 'AdministrativeArea', name: 'Hertfordshire' },
+      { '@type': 'City', name: 'Manchester' },
+      { '@type': 'City', name: 'London' },
+    ],
+    url: `${siteUrl}/services/specialist`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteUrl}/services` },
+      { '@type': 'ListItem', position: 3, name: 'Specialist Care', item: `${siteUrl}/services/specialist` },
+    ],
+  },
+]
 
 export default function SpecialistCarePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="Services / Specialist Care"
           title="Care that goes further."
@@ -126,7 +167,7 @@ export default function SpecialistCarePage() {
                     href="/contact"
                     className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Make a referral <ArrowUpRight size={14} />
+                    Make a referral <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                   <p className="text-ink-muted-dark text-[13px]">
                     Urgent:{' '}

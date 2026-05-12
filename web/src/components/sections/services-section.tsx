@@ -90,12 +90,14 @@ function ServiceRow({
   isExpanded: boolean
   onToggle: () => void
 }) {
+  const panelId = `service-panel-${service.num.replace(/\s/g, '-')}`
   return (
     <div className="border-t border-rule-light last:border-b">
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isExpanded}
+        aria-controls={panelId}
         className="flex w-full items-center justify-between py-7 lg:py-8 cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
       >
         <div className="flex items-baseline gap-5 lg:gap-8 min-w-0">
@@ -119,6 +121,7 @@ function ServiceRow({
           </span>
           <ArrowUpRight
             size={18}
+            aria-hidden="true"
             className={`transition-all duration-300 ${
               isExpanded
                 ? 'rotate-90 text-amber'
@@ -131,6 +134,9 @@ function ServiceRow({
       <AnimatePresence>
         {isExpanded && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-label={`${service.name} details`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -154,7 +160,7 @@ function ServiceRow({
                 onClick={(e) => e.stopPropagation()}
                 className="interactive-lift self-end inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/40 rounded-sm"
               >
-                Full details <ArrowUpRight size={13} />
+                Full details <ArrowUpRight size={13} aria-hidden="true" />
               </Link>
             </div>
           </motion.div>

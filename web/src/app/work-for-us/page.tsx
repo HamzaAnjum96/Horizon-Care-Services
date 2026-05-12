@@ -5,9 +5,18 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Work For Us — Horizon Care Services',
-  description: 'Join a team of skilled care professionals. Flexible hours, competitive rates, and a genuine commitment to high-quality care.',
+  title: { absolute: 'Work For Us — Horizon Care Services' },
+  description: 'Join Horizon Care Services as a registered nurse, social worker, occupational therapist, healthcare assistant, or support worker. Flexible hours, competitive rates across England.',
+  alternates: { canonical: `${siteUrl}/work-for-us` },
+  openGraph: {
+    title: 'Work For Us — Horizon Care Services',
+    description: 'Healthcare and social care jobs with flexible hours, competitive rates, and a genuine commitment to high-quality care across England.',
+    url: `${siteUrl}/work-for-us`,
+    type: 'website',
+  },
 }
 
 const roles = [
@@ -57,7 +66,7 @@ export default function WorkForUsPage() {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="Work for us"
           title="Join a team that takes care seriously."
@@ -140,7 +149,7 @@ export default function WorkForUsPage() {
                       href={applyHref(role.code, role.title)}
                       className="interactive-lift inline-flex items-center gap-2 border border-rule-light text-ink-dark px-4 py-2 rounded-md text-[12px] font-semibold tracking-[0.02em] hover:border-amber hover:text-amber transition-colors flex-shrink-0 self-start sm:self-center"
                     >
-                      Apply <ArrowUpRight size={12} />
+                      Apply <ArrowUpRight size={12} aria-hidden="true" />
                     </Link>
                   </div>
                 ))}
@@ -179,7 +188,7 @@ export default function WorkForUsPage() {
                     href="mailto:careers@horizoncareservices.org"
                     className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Email your CV <ArrowUpRight size={14} />
+                    Email your CV <ArrowUpRight size={14} aria-hidden="true" />
                   </a>
                   <p className="text-ink-muted-dark text-[13px]">
                     Or call us on{' '}

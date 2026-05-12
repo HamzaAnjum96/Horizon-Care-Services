@@ -29,7 +29,7 @@ export function DualCTA() {
                 href="/contact"
                 className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
               >
-                Start a referral <ArrowUpRight size={14} />
+                Start a referral <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -56,7 +56,7 @@ export function DualCTA() {
                 href="/work-for-us"
                 className="interactive-lift inline-flex items-center gap-2 border border-ink-light/25 text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:border-ink-light/55 hover:bg-ink-light/[0.05] transition-all duration-200"
               >
-                View opportunities <ArrowUpRight size={14} />
+                View opportunities <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>

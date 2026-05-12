@@ -5,16 +5,25 @@ import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 import { LocationMap } from '@/components/location-map'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Contact — Horizon Care Services',
-  description: 'Get in touch with Horizon Care Services. Urgent staffing, referrals, care enquiries, and general contact.',
+  title: { absolute: 'Contact Us — Horizon Care Services' },
+  description: 'Get in touch with Horizon Care Services. Phone, WhatsApp, and email for urgent staffing, NHS referrals, care enquiries, and general contact. Manchester office.',
+  alternates: { canonical: `${siteUrl}/contact` },
+  openGraph: {
+    title: 'Contact Us — Horizon Care Services',
+    description: 'Phone, WhatsApp, and email for urgent staffing, NHS referrals, care enquiries, and general contact.',
+    url: `${siteUrl}/contact`,
+    type: 'website',
+  },
 }
 
 export default function ContactPage() {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="Contact"
           title="Get in touch."
@@ -30,7 +39,7 @@ export default function ContactPage() {
               {/* Phone */}
               <div className="border-t-2 border-amber pt-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <Phone size={12} strokeWidth={1.75} className="text-amber flex-shrink-0" />
+                  <Phone size={12} strokeWidth={1.75} className="text-amber flex-shrink-0" aria-hidden="true" />
                   <p className="section-kicker text-ink-muted-dark">Phone</p>
                 </div>
                 <p
@@ -65,6 +74,7 @@ export default function ContactPage() {
                     strokeWidth={1.75}
                     className="flex-shrink-0"
                     style={{ color: 'oklch(62% 0.19 148)' }}
+                    aria-hidden="true"
                   />
                   <p className="section-kicker text-ink-muted-dark">WhatsApp</p>
                 </div>
@@ -97,7 +107,7 @@ export default function ContactPage() {
               {/* Email — spans full width */}
               <div className="border-t-2 border-rule-light pt-6 sm:col-span-2">
                 <div className="flex items-center gap-2 mb-3">
-                  <Mail size={12} strokeWidth={1.75} className="text-ink-muted-dark flex-shrink-0" />
+                  <Mail size={12} strokeWidth={1.75} className="text-ink-muted-dark flex-shrink-0" aria-hidden="true" />
                   <p className="section-kicker text-ink-muted-dark">Email</p>
                 </div>
                 <p
@@ -167,7 +177,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="absolute bottom-2 right-2 inline-flex items-center gap-1.5 bg-deep/90 backdrop-blur-sm text-ink-light text-[10px] sm:text-[11px] font-medium tracking-[0.05em] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded hover:bg-deep transition-colors z-[1000]"
                     >
-                      Get directions <ArrowUpRight size={11} />
+                      Get directions <ArrowUpRight size={11} aria-hidden="true" />
                     </a>
                   </div>
                 </div>

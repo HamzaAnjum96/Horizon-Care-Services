@@ -35,14 +35,15 @@ export function HowItWorks() {
           From enquiry to delivery.
         </h2>
 
-        <div className="grid md:grid-cols-4 border-t border-rule-light">
+        <ol className="grid md:grid-cols-4 border-t border-rule-light list-none">
           {steps.map((step) => (
-            <div
+            <li
               key={step.num}
               className="pt-8 pb-10 px-8 first:pl-0 last:pr-0 border-r border-rule-light last:border-r-0 max-md:border-r-0 max-md:px-0 max-md:border-b max-md:last:border-b-0 max-md:pb-8"
             >
               <p
                 className="font-display text-amber mb-6 leading-none tracking-[-0.02em]"
+                aria-hidden="true"
                 style={{
                   fontSize: 'clamp(2rem, 3.5vw, 3rem)',
                   fontVariationSettings: '"opsz" 36, "wght" 520',
@@ -62,9 +63,9 @@ export function HowItWorks() {
               <p className="text-ink-muted-dark text-[14px] leading-relaxed">
                 {step.desc}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )

@@ -5,9 +5,18 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Services — Horizon Care Services',
-  description: 'Staffing solutions, home care, and specialist care across England. Delivered by skilled, regulated professionals.',
+  title: { absolute: 'Our Services — Horizon Care Services' },
+  description: 'Staffing solutions, home care, and specialist care across England — delivered by CQC-regulated, skilled professionals. Serving NHS trusts, local authorities, and families.',
+  alternates: { canonical: `${siteUrl}/services` },
+  openGraph: {
+    title: 'Our Services — Horizon Care Services',
+    description: 'Staffing solutions, home care, and specialist care across England. Delivered by skilled, regulated professionals.',
+    url: `${siteUrl}/services`,
+    type: 'website',
+  },
 }
 
 const services = [
@@ -37,11 +46,21 @@ const services = [
   },
 ]
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteUrl}/services` },
+  ],
+}
+
 export default function ServicesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="What we provide"
           title="Services shaped around each person."
@@ -72,7 +91,7 @@ export default function ServicesPage() {
                     href={s.href}
                     className="inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all group"
                   >
-                    Full details <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    Full details <ArrowUpRight size={13} aria-hidden="true" className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </Link>
                 </div>
                 <div>
@@ -118,7 +137,7 @@ export default function ServicesPage() {
                   href="/contact"
                   className="interactive-lift inline-flex items-center gap-2 border border-rule-light text-ink-dark px-5 py-2.5 rounded-md text-[13px] font-semibold hover:border-ink-dark/30 transition-colors"
                 >
-                  Get in touch <ArrowUpRight size={13} />
+                  Get in touch <ArrowUpRight size={13} aria-hidden="true" />
                 </Link>
               </div>
             </div>
