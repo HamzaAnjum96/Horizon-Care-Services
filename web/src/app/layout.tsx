@@ -185,7 +185,10 @@ const jsonLd = [
     ],
     sameAs: [
       'https://find-and-update.company-information.service.gov.uk/company/14615041',
+      'https://www.horizon-careservices.co.uk',
+      'https://horizon-careservices.co.uk',
     ],
+    alternateName: 'Horizon Care Services (formerly horizon-careservices.co.uk)',
   },
   {
     '@context': 'https://schema.org',
