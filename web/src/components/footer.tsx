@@ -63,6 +63,12 @@ export function Footer() {
             >
               Privacy Policy
             </Link>
+            <Link
+              href="/sitemap"
+              className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors"
+            >
+              Site map
+            </Link>
             <CookiePreferencesLink className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors" />
           </div>
         </div>
