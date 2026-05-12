@@ -5,16 +5,35 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'About — Horizon Care Services',
-  description: 'Three years of experience delivering health and social care across England. Registered, regulated, and built around the people we support.',
+  title: { absolute: 'About Us — Horizon Care Services' },
+  description: 'Three years of experience delivering CQC-regulated health and social care across England. Staffing, home care, and specialist support built around the people we support.',
+  alternates: { canonical: `${siteUrl}/about` },
+  openGraph: {
+    title: 'About Us — Horizon Care Services',
+    description: 'Three years of CQC-regulated care across England — staffing, home care, and specialist support built around each person.',
+    url: `${siteUrl}/about`,
+    type: 'website',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    { '@type': 'ListItem', position: 2, name: 'About Us', item: `${siteUrl}/about` },
+  ],
 }
 
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="About us"
           title="Care built around the person, not the process."
@@ -126,7 +145,7 @@ export default function AboutPage() {
                     href="/contact"
                     className="interactive-lift inline-flex items-center gap-2 mt-6 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Make a referral <ArrowUpRight size={14} />
+                    Make a referral <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                 </div>
                 <div>
@@ -138,7 +157,7 @@ export default function AboutPage() {
                     href="/contact"
                     className="interactive-lift inline-flex items-center gap-2 mt-6 border border-rule-light text-ink-dark px-6 py-3 rounded-md text-[14px] font-semibold hover:border-ink-dark/30 transition-colors"
                   >
-                    Get in touch <ArrowUpRight size={14} />
+                    Get in touch <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                 </div>
               </div>

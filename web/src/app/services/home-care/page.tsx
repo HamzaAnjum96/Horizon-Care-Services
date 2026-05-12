@@ -5,9 +5,18 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Home Care — Horizon Care Services',
-  description: 'Personal care, companionship, medication management, and respite support delivered at home across England.',
+  title: { absolute: 'Home Care Services — Horizon Care Services' },
+  description: 'Personal care, companionship, medication management, and respite support delivered at home across England. Person-centred care from CQC-regulated professionals.',
+  alternates: { canonical: `${siteUrl}/services/home-care` },
+  openGraph: {
+    title: 'Home Care Services — Horizon Care Services',
+    description: 'Personal care, companionship, medication management, and respite support delivered at home across England.',
+    url: `${siteUrl}/services/home-care`,
+    type: 'website',
+  },
 }
 
 const careTypes = [
@@ -37,11 +46,43 @@ const careTypes = [
   },
 ]
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${siteUrl}/services/home-care#service`,
+    name: 'Home Care',
+    serviceType: 'Home Care',
+    provider: { '@id': `${siteUrl}/#organization` },
+    description:
+      'Personal care, companionship, medication management, meal preparation, housekeeping, and respite support delivered in the client\'s own home across England.',
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'Bedfordshire' },
+      { '@type': 'AdministrativeArea', name: 'Buckinghamshire' },
+      { '@type': 'AdministrativeArea', name: 'Cambridgeshire' },
+      { '@type': 'AdministrativeArea', name: 'Hertfordshire' },
+      { '@type': 'City', name: 'Manchester' },
+      { '@type': 'City', name: 'London' },
+    ],
+    url: `${siteUrl}/services/home-care`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteUrl}/services` },
+      { '@type': 'ListItem', position: 3, name: 'Home Care', item: `${siteUrl}/services/home-care` },
+    ],
+  },
+]
+
 export default function HomeCarePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="Services / Home Care"
           title="Care at home, done properly."
@@ -141,7 +182,7 @@ export default function HomeCarePage() {
                   href="/contact"
                   className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                 >
-                  Make a referral <ArrowUpRight size={14} />
+                  Make a referral <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>
                 <p className="text-ink-muted-dark text-[13px] mt-4">
                   Or call <a href="tel:01582354119" className="underline underline-offset-2 hover:text-ink-dark transition-colors">01582 354 119</a>

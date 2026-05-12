@@ -5,9 +5,18 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Staffing Solutions — Horizon Care Services',
-  description: 'Skilled clinical and care professionals for NHS trusts, nursing homes, care homes, and community settings across England.',
+  title: { absolute: 'Healthcare Staffing Solutions — Horizon Care Services' },
+  description: 'Registered nurses, social workers, OTs, physiotherapists, and healthcare assistants for NHS trusts, nursing homes, and community settings across England. 24/7 availability.',
+  alternates: { canonical: `${siteUrl}/services/staffing` },
+  openGraph: {
+    title: 'Healthcare Staffing Solutions — Horizon Care Services',
+    description: 'Skilled clinical and care professionals for NHS trusts, nursing homes, care homes, and community settings across England.',
+    url: `${siteUrl}/services/staffing`,
+    type: 'website',
+  },
 }
 
 const roles = [
@@ -28,11 +37,43 @@ const settings = [
   'Private hospitals and clinics',
 ]
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${siteUrl}/services/staffing#service`,
+    name: 'Healthcare Staffing Solutions',
+    serviceType: 'Healthcare Staffing',
+    provider: { '@id': `${siteUrl}/#organization` },
+    description:
+      'Registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers supplied to NHS trusts, nursing homes, and community settings across England. Available 24/7.',
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'Bedfordshire' },
+      { '@type': 'AdministrativeArea', name: 'Buckinghamshire' },
+      { '@type': 'AdministrativeArea', name: 'Cambridgeshire' },
+      { '@type': 'AdministrativeArea', name: 'Hertfordshire' },
+      { '@type': 'City', name: 'Manchester' },
+      { '@type': 'City', name: 'London' },
+    ],
+    url: `${siteUrl}/services/staffing`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteUrl}/services` },
+      { '@type': 'ListItem', position: 3, name: 'Staffing Solutions', item: `${siteUrl}/services/staffing` },
+    ],
+  },
+]
+
 export default function StaffingPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="Services / Staffing Solutions"
           title="The right people, where you need them."
@@ -153,7 +194,7 @@ export default function StaffingPage() {
                     href="/contact"
                     className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Submit a request <ArrowUpRight size={14} />
+                    Submit a request <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                 </div>
               </div>

@@ -32,14 +32,14 @@ export function AreaSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3.5">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3.5 list-none">
             {areas.map((area) => (
-              <div key={area} className="flex items-center gap-2.5">
-                <span className="w-1 h-1 rounded-full bg-amber flex-shrink-0" />
+              <li key={area} className="flex items-center gap-2.5">
+                <span className="w-1 h-1 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
                 <span className="text-ink-dark text-[15px] font-medium">{area}</span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
 
         </div>
       </div>
