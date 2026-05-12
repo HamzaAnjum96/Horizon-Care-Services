@@ -257,6 +257,121 @@ function SvgCard({ variant, href, filename }: {
 }
 
 
+// ─── Merch cards ─────────────────────────────────────────────
+
+const PHONE = '01582 354 119'
+const WEBSITE = 'www.horizoncareservices.org'
+
+function MerchCard({ format, variant, withPhone }: {
+  format: 'pen' | 'mug'
+  variant: ColorVariant
+  withPhone: boolean
+}) {
+  const ps = withPhone ? '-phone' : ''
+  const trFile  = `${BASE}/brand/hcs-merch-${format}-${variant.id}${ps}-tr@2x.png`
+  const wbgFile = `${BASE}/brand/hcs-merch-${format}-${variant.id}${ps}@4x.png`
+  const svgFile = `${BASE}/brand/hcs-merch-${format}-${variant.id}${ps}-tr.svg`
+
+  return (
+    <div className={cn('rounded-xl overflow-hidden flex flex-col', variant.hasBorder ? 'ring-1 ring-rule-light' : '')}>
+      {/* Preview */}
+      <div
+        className="flex-1 flex items-center justify-center p-4"
+        style={{ backgroundColor: variant.bg }}
+      >
+        {format === 'pen' && (
+          <div className="w-full flex items-center gap-2.5 py-1">
+            <HCSLogoMark
+              className="flex-shrink-0"
+              style={{ color: variant.fg, width: 32, height: 32 }}
+            />
+            <div className="min-w-0 overflow-hidden">
+              <p
+                className="font-display leading-none truncate"
+                style={{ color: variant.fg, fontSize: 11, fontVariationSettings: '"opsz" 14, "wght" 600' }}
+              >
+                Horizon Care Services
+              </p>
+              <p
+                className="font-display leading-tight truncate mt-0.5"
+                style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+              >
+                {WEBSITE}
+              </p>
+              {withPhone && (
+                <p
+                  className="font-display leading-tight truncate"
+                  style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+                >
+                  {PHONE}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+        {format === 'mug' && (
+          <div className="flex flex-col items-center gap-1.5 py-3 w-full">
+            <HCSLogoMark
+              style={{ color: variant.fg, width: 48, height: 48 }}
+            />
+            <p
+              className="font-display text-center leading-tight"
+              style={{ color: variant.fg, fontSize: 11, fontVariationSettings: '"opsz" 14, "wght" 600' }}
+            >
+              Horizon Care Services
+            </p>
+            <p
+              className="font-display text-center"
+              style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+            >
+              {WEBSITE}
+            </p>
+            {withPhone && (
+              <p
+                className="font-display text-center"
+                style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+              >
+                {PHONE}
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Footer */}
+      <div className="bg-cream-dim border-t border-rule-light px-3 py-2.5 flex items-center justify-between gap-1.5">
+        <div className="flex items-center gap-2 min-w-0">
+          <span
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-1 ring-black/10"
+            style={{ backgroundColor: variant.fg }}
+          />
+          <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase truncate">
+            {variant.label}
+          </span>
+        </div>
+        <div className="flex items-center gap-0.5 flex-shrink-0">
+          <DlBtn
+            href={trFile}
+            filename={`hcs-merch-${format}-${variant.id}${ps}-nobg.png`}
+            label={`Download ${variant.label} ${format} no background`}
+          >No-BG</DlBtn>
+          <DlBtn
+            href={wbgFile}
+            filename={`hcs-merch-${format}-${variant.id}${ps}-ultrahd.png`}
+            label={`Download ${variant.label} ${format} with background`}
+          >W/BG</DlBtn>
+          <DlBtn
+            href={svgFile}
+            filename={`hcs-merch-${format}-${variant.id}${ps}.svg`}
+            label={`Download ${variant.label} ${format} SVG`}
+          >SVG</DlBtn>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
 const LOGO_SECTIONS: { type: LogoType; heading: string; sub: string }[] = [
   {
     type: 'stacked',
@@ -338,6 +453,61 @@ export function BrandingGrid() {
                 href={`${BASE}/brand/hcs-mark-${variant.id}.svg`}
                 filename={`hcs-mark-${variant.id}.svg`}
               />
+            ))}
+          </div>
+        </div>
+
+        {/* ── Merchandise ── */}
+        <div>
+          <div className="mb-10 lg:mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div>
+              <p className="section-kicker text-ink-muted-dark mb-3">Merchandise</p>
+              <h2
+                className="font-display text-ink-dark mb-2"
+                style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.65rem)', fontVariationSettings: '"opsz" 22, "wght" 620' }}
+              >
+                Merchandise Assets
+              </h2>
+              <p className="text-ink-muted-dark text-[14px] leading-relaxed max-w-[62ch]">
+                Print-ready artwork for branded merchandise. Two formats: pen barrel (landscape strip) and mug panel (portrait). Each in five colour variants, with and without the office number. All files pre-rendered — no generation on download.
+              </p>
+            </div>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
+              2 formats · 2 variants · 5 colours
+            </p>
+          </div>
+
+          <div className="space-y-14">
+            {([
+              { format: 'pen' as const, withPhone: false, heading: 'Pen — Without Number', desc: 'Landscape strip for pen barrel printing. Logo, name, and website.' },
+              { format: 'pen' as const, withPhone: true,  heading: 'Pen — With Number',    desc: 'Landscape strip including the office number beneath the website.' },
+              { format: 'mug' as const, withPhone: false, heading: 'Mug — Without Number', desc: 'Portrait panel for mug printing. Large mark with name and website below.' },
+              { format: 'mug' as const, withPhone: true,  heading: 'Mug — With Number',    desc: 'Portrait panel including the office number below the website.' },
+            ] as const).map(({ format, withPhone, heading, desc }) => (
+              <div key={`${format}-${withPhone}`}>
+                <div className="mb-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+                  <div>
+                    <h3
+                      className="font-display text-ink-dark mb-1"
+                      style={{ fontSize: 'clamp(1rem, 1.6vw, 1.2rem)', fontVariationSettings: '"opsz" 16, "wght" 580' }}
+                    >
+                      {heading}
+                    </h3>
+                    <p className="text-ink-muted-dark text-[13px] leading-relaxed max-w-[55ch]">{desc}</p>
+                  </div>
+                  <p className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase flex-shrink-0">5 colour variants</p>
+                </div>
+                <div className={cn(
+                  'grid gap-4',
+                  format === 'pen'
+                    ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'
+                    : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5',
+                )}>
+                  {COLOR_VARIANTS.map((variant) => (
+                    <MerchCard key={variant.id} format={format} variant={variant} withPhone={withPhone} />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
