@@ -146,7 +146,7 @@ export function Nav() {
                 className="block text-ink-light font-display text-[1.15rem] font-semibold hover:text-amber transition-colors"
                 style={{ fontVariationSettings: '"opsz" 18, "wght" 580' }}
               >
-                020 3757 2767
+                020 37 57 27 67
               </a>
               <p className="text-ink-muted-light text-[11px] tracking-[0.1em] uppercase">Get in touch</p>
             </div>
