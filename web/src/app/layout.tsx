@@ -80,18 +80,17 @@ export const metadata: Metadata = {
 const jsonLd = [
   {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'MedicalOrganization'],
+    '@type': ['MedicalBusiness', 'MedicalOrganization'],
     '@id': `${siteUrl}/#organization`,
     name: 'Horizon Care Services',
     legalName: 'Horizon Care Services Ltd',
+    foundingDate: '2022',
     url: siteUrl,
     logo: {
       '@type': 'ImageObject',
-      url: `${siteUrl}/hcs-logo.svg`,
-      width: 1024,
-      height: 1024,
+      url: `${siteUrl}/brand/hcs-lockup-primary@2x.png`,
     },
-    image: `${siteUrl}/brand/hcs-banner-hero-primary-2x.png`,
+    image: `${siteUrl}/brand/hcs-banner-hero@2x.png`,
     description:
       'Registered health and social care provider offering staffing solutions, home care, and specialist support across England. Regulated by the Care Quality Commission (CQC). Company No. 14615041.',
     telephone: '+442037572767',
@@ -110,6 +109,21 @@ const jsonLd = [
       latitude: 53.507937,
       longitude: -2.241688,
     },
+    knowsAbout: [
+      'Home Care',
+      'Healthcare Staffing',
+      'Dementia Care',
+      'Hospice Care',
+      'Palliative Care',
+      'Personal Care',
+      'Registered Nursing',
+      'Social Work',
+      'Occupational Therapy',
+      'Healthcare Assistants',
+      'Support Workers',
+      'CQC Regulated Care',
+      'Health and Social Care Act 2008',
+    ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -155,7 +169,7 @@ const jsonLd = [
             name: 'Home Care',
             description:
               'Personal care, medication management, companionship, and respite support delivered in the client\'s own home.',
-            url: `${siteUrl}/services/home-care/`,
+            url: `${siteUrl}/services/home-care`,
           },
         },
         {
@@ -165,7 +179,7 @@ const jsonLd = [
             name: 'Staffing Solutions',
             description:
               'Registered nurses, healthcare assistants, support workers, and allied health professionals supplied at short or extended notice, available 24/7.',
-            url: `${siteUrl}/services/staffing/`,
+            url: `${siteUrl}/services/staffing`,
           },
         },
         {
@@ -175,7 +189,7 @@ const jsonLd = [
             name: 'Specialist Care',
             description:
               'Specialist support for people living with dementia and Alzheimer\'s, and those with life-limiting conditions including hospice and end-of-life care.',
-            url: `${siteUrl}/services/specialist/`,
+            url: `${siteUrl}/services/specialist`,
           },
         },
       ],
@@ -186,9 +200,16 @@ const jsonLd = [
         name: 'Companies House Number',
         value: '14615041',
       },
+      {
+        '@type': 'PropertyValue',
+        name: 'CQC Registration',
+        propertyID: 'https://www.cqc.org.uk',
+        value: 'CQC registered provider — England',
+      },
     ],
     sameAs: [
       'https://find-and-update.company-information.service.gov.uk/company/14615041',
+      'https://www.cqc.org.uk',
       'https://www.horizon-careservices.co.uk',
       'https://horizon-careservices.co.uk',
     ],
@@ -201,6 +222,14 @@ const jsonLd = [
     url: siteUrl,
     name: 'Horizon Care Services',
     publisher: { '@id': `${siteUrl}/#organization` },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${siteUrl}/sitemap?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   },
 ]
 
