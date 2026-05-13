@@ -19,9 +19,33 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${siteUrl}/referrals#webpage`,
+    url: `${siteUrl}/referrals`,
+    name: 'Commission Care Services — Horizon Care Services',
+    description: 'Commission staffing, home care, or specialist support from Horizon Care Services. We work with NHS trusts, local authorities, and care organisations across England.',
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    about: { '@id': `${siteUrl}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Commission Services', item: `${siteUrl}/referrals` },
+    ],
+  },
+]
+
 export default function WorkWithUsPage() {
   return (
     <>
+      {jsonLd.map((block, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
+      ))}
       <Nav />
       <main id="main-content">
         <PageHeader

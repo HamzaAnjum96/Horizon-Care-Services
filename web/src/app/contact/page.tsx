@@ -19,9 +19,33 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${siteUrl}/contact#webpage`,
+    url: `${siteUrl}/contact`,
+    name: 'Contact Us — Horizon Care Services',
+    description: 'Phone, WhatsApp, and email contact details for Horizon Care Services. Manchester office address.',
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    about: { '@id': `${siteUrl}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: `${siteUrl}/contact` },
+    ],
+  },
+]
+
 export default function ContactPage() {
   return (
     <>
+      {jsonLd.map((block, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
+      ))}
       <Nav />
       <main id="main-content">
         <PageHeader

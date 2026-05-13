@@ -57,6 +57,101 @@ const roles = [
   },
 ]
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Work For Us', item: `${siteUrl}/work-for-us` },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: 'Registered Nurse',
+    description: 'RGN, RMN, and RNLD roles providing ward cover, community nursing, and specialist settings across England. Flexible shifts, competitive rates, CQC-regulated provider.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-RN-001' },
+    datePosted: '2026-05-13',
+    validThrough: '2027-05-13',
+    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
+    hiringOrganization: { '@id': `${siteUrl}/#organization` },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
+    url: `${siteUrl}/work-for-us`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: 'Social Worker',
+    description: 'Qualified social workers with experience across adult and children\'s services. Flexible roles with NHS trusts and local authorities across England.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SW-001' },
+    datePosted: '2026-05-13',
+    validThrough: '2027-05-13',
+    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
+    hiringOrganization: { '@id': `${siteUrl}/#organization` },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
+    url: `${siteUrl}/work-for-us`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: 'Occupational Therapist',
+    description: 'Assessment, rehabilitation, and discharge planning support roles in community and hospital settings across England. Flexible hours and competitive rates.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-OT-001' },
+    datePosted: '2026-05-13',
+    validThrough: '2027-05-13',
+    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
+    hiringOrganization: { '@id': `${siteUrl}/#organization` },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
+    url: `${siteUrl}/work-for-us`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: 'Physiotherapist',
+    description: 'Community and hospital-based physiotherapy provision across England. Flexible contract and long-term placement roles with a CQC-regulated provider.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-PT-001' },
+    datePosted: '2026-05-13',
+    validThrough: '2027-05-13',
+    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
+    hiringOrganization: { '@id': `${siteUrl}/#organization` },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
+    url: `${siteUrl}/work-for-us`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: 'Healthcare Assistant',
+    description: 'Experienced HCAs across ward, residential, and home environments in England. Choose your shifts, competitive rates, with a named coordinator you can reach.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-HCA-001' },
+    datePosted: '2026-05-13',
+    validThrough: '2027-05-13',
+    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
+    hiringOrganization: { '@id': `${siteUrl}/#organization` },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
+    url: `${siteUrl}/work-for-us`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: 'Support Worker',
+    description: 'Trained support workers for residential, community, and domiciliary settings across England. Flexible shifts around your availability, paid competitively and on time.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SPW-001' },
+    datePosted: '2026-05-13',
+    validThrough: '2027-05-13',
+    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
+    hiringOrganization: { '@id': `${siteUrl}/#organization` },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
+    url: `${siteUrl}/work-for-us`,
+  },
+]
+
 function applyHref(code: string, title: string) {
   const params = new URLSearchParams({ code, title })
   return `/work-for-us/apply?${params.toString()}`
@@ -65,6 +160,9 @@ function applyHref(code: string, title: string) {
 export default function WorkForUsPage() {
   return (
     <>
+      {jsonLd.map((block, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
+      ))}
       <Nav />
       <main id="main-content">
         <PageHeader

@@ -4,9 +4,12 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Horizon Care Services',
+  title: { absolute: 'Privacy Policy — Horizon Care Services' },
   description: 'How Horizon Care Services collects, uses, and protects personal information.',
+  alternates: { canonical: `${siteUrl}/privacy-policy` },
 }
 
 export default function PrivacyPolicyPage() {

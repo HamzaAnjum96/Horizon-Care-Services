@@ -4,9 +4,12 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Legal Notice — Horizon Care Services',
+  title: { absolute: 'Legal Notice — Horizon Care Services' },
   description: 'Legal information for Horizon Care Services Ltd, including company registration and regulatory details.',
+  alternates: { canonical: `${siteUrl}/legal` },
 }
 
 export default function LegalNoticePage() {
