@@ -9,7 +9,7 @@
   --cream:             oklch(97% 0.006 52);
   --cream-dim:         oklch(93% 0.009 50);
 
-  /* Brand midnight red — logo mark only, not for backgrounds */
+  /* Brand midnight red — primary brand colour; use for buttons, accents, and the logo mark */
   --brand:             oklch(21% 0.10 9);
 
   --ink-dark:          oklch(16% 0.04 22);
@@ -77,7 +77,6 @@ body {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.03;
-  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.85'/%3E%3C/svg%3E");
   background-size: 160px 160px;
   background-repeat: repeat;
@@ -94,7 +93,6 @@ body {
     letter-spacing: -0.02em;
     line-height: 1.05;
   }
-}
 
   .interactive-lift {
     @apply transition-transform transition-shadow duration-300;
@@ -104,6 +102,7 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 10px 24px -18px color-mix(in oklab, var(--deep) 70%, transparent);
   }
+}
 
 
 /* ─── Hero texture & animated blobs ────────────────────── */

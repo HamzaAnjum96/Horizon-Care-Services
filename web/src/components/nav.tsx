@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { HCSLogoMark } from '@/components/hcs-logo'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -9,6 +10,7 @@ import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
   { href: '/work-for-us', label: 'Work For Us' },
@@ -18,6 +20,9 @@ const navLinks = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
+  const openButtonRef = useRef<HTMLButtonElement>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -28,8 +33,10 @@ export function Nav() {
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = 'hidden'
+      closeButtonRef.current?.focus()
     } else {
       document.body.style.overflow = ''
+      openButtonRef.current?.focus()
     }
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
@@ -60,6 +67,7 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={pathname === link.href ? 'page' : undefined}
                 className={cn('text-[13px] font-medium transition-colors tracking-[0.04em]', scrolled ? 'text-ink-muted-dark hover:text-ink-dark' : 'text-ink-muted-light hover:text-ink-light')}
               >
                 {link.label}
@@ -67,21 +75,26 @@ export function Nav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setMobileOpen(true)}
-              className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
-              aria-label="Open menu"
-            >
-              <Menu size={20} />
-            </button>
-          </div>
+          <button
+            ref={openButtonRef}
+            onClick={() => setMobileOpen(true)}
+            className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 rounded', scrolled ? 'text-ink-dark' : 'text-ink-light')}
+            aria-label="Open navigation menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+          >
+            <Menu size={20} aria-hidden="true" />
+          </button>
         </div>
       </header>
 
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-nav"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -100,11 +113,12 @@ export function Nav() {
                 </span>
               </div>
               <button
+                ref={closeButtonRef}
                 onClick={() => setMobileOpen(false)}
-                className="text-ink-light p-1.5 -mr-1"
-                aria-label="Close menu"
+                className="text-ink-light p-1.5 -mr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 rounded"
+                aria-label="Close navigation menu"
               >
-                <X size={20} />
+                <X size={20} aria-hidden="true" />
               </button>
             </div>
 
@@ -115,6 +129,7 @@ export function Nav() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
+                    aria-current={pathname === link.href ? 'page' : undefined}
                     className="flex items-center px-5 py-5 font-display text-ink-light text-[1.6rem] font-semibold leading-none tracking-[-0.02em] hover:text-amber transition-colors"
                     style={{ fontVariationSettings: '"opsz" 28, "wght" 580' }}
                   >

@@ -5,16 +5,49 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Work With Us — Horizon Care Services',
+  title: { absolute: 'Commission Care Services — Horizon Care Services' },
   description: 'Commission staffing, home care, or specialist support from Horizon Care Services. We work with NHS trusts, local authorities, councils, and care organisations across England.',
+  alternates: { canonical: `${siteUrl}/referrals` },
+  openGraph: {
+    title: 'Commission Care Services — Horizon Care Services',
+    description: 'Staffing, home care, and specialist support for NHS trusts, local authorities, and care organisations across England.',
+    url: `${siteUrl}/referrals`,
+    type: 'website',
+  },
 }
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${siteUrl}/referrals#webpage`,
+    url: `${siteUrl}/referrals`,
+    name: 'Commission Care Services — Horizon Care Services',
+    description: 'Commission staffing, home care, or specialist support from Horizon Care Services. We work with NHS trusts, local authorities, and care organisations across England.',
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    about: { '@id': `${siteUrl}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Commission Services', item: `${siteUrl}/referrals` },
+    ],
+  },
+]
 
 export default function WorkWithUsPage() {
   return (
     <>
+      {jsonLd.map((block, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
+      ))}
       <Nav />
-      <main>
+      <main id="main-content">
         <PageHeader
           kicker="Organisations"
           title="Let's work together."
@@ -45,7 +78,7 @@ export default function WorkWithUsPage() {
                     For urgent cover, we can often respond the same day.
                   </p>
                   <p>
-                    Once we understand your requirements, we will confirm what we can provide, outline the right service model, and agree next steps. For urgent cover we can often turn around same day.
+                    Once we understand your requirements, we will confirm what we can provide, outline the right service model, and agree next steps.
                   </p>
                   <p>
                     We work with NHS trusts, local authorities, private care homes, and commissioning teams. We are transparent about capacity, rates, and compliance from the first conversation.
@@ -121,7 +154,7 @@ export default function WorkWithUsPage() {
                     href="/services"
                     className="interactive-lift inline-flex items-center gap-2 mt-5 border border-rule-light text-ink-dark px-5 py-2.5 rounded-md text-[13px] font-semibold hover:border-ink-dark/30 transition-colors"
                   >
-                    View all services <ArrowUpRight size={13} />
+                    View all services <ArrowUpRight size={13} aria-hidden="true" />
                   </Link>
                 </div>
                 <div>

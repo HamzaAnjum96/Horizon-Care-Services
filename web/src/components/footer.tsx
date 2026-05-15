@@ -4,7 +4,7 @@ import { CookiePreferencesLink } from '@/components/cookie-preferences-link'
 
 export function Footer() {
   return (
-    <footer className="footer-texture bg-deep border-t border-rule-dark">
+    <footer className="footer-texture bg-deep border-t border-rule-dark" aria-label="Site footer">
       <div className="max-w-4xl mx-auto px-6 lg:px-10 pt-14 pb-8">
 
         <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
@@ -62,6 +62,12 @@ export function Footer() {
               className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors"
             >
               Privacy Policy
+            </Link>
+            <Link
+              href="/sitemap"
+              className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors"
+            >
+              Site map
             </Link>
             <CookiePreferencesLink className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors" />
           </div>

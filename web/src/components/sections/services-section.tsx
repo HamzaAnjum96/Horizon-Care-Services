@@ -3,8 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 
 const services = [
   {
@@ -90,12 +88,14 @@ function ServiceRow({
   isExpanded: boolean
   onToggle: () => void
 }) {
+  const panelId = `service-panel-${service.num.replace(/\s/g, '-')}`
   return (
     <div className="border-t border-rule-light last:border-b">
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isExpanded}
+        aria-controls={panelId}
         className="flex w-full items-center justify-between py-7 lg:py-8 cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
       >
         <div className="flex items-baseline gap-5 lg:gap-8 min-w-0">
@@ -119,6 +119,7 @@ function ServiceRow({
           </span>
           <ArrowUpRight
             size={18}
+            aria-hidden="true"
             className={`transition-all duration-300 ${
               isExpanded
                 ? 'rotate-90 text-amber'
@@ -128,38 +129,42 @@ function ServiceRow({
         </div>
       </button>
 
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-            className="overflow-hidden"
-          >
-            <div className="pb-8 grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-16">
-              <ul className="space-y-2 pl-0 sm:pl-[calc(11px*5+2rem)] max-w-[72ch]">
-                {service.points.map((pt) => (
-                  <li
-                    key={pt}
-                    className="text-[15px] text-ink-muted-dark leading-snug flex items-start gap-3"
-                  >
-                    <span className="mt-[7px] w-1 h-1 rounded-full bg-amber flex-shrink-0" />
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={service.href}
-                onClick={(e) => e.stopPropagation()}
-                className="interactive-lift self-end inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/40 rounded-sm"
-              >
-                Full details <ArrowUpRight size={13} />
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        id={panelId}
+        role="region"
+        aria-label={`${service.name} details`}
+        aria-hidden={!isExpanded}
+        style={{
+          display: 'grid',
+          gridTemplateRows: isExpanded ? '1fr' : '0fr',
+          opacity: isExpanded ? 1 : 0,
+          transition: 'grid-template-rows 240ms cubic-bezier(0.16,1,0.3,1), opacity 180ms ease',
+        }}
+      >
+        <div className="overflow-hidden">
+          <div className="pb-8 grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-16">
+            <ul className="space-y-2 pl-0 sm:pl-[calc(11px*5+2rem)] max-w-[72ch]">
+              {service.points.map((pt) => (
+                <li
+                  key={pt}
+                  className="text-[15px] text-ink-muted-dark leading-snug flex items-start gap-3"
+                >
+                  <span className="mt-[7px] w-1 h-1 rounded-full bg-amber flex-shrink-0" />
+                  {pt}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={service.href}
+              onClick={(e) => e.stopPropagation()}
+              tabIndex={isExpanded ? 0 : -1}
+              className="interactive-lift self-end inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/40 rounded-sm"
+            >
+              Full details <ArrowUpRight size={13} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

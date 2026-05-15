@@ -12,13 +12,32 @@ const MARK_PATH =
   ' M792.40 657.50C770.53 663.58 748.89 669.14 725.96 667.27C606.30 657.54 503.24 529.99 422.10 454.36C388.13 422.71 343.75 376.20 293.10 375.24C272.85 374.86 252.53 382.08 235.89 393.34C167.11 439.88 179.12 531.41 209.11 597.12C231.19 645.48 262.44 689.53 301.78 725.39C416.34 829.83 536.96 841.51 671.24 764.17C719.05 736.64 756.48 698.66 792.40 657.50Z'
 
 // ─── Colour variants ─────────────────────────────────────────
+// trFg: mark colour for transparent-background exports.
+// For 'cream' this is the cream colour itself (#F7F3EE) because the
+// transparent asset represents a warm-cream mark for dark-background use,
+// matching hcs-mark-cream.svg. All other variants keep fg unchanged.
 const VARIANTS = [
-  { id: 'primary',  fg: '#5C1020', bg: '#FFFFFF' },
-  { id: 'reversed', fg: '#FFFFFF', bg: '#5C1020' },
-  { id: 'dark',     fg: '#FFFFFF', bg: '#1C1814' },
-  { id: 'cream',    fg: '#5C1020', bg: '#F7F3EE' },
-  { id: 'mono',     fg: '#1C1814', bg: '#FFFFFF' },
+  { id: 'primary',  fg: '#5C1020', bg: '#FFFFFF', trFg: '#5C1020' },
+  { id: 'reversed', fg: '#FFFFFF', bg: '#5C1020', trFg: '#FFFFFF' },
+  { id: 'dark',     fg: '#FFFFFF', bg: '#1C1814', trFg: '#FFFFFF' },
+  { id: 'cream',    fg: '#5C1020', bg: '#F7F3EE', trFg: '#F7F3EE' },
+  { id: 'mono',     fg: '#1C1814', bg: '#FFFFFF', trFg: '#1C1814' },
 ]
+
+function svgMarkTr(fg, s = 1) {
+  const W = 1024 * s, H = 1024 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${markEl(fg, 80 * s, 80 * s, 864 * s, 864 * s)}</svg>`
+}
+
+function svgStackedTr(fg, fontB64, s = 1) {
+  const W = 900 * s, H = 760 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 170 * s, 20 * s, 560 * s, 560 * s)}${textEl(fg, 450 * s, 636 * s, 48 * s, 'middle', 'auto', 'Horizon Care Services')}</svg>`
+}
+
+function svgLockupTr(fg, fontB64, s = 1) {
+  const W = 1400 * s, H = 280 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 60 * s, 40 * s, 200 * s, 200 * s)}${textEl(fg, 302 * s, 140 * s, 80 * s, 'start', 'middle', 'Horizon Care Services')}</svg>`
+}
 
 // ─── Banner colour tokens ─────────────────────────────────────
 // Approximate hex conversions of the site's oklch tokens
@@ -55,12 +74,50 @@ function svgLockup(fg, bg, fontB64, s = 1) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, 60 * s, 40 * s, 200 * s, 200 * s)}${textEl(fg, 302 * s, 140 * s, 80 * s, 'start', 'middle', 'Horizon Care Services')}</svg>`
 }
 
+// ─── Transparent-background variants (no <rect> fill) ────────
+function svgMarkTr(fg, s = 1) {
+  const W = 1024 * s, H = 1024 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${markEl(fg, 80 * s, 80 * s, 864 * s, 864 * s)}</svg>`
+}
+
+function svgStackedTr(fg, fontB64, s = 1) {
+  const W = 900 * s, H = 760 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 170 * s, 20 * s, 560 * s, 560 * s)}${textEl(fg, 450 * s, 636 * s, 48 * s, 'middle', 'auto', 'Horizon Care Services')}</svg>`
+}
+
+function svgLockupTr(fg, fontB64, s = 1) {
+  const W = 1400 * s, H = 280 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 60 * s, 40 * s, 200 * s, 200 * s)}${textEl(fg, 302 * s, 140 * s, 80 * s, 'start', 'middle', 'Horizon Care Services')}</svg>`
+}
+
 function svgIcon(fg, bg, s = 1) {
   // Tight-padded square for app icons (~5% padding)
   const W = 1024 * s, H = 1024 * s
   const pad = Math.round(51 * s)
   const markSize = W - pad * 2
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, pad, pad, markSize, markSize)}</svg>`
+}
+
+function svgIconTr(fg, s = 1) {
+  const W = 1024 * s, H = 1024 * s
+  const pad = Math.round(51 * s)
+  const markSize = W - pad * 2
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${markEl(fg, pad, pad, markSize, markSize)}</svg>`
+}
+
+function svgMarkTr(fg, s = 1) {
+  const W = 1024 * s, H = 1024 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${markEl(fg, 80 * s, 80 * s, 864 * s, 864 * s)}</svg>`
+}
+
+function svgStackedTr(fg, fontB64, s = 1) {
+  const W = 900 * s, H = 760 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 170 * s, 20 * s, 560 * s, 560 * s)}${textEl(fg, 450 * s, 636 * s, 48 * s, 'middle', 'auto', 'Horizon Care Services')}</svg>`
+}
+
+function svgLockupTr(fg, fontB64, s = 1) {
+  const W = 1400 * s, H = 280 * s
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, 60 * s, 40 * s, 200 * s, 200 * s)}${textEl(fg, 302 * s, 140 * s, 80 * s, 'start', 'middle', 'Horizon Care Services')}</svg>`
 }
 
 // ─── Hero icon grid (replicates hero-icon-grid.tsx logic) ────
@@ -138,6 +195,111 @@ function iconGridSvg(W, H, s) {
   const defs = `<radialGradient id="ig-grad" cx="${cx}" cy="${cy}" r="${r}" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="white" stop-opacity="1"/><stop offset="88%" stop-color="white" stop-opacity="0"/></radialGradient><mask id="ig-mask"><rect width="${W}" height="${H}" fill="url(#ig-grad)"/></mask>`
   const els = BANNER_ICONS.map(icon => iconEl(icon, W, H, s)).join('')
   return `<defs>${defs}</defs><g mask="url(#ig-mask)">${els}</g>`
+}
+
+// ─── Merch: pen format (landscape strip) ─────────────────────
+// Base: 1400×300. Mark on left (240×240), text block on right.
+// Width matches the lockup canvas so content fills the strip with no wasted space.
+function svgMerchPen(fg, bg, fontB64, s, withPhone) {
+  const W = 1400 * s, H = 300 * s
+  const mx = 30 * s, my = 30 * s, mw = 240 * s
+  const tx = 310 * s
+  const fvName = '&quot;opsz&quot; 40, &quot;wght&quot; 600'
+  const fvSub  = '&quot;opsz&quot; 14, &quot;wght&quot; 300'
+  const mutedOp = 0.62
+
+  let textEls
+  if (!withPhone) {
+    const yName = Math.round(152 * s), szName = Math.round(80 * s)
+    const yWeb  = Math.round(208 * s), szWeb  = Math.round(32 * s)
+    textEls = `<text x="${tx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
+  } else {
+    const yName  = Math.round(136 * s), szName  = Math.round(74 * s)
+    const yWeb   = Math.round(192 * s), szWeb   = Math.round(28 * s)
+    const yPhone = Math.round(230 * s), szPhone = Math.round(28 * s)
+    textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
+              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
+}
+
+function svgMerchPenTr(fg, fontB64, s, withPhone) {
+  const W = 1400 * s, H = 300 * s
+  const mx = 30 * s, my = 30 * s, mw = 240 * s
+  const tx = 310 * s
+  const fvName = '&quot;opsz&quot; 40, &quot;wght&quot; 600'
+  const fvSub  = '&quot;opsz&quot; 14, &quot;wght&quot; 300'
+  const mutedOp = 0.62
+
+  let textEls
+  if (!withPhone) {
+    const yName = Math.round(152 * s), szName = Math.round(80 * s)
+    const yWeb  = Math.round(208 * s), szWeb  = Math.round(32 * s)
+    textEls = `<text x="${tx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
+  } else {
+    const yName  = Math.round(136 * s), szName  = Math.round(74 * s)
+    const yWeb   = Math.round(192 * s), szWeb   = Math.round(28 * s)
+    const yPhone = Math.round(230 * s), szPhone = Math.round(28 * s)
+    textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
+              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
+}
+
+// ─── Merch: mug format (portrait panel) ──────────────────────
+// Base: 900×900. Big mark centred top half, text centred below.
+function svgMerchMug(fg, bg, fontB64, s, withPhone) {
+  const W = 900 * s, H = 900 * s
+  const mw = 420 * s, mx = Math.round((900 - 420) / 2 * s), my = 60 * s
+  const cx = Math.round(W / 2)
+  const fvName = '&quot;opsz&quot; 40, &quot;wght&quot; 600'
+  const fvSub  = '&quot;opsz&quot; 14, &quot;wght&quot; 300'
+  const mutedOp = 0.62
+
+  let textEls
+  if (!withPhone) {
+    const yName = Math.round(550 * s), szName = Math.round(68 * s)
+    const yWeb  = Math.round(624 * s), szWeb  = Math.round(32 * s)
+    textEls = `<text x="${cx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-variation-settings="${fvName}" text-anchor="middle" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${cx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
+  } else {
+    const yName  = Math.round(530 * s), szName  = Math.round(62 * s)
+    const yWeb   = Math.round(602 * s), szWeb   = Math.round(28 * s)
+    const yPhone = Math.round(642 * s), szPhone = Math.round(28 * s)
+    textEls = `<text x="${cx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" text-anchor="middle" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${cx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
+              `<text x="${cx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
+}
+
+function svgMerchMugTr(fg, fontB64, s, withPhone) {
+  const W = 900 * s, H = 900 * s
+  const mw = 420 * s, mx = Math.round((900 - 420) / 2 * s), my = 60 * s
+  const cx = Math.round(W / 2)
+  const fvName = '&quot;opsz&quot; 40, &quot;wght&quot; 600'
+  const fvSub  = '&quot;opsz&quot; 14, &quot;wght&quot; 300'
+  const mutedOp = 0.62
+
+  let textEls
+  if (!withPhone) {
+    const yName = Math.round(550 * s), szName = Math.round(68 * s)
+    const yWeb  = Math.round(624 * s), szWeb  = Math.round(32 * s)
+    textEls = `<text x="${cx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-variation-settings="${fvName}" text-anchor="middle" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${cx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
+  } else {
+    const yName  = Math.round(530 * s), szName  = Math.round(62 * s)
+    const yWeb   = Math.round(602 * s), szWeb   = Math.round(28 * s)
+    const yPhone = Math.round(642 * s), szPhone = Math.round(28 * s)
+    textEls = `<text x="${cx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" text-anchor="middle" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${cx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
+              `<text x="${cx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  text-anchor="middle" fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
 }
 
 // ─── Banner: hero text layout ─────────────────────────────────
@@ -238,9 +400,18 @@ async function main() {
       jobs.push({ file: `hcs-stacked-${v.id}${suffix}.png`, svg: svgStacked(v.fg, v.bg, fontB64, s) })
       jobs.push({ file: `hcs-lockup-${v.id}${suffix}.png`,  svg: svgLockup(v.fg, v.bg, fontB64, s) })
     }
+    // Transparent-background logo variants — 1× and 2× (use trFg, not fg)
+    for (const [s, suffix] of [[1, ''], [2, '@2x']]) {
+      jobs.push({ file: `hcs-mark-${v.id}-tr${suffix}.png`,    svg: svgMarkTr(v.trFg, s) })
+      jobs.push({ file: `hcs-stacked-${v.id}-tr${suffix}.png`, svg: svgStackedTr(v.trFg, fontB64, s) })
+      jobs.push({ file: `hcs-lockup-${v.id}-tr${suffix}.png`,  svg: svgLockupTr(v.trFg, fontB64, s) })
+    }
     // App icons — HD (1024×1024), Ultra HD (2048×2048)
     jobs.push({ file: `hcs-icon-${v.id}.png`,    svg: svgIcon(v.fg, v.bg, 1) })
     jobs.push({ file: `hcs-icon-${v.id}@2x.png`, svg: svgIcon(v.fg, v.bg, 2) })
+    // Transparent-background app icon — 1× and 2× (use trFg)
+    jobs.push({ file: `hcs-icon-${v.id}-tr.png`,    svg: svgIconTr(v.trFg, 1) })
+    jobs.push({ file: `hcs-icon-${v.id}-tr@2x.png`, svg: svgIconTr(v.trFg, 2) })
   }
 
   // Banners — 1920×640 at 1× and 2×
@@ -249,13 +420,41 @@ async function main() {
     jobs.push({ file: `hcs-banner-logo${suffix}.png`,  svg: svgLogoBanner(fontB64, s) })
   }
 
+  // Merch — pen (3000×300) and mug (900×900), with and without phone, all 5 variants
+  const svgFiles = []
+  for (const v of VARIANTS) {
+    for (const withPhone of [false, true]) {
+      const ps = withPhone ? '-phone' : ''
+      for (const [fmt, solidFn, trFn] of [
+        ['pen', svgMerchPen, svgMerchPenTr],
+        ['mug', svgMerchMug, svgMerchMugTr],
+      ]) {
+        // PNG with background: 1×, 2×, 4×
+        for (const [s, suffix] of [[1, ''], [2, '@2x'], [4, '@4x']]) {
+          jobs.push({ file: `hcs-merch-${fmt}-${v.id}${ps}${suffix}.png`, svg: solidFn(v.fg, v.bg, fontB64, s, withPhone) })
+        }
+        // Transparent PNG: 1×, 2×
+        for (const [s, suffix] of [[1, ''], [2, '@2x']]) {
+          jobs.push({ file: `hcs-merch-${fmt}-${v.id}${ps}-tr${suffix}.png`, svg: trFn(v.trFg, fontB64, s, withPhone) })
+        }
+        // SVG (transparent, font embedded) — written after PNG render loop
+        svgFiles.push({ file: `hcs-merch-${fmt}-${v.id}${ps}-tr.svg`, svg: trFn(v.trFg, fontB64, 1, withPhone) })
+      }
+    }
+  }
+
   for (const { file, svg } of jobs) {
     const outPath = path.join(outDir, file)
     await renderPng(svg, outPath)
     console.log('  ✓', file)
   }
 
-  console.log(`\nGenerated ${jobs.length} files → web/public/brand/`)
+  for (const { file, svg } of svgFiles) {
+    fs.writeFileSync(path.join(outDir, file), svg, 'utf8')
+    console.log('  ✓', file)
+  }
+
+  console.log(`\nGenerated ${jobs.length + svgFiles.length} files → web/public/brand/`)
 }
 
 main().catch(err => { console.error(err); process.exit(1) })

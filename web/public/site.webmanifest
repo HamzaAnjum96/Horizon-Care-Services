@@ -1,0 +1,27 @@
+{
+  "name": "Horizon Care Services",
+  "short_name": "HCS",
+  "description": "Registered health and social care provider. Staffing solutions, home care, and specialist support across England.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#1a1412",
+  "theme_color": "#9B0D14",
+  "icons": [
+    {
+      "src": "/brand/hcs-icon-primary-1x.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/hcs-icon-primary-4x.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

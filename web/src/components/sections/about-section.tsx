@@ -8,7 +8,7 @@ export function AboutSection() {
           Who we are
         </p>
 
-        <blockquote
+        <h2
           className="font-display text-ink-dark leading-[1.05] tracking-[-0.025em] mb-14 lg:mb-16 max-w-[16ch]"
           style={{
             fontSize: 'clamp(2rem, 5.2vw, 4.7rem)',
@@ -16,7 +16,7 @@ export function AboutSection() {
           }}
         >
           Care built around the person, not the process.
-        </blockquote>
+        </h2>
 
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 border-t border-rule-light pt-10 lg:pt-12">
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">

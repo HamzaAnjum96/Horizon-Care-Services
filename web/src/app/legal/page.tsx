@@ -4,17 +4,20 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
-  title: 'Legal Notice — Horizon Care Services',
+  title: { absolute: 'Legal Notice — Horizon Care Services' },
   description: 'Legal information for Horizon Care Services Ltd, including company registration and regulatory details.',
+  alternates: { canonical: `${siteUrl}/legal` },
 }
 
 export default function LegalNoticePage() {
   return (
     <>
       <Nav />
-      <main className="pb-20">
-        <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 1 May 2025" />
+      <main id="main-content" className="pb-20">
+        <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 1 May 2025" showGrid={false} />
 
         {/* Content */}
         <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-14">
