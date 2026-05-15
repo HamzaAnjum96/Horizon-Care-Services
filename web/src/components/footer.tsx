@@ -50,7 +50,7 @@ export function Footer() {
             <span className="mx-2 opacity-40">·</span>
             Company No. 14615041
           </p>
-          <div className="flex items-center gap-5">
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-x-5 gap-y-2.5">
             <Link
               href="/legal"
               className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors"
