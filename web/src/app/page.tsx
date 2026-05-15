@@ -6,6 +6,7 @@ import { AboutSection } from '@/components/sections/about-section'
 import { HowItWorks } from '@/components/sections/how-it-works'
 import { AreaSection } from '@/components/sections/area-section'
 import { DualCTA } from '@/components/sections/dual-cta'
+import { FaqSection } from '@/components/sections/faq-section'
 
 const siteUrl = 'https://www.horizoncareservices.org'
 
@@ -83,6 +84,7 @@ export default function Home() {
         <AboutSection />
         <HowItWorks />
         <AreaSection />
+        <FaqSection />
         <DualCTA />
       </main>
       <Footer />

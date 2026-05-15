@@ -170,7 +170,7 @@ function MainView({
           onClick={onAccept}
           className="interactive-lift inline-flex items-center justify-center gap-2 bg-brand text-ink-light px-4 py-3 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
         >
-          Accept all <Check size={14} />
+          Accept all <Check size={14} aria-hidden="true" />
         </button>
       </div>
 
@@ -248,7 +248,7 @@ function PreferencesView({
         onClick={onSave}
         className="interactive-lift mt-7 w-full inline-flex items-center justify-center gap-2 bg-brand text-ink-light px-4 py-3 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
       >
-        Save preferences <Check size={14} />
+        Save preferences <Check size={14} aria-hidden="true" />
       </button>
     </div>
   )

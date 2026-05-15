@@ -93,7 +93,6 @@ body {
     letter-spacing: -0.02em;
     line-height: 1.05;
   }
-}
 
   .interactive-lift {
     @apply transition-transform transition-shadow duration-300;
@@ -103,6 +102,7 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 10px 24px -18px color-mix(in oklab, var(--deep) 70%, transparent);
   }
+}
 
 
 /* ─── Hero texture & animated blobs ────────────────────── */

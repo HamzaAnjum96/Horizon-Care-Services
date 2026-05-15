@@ -16,7 +16,7 @@ export default function LegalNoticePage() {
   return (
     <>
       <Nav />
-      <main className="pb-20">
+      <main id="main-content" className="pb-20">
         <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 1 May 2025" showGrid={false} />
 
         {/* Content */}

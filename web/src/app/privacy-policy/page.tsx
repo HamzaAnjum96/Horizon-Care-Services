@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Nav />
-      <main className="pb-20">
+      <main id="main-content" className="pb-20">
         <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 9 May 2026" showGrid={false} />
 
         {/* Content */}

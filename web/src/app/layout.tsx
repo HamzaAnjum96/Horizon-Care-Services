@@ -84,7 +84,7 @@ const jsonLd = [
     '@id': `${siteUrl}/#organization`,
     name: 'Horizon Care Services',
     legalName: 'Horizon Care Services Ltd',
-    foundingDate: '2022',
+    foundingDate: '2023',
     url: siteUrl,
     logo: {
       '@type': 'ImageObject',

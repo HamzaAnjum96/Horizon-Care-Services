@@ -80,7 +80,7 @@ export default function SitemapPage() {
   return (
     <>
       <Nav />
-      <main className="pb-20">
+      <main id="main-content" className="pb-20">
         <PageHeader
           kicker="Site map"
           title="Everything on this site."

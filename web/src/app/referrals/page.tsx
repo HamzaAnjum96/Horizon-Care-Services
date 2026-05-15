@@ -78,7 +78,7 @@ export default function WorkWithUsPage() {
                     For urgent cover, we can often respond the same day.
                   </p>
                   <p>
-                    Once we understand your requirements, we will confirm what we can provide, outline the right service model, and agree next steps. For urgent cover we can often turn around same day.
+                    Once we understand your requirements, we will confirm what we can provide, outline the right service model, and agree next steps.
                   </p>
                   <p>
                     We work with NHS trusts, local authorities, private care homes, and commissioning teams. We are transparent about capacity, rates, and compliance from the first conversation.

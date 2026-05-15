@@ -78,7 +78,7 @@ export function Nav() {
           <button
             ref={openButtonRef}
             onClick={() => setMobileOpen(true)}
-            className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200', scrolled ? 'text-ink-dark' : 'text-ink-light')}
+            className={cn('md:hidden p-2.5 -mr-1.5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 rounded', scrolled ? 'text-ink-dark' : 'text-ink-light')}
             aria-label="Open navigation menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
@@ -115,7 +115,7 @@ export function Nav() {
               <button
                 ref={closeButtonRef}
                 onClick={() => setMobileOpen(false)}
-                className="text-ink-light p-1.5 -mr-1"
+                className="text-ink-light p-1.5 -mr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 rounded"
                 aria-label="Close navigation menu"
               >
                 <X size={20} aria-hidden="true" />
