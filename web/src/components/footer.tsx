@@ -50,7 +50,7 @@ export function Footer() {
             <span className="mx-2 opacity-40">·</span>
             Company No. 14615041
           </p>
-          <div className="grid grid-cols-2 sm:flex sm:items-center gap-x-5 gap-y-2.5 [&>*:nth-child(even)]:justify-self-end sm:[&>*:nth-child(even)]:justify-self-auto">
+          <div className="grid grid-cols-2 w-full sm:w-auto sm:flex sm:items-center gap-x-5 gap-y-2.5 [&>*:nth-child(even)]:justify-self-end sm:[&>*:nth-child(even)]:justify-self-auto">
             <Link
               href="/legal"
               className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors"
