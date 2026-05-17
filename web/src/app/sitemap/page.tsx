@@ -46,6 +46,12 @@ const PAGE_GROUPS: {
     ],
   },
   {
+    kicker: 'Brand',
+    pages: [
+      { title: 'Brand assets', href: '/branding', description: 'Downloadable logo assets in all approved colour variants for use in partner materials.' },
+    ],
+  },
+  {
     kicker: 'Legal',
     pages: [
       { title: 'Privacy policy', href: '/privacy-policy', description: 'How we collect, use, and protect personal data.' },
