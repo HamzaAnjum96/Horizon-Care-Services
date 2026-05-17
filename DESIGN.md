@@ -155,7 +155,7 @@ Body is GitHub-flavoured markdown. New post = drop a new `.md` file; no code cha
 - `h3`: Source Serif 4, `clamp(1.1rem, 1.6vw, 1.3rem)`, `opsz 18 wght 620`
 - Lists: amber em-dash markers (`—`) for `<ul>`, amber serif numerals for `<ol>`; no discs, no decimal markers
 - Blockquote: 2px left amber rule + display serif italic, no quote glyphs
-- `<hr>`: centred amber-dim three-dot break with vertical breathing room; no full-width line
+- `<hr>`: short centred amber rule (72px × 2px) with generous vertical margin; no full-width line, no decorative glyphs
 - Inline links: amber underline (1px, offset 4), text turns amber on hover
 - A `<h2>Useful references</h2>` block at the end of an article gets wrapped server-side with `.references-block`, turning the trailing `<ul>` into a separated link list with top/bottom rules
 
