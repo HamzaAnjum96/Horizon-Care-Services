@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 import { BrandingGrid } from './branding-grid'
 
@@ -15,16 +13,12 @@ export const metadata: Metadata = {
 export default function BrandingPage() {
   return (
     <>
-      <Nav />
-      <main>
-        <PageHeader
-          kicker="Brand Assets"
-          title="Logo & Branding"
-          intro="Download the Horizon Care Services logo in all approved formats and colour variants. Exports include high-resolution PNG, transparent-background PNG, and scalable SVG."
-        />
-        <BrandingGrid />
-      </main>
-      <Footer />
+      <PageHeader
+        kicker="Brand Assets"
+        title="Logo & Branding"
+        intro="Download the Horizon Care Services logo in all approved formats and colour variants. Exports include high-resolution PNG, transparent-background PNG, and scalable SVG."
+      />
+      <BrandingGrid />
     </>
   )
 }

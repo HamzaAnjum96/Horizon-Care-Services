@@ -128,6 +128,47 @@ All interactive elements implement:
 - No generic teal/white healthcare palette
 - No stock photography
 
+## Blog
+
+### Content model
+
+Posts are markdown files in `web/content/blog/*.md` with YAML frontmatter:
+
+```yaml
+---
+title: "Article title"
+date: 2026-05-17        # ISO date
+author: First Last
+category: Family guidance
+excerpt: One or two sentences shown in the index and used as the meta description.
+---
+```
+
+Body is GitHub-flavoured markdown. New post = drop a new `.md` file; no code changes. The slug is the filename minus `.md`.
+
+`web/src/lib/blog.ts` owns parsing (`gray-matter` + `marked`). Both `/blog` and `/blog/[slug]` are statically generated via `generateStaticParams` and contain zero client-side markdown parsing.
+
+### Article typography (`.prose-blog` in `globals.css`)
+
+- Body: Bricolage, `16px` / `1.75`, capped at `68ch` for `<p>`, `64ch` for lists
+- `h2`: Source Serif 4, `clamp(1.55rem, 2.4vw, 1.95rem)`, `opsz 32 wght 580`, generous top margin
+- `h3`: Source Serif 4, `clamp(1.1rem, 1.6vw, 1.3rem)`, `opsz 18 wght 620`
+- Lists: amber em-dash markers (`—`) for `<ul>`, amber serif numerals for `<ol>`; no discs, no decimal markers
+- Blockquote: 2px left amber rule + display serif italic, no quote glyphs
+- `<hr>`: centred amber-dim three-dot break with vertical breathing room; no full-width line
+- Inline links: amber underline (1px, offset 4), text turns amber on hover
+- A `<h2>Useful references</h2>` block at the end of an article gets wrapped server-side with `.references-block`, turning the trailing `<ul>` into a separated link list with top/bottom rules
+
+### Components
+
+- `web/src/components/blog/prose.tsx` — `<Prose html={string} />`. The single source of truth for article styling.
+- `web/src/components/blog/post-meta.tsx` — date · author · read time · category, sat on an amber rule.
+- `web/src/components/blog/reading-progress.tsx` — 1px amber bar under the nav. Respects `prefers-reduced-motion`.
+
+### Index page (`/blog`)
+
+Editorial chronological list. Years group posts with a large display-serif year header (sticky on `lg:`). Each entry is a hairline-ruled row: kicker date + category, large title in `font-display`, two-line excerpt, byline. Newest entry gets a small amber `New` chip. No cards, no images.
+
 ## Map (Contact Page)
 
 Uses Leaflet with CartoDB dark tiles. The map container **must** have `isolate` (CSS `isolation: isolate`) to create a stacking context and prevent Leaflet's internal z-index values from escaping above the nav.

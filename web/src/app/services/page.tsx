@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -59,9 +57,7 @@ export default function ServicesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="What we provide"
           title="Services shaped around each person."
           intro="Three areas of provision, all delivered by professionals who understand that care is only as good as the people providing it."
@@ -143,8 +139,6 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }

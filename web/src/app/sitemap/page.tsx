@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const BASE = 'https://www.horizoncareservices.org'
@@ -37,6 +35,12 @@ const PAGE_GROUPS: {
     kicker: 'Referrals',
     pages: [
       { title: 'Referrals', href: '/referrals', description: 'How NHS discharge planners and social workers can refer. We respond within 2 working days.' },
+    ],
+  },
+  {
+    kicker: 'Writing',
+    pages: [
+      { title: 'Blog', href: '/blog', description: 'Articles, notes, and field experience from the team — plain-English guidance for families and referrers.' },
     ],
   },
   {
@@ -86,8 +90,7 @@ const AI_FILES = [
 export default function SitemapPage() {
   return (
     <>
-      <Nav />
-      <main id="main-content" className="pb-20">
+      <div className="pb-20">
         <PageHeader
           kicker="Site map"
           title="Everything on this site."
@@ -164,8 +167,7 @@ export default function SitemapPage() {
           </div>
         </div>
 
-      </main>
-      <Footer />
+      </div>
     </>
   )
 }

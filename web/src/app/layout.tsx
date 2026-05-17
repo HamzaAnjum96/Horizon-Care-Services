@@ -4,6 +4,8 @@ import './globals.css'
 import { CookieBanner } from '@/components/cookie-banner'
 import { BackToTop } from '@/components/back-to-top'
 import { MaintenanceBanner } from '@/components/maintenance-banner'
+import { Nav } from '@/components/nav'
+import { Footer } from '@/components/footer'
 
 const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
@@ -261,7 +263,9 @@ export default function RootLayout({
         </a>
         <div className="grain-overlay" aria-hidden="true" />
         <MaintenanceBanner />
-        {children}
+        <Nav />
+        <main id="main-content">{children}</main>
+        <Footer />
         <CookieBanner />
         <BackToTop />
       </body>

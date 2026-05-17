@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -15,8 +13,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <Nav />
-      <main id="main-content" className="pb-20">
+      <div className="pb-20">
         <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 9 May 2026" showGrid={false} />
 
         {/* Content */}
@@ -155,8 +152,7 @@ export default function PrivacyPolicyPage() {
           </div>
         </div>
 
-      </main>
-      <Footer />
+      </div>
     </>
   )
 }

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -54,9 +52,7 @@ export default function SpecialistCarePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="Services / Specialist Care"
           title="Care that goes further."
           intro="For people living with dementia, those approaching end of life, and families navigating the most difficult periods. Delivered by professionals with the knowledge and the character to do it well."
@@ -187,8 +183,6 @@ export default function SpecialistCarePage() {
 
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }

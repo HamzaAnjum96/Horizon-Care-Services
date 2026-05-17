@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -46,9 +44,7 @@ export default function WorkWithUsPage() {
       {jsonLd.map((block, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
       ))}
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="Organisations"
           title="Let's work together."
           intro="We provide staffing, home care, and specialist support to NHS trusts, local authorities, care homes, and councils. Tell us what you need and we will respond promptly."
@@ -168,8 +164,6 @@ export default function WorkWithUsPage() {
 
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }

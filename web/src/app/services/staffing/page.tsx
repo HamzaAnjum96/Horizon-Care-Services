@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -72,9 +70,7 @@ export default function StaffingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="Services / Staffing Solutions"
           title="The right people, where you need them."
           intro="Skilled care professionals deployed to hospitals, care homes, and community settings across England. Available for single shifts, short-term contracts, and long-term placements, with 24/7 cover when it matters most."
@@ -201,8 +197,6 @@ export default function StaffingPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }

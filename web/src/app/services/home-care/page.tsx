@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -81,9 +79,7 @@ export default function HomeCarePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="Services / Home Care"
           title="Care at home, done properly."
           intro="Support that fits around the person, not a rota. We work with individuals, families, NHS trusts, and local authorities to provide home care that is consistent, reliable, and genuinely person-centred."
@@ -191,8 +187,6 @@ export default function HomeCarePage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }
