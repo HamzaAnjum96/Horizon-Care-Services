@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { HeroSection } from '@/components/hero/hero-section'
@@ -9,6 +10,10 @@ import { DualCTA } from '@/components/sections/dual-cta'
 import { FaqSection } from '@/components/sections/faq-section'
 
 const siteUrl = 'https://www.horizoncareservices.org'
+
+export const metadata: Metadata = {
+  alternates: { canonical: siteUrl },
+}
 
 const jsonLd = {
   '@context': 'https://schema.org',

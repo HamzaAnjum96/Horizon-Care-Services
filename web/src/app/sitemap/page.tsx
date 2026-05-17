@@ -4,12 +4,13 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
+const BASE = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
   title: 'Site Map — Horizon Care Services',
   description: 'All pages on the Horizon Care Services website, plus machine-readable files for search engines and AI.',
+  alternates: { canonical: `${BASE}/sitemap` },
 }
-
-const BASE = 'https://www.horizoncareservices.org'
 
 const PAGE_GROUPS: {
   kicker: string

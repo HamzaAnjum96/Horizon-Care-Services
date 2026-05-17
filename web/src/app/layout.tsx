@@ -45,9 +45,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'Horizon Care Services Ltd' }],
   creator: 'Horizon Care Services Ltd',
   publisher: 'Horizon Care Services Ltd',
-  alternates: {
-    canonical: siteUrl,
-  },
   robots: {
     index: true,
     follow: true,

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Apply — Horizon Care Services',
   description:
     'Apply for a role at Horizon Care Services. Complete the application and download a branded PDF to send to our careers team.',
+  robots: { index: false, follow: false },
 }
 
 export default function ApplyPage() {

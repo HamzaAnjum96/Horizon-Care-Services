@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'New worker onboarding — Horizon Care Services',
   description:
     'Complete your onboarding details so we can set you up on payroll and start assigning shifts.',
+  robots: { index: false, follow: false },
 }
 
 export default function OnboardingPage() {

@@ -4,9 +4,12 @@ import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 import { BrandingGrid } from './branding-grid'
 
+const siteUrl = 'https://www.horizoncareservices.org'
+
 export const metadata: Metadata = {
   title: 'Brand Assets — Horizon Care Services',
   description: 'Downloadable logo assets for Horizon Care Services in all approved colour variants.',
+  alternates: { canonical: `${siteUrl}/branding` },
 }
 
 export default function BrandingPage() {
