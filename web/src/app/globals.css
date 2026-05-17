@@ -345,22 +345,12 @@ body {
 
 .prose-blog hr {
   border: 0;
-  margin: 3.5rem auto;
-  width: 100%;
-  text-align: center;
-  height: 0.75rem;
-  position: relative;
-}
-
-.prose-blog hr::before {
-  content: '· · ·';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--amber-dim);
-  letter-spacing: 0.5em;
-  font-size: 0.75rem;
+  display: block;
+  width: 72px;
+  height: 2px;
+  margin: 4rem auto;
+  background-color: var(--amber);
+  border-radius: 1px;
 }
 
 .prose-blog code {
