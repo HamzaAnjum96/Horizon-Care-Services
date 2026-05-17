@@ -69,7 +69,11 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/brand/hcs-icon-primary.png', type: 'image/png', sizes: '1024x1024' },
+    ],
+    apple: [{ url: '/brand/hcs-icon-primary.png', sizes: '1024x1024' }],
     shortcut: '/favicon.svg',
   },
 }
