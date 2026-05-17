@@ -3,6 +3,7 @@ import { Source_Serif_4, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import { CookieBanner } from '@/components/cookie-banner'
 import { BackToTop } from '@/components/back-to-top'
+import { MaintenanceBanner } from '@/components/maintenance-banner'
 
 const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
@@ -259,6 +260,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <div className="grain-overlay" aria-hidden="true" />
+        <MaintenanceBanner />
         {children}
         <CookieBanner />
         <BackToTop />
