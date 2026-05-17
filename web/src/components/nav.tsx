@@ -13,6 +13,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
   { href: '/work-for-us', label: 'Work For Us' },
   { href: '/contact', label: 'Contact' },
 ]
@@ -63,16 +64,19 @@ export function Nav() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-7" aria-label="Main">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={pathname === link.href ? 'page' : undefined}
-                className={cn('text-[13px] font-medium transition-colors tracking-[0.04em]', scrolled ? 'text-ink-muted-dark hover:text-ink-dark' : 'text-ink-muted-light hover:text-ink-light')}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.href === '/' ? pathname === '/' : pathname === link.href || pathname.startsWith(`${link.href}/`)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={cn('text-[13px] font-medium transition-colors tracking-[0.04em]', scrolled ? 'text-ink-muted-dark hover:text-ink-dark' : 'text-ink-muted-light hover:text-ink-light')}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
 
           <button
@@ -124,19 +128,22 @@ export function Nav() {
 
             {/* Nav links */}
             <nav className="flex flex-col flex-1 overflow-y-auto" aria-label="Mobile">
-              {navLinks.map((link) => (
-                <div key={link.href} className="border-b border-rule-dark">
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    aria-current={pathname === link.href ? 'page' : undefined}
-                    className="flex items-center px-5 py-5 font-display text-ink-light text-[1.6rem] font-semibold leading-none tracking-[-0.02em] hover:text-amber transition-colors"
-                    style={{ fontVariationSettings: '"opsz" 28, "wght" 580' }}
-                  >
-                    {link.label}
-                  </Link>
-                </div>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = link.href === '/' ? pathname === '/' : pathname === link.href || pathname.startsWith(`${link.href}/`)
+                return (
+                  <div key={link.href} className="border-b border-rule-dark">
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className="flex items-center px-5 py-5 font-display text-ink-light text-[1.6rem] font-semibold leading-none tracking-[-0.02em] hover:text-amber transition-colors"
+                      style={{ fontVariationSettings: '"opsz" 28, "wght" 580' }}
+                    >
+                      {link.label}
+                    </Link>
+                  </div>
+                )
+              })}
             </nav>
 
             {/* Bottom contact strip */}

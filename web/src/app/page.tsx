@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { HeroSection } from '@/components/hero/hero-section'
 import { ServicesSection } from '@/components/sections/services-section'
 import { AboutSection } from '@/components/sections/about-section'
@@ -82,17 +80,13 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Nav />
-      <main id="main-content">
-        <HeroSection />
-        <ServicesSection />
-        <AboutSection />
-        <HowItWorks />
-        <AreaSection />
-        <FaqSection />
-        <DualCTA />
-      </main>
-      <Footer />
+      <HeroSection />
+      <ServicesSection />
+      <AboutSection />
+      <HowItWorks />
+      <AreaSection />
+      <FaqSection />
+      <DualCTA />
     </>
   )
 }

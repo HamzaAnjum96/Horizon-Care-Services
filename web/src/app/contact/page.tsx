@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import { ArrowUpRight, Phone, Mail, MessageCircle } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 import { LocationMap } from '@/components/location-map'
 
@@ -46,9 +44,7 @@ export default function ContactPage() {
       {jsonLd.map((block, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
       ))}
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="Contact"
           title="Get in touch."
           intro="Whether you're making a referral, enquiring about care, or looking for staffing cover: we respond quickly and give you a straight answer."
@@ -211,8 +207,6 @@ export default function ContactPage() {
 
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }

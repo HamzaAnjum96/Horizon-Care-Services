@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -170,9 +168,7 @@ export default function WorkForUsPage() {
       {jsonLd.map((block, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
       ))}
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="Work for us"
           title="Join a team that takes care seriously."
           intro="We recruit skilled health and social care professionals for flexible and long-term roles across England. If you want to work somewhere your standards are respected and your contribution recognised, we want to hear from you."
@@ -310,8 +306,6 @@ export default function WorkForUsPage() {
 
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }
