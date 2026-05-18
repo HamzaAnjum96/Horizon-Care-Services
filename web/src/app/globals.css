@@ -418,6 +418,7 @@ body {
 
 .prose-blog .step-flow > li::before {
   content: counter(step-num);
+  position: static;
   display: inline-flex;
   align-items: center;
   justify-content: center;
