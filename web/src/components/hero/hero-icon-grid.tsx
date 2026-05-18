@@ -78,10 +78,13 @@ const DESKTOP_ICONS = buildDesktopIcons()
 // ── Mobile: 4 fixed icons, one of each key type, spread across right side ────
 
 const MOBILE_ICONS: IconSpec[] = [
-  { id: 'm-a', type: 'logo',   left: 80, top: 20, size: 74, opacity: 0.22, duration: 9.5,  delay: -3.0 },
-  { id: 'm-b', type: 'cross',  left: 88, top: 62, size: 52, opacity: 0.17, duration: 7.2,  delay: -7.5 },
-  { id: 'm-c', type: 'shield', left: 65, top: 75, size: 36, opacity: 0.14, duration: 11.0, delay: -2.0 },
-  { id: 'm-d', type: 'heart',  left: 73, top: 36, size: 26, opacity: 0.12, duration: 8.3,  delay: -9.0 },
+  { id: 'm-a', type: 'logo',   left: 80, top: 20, size: 74, opacity: 0.22, duration: 9.5,  delay: -3.0  },
+  { id: 'm-b', type: 'cross',  left: 88, top: 62, size: 52, opacity: 0.17, duration: 7.2,  delay: -7.5  },
+  { id: 'm-c', type: 'shield', left: 65, top: 75, size: 36, opacity: 0.14, duration: 11.0, delay: -2.0  },
+  { id: 'm-d', type: 'heart',  left: 73, top: 36, size: 26, opacity: 0.12, duration: 8.3,  delay: -9.0  },
+  { id: 'm-e', type: 'ring',   left: 83, top: 50, size: 22, opacity: 0.09, duration: 7.0,  delay: -5.5  },
+  { id: 'm-f', type: 'dot',    left: 70, top: 57, size: 13, opacity: 0.11, duration: 8.4,  delay: -3.8  },
+  { id: 'm-g', type: 'cross',  left: 76, top: 87, size: 28, opacity: 0.10, duration: 6.6,  delay: -11.2 },
 ]
 
 // ── Shared ────────────────────────────────────────────────────────────────────
@@ -173,16 +176,18 @@ export function HeroIconGrid() {
     <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none">
       <svg width="0" height="0" className="absolute">
         <defs>
-          <filter id="icon-rough" x="-10%" y="-10%" width="120%" height="120%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="7" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+          <filter id="icon-grain" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" seed="9" result="noise" />
+            <feColorMatrix type="saturate" values="0" in="noise" result="mono" />
+            <feComposite in="mono" in2="SourceAlpha" operator="in" result="clipped" />
+            <feBlend in="SourceGraphic" in2="clipped" mode="soft-light" />
           </filter>
         </defs>
       </svg>
-    <div
-      className="hero-icon-mask absolute inset-0"
-      style={{ color: 'oklch(55% 0.12 20)', filter: 'url(#icon-rough)' }}
-    >
+      <div
+        className="hero-icon-mask absolute inset-0"
+        style={{ color: 'oklch(55% 0.12 20)', filter: 'url(#icon-grain)' }}
+      >
       {/* Mobile: 4 icons only */}
       <div className="sm:hidden absolute inset-0">
         <IconLayer icons={MOBILE_ICONS} animation={anim} />

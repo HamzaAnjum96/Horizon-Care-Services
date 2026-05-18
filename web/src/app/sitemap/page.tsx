@@ -41,6 +41,7 @@ const PAGE_GROUPS: {
     kicker: 'Writing',
     pages: [
       { title: 'Blog', href: '/blog', description: 'Articles, notes, and field experience from the team — plain-English guidance for families and referrers.' },
+      { title: 'Caring with Dignity in Later Life', href: '/blog/caring-with-dignity-in-later-life', description: 'What dignity in care actually means in the ordinary moments — washing, mealtimes, medication, and the systems that protect it.' },
       { title: 'Home Care vs Care Home', href: '/blog/home-care-vs-care-home', description: 'Understanding the difference between home care and a care home placement, and how to decide what fits best.' },
     ],
   },
