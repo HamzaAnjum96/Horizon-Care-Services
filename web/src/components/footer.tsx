@@ -11,8 +11,8 @@ export function Footer() {
         <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
 
           {/* Brand column — right on desktop, first on mobile */}
-          <div className="sm:order-2">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="sm:order-2 sm:text-right">
+            <div className="flex items-center gap-3 mb-4 sm:justify-end">
               <HCSLogoMark className="h-[24px] w-[24px] flex-shrink-0 text-ink-light" />
               <p
                 className="font-display text-ink-light text-[15px]"
@@ -21,7 +21,7 @@ export function Footer() {
                 Horizon Care Services
               </p>
             </div>
-            <p className="text-ink-muted-light text-[14px] leading-relaxed max-w-[34ch]">
+            <p className="text-ink-muted-light text-[14px] leading-relaxed max-w-[34ch] sm:ml-auto">
               Professional health and social care with a calm, personal approach.
             </p>
           </div>

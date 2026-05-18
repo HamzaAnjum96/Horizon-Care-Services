@@ -170,10 +170,18 @@ export function HeroIconGrid() {
     reduced ? undefined : `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`
 
   return (
+    <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none">
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <filter id="icon-rough" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
     <div
-      aria-hidden="true"
-      className="hero-icon-mask absolute inset-0 pointer-events-none select-none"
-      style={{ color: 'oklch(55% 0.12 20)' }}
+      className="hero-icon-mask absolute inset-0"
+      style={{ color: 'oklch(55% 0.12 20)', filter: 'url(#icon-rough)' }}
     >
       {/* Mobile: 4 icons only */}
       <div className="sm:hidden absolute inset-0">
@@ -183,6 +191,7 @@ export function HeroIconGrid() {
       <div className="hidden sm:block absolute inset-0">
         <IconLayer icons={DESKTOP_ICONS} animation={anim} />
       </div>
+    </div>
     </div>
   )
 }
