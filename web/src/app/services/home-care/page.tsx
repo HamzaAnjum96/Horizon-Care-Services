@@ -83,7 +83,7 @@ export default function HomeCarePage() {
           kicker="Services / Home Care"
           title="Care at home, done properly."
           intro="Support that fits around the person, not a rota. We work with individuals, families, NHS trusts, and local authorities to provide home care that is consistent, reliable, and genuinely person-centred."
-          cta={{ label: 'Make a referral', href: '/referrals' }}
+          cta={{ label: 'Commission home care', href: '/referrals' }}
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -159,7 +159,7 @@ export default function HomeCarePage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
             <div className="grid lg:grid-cols-[2fr_1fr] gap-8 lg:gap-20 items-start">
               <div>
-                <p className="section-kicker text-ink-muted-dark mb-4">For referrers</p>
+                <p className="section-kicker text-ink-muted-dark mb-4">For commissioning teams</p>
                 <p
                   className="font-display text-ink-dark leading-tight tracking-[-0.025em] mb-5"
                   style={{
@@ -167,18 +167,18 @@ export default function HomeCarePage() {
                     fontVariationSettings: '"opsz" 32, "wght" 560',
                   }}
                 >
-                  NHS and Local Authority referrals welcome.
+                  NHS and Local Authority commissions welcome.
                 </p>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                  We accept referrals from hospital discharge teams, social workers, care managers, and GPs. We respond to all referrals within 2 working days with an initial assessment or a proposed care plan, depending on urgency.
+                  We work with hospital discharge teams, social workers, care managers, and commissioning bodies. We respond within 2 working days with an initial assessment or a proposed care plan, depending on urgency.
                 </p>
               </div>
               <div className="pt-2">
                 <Link
-                  href="/contact"
+                  href="/referrals"
                   className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                 >
-                  Make a referral <ArrowUpRight size={14} aria-hidden="true" />
+                  Commission this service <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>
                 <p className="text-ink-muted-dark text-[13px] mt-4">
                   Or call <a href="tel:01582354119" className="underline underline-offset-2 hover:text-ink-dark transition-colors">01582 354 119</a>

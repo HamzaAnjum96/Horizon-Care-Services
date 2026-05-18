@@ -67,7 +67,7 @@ export function Footer() {
               href="/sitemap"
               className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors"
             >
-              Site map
+              Site Map
             </Link>
             <CookiePreferencesLink className="text-[11px] text-ink-muted-light hover:text-ink-light transition-colors" />
           </div>

@@ -6,6 +6,7 @@ import { BackToTop } from '@/components/back-to-top'
 import { MaintenanceBanner } from '@/components/maintenance-banner'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
+import { ReadingProgress } from '@/components/blog/reading-progress'
 
 const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
     'Manchester',
     'Bedfordshire',
     'England',
+    'care blog',
+    'home care guidance',
+    'health and social care articles',
   ],
   authors: [{ name: 'Horizon Care Services Ltd' }],
   creator: 'Horizon Care Services Ltd',
@@ -262,6 +266,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <div className="grain-overlay" aria-hidden="true" />
+        <ReadingProgress />
         <MaintenanceBanner />
         <Nav />
         <main id="main-content">{children}</main>

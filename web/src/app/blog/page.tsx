@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Writing — Horizon Care Services',
     description:
-      'Articles, notes, and field experience from the team at Horizon Care Services.',
+      'Articles, notes, and field experience from the team at Horizon Care Services. Practical guidance for families, referrers, and healthcare professionals.',
     url: `${siteUrl}/blog`,
     type: 'website',
   },

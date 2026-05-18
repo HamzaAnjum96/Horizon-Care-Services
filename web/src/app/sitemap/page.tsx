@@ -34,13 +34,14 @@ const PAGE_GROUPS: {
   {
     kicker: 'Referrals',
     pages: [
-      { title: 'Referrals', href: '/referrals', description: 'How NHS discharge planners and social workers can refer. We respond within 2 working days.' },
+      { title: 'Commission services', href: '/referrals', description: 'How NHS trusts, local authorities, and care organisations can commission our services. We respond within 2 working days.' },
     ],
   },
   {
     kicker: 'Writing',
     pages: [
       { title: 'Blog', href: '/blog', description: 'Articles, notes, and field experience from the team — plain-English guidance for families and referrers.' },
+      { title: 'Home Care vs Care Home', href: '/blog/home-care-vs-care-home', description: 'Understanding the difference between home care and a care home placement, and how to decide what fits best.' },
     ],
   },
   {
@@ -92,7 +93,7 @@ export default function SitemapPage() {
     <>
       <div className="pb-20">
         <PageHeader
-          kicker="Site map"
+          kicker="Site Map"
           title="Everything on this site."
           intro="All pages, plus the machine-readable files used by search engines and AI."
           showGrid={false}

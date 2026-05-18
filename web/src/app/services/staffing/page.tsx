@@ -74,7 +74,7 @@ export default function StaffingPage() {
           kicker="Services / Staffing Solutions"
           title="The right people, where you need them."
           intro="Skilled care professionals deployed to hospitals, care homes, and community settings across England. Available for single shifts, short-term contracts, and long-term placements, with 24/7 cover when it matters most."
-          cta={{ label: 'Make a referral', href: '/referrals' }}
+          cta={{ label: 'Enquire about staffing', href: '/referrals' }}
         />
 
         <section className="bg-cream py-20 lg:py-28">

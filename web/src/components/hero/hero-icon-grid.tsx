@@ -145,14 +145,8 @@ export function HeroIconGrid() {
   return (
     <div
       aria-hidden="true"
-      className="absolute inset-0 pointer-events-none select-none"
-      style={{
-        color: 'oklch(55% 0.12 20)',
-        maskImage:
-          'radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%)',
-        WebkitMaskImage:
-          'radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%)',
-      }}
+      className="hero-icon-mask absolute inset-0 pointer-events-none select-none"
+      style={{ color: 'oklch(55% 0.12 20)' }}
     >
       {ICONS.map((icon) => (
         <div

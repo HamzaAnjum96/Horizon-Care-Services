@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import { PageHeader } from '@/components/layout/page-header'
 import { Prose } from '@/components/blog/prose'
 import { PostMeta } from '@/components/blog/post-meta'
-import { ReadingProgress } from '@/components/blog/reading-progress'
 import { getAllPosts, getAllSlugs, getPost, formatDate } from '@/lib/blog'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -84,7 +83,6 @@ export default async function BlogPostPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <ReadingProgress />
 
       <PageHeader
         kicker={post.category}

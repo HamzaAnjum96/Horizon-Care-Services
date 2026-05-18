@@ -124,6 +124,17 @@ body {
   will-change: opacity;
 }
 
+.hero-icon-mask {
+  mask-image: radial-gradient(ellipse 40% 38% at 72% 50%, black 0%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse 40% 38% at 72% 50%, black 0%, transparent 82%);
+}
+@media (min-width: 640px) {
+  .hero-icon-mask {
+    mask-image: radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%);
+  }
+}
+
 @keyframes hero-breathe {
   0%, 100% { opacity: 0.45; }
   50%       { opacity: 1; }

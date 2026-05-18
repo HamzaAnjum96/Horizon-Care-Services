@@ -230,7 +230,7 @@ function ProfessionalsContent() {
             href="/referrals"
             className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-5 py-2.5 rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
           >
-            Submit a Referral <ArrowRight size={14} />
+            Commission Services <ArrowRight size={14} />
           </Link>
         </motion.div>
       </div>
