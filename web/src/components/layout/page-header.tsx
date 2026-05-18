@@ -22,7 +22,7 @@ export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageH
         <motion.p
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
+          transition={{ delay: 0.16, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-light mb-5"
         >
           {kicker}
@@ -31,7 +31,7 @@ export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageH
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+          transition={{ delay: 0.24, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
           className="font-display text-ink-light leading-[0.96] tracking-[-0.03em]"
           style={{
             fontSize: 'clamp(2.4rem, 5.2vw, 4.2rem)',
@@ -45,7 +45,7 @@ export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageH
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.22, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
+            transition={{ delay: 0.36, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
             className="mt-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
           >
             {intro && (

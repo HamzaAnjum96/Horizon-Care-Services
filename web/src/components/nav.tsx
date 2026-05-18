@@ -100,9 +100,8 @@ export function Nav() {
             aria-modal="true"
             aria-label="Navigation menu"
             initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
+            animate={{ opacity: 1, x: 0, transition: { duration: 0.42, ease: [0.25, 1, 0.5, 1] } }}
+            exit={{ opacity: 0, transition: { duration: 0.12, ease: 'easeIn' } }}
             className="fixed inset-0 z-[60] bg-deep flex flex-col"
           >
             {/* Header */}
