@@ -301,7 +301,7 @@ function MerchCard({ format, variant, withPhone }: {
               {withPhone && (
                 <p
                   className="font-display leading-tight truncate"
-                  style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+                  style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 600', opacity: 0.62 }}
                 >
                   {PHONE}
                 </p>
@@ -473,14 +473,13 @@ export function BrandingGrid() {
               </p>
             </div>
             <p className="text-[11px] font-medium tracking-[0.12em] text-ink-muted-dark uppercase flex-shrink-0">
-              2 formats · 2 variants · 5 colours
+              2 formats · 5 colours
             </p>
           </div>
 
           <div className="space-y-14">
             {([
-              { format: 'pen' as const, withPhone: false, heading: 'Pen — Without Number', desc: 'Landscape strip for pen barrel printing. Logo, name, and website.' },
-              { format: 'pen' as const, withPhone: true,  heading: 'Pen — With Number',    desc: 'Landscape strip including the office number beneath the website.' },
+              { format: 'pen' as const, withPhone: true,  heading: 'Pen',                  desc: 'Landscape strip for pen barrel printing. Logo, name, website, and office number.' },
               { format: 'mug' as const, withPhone: false, heading: 'Mug — Without Number', desc: 'Portrait panel for mug printing. Large mark with name and website below.' },
               { format: 'mug' as const, withPhone: true,  heading: 'Mug — With Number',    desc: 'Portrait panel including the office number below the website.' },
             ] as const).map(({ format, withPhone, heading, desc }) => (
