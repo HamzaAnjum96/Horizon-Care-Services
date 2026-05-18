@@ -204,7 +204,7 @@ function svgMerchPen(fg, bg, fontB64, s, withPhone) {
   const W = 1400 * s, H = 300 * s
   const mx = 30 * s, my = 30 * s, mw = 240 * s
   const tx = 310 * s
-  const fvName = '&quot;opsz&quot; 14, &quot;wght&quot; 600'
+  const fvName = '&quot;opsz&quot; 28, &quot;wght&quot; 600'
   const fvSub  = '&quot;opsz&quot; 10, &quot;wght&quot; 300'
   const mutedOp = 0.62
 
@@ -229,7 +229,7 @@ function svgMerchPenTr(fg, fontB64, s, withPhone) {
   const W = 1400 * s, H = 300 * s
   const mx = 30 * s, my = 30 * s, mw = 240 * s
   const tx = 310 * s
-  const fvName = '&quot;opsz&quot; 14, &quot;wght&quot; 600'
+  const fvName = '&quot;opsz&quot; 28, &quot;wght&quot; 600'
   const fvSub  = '&quot;opsz&quot; 10, &quot;wght&quot; 300'
   const mutedOp = 0.62
 
