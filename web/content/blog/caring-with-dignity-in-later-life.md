@@ -111,14 +111,14 @@ That difference must never be forgotten.
 
 A good dignity habit is to slow down at the start of intimate care. Not the whole visit, necessarily. Just the opening moments.
 
-<ol class="step-flow" aria-label="Opening intimate care routine">
-  <li>Knock</li>
-  <li>Greet</li>
-  <li>Explain</li>
-  <li>Ask</li>
-  <li>Cover</li>
-  <li>Check</li>
-</ol>
+<div class="step-flow" role="list" aria-label="Opening intimate care routine">
+  <div role="listitem">Knock</div>
+  <div role="listitem">Greet</div>
+  <div role="listitem">Explain</div>
+  <div role="listitem">Ask</div>
+  <div role="listitem">Cover</div>
+  <div role="listitem">Check</div>
+</div>
 
 This does not take long, but it changes the experience.
 
