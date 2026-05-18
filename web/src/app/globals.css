@@ -392,6 +392,118 @@ body {
   border-bottom: 1px solid var(--rule-light);
 }
 
+/* ─── Step flow (blog) ─────────────────────────────── */
+.prose-blog .step-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 1.75rem 0;
+  margin: 0.25rem 0 1.5rem;
+  max-width: 68ch;
+  counter-reset: step-num;
+}
+
+.prose-blog .step-flow > li {
+  display: flex;
+  align-items: center;
+  counter-increment: step-num;
+  padding-left: 0;
+  margin-top: 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.prose-blog .step-flow > li::before {
+  content: counter(step-num);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background: var(--amber);
+  color: oklch(97% 0.005 56);
+  font-family: var(--font-source-serif);
+  font-variation-settings: "opsz" 14, "wght" 600;
+  font-size: 11px;
+  border-radius: 2px;
+  margin-right: 0.5rem;
+}
+
+.prose-blog .step-flow > li:not(:last-child)::after {
+  content: '→';
+  margin: 0 0.625rem;
+  color: var(--amber);
+  opacity: 0.45;
+  font-size: 11px;
+}
+
+/* ─── Care comparison (blog) ───────────────────────── */
+.prose-blog .care-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--rule-light);
+  margin: 1.75rem 0;
+  max-width: 68ch;
+}
+
+.prose-blog .care-comparison > div {
+  padding: 1.25rem 1.5rem;
+}
+
+.prose-blog .care-comparison > div + div {
+  border-left: 1px solid var(--rule-light);
+  background: color-mix(in oklab, var(--amber) 5%, transparent);
+}
+
+.prose-blog .care-comparison__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted-dark);
+  margin-bottom: 0.85rem;
+}
+
+.prose-blog .care-comparison ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}
+
+.prose-blog .care-comparison ul > li {
+  padding: 0.4rem 0;
+  padding-left: 0;
+  margin-top: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-dark);
+  border-top: 1px solid var(--rule-light);
+}
+
+.prose-blog .care-comparison ul > li:first-child {
+  border-top: none;
+}
+
+.prose-blog .care-comparison ul > li::before {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .prose-blog .care-comparison {
+    grid-template-columns: 1fr;
+  }
+  .prose-blog .care-comparison > div + div {
+    border-left: none;
+    border-top: 1px solid var(--rule-light);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
