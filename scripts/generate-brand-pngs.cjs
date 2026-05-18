@@ -204,23 +204,23 @@ function svgMerchPen(fg, bg, fontB64, s, withPhone) {
   const W = 1400 * s, H = 300 * s
   const mx = 30 * s, my = 30 * s, mw = 240 * s
   const tx = 310 * s
-  const fvName = '&quot;opsz&quot; 40, &quot;wght&quot; 600'
-  const fvSub  = '&quot;opsz&quot; 14, &quot;wght&quot; 300'
+  const fvName = '&quot;opsz&quot; 14, &quot;wght&quot; 600'
+  const fvSub  = '&quot;opsz&quot; 10, &quot;wght&quot; 300'
   const mutedOp = 0.62
 
   let textEls
   if (!withPhone) {
     const yName = Math.round(152 * s), szName = Math.round(80 * s)
     const yWeb  = Math.round(208 * s), szWeb  = Math.round(32 * s)
-    textEls = `<text x="${tx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
-              `<text x="${tx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
+    textEls = `<text x="${tx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-weight="600" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-weight="300" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
   } else {
     const yName  = Math.round(136 * s), szName  = Math.round(74 * s)
     const yWeb   = Math.round(192 * s), szWeb   = Math.round(28 * s)
     const yPhone = Math.round(230 * s), szPhone = Math.round(28 * s)
-    textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
-              `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
-              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
+    textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-weight="600" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-weight="300" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
+              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-weight="300" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs><rect width="${W}" height="${H}" fill="${bg}"/>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
 }
@@ -229,23 +229,23 @@ function svgMerchPenTr(fg, fontB64, s, withPhone) {
   const W = 1400 * s, H = 300 * s
   const mx = 30 * s, my = 30 * s, mw = 240 * s
   const tx = 310 * s
-  const fvName = '&quot;opsz&quot; 40, &quot;wght&quot; 600'
-  const fvSub  = '&quot;opsz&quot; 14, &quot;wght&quot; 300'
+  const fvName = '&quot;opsz&quot; 14, &quot;wght&quot; 600'
+  const fvSub  = '&quot;opsz&quot; 10, &quot;wght&quot; 300'
   const mutedOp = 0.62
 
   let textEls
   if (!withPhone) {
     const yName = Math.round(152 * s), szName = Math.round(80 * s)
     const yWeb  = Math.round(208 * s), szWeb  = Math.round(32 * s)
-    textEls = `<text x="${tx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
-              `<text x="${tx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
+    textEls = `<text x="${tx}" y="${yName}" font-family="SS4,serif" font-size="${szName}" font-weight="600" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"  font-family="SS4,serif" font-size="${szWeb}"  font-weight="300" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>`
   } else {
     const yName  = Math.round(136 * s), szName  = Math.round(74 * s)
     const yWeb   = Math.round(192 * s), szWeb   = Math.round(28 * s)
     const yPhone = Math.round(230 * s), szPhone = Math.round(28 * s)
-    textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
-              `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
-              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
+    textEls = `<text x="${tx}" y="${yName}"  font-family="SS4,serif" font-size="${szName}"  font-weight="600" font-variation-settings="${fvName}" fill="${fg}">Horizon Care Services</text>` +
+              `<text x="${tx}" y="${yWeb}"   font-family="SS4,serif" font-size="${szWeb}"   font-weight="300" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">www.horizoncareservices.org</text>` +
+              `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${szPhone}" font-weight="300" font-variation-settings="${fvSub}"  fill="${fg}" fill-opacity="${mutedOp}">020 3757 2767</text>`
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFace(fontB64)}</style></defs>${markEl(fg, mx, my, mw, mw)}${textEls}</svg>`
 }
