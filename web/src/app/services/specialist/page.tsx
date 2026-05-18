@@ -166,15 +166,9 @@ export default function SpecialistCarePage() {
                     Commission this service <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                   <p className="text-ink-muted-dark text-[13px]">
-                    Urgent:{' '}
-                    <a href="tel:07572701349" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
-                      07572 701 349
-                    </a>
-                  </p>
-                  <p className="text-ink-muted-dark text-[13px]">
-                    Office:{' '}
-                    <a href="tel:01582354119" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
-                      01582 354 119
+                    Call:{' '}
+                    <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
+                      020 3757 2767
                     </a>
                   </p>
                 </div>
