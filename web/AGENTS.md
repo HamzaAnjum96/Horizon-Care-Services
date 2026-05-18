@@ -31,10 +31,10 @@ from there. Font loading is confirmed with `document.fonts.check()` before scree
 | Stacked name     | `opsz 14, wght 560`             | letter-spacing -0.01em         |
 | Lockup name      | `opsz 16, wght 560`             | letter-spacing -0.01em         |
 | Pen name         | `opsz 14, wght 600`             |                                |
-| Pen URL          | `opsz 10, wght 300`             | opacity 0.62                   |
-| Pen phone        | `opsz 10, wght 600`             | bold — opacity 0.62            |
+| Pen URL          | `opsz 10, wght 600`             | same colour as logo, no opacity |
+| Pen phone        | `opsz 10, wght 600`             | same colour as logo, no opacity |
 | Mug name         | `opsz 14, wght 600`             |                                |
-| Mug URL/phone    | `opsz 10, wght 300`             | opacity 0.62                   |
+| Mug URL/phone    | `opsz 10, wght 600`             | same colour as logo, no opacity |
 | Banner headline  | `opsz 64, wght 620`             |                                |
 | Banner logo name | `opsz 64, wght 580`             |                                |
 

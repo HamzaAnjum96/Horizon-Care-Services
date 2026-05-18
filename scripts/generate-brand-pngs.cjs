@@ -222,8 +222,8 @@ function buildPenHtml(fg, bg, fontUrl) {
   ${markSvgInline(fg, mark, mark)}
   <div style="min-width:0;overflow:hidden">
     <div style="font-family:SS4,serif;font-size:${name}px;font-weight:600;font-variation-settings:'opsz' 14,'wght' 600;color:${fg};line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Horizon Care Services</div>
-    <div style="font-family:SS4,serif;font-size:${sub}px;font-weight:300;font-variation-settings:'opsz' 10,'wght' 300;color:${fg};opacity:0.62;line-height:1.35;margin-top:${mt}px;white-space:nowrap">www.horizoncareservices.org</div>
-    <div style="font-family:SS4,serif;font-size:${sub}px;font-weight:600;font-variation-settings:'opsz' 10,'wght' 600;color:${fg};opacity:0.62;line-height:1.35;margin-top:${mt}px;white-space:nowrap">020 3757 2767</div>
+    <div style="font-family:SS4,serif;font-size:${sub}px;font-weight:600;font-variation-settings:'opsz' 10,'wght' 600;color:${fg};line-height:1.35;margin-top:${mt}px;white-space:nowrap">www.horizoncareservices.org</div>
+    <div style="font-family:SS4,serif;font-size:${sub}px;font-weight:600;font-variation-settings:'opsz' 10,'wght' 600;color:${fg};line-height:1.35;margin-top:${mt}px;white-space:nowrap">020 3757 2767</div>
   </div>
 </div>
 </body></html>`
@@ -239,8 +239,8 @@ function buildMugHtml(fg, bg, fontUrl, withPhone) {
 <div style="width:900px;height:900px;display:flex;flex-direction:column;align-items:center;padding-top:60px;gap:${yGap}px">
   ${markSvgInline(fg, 420, 420)}
   <div style="font-family:SS4,serif;font-size:${nameSize}px;font-weight:600;font-variation-settings:'opsz' 14,'wght' 600;color:${fg};line-height:1;white-space:nowrap;text-align:center">Horizon Care Services</div>
-  <div style="font-family:SS4,serif;font-size:${subSize}px;font-weight:300;font-variation-settings:'opsz' 10,'wght' 300;color:${fg};opacity:0.62;line-height:1;white-space:nowrap;text-align:center">www.horizoncareservices.org</div>
-  ${withPhone ? `<div style="font-family:SS4,serif;font-size:${subSize}px;font-weight:300;font-variation-settings:'opsz' 10,'wght' 300;color:${fg};opacity:0.62;line-height:1;white-space:nowrap;text-align:center">020 3757 2767</div>` : ''}
+  <div style="font-family:SS4,serif;font-size:${subSize}px;font-weight:600;font-variation-settings:'opsz' 10,'wght' 600;color:${fg};line-height:1;white-space:nowrap;text-align:center">www.horizoncareservices.org</div>
+  ${withPhone ? `<div style="font-family:SS4,serif;font-size:${subSize}px;font-weight:600;font-variation-settings:'opsz' 10,'wght' 600;color:${fg};line-height:1;white-space:nowrap;text-align:center">020 3757 2767</div>` : ''}
 </div>
 </body></html>`
 }
@@ -306,8 +306,8 @@ function buildPenSvg(fg, fontB64) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="300"><defs><style>${fontFaceSvg(fontB64)}</style></defs>` +
     `<svg x="${pad}" y="${markY}" width="${mark}" height="${mark}" viewBox="0 0 1024 1024"><path fill="${fg}" fill-rule="evenodd" clip-rule="evenodd" d="${MARK_PATH}"/><circle cx="511.4" cy="201.7" r="99.6" fill="${fg}"/></svg>` +
     `<text x="${tx}" y="${yName}" font-family="SS4,serif" font-size="${name}" font-weight="600" font-variation-settings="&quot;opsz&quot; 14, &quot;wght&quot; 600" fill="${fg}">Horizon Care Services</text>` +
-    `<text x="${tx}" y="${yUrl}" font-family="SS4,serif" font-size="${sub}" font-weight="300" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 300" fill="${fg}" fill-opacity="0.62">www.horizoncareservices.org</text>` +
-    `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${sub}" font-weight="600" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 600" fill="${fg}" fill-opacity="0.62">020 3757 2767</text>` +
+    `<text x="${tx}" y="${yUrl}" font-family="SS4,serif" font-size="${sub}" font-weight="600" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 600" fill="${fg}">www.horizoncareservices.org</text>` +
+    `<text x="${tx}" y="${yPhone}" font-family="SS4,serif" font-size="${sub}" font-weight="600" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 600" fill="${fg}">020 3757 2767</text>` +
     `</svg>`
 }
 
@@ -320,8 +320,8 @@ function buildMugSvg(fg, fontB64, withPhone) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><style>${fontFaceSvg(fontB64)}</style></defs>` +
     `<svg x="${mx}" y="${my}" width="${mw}" height="${mw}" viewBox="0 0 1024 1024"><path fill="${fg}" fill-rule="evenodd" clip-rule="evenodd" d="${MARK_PATH}"/><circle cx="511.4" cy="201.7" r="99.6" fill="${fg}"/></svg>` +
     `<text x="${cx}" y="${yName}" font-family="SS4,serif" font-size="${nameSize}" font-weight="600" font-variation-settings="&quot;opsz&quot; 14, &quot;wght&quot; 600" text-anchor="middle" fill="${fg}">Horizon Care Services</text>` +
-    `<text x="${cx}" y="${yUrl}" font-family="SS4,serif" font-size="${subSize}" font-weight="300" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 300" text-anchor="middle" fill="${fg}" fill-opacity="0.62">www.horizoncareservices.org</text>` +
-    (withPhone ? `<text x="${cx}" y="${Math.round(yUrl+subSize+10)}" font-family="SS4,serif" font-size="${subSize}" font-weight="300" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 300" text-anchor="middle" fill="${fg}" fill-opacity="0.62">020 3757 2767</text>` : '') +
+    `<text x="${cx}" y="${yUrl}" font-family="SS4,serif" font-size="${subSize}" font-weight="600" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 600" text-anchor="middle" fill="${fg}">www.horizoncareservices.org</text>` +
+    (withPhone ? `<text x="${cx}" y="${Math.round(yUrl+subSize+10)}" font-family="SS4,serif" font-size="${subSize}" font-weight="600" font-variation-settings="&quot;opsz&quot; 10, &quot;wght&quot; 600" text-anchor="middle" fill="${fg}">020 3757 2767</text>` : '') +
     `</svg>`
 }
 

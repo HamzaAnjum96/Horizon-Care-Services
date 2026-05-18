@@ -294,14 +294,14 @@ function MerchCard({ format, variant, withPhone }: {
               </p>
               <p
                 className="font-display leading-tight truncate mt-0.5"
-                style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+                style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 600' }}
               >
                 {WEBSITE}
               </p>
               {withPhone && (
                 <p
                   className="font-display leading-tight truncate"
-                  style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 600', opacity: 0.62 }}
+                  style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 600' }}
                 >
                   {PHONE}
                 </p>
@@ -322,14 +322,14 @@ function MerchCard({ format, variant, withPhone }: {
             </p>
             <p
               className="font-display text-center"
-              style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+              style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 600' }}
             >
               {WEBSITE}
             </p>
             {withPhone && (
               <p
                 className="font-display text-center"
-                style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 300', opacity: 0.62 }}
+                style={{ color: variant.fg, fontSize: 8, fontVariationSettings: '"opsz" 10, "wght" 600' }}
               >
                 {PHONE}
               </p>
