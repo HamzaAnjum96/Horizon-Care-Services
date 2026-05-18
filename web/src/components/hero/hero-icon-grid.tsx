@@ -62,7 +62,7 @@ function buildDesktopIcons(): IconSpec[] {
       })
       if (overlaps) { s += 3; continue }
 
-      const opacity  = (0.04 + t * 0.24) + seededFloat(s++) * 0.09
+      const opacity  = (0.02 + t * 0.13) + seededFloat(s++) * 0.05
       const duration = 4.5 + seededFloat(s++) * 7
       const delay    = -(seededFloat(s++) * 12)
 
@@ -78,13 +78,13 @@ const DESKTOP_ICONS = buildDesktopIcons()
 // ── Mobile: 4 fixed icons, one of each key type, spread across right side ────
 
 const MOBILE_ICONS: IconSpec[] = [
-  { id: 'm-a', type: 'logo',   left: 80, top: 20, size: 74, opacity: 0.22, duration: 9.5,  delay: -3.0  },
-  { id: 'm-b', type: 'cross',  left: 88, top: 62, size: 52, opacity: 0.17, duration: 7.2,  delay: -7.5  },
-  { id: 'm-c', type: 'shield', left: 65, top: 75, size: 36, opacity: 0.14, duration: 11.0, delay: -2.0  },
-  { id: 'm-d', type: 'heart',  left: 73, top: 36, size: 26, opacity: 0.12, duration: 8.3,  delay: -9.0  },
-  { id: 'm-e', type: 'ring',   left: 83, top: 50, size: 22, opacity: 0.09, duration: 7.0,  delay: -5.5  },
-  { id: 'm-f', type: 'dot',    left: 70, top: 57, size: 13, opacity: 0.11, duration: 8.4,  delay: -3.8  },
-  { id: 'm-g', type: 'cross',  left: 76, top: 87, size: 28, opacity: 0.10, duration: 6.6,  delay: -11.2 },
+  { id: 'm-a', type: 'logo',   left: 80, top: 20, size: 74, opacity: 0.12, duration: 9.5,  delay: -3.0  },
+  { id: 'm-b', type: 'cross',  left: 88, top: 62, size: 52, opacity: 0.09, duration: 7.2,  delay: -7.5  },
+  { id: 'm-c', type: 'shield', left: 65, top: 75, size: 36, opacity: 0.07, duration: 11.0, delay: -2.0  },
+  { id: 'm-d', type: 'heart',  left: 73, top: 36, size: 26, opacity: 0.06, duration: 8.3,  delay: -9.0  },
+  { id: 'm-e', type: 'ring',   left: 83, top: 50, size: 22, opacity: 0.05, duration: 7.0,  delay: -5.5  },
+  { id: 'm-f', type: 'dot',    left: 70, top: 57, size: 13, opacity: 0.06, duration: 8.4,  delay: -3.8  },
+  { id: 'm-g', type: 'cross',  left: 76, top: 87, size: 28, opacity: 0.05, duration: 6.6,  delay: -11.2 },
 ]
 
 // ── Shared ────────────────────────────────────────────────────────────────────
@@ -186,7 +186,7 @@ export function HeroIconGrid() {
       </svg>
       <div
         className="hero-icon-mask absolute inset-0"
-        style={{ color: 'oklch(55% 0.12 20)', filter: 'url(#icon-grain)' }}
+        style={{ color: 'oklch(38% 0.08 20)', filter: 'url(#icon-grain)' }}
       >
       {/* Mobile: 4 icons only */}
       <div className="sm:hidden absolute inset-0">

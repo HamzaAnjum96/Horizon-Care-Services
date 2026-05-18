@@ -4,21 +4,20 @@
 
 **Name:** Horizon Care Services Ltd
 **Company No.:** 14615041
-**Regulator:** Care Quality Commission (CQC)
-**Compliance:** Health and Social Care Act 2008
+**ICO Registration:** Registered with the Information Commissioner's Office
 **Office address:** 475B Cheetham Hill Road, Cheetham Hill, Manchester, M8 9LR
 **Phone:** 020 3757 2767 (Monday–Friday, 9am–5pm)
 **WhatsApp:** 020 3757 2767 (7 days a week)
 **Email:** contact@horizoncareservices.org
 **Website:** https://www.horizoncareservices.org
-**Business type:** Hybrid — registered office in Manchester; services delivered across England
+**Business type:** Healthcare staffing agency — registered office in Manchester; placements across England
 
-Horizon Care Services is a registered health and social care provider operating across England. We have been delivering care for several years, building a track record with NHS trusts, local authorities, families, and care organisations who need reliable professionals and consistent standards.
+Horizon Care Services is a healthcare staffing agency operating across England. We have been supplying skilled healthcare professionals for three years, building a track record with NHS trusts, local authorities, and care organisations who need reliable staff and consistent standards.
 
 ## Services
 
-### Staffing Solutions
-URL: https://www.horizoncareservices.org/services/staffing/
+### Healthcare Staffing
+URL: https://www.horizoncareservices.org/services/
 
 We supply skilled healthcare professionals to care organisations, NHS trusts, and local authorities at short or extended notice. Roles include:
 
@@ -29,31 +28,7 @@ We supply skilled healthcare professionals to care organisations, NHS trusts, an
 - Occupational Therapists
 - Physiotherapists
 
-Available 24/7, including weekends and bank holidays. We accommodate single-shift requests and long-term contracts. All staff are DBS-checked and trained to relevant professional standards.
-
-### Home Care
-URL: https://www.horizoncareservices.org/services/home-care/
-
-We deliver care to individuals in their own homes. Services include:
-
-- Personal care (washing, dressing, personal hygiene)
-- Medication support and management
-- Domestic assistance
-- Companionship and social support
-- Respite for family carers
-
-We aim to provide consistent, familiar carers wherever possible, because continuity matters to the people we support and to their families.
-
-### Specialist Care
-URL: https://www.horizoncareservices.org/services/specialist/
-
-We provide specialist support for people with complex needs:
-
-- Dementia and Alzheimer's support — tailored to the individual's stage and preferences
-- Hospice care and end-of-life support — delivered with clinical competence and genuine sensitivity
-- Life-limiting condition support — planned around the person and their family
-
-All specialist care staff have relevant training and supervised experience in their area of specialism.
+Available 24/7, including weekends and bank holidays. We accommodate single-shift requests and long-term contracts. All staff are DBS-checked, professionally registered where required, and verified against the relevant professional registers (NMC, HCPC, SWE).
 
 ## Geographic Coverage
 
@@ -69,25 +44,25 @@ We also work across England more broadly and regularly extend into new areas. Co
 
 ## Our Approach
 
-### Strength-Based Practice
-We start by understanding what a person can do, what matters to them, and where they want to get to. Care is planned around that — not a standard template. Every assessment is individual.
+### Careful Selection
+We are selective about the professionals we place. Every candidate is interviewed, reference-checked, and compliance-verified before joining our register. We do not supply staff we would not be confident placing ourselves.
 
-### Joined-Up Support
-We work alongside NHS teams, social workers, GPs, and families. We take responsibility for our part and communicate clearly with everyone else involved.
+### Joined-Up Working
+We work alongside NHS teams, social workers, and commissioning managers. We take responsibility for our part and communicate clearly with everyone else involved.
 
-### Honest Communication
-We tell referrers what we can and cannot do. We keep families informed. We report changes in condition promptly and accurately.
+### Honest About Capacity
+We tell commissioning teams what we can and cannot deliver — including timescales and coverage. We do not overcommit.
 
 ## For NHS and Local Authority Commissioning Teams
 
-We understand the pressures discharge planners, social workers, and commissioning managers operate under. We respond to enquiries within 2 working days, provide clear written assessments, and keep commissioning bodies informed at every stage.
+We understand the pressures discharge planners, social workers, and commissioning managers operate under. We respond to enquiries within 2 working days, provide clear written proposals, and keep commissioning bodies informed at every stage.
 
 Commission services: https://www.horizoncareservices.org/referrals/
 Contact: 020 3757 2767 or contact@horizoncareservices.org
 
 ## Writing and Guidance
 
-We publish plain-English articles for families, referrers, and healthcare professionals on our blog.
+We publish plain-English articles for referrers and healthcare professionals on our blog.
 
 Blog index: https://www.horizoncareservices.org/blog/
 
@@ -98,7 +73,7 @@ A practical guide to the difference between home care (support delivered in the 
 
 ## Careers
 
-We recruit nurses, healthcare assistants, support workers, and allied health professionals. We provide structured onboarding, ongoing training, and consistent support.
+We recruit nurses, healthcare assistants, support workers, and allied health professionals for flexible agency work across England. We provide structured onboarding, ongoing training, and a named coordinator for every worker on our register.
 
 Work for us: https://www.horizoncareservices.org/work-for-us/
 
@@ -112,7 +87,6 @@ Work for us: https://www.horizoncareservices.org/work-for-us/
 ## Legal
 
 - Company No. 14615041 (registered in England and Wales)
-- Regulated by the Care Quality Commission (CQC)
-- Operates under the Health and Social Care Act 2008
+- Registered with the Information Commissioner's Office (ICO)
 - Privacy Policy: https://www.horizoncareservices.org/privacy-policy/
 - Legal Notice: https://www.horizoncareservices.org/legal/

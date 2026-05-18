@@ -16,24 +16,15 @@ export function ServicesSection() {
         <p className="section-kicker text-ink-muted-dark mb-4">
           What we provide
         </p>
-        <h2
-          className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
-          style={{ fontSize: 'clamp(2rem, 4.2vw, 3.35rem)' }}
-        >
-          What we do.
-        </h2>
 
         <div className="border-t border-b border-rule-light py-8 lg:py-10">
           <div className="flex items-baseline justify-between gap-8 mb-7">
-            <h3
-              className="font-display text-ink-dark leading-tight"
-              style={{
-                fontSize: 'clamp(1.4rem, 3vw, 2.4rem)',
-                fontVariationSettings: '"opsz" 24, "wght" 560',
-              }}
+            <h2
+              className="editorial-title text-ink-dark leading-tight"
+              style={{ fontSize: 'clamp(2rem, 4.2vw, 3.35rem)' }}
             >
               Healthcare Staffing
-            </h3>
+            </h2>
             <span className="hidden lg:block text-[12px] text-ink-muted-dark tracking-[0.03em] flex-shrink-0">
               24/7 availability
             </span>

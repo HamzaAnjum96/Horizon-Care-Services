@@ -288,12 +288,12 @@ export default function WorkForUsPage() {
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <a
-                    href="mailto:careers@horizoncareservices.org"
+                  <Link
+                    href={applyHref('HCS-CV-000', 'Speculative CV')}
                     className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Email your CV <ArrowUpRight size={14} aria-hidden="true" />
-                  </a>
+                  </Link>
                   <p className="text-ink-muted-dark text-[13px]">
                     Or call us on{' '}
                     <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
