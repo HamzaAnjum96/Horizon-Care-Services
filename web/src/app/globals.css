@@ -150,22 +150,20 @@ body {
 }
 
 
-/* ─── Footer texture ────────────────────────────────────── */
-.footer-texture {
+/* ─── Footer atmosphere ─────────────────────────────────── */
+.footer-atmosphere {
   position: relative;
+  overflow: hidden;
 }
 
-.footer-texture::before {
+.footer-atmosphere::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(oklch(97% 0.005 56 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(97% 0.005 56 / 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background:
+    radial-gradient(ellipse 72% 90% at 5% 115%, oklch(21% 0.10 9 / 0.40) 0%, transparent 58%),
+    radial-gradient(ellipse 48% 55% at 96% -10%, oklch(44% 0.15 12 / 0.09) 0%, transparent 52%);
   pointer-events: none;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
 }
 
 /* ─── Marquee ─────────────────────────────────────────── */

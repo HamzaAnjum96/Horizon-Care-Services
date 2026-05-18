@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { HCSLogoMark } from '@/components/hcs-logo'
 import { CookiePreferencesLink } from '@/components/cookie-preferences-link'
 
 export function Footer() {
   return (
-    <footer className="footer-texture bg-deep border-t border-rule-dark" aria-label="Site footer">
+    <footer className="footer-atmosphere bg-deep border-t border-rule-dark" aria-label="Site footer">
       <div className="max-w-4xl mx-auto px-6 lg:px-10 pt-14 pb-8">
 
         <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
@@ -26,20 +27,45 @@ export function Footer() {
           </div>
 
           {/* Contact column */}
-          <address className="not-italic text-ink-muted-light text-[14px] leading-[1.75] text-left sm:text-right">
-            <p>475B Cheetham Hill Road,</p>
-            <p>Cheetham Hill</p>
-            <p className="mb-3">Manchester, M8 9LR</p>
-            <p>
+          <address className="not-italic text-ink-muted-light text-[14px] text-left">
+            <div className="flex items-start gap-2.5 mb-3">
+              <MapPin
+                size={14}
+                strokeWidth={1.5}
+                className="flex-shrink-0 mt-0.5"
+                style={{ color: 'var(--amber-dim)' }}
+                aria-hidden="true"
+              />
+              <div className="leading-[1.75]">
+                <p>475B Cheetham Hill Road,</p>
+                <p>Cheetham Hill</p>
+                <p>Manchester, M8 9LR</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <Phone
+                size={14}
+                strokeWidth={1.5}
+                className="flex-shrink-0"
+                style={{ color: 'var(--amber-dim)' }}
+                aria-hidden="true"
+              />
               <a href="tel:02037572767" className="hover:text-ink-light transition-colors">
                 020 3757 2767
               </a>
-            </p>
-            <p>
+            </div>
+            <div className="flex items-center gap-2.5 mt-1.5">
+              <Mail
+                size={14}
+                strokeWidth={1.5}
+                className="flex-shrink-0"
+                style={{ color: 'var(--amber-dim)' }}
+                aria-hidden="true"
+              />
               <a href="mailto:contact@horizoncareservices.org" className="hover:text-ink-light transition-colors">
                 contact@horizoncareservices.org
               </a>
-            </p>
+            </div>
           </address>
 
         </div>
