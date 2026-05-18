@@ -125,7 +125,7 @@ export default function SitemapPage() {
                             {description}
                           </p>
                         </div>
-                        <span className="font-mono text-[11px] text-ink-muted-dark/60 tracking-wide sm:text-right flex-shrink-0">
+                        <span className="hidden sm:block font-mono text-[11px] text-ink-muted-dark/60 tracking-wide sm:text-right flex-shrink-0">
                           {href === '/' ? BASE + '/' : BASE + href}
                         </span>
                       </li>
