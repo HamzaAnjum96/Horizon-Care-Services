@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 'use strict'
 
-// Renders the primary pen artwork via Playwright/Chromium for pixel-perfect
-// font rendering that matches the branding page preview exactly.
+// Renders the primary pen artwork via Playwright/Chromium.
+// Serves the font over localhost so Chromium actually loads it
+// (base64 data URIs for woff2 are silently dropped by Chromium).
 // Output: web/public/branding/Pen.png  (5600×1200 — 4× Ultra HD, no background)
 
-const fs   = require('fs')
-const path = require('path')
+const fs      = require('fs')
+const path    = require('path')
+const http    = require('http')
 const { chromium } = require('/opt/node22/lib/node_modules/playwright')
 
 const MARK_PATH =
@@ -17,7 +19,7 @@ const MARK_PATH =
 const FG    = '#5C1020'
 const W     = 1400
 const H     = 300
-const SCALE = 4   // output: 5600×1200
+const SCALE = 4
 
 function findFont() {
   const mediaDir = path.join(__dirname, '../web/.next/static/media')
@@ -26,12 +28,31 @@ function findFont() {
   const files = fs.readdirSync(mediaDir)
     .filter(f => f.includes('.p.') && f.endsWith('.woff2'))
     .sort((a, b) => fs.statSync(path.join(mediaDir, b)).size - fs.statSync(path.join(mediaDir, a)).size)
-  if (!files.length) throw new Error('Source Serif 4 woff2 not found — run npm run build in web/ first')
+  if (!files.length) throw new Error('Source Serif 4 woff2 not found')
   return path.join(mediaDir, files[0])
 }
 
+function startFontServer(fontPath) {
+  return new Promise((resolve) => {
+    const fontData = fs.readFileSync(fontPath)
+    const server = http.createServer((req, res) => {
+      res.writeHead(200, {
+        'Content-Type': 'font/woff2',
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'no-store',
+      })
+      res.end(fontData)
+    })
+    server.listen(0, '127.0.0.1', () => {
+      const { port } = server.address()
+      resolve({ server, url: `http://127.0.0.1:${port}/ss4.woff2` })
+    })
+  })
+}
+
 async function main() {
-  const fontB64 = fs.readFileSync(findFont()).toString('base64')
+  const fontPath = findFont()
+  const { server, url: fontUrl } = await startFontServer(fontPath)
 
   const html = `<!DOCTYPE html>
 <html>
@@ -42,15 +63,14 @@ async function main() {
   html, body { width: ${W}px; height: ${H}px; overflow: hidden; background: transparent; }
   @font-face {
     font-family: 'SS4';
-    src: url('data:font/woff2;base64,${fontB64}') format('woff2');
+    src: url('${fontUrl}') format('woff2');
     font-weight: 200 900;
+    font-display: block;
   }
-  /* Force font load */
-  body::after { content: 'a'; font-family: SS4; font-weight: 600; position: absolute; opacity: 0; }
 </style>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" style="display:block;overflow:visible">
+<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" style="display:block">
 
   <!-- Mark -->
   <svg x="30" y="30" width="240" height="240" viewBox="0 0 1024 1024">
@@ -58,7 +78,7 @@ async function main() {
     <circle cx="511.4" cy="201.7" r="99.6" fill="${FG}"/>
   </svg>
 
-  <!-- Name: opsz 28 gives natural display-weight tracking without overlap -->
+  <!-- Name -->
   <text
     x="310" y="152"
     font-family="SS4, Georgia, serif"
@@ -96,9 +116,13 @@ async function main() {
 
   await page.setContent(html, { waitUntil: 'networkidle' })
 
-  // Extra wait to guarantee the embedded font has loaded and laid out
-  await page.waitForFunction(() => document.fonts.ready)
-  await page.waitForTimeout(300)
+  // Wait until SS4 is fully loaded and painted
+  await page.waitForFunction(() =>
+    document.fonts.check("600 80px SS4") && document.fonts.check("300 32px SS4")
+  , { timeout: 10000 })
+
+  // One extra tick for layout to settle
+  await page.waitForTimeout(200)
 
   const buf = await page.screenshot({
     type:           'png',
@@ -107,11 +131,12 @@ async function main() {
   })
 
   await browser.close()
+  server.close()
 
   const out = path.join(__dirname, '../web/public/branding/Pen.png')
   fs.writeFileSync(out, buf)
-  console.log(`✓ written → ${out}`)
-  console.log(`  size: ${(buf.length / 1024).toFixed(0)} KB  |  pixels: ${W * SCALE}×${H * SCALE}`)
+  console.log(`✓ ${out}`)
+  console.log(`  ${(buf.length / 1024).toFixed(0)} KB  |  ${W * SCALE}×${H * SCALE} px`)
 }
 
 main().catch(err => { console.error(err); process.exit(1) })
