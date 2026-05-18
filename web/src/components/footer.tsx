@@ -5,13 +5,13 @@ import { CookiePreferencesLink } from '@/components/cookie-preferences-link'
 
 export function Footer() {
   return (
-    <footer className="footer-atmosphere bg-deep border-t border-rule-dark" aria-label="Site footer">
+    <footer className="footer-atmosphere dark-grain bg-deep border-t border-rule-dark" aria-label="Site footer">
       <div className="max-w-4xl mx-auto px-6 lg:px-10 pt-14 pb-8">
 
         <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
 
-          {/* Brand column */}
-          <div>
+          {/* Brand column — right on desktop, first on mobile */}
+          <div className="sm:order-2">
             <div className="flex items-center gap-3 mb-4">
               <HCSLogoMark className="h-[24px] w-[24px] flex-shrink-0 text-ink-light" />
               <p
@@ -26,8 +26,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Contact column */}
-          <address className="not-italic text-ink-muted-light text-[14px] text-left">
+          {/* Contact column — left on desktop, second on mobile */}
+          <address className="not-italic text-ink-muted-light text-[14px] text-left sm:order-1">
             <div className="flex items-start gap-2.5 mb-3">
               <MapPin
                 size={14}

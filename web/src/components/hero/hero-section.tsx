@@ -20,7 +20,7 @@ export function HeroSection() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section className="relative bg-deep flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-dark">
+    <section className="relative bg-deep dark-grain flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-dark">
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-pulse" />
         <HeroIconGrid />
