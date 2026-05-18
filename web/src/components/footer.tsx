@@ -22,7 +22,7 @@ export function Footer() {
               </p>
             </div>
             <p className="text-ink-muted-light text-[14px] leading-relaxed max-w-[34ch] sm:ml-auto">
-              Professional health and social care with a calm, personal approach.
+              Healthcare staffing for NHS trusts, local authorities, and care organisations across England.
             </p>
           </div>
 

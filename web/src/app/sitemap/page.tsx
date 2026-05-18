@@ -18,17 +18,14 @@ const PAGE_GROUPS: {
     kicker: 'Main',
     pages: [
       { title: 'Home',    href: '/',        description: 'Overview of services, who we help, and how to get in touch.' },
-      { title: 'About',   href: '/about',   description: 'Who we are, our regulatory status, and the principles we work by.' },
+      { title: 'About',   href: '/about',   description: 'Who we are, our approach to staffing, and three years of operating experience.' },
       { title: 'Contact', href: '/contact', description: 'Phone, email, WhatsApp, and a referral enquiry form.' },
     ],
   },
   {
     kicker: 'Services',
     pages: [
-      { title: 'Services overview',  href: '/services',           description: 'All care and staffing services at a glance.' },
-      { title: 'Staffing solutions', href: '/services/staffing',  description: 'Registered nurses, healthcare assistants, and support workers for shifts and long-term placements.' },
-      { title: 'Home care',          href: '/services/home-care', description: 'Personal care, companionship, and support delivered in the client\'s own home.' },
-      { title: 'Specialist care',    href: '/services/specialist',description: 'Dementia and Alzheimer\'s care, hospice support, and end-of-life care.' },
+      { title: 'Healthcare Staffing', href: '/services', description: 'Registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers placed across England.' },
     ],
   },
   {

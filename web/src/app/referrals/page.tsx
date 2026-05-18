@@ -6,12 +6,12 @@ import { PageHeader } from '@/components/layout/page-header'
 const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Commission Care Services — Horizon Care Services' },
-  description: 'Commission staffing, home care, or specialist support from Horizon Care Services. We work with NHS trusts, local authorities, councils, and care organisations across England.',
+  title: { absolute: 'Request Staffing — Horizon Care Services' },
+  description: 'Request healthcare staffing from Horizon Care Services. We supply vetted registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers to NHS trusts, local authorities, and care organisations across England.',
   alternates: { canonical: `${siteUrl}/referrals` },
   openGraph: {
     title: 'Commission Care Services — Horizon Care Services',
-    description: 'Staffing, home care, and specialist support for NHS trusts, local authorities, and care organisations across England.',
+    description: 'Vetted healthcare professionals supplied to NHS trusts, local authorities, and care organisations across England.',
     url: `${siteUrl}/referrals`,
     type: 'website',
   },
@@ -23,8 +23,8 @@ const jsonLd = [
     '@type': 'ContactPage',
     '@id': `${siteUrl}/referrals#webpage`,
     url: `${siteUrl}/referrals`,
-    name: 'Commission Care Services — Horizon Care Services',
-    description: 'Commission staffing, home care, or specialist support from Horizon Care Services. We work with NHS trusts, local authorities, and care organisations across England.',
+    name: 'Request Staffing — Horizon Care Services',
+    description: 'Request healthcare staffing from Horizon Care Services. We supply vetted professionals to NHS trusts, local authorities, and care organisations across England.',
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#organization` },
   },
@@ -47,7 +47,7 @@ export default function WorkWithUsPage() {
       <PageHeader
           kicker="Organisations"
           title="Let's work together."
-          intro="We provide staffing, home care, and specialist support to NHS trusts, local authorities, care homes, and councils. Tell us what you need and we will respond promptly."
+          intro="We supply vetted healthcare professionals to NHS trusts, local authorities, care homes, and councils. Tell us what you need and we will respond promptly."
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -110,7 +110,7 @@ export default function WorkWithUsPage() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6">
                 {[
                   { heading: 'Your organisation', points: ['Type of organisation', 'Location and service setting', 'Any existing frameworks or contracts'] },
-                  { heading: 'The requirement', points: ['Service type needed (staffing, home care, specialist)', 'Volume and duration', 'Any specific skills or qualifications required'] },
+                  { heading: 'The requirement', points: ['Role type and volume required', 'Duration and contract length', 'Any specific skills or qualifications required'] },
                   { heading: 'Timing', points: ['Required start date', 'Urgency level', 'Ongoing or one-off need'] },
                 ].map(({ heading, points }) => (
                   <div key={heading}>
@@ -144,7 +144,7 @@ export default function WorkWithUsPage() {
                 <div>
                   <p className="section-kicker text-ink-muted-dark mb-4">Our services</p>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                    Staffing solutions, home care, and specialist support (dementia and hospice). If you are not sure which service fits, describe the situation and we will advise.
+                    We place registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers at short notice or on longer-term contracts. Describe your requirement and we will respond promptly.
                   </p>
                   <Link
                     href="/services"

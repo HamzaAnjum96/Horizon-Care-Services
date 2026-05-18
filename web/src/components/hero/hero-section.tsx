@@ -33,7 +33,7 @@ export function HeroSection() {
           transition={{ delay: 0.06, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
           className="section-kicker text-ink-muted-light mb-6"
         >
-          Registered health &amp; social care · England
+          Healthcare staffing · England
         </motion.p>
 
         <h1
@@ -43,7 +43,7 @@ export function HeroSection() {
             fontVariationSettings: '"opsz" 64, "wght" 620',
           }}
         >
-          {['Care', 'that', 'holds', 'people', 'steady.'].map((word, i) => (
+          {['The', 'right', 'people,', 'right', 'when', 'you', 'need', 'them.'].map((word, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
@@ -66,8 +66,8 @@ export function HeroSection() {
             className="text-ink-muted-light leading-relaxed max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
-            Home care, specialist support, and clinical staffing across England.
-            For councils, NHS trusts, and care organisations — and the professionals who want to join us.
+            Vetted healthcare professionals supplied to NHS trusts, local authorities, and care organisations across England.
+            Available 24/7, at short notice or on longer-term contracts.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">

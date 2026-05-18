@@ -35,10 +35,7 @@ export default function LegalNoticePage() {
 
             <Section title="Regulatory status">
               <p>
-                Horizon Care Services Ltd is registered with and regulated by the Care Quality Commission (CQC) in England. Our services are provided in accordance with the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014.
-              </p>
-              <p>
-                We are also registered with the Information Commissioner&rsquo;s Office (ICO) as a data controller.
+                Horizon Care Services Ltd is registered with the Information Commissioner&rsquo;s Office (ICO) as a data controller.
               </p>
             </Section>
 

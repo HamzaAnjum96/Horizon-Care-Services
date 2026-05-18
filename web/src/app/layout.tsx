@@ -3,7 +3,6 @@ import { Source_Serif_4, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import { CookieBanner } from '@/components/cookie-banner'
 import { BackToTop } from '@/components/back-to-top'
-import { MaintenanceBanner } from '@/components/maintenance-banner'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { ReadingProgress } from '@/components/blog/reading-progress'
@@ -31,22 +30,21 @@ export const metadata: Metadata = {
     template: '%s — Horizon Care Services',
   },
   description:
-    'Registered health and social care provider offering staffing solutions, home care, and specialist support across England. Company No. 14615041. Regulated by the CQC.',
+    'Healthcare staffing agency placing registered nurses, social workers, occupational therapists, physiotherapists, HCAs, and support workers across England. Company No. 14615041.',
   keywords: [
-    'care services',
-    'home care',
-    'healthcare staffing',
-    'specialist care',
-    'dementia care',
-    'hospice care',
+    'healthcare staffing agency',
     'nursing agency',
+    'healthcare recruitment',
+    'registered nurses',
     'healthcare assistants',
-    'CQC registered',
+    'social workers',
+    'occupational therapists',
+    'support workers',
+    'NHS staffing',
     'Manchester',
     'Bedfordshire',
     'England',
     'care blog',
-    'home care guidance',
     'health and social care articles',
   ],
   authors: [{ name: 'Horizon Care Services Ltd' }],
@@ -64,14 +62,14 @@ export const metadata: Metadata = {
     siteName: 'Horizon Care Services',
     title: 'Horizon Care Services',
     description:
-      'Registered health and social care provider offering staffing solutions, home care, and specialist support across England.',
+      'Healthcare staffing agency placing registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers across England.',
     images: [{ url: '/brand/hcs-banner-hero@2x.png', width: 1920, height: 640, alt: 'Horizon Care Services' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Horizon Care Services',
     description:
-      'Registered health and social care provider offering staffing solutions, home care, and specialist support across England.',
+      'Healthcare staffing agency placing registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers across England.',
     images: ['/brand/hcs-banner-hero@2x.png'],
   },
   manifest: '/site.webmanifest',
@@ -88,7 +86,7 @@ export const metadata: Metadata = {
 const jsonLd = [
   {
     '@context': 'https://schema.org',
-    '@type': ['MedicalBusiness', 'MedicalOrganization'],
+    '@type': ['EmploymentAgency', 'LocalBusiness'],
     '@id': `${siteUrl}/#organization`,
     name: 'Horizon Care Services',
     legalName: 'Horizon Care Services Ltd',
@@ -100,7 +98,7 @@ const jsonLd = [
     },
     image: `${siteUrl}/brand/hcs-banner-hero@2x.png`,
     description:
-      'Registered health and social care provider offering staffing solutions, home care, and specialist support across England. Regulated by the Care Quality Commission (CQC). Company No. 14615041.',
+      'Healthcare staffing agency placing registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers with NHS trusts, local authorities, and care organisations across England. Company No. 14615041.',
     telephone: '+442037572767',
     email: 'contact@horizoncareservices.org',
     address: {
@@ -118,19 +116,15 @@ const jsonLd = [
       longitude: -2.241688,
     },
     knowsAbout: [
-      'Home Care',
       'Healthcare Staffing',
-      'Dementia Care',
-      'Hospice Care',
-      'Palliative Care',
-      'Personal Care',
       'Registered Nursing',
       'Social Work',
       'Occupational Therapy',
+      'Physiotherapy',
       'Healthcare Assistants',
       'Support Workers',
-      'CQC Regulated Care',
-      'Health and Social Care Act 2008',
+      'NHS Staffing',
+      'Healthcare Recruitment',
     ],
     contactPoint: [
       {
@@ -168,36 +162,16 @@ const jsonLd = [
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Care Services',
+      name: 'Healthcare Staffing Services',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Home Care',
+            name: 'Healthcare Staffing',
             description:
-              'Personal care, medication management, companionship, and respite support delivered in the client\'s own home.',
-            url: `${siteUrl}/services/home-care`,
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Staffing Solutions',
-            description:
-              'Registered nurses, healthcare assistants, support workers, and allied health professionals supplied at short or extended notice, available 24/7.',
-            url: `${siteUrl}/services/staffing`,
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Specialist Care',
-            description:
-              'Specialist support for people living with dementia and Alzheimer\'s, and those with life-limiting conditions including hospice and end-of-life care.',
-            url: `${siteUrl}/services/specialist`,
+              'Registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers supplied to NHS trusts, local authorities, and care organisations at short or extended notice, available 24/7.',
+            url: `${siteUrl}/services`,
           },
         },
       ],
@@ -208,16 +182,9 @@ const jsonLd = [
         name: 'Companies House Number',
         value: '14615041',
       },
-      {
-        '@type': 'PropertyValue',
-        name: 'CQC Registration',
-        propertyID: 'https://www.cqc.org.uk',
-        value: 'CQC registered provider — England',
-      },
     ],
     sameAs: [
       'https://find-and-update.company-information.service.gov.uk/company/14615041',
-      'https://www.cqc.org.uk',
       'https://www.horizon-careservices.co.uk',
       'https://horizon-careservices.co.uk',
     ],
@@ -267,7 +234,6 @@ export default function RootLayout({
         </a>
         <div className="grain-overlay" aria-hidden="true" />
         <ReadingProgress />
-        <MaintenanceBanner />
         <Nav />
         <main id="main-content">{children}</main>
         <Footer />

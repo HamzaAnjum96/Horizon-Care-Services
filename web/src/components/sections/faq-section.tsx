@@ -5,32 +5,28 @@ import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'What services does Horizon Care Services provide?',
-    a: 'We provide three core services: home care (personal care, companionship, medication management, meal preparation, housekeeping, and respite support); healthcare staffing (registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers); and specialist care for people living with dementia and those with life-limiting conditions including hospice and end-of-life care.',
+    q: 'What types of healthcare professionals do you place?',
+    a: 'Registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers. We cover clinical and non-clinical roles across hospital, community, residential, and domiciliary settings.',
   },
   {
-    q: 'What areas does Horizon Care Services cover?',
-    a: 'We operate across Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Greater Manchester, and London. Contact us if you are outside these areas. We can often extend coverage.',
+    q: 'How quickly can you provide cover?',
+    a: 'For urgent requests, we aim to respond within 2 working hours and can often provide same-day cover. For planned requirements, we confirm availability within 2 working days. We operate 24 hours a day, 7 days a week.',
   },
   {
-    q: 'Is Horizon Care Services CQC registered?',
-    a: 'Yes. Horizon Care Services Ltd is registered with and regulated by the Care Quality Commission (CQC) in England. Our services are provided in accordance with the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014. Company number 14615041.',
+    q: 'What vetting and compliance checks do your staff hold?',
+    a: 'Every professional on our register has been DBS checked, reference verified, and assessed for the environments they are placed in. We confirm professional registration — NMC for nurses, SWE for social workers, HCPC for allied health professionals — before any placement.',
   },
   {
-    q: 'How do I arrange home care from Horizon Care Services?',
-    a: 'Call 020 3757 2767 (Monday to Friday, 9am to 5pm), message via WhatsApp at the same number, or email contact@horizoncareservices.org. We respond within 2 working days to discuss requirements and confirm next steps.',
+    q: 'Which settings do you work with?',
+    a: 'NHS hospital wards and departments, mental health units, learning disability services, care homes, community and domiciliary settings, and private hospitals. If you are outside our listed areas, contact us — we work across England.',
   },
   {
-    q: 'How quickly can Horizon Care Services provide healthcare staff?',
-    a: 'For urgent requirements, we can often respond the same day. For planned placements, we confirm availability within 2 working days. Staffing is available 24/7 for NHS trusts, local authorities, care homes, and other care organisations across England.',
+    q: 'Which areas do you cover?',
+    a: 'Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Greater Manchester, and London. We regularly extend beyond these areas — contact us if you are elsewhere in England.',
   },
   {
-    q: 'Does Horizon Care Services work with NHS trusts and local authorities?',
-    a: 'Yes. We work with NHS trusts, local authorities, private care homes, and commissioning teams across England. We are transparent about capacity, rates, and compliance from the first conversation. Call 020 3757 2767 or email contact@horizoncareservices.org to discuss a commissioning requirement.',
-  },
-  {
-    q: 'What types of healthcare professionals does Horizon Care Services place?',
-    a: 'We place registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers in ward, community, residential, and domiciliary settings across England.',
+    q: 'Do you work with NHS trusts and local authorities?',
+    a: 'Yes. We work with NHS trusts, local authorities, private care organisations, and commissioning teams across England. We are transparent about capacity, rates, and compliance from the first conversation. Call 020 3757 2767 or email contact@horizoncareservices.org.',
   },
 ]
 

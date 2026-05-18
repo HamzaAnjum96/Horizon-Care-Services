@@ -75,7 +75,7 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: 'Registered Nurse',
-    description: 'RGN, RMN, and RNLD roles providing ward cover, community nursing, and specialist settings across England. Flexible shifts, competitive rates, CQC-regulated provider.',
+    description: 'RGN, RMN, and RNLD roles providing ward cover, community nursing, and specialist settings across England. Flexible shifts, competitive rates.',
     identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-RN-047' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
@@ -117,7 +117,7 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: 'Physiotherapist',
-    description: 'Community and hospital-based physiotherapy provision across England. Flexible contract and long-term placement roles with a CQC-regulated provider.',
+    description: 'Community and hospital-based physiotherapy provision across England. Flexible contract and long-term placement roles.',
     identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-PT-015' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
@@ -170,8 +170,8 @@ export default function WorkForUsPage() {
       ))}
       <PageHeader
           kicker="Work for us"
-          title="Join a team that takes care seriously."
-          intro="We recruit skilled health and social care professionals for flexible and long-term roles across England. If you want to work somewhere your standards are respected and your contribution recognised, we want to hear from you."
+          title="Join our register. Work on your terms."
+          intro="We recruit skilled health and social care professionals for flexible agency work across England. Join our register and choose shifts that fit your life, in settings where your skills are used properly."
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -187,14 +187,14 @@ export default function WorkForUsPage() {
                     fontVariationSettings: '"opsz" 28, "wght" 560',
                   }}
                 >
-                  Flexible work, without compromising what matters.
+                  Flexible agency work, with real support behind it.
                 </p>
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
-                    We&rsquo;re a health and social care company, not a staffing agency. That distinction matters. We&rsquo;re selective about who we work with because our reputation depends on the people we place, and theirs depends on us matching them to the right settings.
+                    We&rsquo;re a healthcare staffing agency. We work with NHS trusts, local authorities, and care organisations across England, and we take seriously who we place in those settings. That&rsquo;s why we&rsquo;re selective about the professionals we work with — and why the professionals who join us tend to stay.
                   </p>
                   <p>
-                    We have been operating for three years, working with NHS trusts, local authorities, and care organisations across England. In that time we&rsquo;ve built long-term working relationships with our staff: not because we lock people in, but because we treat them as professionals and pay what the work is worth.
+                    We have been operating for three years. In that time we&rsquo;ve built long-term working relationships with our staff: not because we lock people in, but because we match them well and treat them as professionals.
                   </p>
                   <p>
                     If you want shifts that fit around your life, a team that responds when you need something, and roles where your skills are actually used, talk to us.

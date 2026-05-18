@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
 
             <Section title="1. Who we are">
               <p>
-                Horizon Care Services Ltd (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a registered health and social care provider in England. We are the data controller for personal information collected through this website and in connection with our services.
+                Horizon Care Services Ltd (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a healthcare staffing agency registered in England. We are the data controller for personal information collected through this website and in connection with our services.
               </p>
               <p>
                 Registered address: 475B Cheetham Hill Road, Cheetham Hill, Manchester, M8 9LR. Company number: 14615041.
@@ -47,11 +47,11 @@ export default function PrivacyPolicyPage() {
             <Section title="3. How we use your information">
               <p>We use personal information to:</p>
               <ul>
-                <li>Assess and process referrals for our care and support services.</li>
-                <li>Arrange and deliver care, staffing, or support services.</li>
+                <li>Assess and process requirements for staffing placements.</li>
+                <li>Arrange and coordinate staffing placements and related services.</li>
                 <li>Respond to enquiries from families, professionals, and commissioners.</li>
                 <li>Process employment applications and manage relationships with staff.</li>
-                <li>Comply with our legal and regulatory obligations, including CQC requirements.</li>
+                <li>Comply with our legal and regulatory obligations.</li>
                 <li>Maintain records as required by applicable law.</li>
               </ul>
             </Section>
@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
                 <li>NHS trusts, Local Authorities, and commissioners involved in coordinating a person&rsquo;s care.</li>
                 <li>Regulated healthcare professionals and partner organisations delivering services.</li>
                 <li>Our IT and hosting providers, under data processing agreements.</li>
-                <li>Regulatory bodies (CQC, ICO) where required by law.</li>
+                <li>Regulatory bodies and supervisory authorities where required by law.</li>
               </ul>
             </Section>
 

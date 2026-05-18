@@ -15,26 +15,25 @@ export function AboutSection() {
             fontVariationSettings: '"opsz" 48, "wght" 580',
           }}
         >
-          Care built around the person, not the process.
+          Staffing built on relationships, not just rotas.
         </h2>
 
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 border-t border-rule-light pt-10 lg:pt-12">
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">
-            Horizon Care Services is a registered health and social care
-            provider with three years of experience operating across England.
-            We deliver home care, specialist support, and clinical staffing to
-            individuals, families, and care organisations.
+            Horizon Care Services is a healthcare staffing agency with three years
+            of experience placing professionals across England. We supply registered
+            nurses, social workers, OTs, physiotherapists, HCAs, and support workers
+            to NHS trusts, local authorities, and care organisations.
           </p>
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">
-            Our approach is grounded in strength-based practice and a genuine
-            recovery model. We work with each person to understand what matters
-            to them, assess what they need, and build a care plan around their
-            goals.
+            We are selective about who we place and where. Every professional on our
+            register is DBS checked, reference verified, and assessed against the
+            settings they work in. Quality over volume — every time.
           </p>
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">
-            We work alongside NHS trusts, local authorities, families, and
-            the people in our care to make sure support is joined up, reviewed
-            regularly, and always moving forward.
+            We work closely with ward managers, team leads, and commissioning
+            teams. When a requirement comes in, we respond quickly, confirm
+            availability clearly, and stay accountable once a placement is made.
           </p>
         </div>
       </div>

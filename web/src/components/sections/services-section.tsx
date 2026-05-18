@@ -7,42 +7,16 @@ import { ArrowUpRight } from 'lucide-react'
 const services = [
   {
     num: 'No. 01',
-    name: 'Staffing Solutions',
-    href: '/services/staffing',
+    name: 'Healthcare Staffing',
+    href: '/services',
     points: [
-      'Registered nurses, social workers, OTs, physiotherapists',
+      'Registered nurses (RGN, RMN, RNLD)',
+      'Social workers and allied health professionals',
+      'Occupational therapists and physiotherapists',
       'Healthcare assistants and support workers',
-      'Hospitals, care homes, and community settings',
-      'Single shifts through to long-term contracts',
-      'Short-notice cover, round the clock',
+      'Single shifts through to long-term contracts — 24/7',
     ],
     note: '24/7 availability',
-  },
-  {
-    num: 'No. 02',
-    name: 'Home Care',
-    href: '/services/home-care',
-    points: [
-      'Personal care and daily living support',
-      'Companionship and emotional support',
-      'Medication management and adherence',
-      'Meal preparation with dietary planning',
-      'Respite care for families and carers',
-    ],
-    note: 'Person-centred, at home',
-  },
-  {
-    num: 'No. 03',
-    name: 'Specialist Care',
-    href: '/services/specialist',
-    points: [
-      "Dementia and Alzheimer's specialist support",
-      'Hospice and end-of-life care',
-      'Respite care and carer relief',
-      'Care assessment and personalised planning',
-      'Coordination with NHS and local authority',
-    ],
-    note: 'Dementia, hospice, respite',
   },
 ]
 
@@ -59,7 +33,7 @@ export function ServicesSection() {
           className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
           style={{ fontSize: 'clamp(2rem, 4.2vw, 3.35rem)' }}
         >
-          Services shaped around each person.
+          What we do.
         </h2>
 
         <div>

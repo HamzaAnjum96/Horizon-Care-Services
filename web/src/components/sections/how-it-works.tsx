@@ -2,7 +2,7 @@ const steps = [
   {
     num: '01',
     title: 'Enquiry',
-    desc: 'Call or email to tell us what you need. Staffing cover, home care, specialist support — we ask the right questions and respond quickly.',
+    desc: 'Call or email to tell us what you need. We ask the right questions and respond quickly — often the same day for urgent cover.',
   },
   {
     num: '02',
