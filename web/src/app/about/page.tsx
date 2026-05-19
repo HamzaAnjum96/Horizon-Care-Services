@@ -53,7 +53,7 @@ export default function AboutPage() {
       ))}
       <PageHeader
         kicker="About us"
-        title="How we work: healthcare staffing with clear decisions and accountable follow-through."
+        title="Clear decisions. Accountable follow-through."
       />
 
       <section className="bg-cream py-20 lg:py-28">
@@ -69,7 +69,7 @@ export default function AboutPage() {
                   fontVariationSettings: '"opsz" 28, "wght" 560',
                 }}
               >
-                We help care services stay safe and staffed by making better placement decisions, faster.
+                Better decisions. Safer staffing.
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[64ch]">
                 <p>
@@ -159,7 +159,7 @@ export default function AboutPage() {
                 fontVariationSettings: '"opsz" 24, "wght" 560',
               }}
             >
-              What working with us looks like in practice.
+              In practice.
             </p>
             <ul className="grid lg:grid-cols-2 gap-x-16 gap-y-0">
               {[

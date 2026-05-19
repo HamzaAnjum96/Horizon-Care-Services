@@ -170,7 +170,7 @@ export default function WorkForUsPage() {
       ))}
       <PageHeader
           kicker="Work for us"
-          title="Join a staffing team that plans shifts properly and treats you like a professional."
+          title="Agency work done properly."
           intro="We recruit skilled health and social care professionals for flexible agency work across England. We focus on better matching, clearer briefing, and dependable coordination so your shifts are safer, smoother, and worth saying yes to."
         />
 
@@ -187,7 +187,7 @@ export default function WorkForUsPage() {
                     fontVariationSettings: '"opsz" 28, "wght" 560',
                   }}
                 >
-                  Flexible agency work with better briefing, clearer expectations, and responsive coordination.
+                  Better briefing. Real coordination.
                 </p>
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
@@ -321,7 +321,7 @@ export default function WorkForUsPage() {
                       fontVariationSettings: '"opsz" 24, "wght" 560',
                     }}
                   >
-                    Send us your CV and tell us what you&rsquo;re looking for.
+                    Send your CV.
                   </p>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[54ch]">
                     Click Apply on any role above, or email{' '}

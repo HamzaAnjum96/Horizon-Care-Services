@@ -70,7 +70,7 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
         kicker="What we provide"
-        title="Staffing support designed around your service realities."
+        title="Staffing matched to your service."
         intro="We supply vetted health and social care professionals to NHS trusts, local authorities, care homes, and care organisations across England. Our process is built for real operations: define the requirement properly, match to setting and risk, confirm clearly, and stay accountable after placement."
       />
 
@@ -85,7 +85,7 @@ export default function ServicesPage() {
               fontVariationSettings: '"opsz" 32, "wght" 560',
             }}
           >
-            Clinical and non-clinical roles for urgent cover, planned rotas, and longer-term continuity.
+            Urgent cover to long-term placements.
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
@@ -120,7 +120,7 @@ export default function ServicesPage() {
                   fontVariationSettings: '"opsz" 28, "wght" 560',
                 }}
               >
-                A practical process for safe, workable placements.
+                Checked before they're placed.
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                 <p>
@@ -211,7 +211,7 @@ export default function ServicesPage() {
               fontVariationSettings: '"opsz" 28, "wght" 560',
             }}
           >
-            Staffing pressures we can help you manage.
+            Common staffing pressures.
           </h2>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
             {[
@@ -245,7 +245,7 @@ export default function ServicesPage() {
               fontVariationSettings: '"opsz" 28, "wght" 560',
             }}
           >
-            What happens after you contact us.
+            What to expect.
           </h2>
           <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-0 list-none">
             {[

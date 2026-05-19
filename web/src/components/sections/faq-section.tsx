@@ -54,7 +54,7 @@ export function FaqSection() {
           className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
           style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)' }}
         >
-          Frequently asked.
+          Your questions.
         </h2>
 
         <dl>

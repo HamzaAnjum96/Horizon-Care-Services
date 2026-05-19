@@ -47,7 +47,7 @@ export function HowItWorks() {
           className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[20ch]"
           style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)' }}
         >
-          From staffing need to confirmed cover.
+          Need to cover.
         </h2>
 
         <div ref={ref} className="relative">
