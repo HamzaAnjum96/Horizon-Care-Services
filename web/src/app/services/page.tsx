@@ -70,23 +70,14 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
         kicker="What we provide"
-        title="Staffing support designed around your service realities."
+        title="Staff matched to setting, not just availability."
         intro="We supply vetted health and social care professionals to NHS trusts, local authorities, care homes, and care organisations across England. Our process is built for real operations: define the requirement properly, match to setting and risk, confirm clearly, and stay accountable after placement."
       />
 
       {/* Staff types */}
       <section className="bg-cream py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <p className="section-kicker text-ink-muted-dark mb-4">Staff we place</p>
-          <h2
-            className="font-display text-ink-dark leading-tight tracking-[-0.025em] mb-12 lg:mb-16 max-w-[22ch]"
-            style={{
-              fontSize: 'clamp(1.7rem, 3vw, 2.6rem)',
-              fontVariationSettings: '"opsz" 32, "wght" 560',
-            }}
-          >
-            Clinical and non-clinical roles for urgent cover, planned rotas, and longer-term continuity.
-          </h2>
+          <p className="section-kicker text-ink-muted-dark mb-12 lg:mb-16">Staff we place</p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
             {roles.map((role, i) => (
@@ -112,16 +103,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-[5fr_4fr] gap-12 lg:gap-24">
             <div>
-              <p className="section-kicker text-ink-muted-dark mb-5">Compliance and vetting</p>
-              <p
-                className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-8"
-                style={{
-                  fontSize: 'clamp(1.7rem, 2.8vw, 2.4rem)',
-                  fontVariationSettings: '"opsz" 28, "wght" 560',
-                }}
-              >
-                A practical process for safe, workable placements.
-              </p>
+              <p className="section-kicker text-ink-muted-dark mb-10">Compliance and vetting</p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                 <p>
                   Every professional on our register is checked before placement. We review requirements against role scope, setting demands, and practical shift conditions so clients are not left with avoidable mismatches.
@@ -165,8 +147,8 @@ export default function ServicesPage() {
               <p
                 className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-8"
                 style={{
-                  fontSize: 'clamp(1.7rem, 2.8vw, 2.4rem)',
-                  fontVariationSettings: '"opsz" 28, "wght" 560',
+                  fontSize: 'clamp(1.55rem, 2.4vw, 2rem)',
+                  fontVariationSettings: '"opsz" 24, "wght" 560',
                 }}
               >
                 Availability alone isn&rsquo;t a match.
@@ -203,16 +185,7 @@ export default function ServicesPage() {
       {/* Common situations */}
       <section className="bg-cream-dim py-20 lg:py-28 border-t border-rule-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <p className="section-kicker text-ink-muted-dark mb-5">When organisations call us</p>
-          <h2
-            className="font-display text-ink-dark leading-tight tracking-[-0.025em] mb-10 max-w-[28ch]"
-            style={{
-              fontSize: 'clamp(1.5rem, 2.6vw, 2.2rem)',
-              fontVariationSettings: '"opsz" 28, "wght" 560',
-            }}
-          >
-            Staffing pressures we can help you manage.
-          </h2>
+          <p className="section-kicker text-ink-muted-dark mb-10">When organisations call us</p>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
             {[
               'Urgent sickness cover',
@@ -237,16 +210,7 @@ export default function ServicesPage() {
       {/* What happens after you contact us */}
       <section className="bg-cream py-20 lg:py-28 border-t border-rule-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <p className="section-kicker text-ink-muted-dark mb-5">What happens next</p>
-          <h2
-            className="font-display text-ink-dark leading-tight tracking-[-0.025em] mb-12 max-w-[28ch]"
-            style={{
-              fontSize: 'clamp(1.5rem, 2.6vw, 2.2rem)',
-              fontVariationSettings: '"opsz" 28, "wght" 560',
-            }}
-          >
-            What happens after you contact us.
-          </h2>
+          <p className="section-kicker text-ink-muted-dark mb-12">What happens next</p>
           <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-0 list-none">
             {[
               { n: '01', text: 'We take the brief — role, setting, urgency and any specific requirements.' },
