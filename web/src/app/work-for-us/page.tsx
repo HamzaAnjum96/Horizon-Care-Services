@@ -19,36 +19,6 @@ export const metadata: Metadata = {
 
 const roles = [
   {
-    code: 'HCS-RN-047',
-    title: 'Registered Nurse',
-    location: 'North West (Various)',
-    note: 'RGN, RMN, RNLD. Ward cover, community nursing, and specialist settings.',
-  },
-  {
-    code: 'HCS-SW-023',
-    title: 'Social Worker',
-    location: 'Manchester',
-    note: 'Qualified social workers with experience across adult and children\'s services.',
-  },
-  {
-    code: 'HCS-OT-031',
-    title: 'Occupational Therapist',
-    location: 'Preston',
-    note: 'Assessment, rehabilitation, and discharge planning support.',
-  },
-  {
-    code: 'HCS-PT-015',
-    title: 'Physiotherapist',
-    location: 'Manchester',
-    note: 'Community and hospital-based physio provision.',
-  },
-  {
-    code: 'HCS-HCA-089',
-    title: 'Healthcare Assistant',
-    location: 'North West (Various)',
-    note: 'Experienced HCAs across ward, residential, and home environments.',
-  },
-  {
     code: 'HCS-SPW-062',
     title: 'Support Worker',
     location: 'North West (Various)',
@@ -74,76 +44,6 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
-    title: 'Registered Nurse',
-    description: 'RGN, RMN, and RNLD roles providing ward cover, community nursing, and specialist settings across England. Flexible shifts, competitive rates.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-RN-047' },
-    datePosted: '2026-05-13',
-    validThrough: '2027-05-13',
-    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
-    hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'North West England' } },
-    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
-    url: `${siteUrl}/work-for-us`,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'JobPosting',
-    title: 'Social Worker',
-    description: 'Qualified social workers with experience across adult and children\'s services. Flexible roles with NHS trusts and local authorities across England.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SW-023' },
-    datePosted: '2026-05-13',
-    validThrough: '2027-05-13',
-    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
-    hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressLocality: 'Manchester' } },
-    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
-    url: `${siteUrl}/work-for-us`,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'JobPosting',
-    title: 'Occupational Therapist',
-    description: 'Assessment, rehabilitation, and discharge planning support roles in community and hospital settings across England. Flexible hours and competitive rates.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-OT-031' },
-    datePosted: '2026-05-13',
-    validThrough: '2027-05-13',
-    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
-    hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressLocality: 'Preston' } },
-    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
-    url: `${siteUrl}/work-for-us`,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'JobPosting',
-    title: 'Physiotherapist',
-    description: 'Community and hospital-based physiotherapy provision across England. Flexible contract and long-term placement roles.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-PT-015' },
-    datePosted: '2026-05-13',
-    validThrough: '2027-05-13',
-    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
-    hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressLocality: 'Manchester' } },
-    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
-    url: `${siteUrl}/work-for-us`,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'JobPosting',
-    title: 'Healthcare Assistant',
-    description: 'Experienced HCAs across ward, residential, and home environments in England. Choose your shifts, competitive rates, with a named coordinator you can reach.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-HCA-089' },
-    datePosted: '2026-05-13',
-    validThrough: '2027-05-13',
-    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
-    hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'North West England' } },
-    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
-    url: `${siteUrl}/work-for-us`,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'JobPosting',
     title: 'Support Worker',
     description: 'Trained support workers for residential, community, and domiciliary settings across England. Flexible shifts around your availability, paid competitively and on time.',
     identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SPW-062' },
@@ -161,6 +61,8 @@ function applyHref(code: string, title: string) {
   const params = new URLSearchParams({ code, title })
   return `/work-for-us/apply?${params.toString()}`
 }
+
+const speculativeMailto = `mailto:careers@horizoncareservices.org?subject=${encodeURIComponent('Application — HCS-CV-000 · Speculative CV')}&body=${encodeURIComponent('Dear Horizon Care Services,\n\nPlease find attached my CV for your consideration.\n\nI am interested in flexible agency work and would welcome the opportunity to discuss my experience, availability and preferred locations.\n\nKind regards,\n[Your name]')}`
 
 export default function WorkForUsPage() {
   return (
@@ -331,19 +233,19 @@ export default function WorkForUsPage() {
                     >
                       careers@horizoncareservices.org
                     </a>{' '}
-                    directly with your CV, the role reference, your availability, and preferred locations. We will respond within 2 working days.
+                    directly with your CV, the role reference, your availability, and preferred locations.
                   </p>
                   <p className="text-ink-muted-dark text-[14px] leading-relaxed mt-4 max-w-[54ch]">
                     All positions are subject to DBS check, professional registration verification, and employment references. We are an equal opportunities employer.
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <Link
-                    href={applyHref('HCS-CV-000', 'Speculative CV')}
+                  <a
+                    href={speculativeMailto}
                     className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Email your CV <ArrowUpRight size={14} aria-hidden="true" />
-                  </Link>
+                  </a>
                   <p className="text-ink-muted-dark text-[13px]">
                     Or call us on{' '}
                     <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
