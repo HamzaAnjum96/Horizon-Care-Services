@@ -153,8 +153,42 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Settings */}
+      {/* Common situations */}
       <section className="bg-cream py-20 lg:py-28 border-t border-rule-light">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <p className="section-kicker text-ink-muted-dark mb-5">When organisations call us</p>
+          <h2
+            className="font-display text-ink-dark leading-tight tracking-[-0.025em] mb-10 max-w-[28ch]"
+            style={{
+              fontSize: 'clamp(1.5rem, 2.6vw, 2.2rem)',
+              fontVariationSettings: '"opsz" 28, "wght" 560',
+            }}
+          >
+            Common staffing situations we support.
+          </h2>
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
+            {[
+              'Urgent sickness cover',
+              'Planned absence',
+              'Recurring rota gaps',
+              'Short-term workforce pressure',
+              'Longer-term placements',
+              'Specialist role requirements',
+              'Weekend and bank holiday cover',
+              'Hard-to-fill rota positions',
+              'Temporary service expansion',
+            ].map((situation) => (
+              <li key={situation} className="border-t border-rule-light py-5 flex items-start gap-3 text-ink-muted-dark text-[15px]">
+                <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" />
+                {situation}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Settings */}
+      <section className="bg-cream-dim py-20 lg:py-28 border-t border-rule-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
             <div>

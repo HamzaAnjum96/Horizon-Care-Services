@@ -17,9 +17,9 @@ const PAGE_GROUPS: {
   {
     kicker: 'Main',
     pages: [
-      { title: 'Home',    href: '/',        description: 'Overview of services, who we help, and how to get in touch.' },
-      { title: 'About',   href: '/about',   description: 'Who we are, our approach to staffing, and three years of operating experience.' },
-      { title: 'Contact', href: '/contact', description: 'Phone, email, WhatsApp, and a referral enquiry form.' },
+      { title: 'Home',    href: '/',        description: 'Overview of services, who we work with, and how to get in touch.' },
+      { title: 'About',   href: '/about',   description: 'Who we are, our approach to staffing, and how we work with commissioning organisations.' },
+      { title: 'Contact', href: '/contact', description: 'Phone, email, and a staffing request form for organisations.' },
     ],
   },
   {
@@ -29,17 +29,11 @@ const PAGE_GROUPS: {
     ],
   },
   {
-    kicker: 'Referrals',
-    pages: [
-      { title: 'Commission services', href: '/referrals', description: 'How NHS trusts, local authorities, and care organisations can commission our services. We respond within 2 working days.' },
-    ],
-  },
-  {
     kicker: 'Writing',
     pages: [
-      { title: 'Blog', href: '/blog', description: 'Articles, notes, and field experience from the team — plain-English guidance for families and referrers.' },
-      { title: 'Caring with Dignity in Later Life', href: '/blog/caring-with-dignity-in-later-life', description: 'What dignity in care actually means in the ordinary moments — washing, mealtimes, medication, and the systems that protect it.' },
-      { title: 'Home Care vs Care Home', href: '/blog/home-care-vs-care-home', description: 'Understanding the difference between home care and a care home placement, and how to decide what fits best.' },
+      { title: 'Blog', href: '/blog', description: 'Articles and guidance for healthcare professionals and commissioning organisations.' },
+      { title: 'Caring with Dignity in Later Life', href: '/blog/caring-with-dignity-in-later-life', description: 'What dignity in care actually means in the ordinary moments — and the systems that protect it.' },
+      { title: 'Home Care vs Care Home', href: '/blog/home-care-vs-care-home', description: 'Understanding the difference between home care and a care home placement.' },
     ],
   },
   {

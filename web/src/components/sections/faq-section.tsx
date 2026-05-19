@@ -25,8 +25,8 @@ const faqs = [
     a: 'Checks depend on the role and setting, but may include DBS checks, right-to-work confirmation, references, identity checks, training evidence and professional registration checks with NMC, Social Work England or HCPC where relevant.',
   },
   {
-    q: 'Do you work directly with families?',
-    a: 'Horizon Care Services is focused on supplying staff to organisations. We work with councils, local authorities, NHS trusts, care homes and healthcare providers rather than direct family enquiries.',
+    q: 'What information should we send when requesting staff?',
+    a: 'Send the role, setting, location, shift pattern, urgency, required qualifications, and any compliance or reporting requirements. If the need is urgent, call us and we will work through the detail quickly.',
   },
 ]
 

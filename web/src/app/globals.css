@@ -58,6 +58,7 @@
 html { scroll-behavior: smooth; }
 
 body {
+  overflow-x: clip;
   background-color: var(--cream);
   background-image:
     radial-gradient(circle at 7% -6%, color-mix(in oklab, var(--moss-soft) 48%, transparent) 0%, transparent 44%),

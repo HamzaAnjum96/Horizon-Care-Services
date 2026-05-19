@@ -61,10 +61,10 @@ const jsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'Does Horizon Care Services work directly with families?',
+      name: 'What information should we send when requesting staff?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Horizon Care Services is focused on supplying staff to organisations. We work with councils, local authorities, NHS trusts, care homes and healthcare providers rather than direct family enquiries.',
+        text: 'Send the role, setting, location, shift pattern, urgency, required qualifications, and any compliance or reporting requirements. If the need is urgent, call us and we will work through the detail quickly.',
       },
     },
   ],
