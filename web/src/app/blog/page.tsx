@@ -124,7 +124,7 @@ function PostRow({
       </div>
 
       <h2
-        className="font-display text-ink-dark leading-[1.1] tracking-[-0.02em] mb-4 max-w-[28ch] transition-colors group-hover:text-amber"
+        className="font-display text-ink-dark leading-[1.1] tracking-[-0.02em] mb-4 lg:max-w-[28ch] transition-colors group-hover:text-amber"
         style={{
           fontSize: 'clamp(1.7rem, 3.4vw, 2.6rem)',
           fontVariationSettings: '"opsz" 36, "wght" 580',
@@ -133,7 +133,7 @@ function PostRow({
         {post.title}
       </h2>
 
-      <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[60ch] mb-5">
+      <p className="text-ink-muted-dark text-[15px] leading-relaxed lg:max-w-[60ch] mb-5">
         {post.excerpt}
       </p>
 
