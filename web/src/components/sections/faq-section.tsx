@@ -49,7 +49,13 @@ export function FaqSection() {
   return (
     <section className="bg-cream py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <p className="section-kicker text-ink-muted-dark mb-12 lg:mb-14">Common questions</p>
+        <p className="section-kicker text-ink-muted-dark mb-4">Common questions</p>
+        <h2
+          className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
+          style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)' }}
+        >
+          Frequently asked.
+        </h2>
 
         <dl>
           {faqs.map((faq, i) => {

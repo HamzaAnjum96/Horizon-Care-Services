@@ -170,7 +170,7 @@ export default function WorkForUsPage() {
       ))}
       <PageHeader
           kicker="Work for us"
-          title="Flexible agency work with honest coordination."
+          title="Join a staffing team that plans shifts properly and treats you like a professional."
           intro="We recruit skilled health and social care professionals for flexible agency work across England. We focus on better matching, clearer briefing, and dependable coordination so your shifts are safer, smoother, and worth saying yes to."
         />
 
@@ -179,7 +179,16 @@ export default function WorkForUsPage() {
 
             <div className="grid lg:grid-cols-[5fr_4fr] gap-12 lg:gap-24 mb-20 lg:mb-28">
               <div>
-                <p className="section-kicker text-ink-muted-dark mb-10">Why Horizon</p>
+                <p className="section-kicker text-ink-muted-dark mb-5">Why Horizon</p>
+                <p
+                  className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-8"
+                  style={{
+                    fontSize: 'clamp(1.7rem, 2.8vw, 2.4rem)',
+                    fontVariationSettings: '"opsz" 28, "wght" 560',
+                  }}
+                >
+                  Flexible agency work with better briefing, clearer expectations, and responsive coordination.
+                </p>
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
                     We work with NHS trusts, local authorities, and care organisations across England, and we are deliberate about where we place people. We do not treat staff as interchangeable — we match to setting, shift demands, and role scope so you can do your work well.
@@ -304,7 +313,16 @@ export default function WorkForUsPage() {
             <div className="border-t border-rule-light pt-16 lg:pt-20">
               <div className="grid lg:grid-cols-[2fr_1fr] gap-10 lg:gap-20 items-start">
                 <div>
-                  <p className="section-kicker text-ink-muted-dark mb-8">How to apply</p>
+                  <p className="section-kicker text-ink-muted-dark mb-4">How to apply</p>
+                  <p
+                    className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-6"
+                    style={{
+                      fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
+                      fontVariationSettings: '"opsz" 24, "wght" 560',
+                    }}
+                  >
+                    Send us your CV and tell us what you&rsquo;re looking for.
+                  </p>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[54ch]">
                     Click Apply on any role above, or email{' '}
                     <a

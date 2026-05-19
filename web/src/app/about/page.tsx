@@ -53,7 +53,7 @@ export default function AboutPage() {
       ))}
       <PageHeader
         kicker="About us"
-        title="Healthcare staffing with clear decisions and real accountability."
+        title="How we work: healthcare staffing with clear decisions and accountable follow-through."
       />
 
       <section className="bg-cream py-20 lg:py-28">
@@ -151,7 +151,16 @@ export default function AboutPage() {
           </div>
 
           <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
-            <p className="section-kicker text-ink-muted-dark mb-10">How we work with clients</p>
+            <p className="section-kicker text-ink-muted-dark mb-8">How we work with clients</p>
+            <p
+              className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-10 max-w-[32ch]"
+              style={{
+                fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
+                fontVariationSettings: '"opsz" 24, "wght" 560',
+              }}
+            >
+              What working with us looks like in practice.
+            </p>
             <ul className="grid lg:grid-cols-2 gap-x-16 gap-y-0">
               {[
                 'We confirm who is attending, when, and where before the shift starts.',
