@@ -60,8 +60,8 @@ const credentials: Credential[] = [
     image: '/SIA-Logo.png',
   },
   {
-    code: 'PL-900',
-    name: 'Microsoft Certified: Power Platform Fundamentals',
+    code: 'AI-900',
+    name: 'Microsoft Certified: Azure AI Fundamentals',
     image: '/microsoft-certified-fundamentals-badge.svg',
   },
   {
