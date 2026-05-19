@@ -63,7 +63,7 @@ export function HeroSection() {
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 lg:gap-16"
         >
           <p
-            className="text-ink-muted-light leading-relaxed max-w-[46ch]"
+            className="text-ink-muted-light leading-relaxed lg:max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
             Horizon Care Services supplies vetted health and social care professionals to local authorities, NHS trusts, care homes and healthcare organisations across England. We support urgent cover, planned staffing gaps and longer-term placements with clear communication from the first call.

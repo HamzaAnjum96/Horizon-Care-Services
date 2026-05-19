@@ -32,8 +32,8 @@ export function ServicesSection() {
             </span>
           </div>
 
-          <div className="grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-16 items-end mb-6">
-            <ul className="space-y-2">
+          <div className="mb-6">
+            <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-2 mb-5">
               {points.map((pt) => (
                 <li
                   key={pt}
@@ -46,7 +46,7 @@ export function ServicesSection() {
             </ul>
             <Link
               href="/services"
-              className="interactive-lift self-end inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
+              className="interactive-lift inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
             >
               Full details <ArrowUpRight size={13} aria-hidden="true" />
             </Link>

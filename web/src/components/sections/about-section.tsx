@@ -31,7 +31,7 @@ export function AboutSection() {
         </p>
 
         <h2
-          className="font-display text-ink-dark leading-[1.05] tracking-[-0.025em] mb-14 lg:mb-16 max-w-[16ch]"
+          className="font-display text-ink-dark leading-[1.05] tracking-[-0.025em] mb-14 lg:mb-16 lg:max-w-[16ch]"
           style={{
             fontSize: 'clamp(2rem, 5.2vw, 4.7rem)',
             fontVariationSettings: '"opsz" 48, "wght" 580',

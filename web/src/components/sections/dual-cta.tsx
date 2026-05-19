@@ -5,7 +5,7 @@ export function DualCTA() {
   return (
     <section className="bg-deep py-24 lg:py-32 border-t border-rule-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="max-w-[52ch]">
+        <div className="lg:max-w-[52ch]">
           <p className="section-kicker text-ink-muted-light mb-8">
             Need staff?
           </p>
@@ -18,7 +18,7 @@ export function DualCTA() {
           >
             Tell us what cover you need.
           </p>
-          <p className="text-ink-muted-light text-[15px] leading-relaxed mb-10 max-w-[44ch]">
+          <p className="text-ink-muted-light text-[15px] leading-relaxed mb-10 lg:max-w-[44ch]">
             Tell us the role, setting, location and urgency. We will respond with a clear answer on availability and next steps.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7">
