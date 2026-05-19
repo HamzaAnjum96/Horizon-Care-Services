@@ -8,22 +8,22 @@ const steps = [
   {
     num: '01',
     title: 'Tell us what you need',
-    desc: 'Call or email with the role, setting, location, shift pattern, urgency and any specific requirements. We ask the right questions so we understand the environment properly.',
+    desc: "Call or email us with the role, setting, location and shift times. Tell us anything specific about the environment — we'll ask if we need more detail.",
   },
   {
     num: '02',
     title: 'We confirm suitability',
-    desc: 'We check availability, experience, compliance and professional registration where required. We only put people forward where we believe the fit is right.',
+    desc: "We check experience, compliance and professional registration before putting anyone forward. We only suggest a worker when their background genuinely fits what you've described.",
   },
   {
     num: '03',
     title: 'Cover is arranged',
-    desc: 'We confirm the placement details clearly, including timings, location, reporting instructions and any role-specific expectations.',
+    desc: "We confirm all the details directly with the worker — shift times, where to report, who to speak to and anything specific about the role.",
   },
   {
     num: '04',
     title: 'We stay in contact',
-    desc: 'We remain available for updates, changes, short-notice adjustments and follow-up. If the requirement continues, we help plan the next step.',
+    desc: "We're reachable after the placement for changes or anything that comes up on the day. If you need cover again, we're already familiar with what you need.",
   },
 ]
 
