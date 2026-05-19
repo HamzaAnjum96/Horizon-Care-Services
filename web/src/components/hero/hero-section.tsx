@@ -66,7 +66,7 @@ export function HeroSection() {
             className="text-ink-muted-light leading-relaxed lg:max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
-            We support NHS trusts, local authorities, care homes, and community providers with urgent cover and planned staffing across England. Tell us what your service needs, when you need it, and what good cover looks like in your setting — then we confirm options, constraints, and next steps clearly.
+            We supply nurses, social workers, OTs, HCAs and support workers to NHS trusts, local authorities, care homes and supported living services across England. Tell us the role, setting and urgency — we assess suitability against where you work, not just job title, and confirm availability honestly. If we can&apos;t safely cover the shift, we say so.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">

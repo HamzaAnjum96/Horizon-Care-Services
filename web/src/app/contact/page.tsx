@@ -47,7 +47,7 @@ export default function ContactPage() {
       <PageHeader
           kicker="Contact"
           title="Request staffing support."
-          intro="Whether you need urgent cover, planned staffing support or a longer-term placement, contact us with the role, setting, location and timescale."
+          intro="For urgent or same-day cover, call us. For planned staffing, longer-term requirements, or anything you'd rather put in writing first, email or WhatsApp. Either way, the more detail you give us upfront, the faster we can give you a realistic answer."
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -69,7 +69,7 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  All enquiries
+                  Best for urgent and same-day cover
                 </p>
                 <a
                   href="tel:02037572767"
@@ -105,7 +105,7 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Message us directly
+                  Best for quick back-and-forth, 7 days
                 </p>
                 <a
                   href="https://wa.me/442037572767"
@@ -137,7 +137,7 @@ export default function ContactPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  All enquiries
+                  Best for planned requirements and longer briefs
                 </p>
                 <a
                   href="mailto:contact@horizoncareservices.org"
@@ -148,6 +148,26 @@ export default function ContactPage() {
                 <p className="text-ink-muted-dark text-[13px] mt-2 leading-snug">
                   Response within 2 working days
                 </p>
+              </div>
+
+              {/* What to include */}
+              <div className="sm:col-span-2 border-t border-rule-light pt-8">
+                <p className="section-kicker text-ink-muted-dark mb-4">What to include in your first message</p>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
+                  {[
+                    'Role title and registration or band required',
+                    'Setting type (ward, care home, supported living, community, etc.)',
+                    'Location and date(s) or shift pattern',
+                    'Whether it\'s urgent or planned',
+                    'Any specific experience or compliance requirement',
+                    'How quickly you need a response',
+                  ].map((item) => (
+                    <li key={item} className="border-t border-rule-light py-4 flex items-start gap-3 text-ink-muted-dark text-[14px]">
+                      <span className="mt-[8px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
             </div>

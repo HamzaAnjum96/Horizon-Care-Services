@@ -1,23 +1,23 @@
 const pillars = [
   {
     title: 'We check before we place',
-    body: 'DBS checks, references, right-to-work checks and professional registration confirmed before placement.',
+    body: "Every worker is DBS-checked, referenced and right-to-work verified before we place them. We don't send anyone whose compliance we haven't confirmed.",
   },
   {
     title: 'We match people to settings',
-    body: 'A care home, hospital ward and supported living service need different workers. We look at experience, environment and fit.',
+    body: "A care home, a hospital ward and a supported living service aren't interchangeable. We look at where someone has actually worked before, not just what's on their CV.",
   },
   {
     title: 'We communicate clearly',
-    body: 'You get clear updates on availability, suitability and timescales. If we cannot safely meet a requirement, we say so.',
+    body: "You'll always know where things stand. If we can cover the shift, we'll tell you how and when. If we can't, we'll say so straight away — not keep you waiting.",
   },
   {
     title: 'We support urgent and planned needs',
-    body: 'Short-notice cover, single shifts, planned absence and longer-term contracts — all supported.',
+    body: "Same-day calls and three-month planned rotas are both things we handle. We don't treat one as more important than the other.",
   },
   {
     title: 'We stay accountable',
-    body: 'Our role does not end once a name is sent. We stay available, respond to issues and review arrangements where needed.',
+    body: "Getting a worker to you isn't where we stop. We stay reachable, follow up when it matters and sort things out if something goes wrong.",
   },
 ]
 

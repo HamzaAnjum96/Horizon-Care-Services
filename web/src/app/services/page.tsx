@@ -156,8 +156,52 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Common situations */}
+      {/* How we decide fit */}
       <section className="bg-cream py-20 lg:py-28 border-t border-rule-light">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-[5fr_4fr] gap-12 lg:gap-24">
+            <div>
+              <p className="section-kicker text-ink-muted-dark mb-5">How we decide who to put forward</p>
+              <p
+                className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-8"
+                style={{
+                  fontSize: 'clamp(1.7rem, 2.8vw, 2.4rem)',
+                  fontVariationSettings: '"opsz" 28, "wght" 560',
+                }}
+              >
+                Availability alone isn&rsquo;t a match.
+              </p>
+              <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
+                <p>
+                  Before proposing anyone, we look at the type of service they&rsquo;ll be working in, the specific demands of the shift — acuity level, working independently or within a team, supervision requirements — and their actual placement history in comparable environments.
+                </p>
+                <p>
+                  We also confirm that their compliance is current and applicable to the role. If the match isn&rsquo;t strong enough, we say so and discuss realistic alternatives rather than sending someone who&rsquo;s technically available but wrong for the setting.
+                </p>
+              </div>
+            </div>
+            <div className="lg:pt-12">
+              <p className="section-kicker text-ink-muted-dark mb-5">What we check before confirming</p>
+              <div className="space-y-5">
+                {[
+                  { label: 'Setting fit', value: 'Prior experience in the same environment type — ward, care home, supported living, community.' },
+                  { label: 'Role scope', value: 'That the shift demands match the worker\'s actual experience, not just their job title.' },
+                  { label: 'Compliance', value: 'DBS, right-to-work, registration and any role-specific training — current and applicable.' },
+                  { label: 'Practical details', value: 'Reporting lines, handover expectations and anything specific about the service.' },
+                ].map(({ label, value }) => (
+                  <div key={label} className="border-t border-rule-light pt-5">
+                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
+                    <p className="text-ink-dark text-[14px] leading-relaxed">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Common situations */}
+      <section className="bg-cream-dim py-20 lg:py-28 border-t border-rule-light">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <p className="section-kicker text-ink-muted-dark mb-5">When organisations call us</p>
           <h2
@@ -187,6 +231,44 @@ export default function ServicesPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* What happens after you contact us */}
+      <section className="bg-cream py-20 lg:py-28 border-t border-rule-light">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <p className="section-kicker text-ink-muted-dark mb-5">What happens next</p>
+          <h2
+            className="font-display text-ink-dark leading-tight tracking-[-0.025em] mb-12 max-w-[28ch]"
+            style={{
+              fontSize: 'clamp(1.5rem, 2.6vw, 2.2rem)',
+              fontVariationSettings: '"opsz" 28, "wght" 560',
+            }}
+          >
+            What happens after you contact us.
+          </h2>
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-0 list-none">
+            {[
+              { n: '01', text: 'We take the brief — role, setting, urgency and any specific requirements.' },
+              { n: '02', text: 'We check suitability against our current register for that environment.' },
+              { n: '03', text: 'We give you a clear yes or no, with timing if yes, or alternatives if no.' },
+              { n: '04', text: 'We confirm shift details directly with the worker — reporting point, timings, who to contact.' },
+              { n: '05', text: 'We stay reachable through the placement for changes or issues.' },
+            ].map(({ n, text }) => (
+              <li key={n} className="border-t border-rule-light pt-6 pb-8">
+                <p
+                  className="font-display text-amber mb-3 leading-none"
+                  style={{
+                    fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+                    fontVariationSettings: '"opsz" 28, "wght" 520',
+                  }}
+                >
+                  {n}
+                </p>
+                <p className="text-ink-muted-dark text-[14px] leading-relaxed">{text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

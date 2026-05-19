@@ -18,9 +18,23 @@ export function DualCTA() {
           >
             Tell us what cover you need.
           </p>
-          <p className="text-ink-muted-light text-[15px] leading-relaxed mb-10 lg:max-w-[44ch]">
-            Tell us the role, setting, location and urgency. We will respond with a clear answer on availability and next steps.
+          <p className="text-ink-muted-light text-[15px] leading-relaxed mb-6 lg:max-w-[44ch]">
+            For urgent or same-day cover, call us. For planned requirements, email or WhatsApp. Either way, the more detail you give us, the faster we can give you a realistic answer.
           </p>
+          <ul className="mb-10 space-y-2">
+            {[
+              'The role and band or registration required',
+              'The setting type (care home, ward, supported living, community, etc.)',
+              'Location and date(s) or shift pattern',
+              'Urgency level — same day, this week, or planned ahead',
+              'Anything specific about the environment or reporting requirements',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3 text-ink-muted-light text-[13px] leading-relaxed">
+                <span className="mt-[7px] w-1 h-1 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7">
             <Link
               href="/contact"

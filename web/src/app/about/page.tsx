@@ -113,10 +113,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Requirement-first briefing
+                  Clarity before commitment
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We begin with the operating context: service type, shift risk, required experience, handover expectations, and escalation routes. This prevents vague briefs and improves first-time match quality.
+                  We take the brief properly — service type, shift demands, required experience, reporting expectations. Ambiguity at this stage causes problems later, so we ask the questions that most agencies skip.
                 </p>
               </div>
               <div>
@@ -127,10 +127,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Structured matching and confirmation
+                  Fit over availability
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We match based on setting fit, role scope, and practical availability. Before confirming, we clarify any constraints that could affect continuity, then confirm who is attending, when, and how handover will happen.
+                  We match on setting fit, actual placement history and role scope — not just who is free. If the match isn&rsquo;t strong enough, we say so rather than send someone who will struggle in your environment.
                 </p>
               </div>
               <div>
@@ -141,13 +141,40 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  After-placement follow-through
+                  Accountability after placement
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We stay involved after the shift is filled. If a requirement changes, expands, or needs extension, we respond quickly with options rather than leaving services to restart the process from scratch.
+                  We stay reachable after the shift is filled. If a requirement changes, grows or needs extension, you contact us and we respond with options — you don&rsquo;t restart from scratch.
                 </p>
               </div>
             </div>
+          </div>
+
+          <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
+            <p className="section-kicker text-ink-muted-dark mb-8">How we work with clients</p>
+            <p
+              className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-10 max-w-[32ch]"
+              style={{
+                fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
+                fontVariationSettings: '"opsz" 24, "wght" 560',
+              }}
+            >
+              What working with us looks like in practice.
+            </p>
+            <ul className="grid lg:grid-cols-2 gap-x-16 gap-y-0">
+              {[
+                'We confirm who is attending, when, and where before the shift starts.',
+                "If we can't fill a requirement, we tell you promptly — we don't leave it open.",
+                "We ask about the environment, not just the job title, so the brief is accurate.",
+                "If something goes wrong on shift, you contact us and we resolve it.",
+                "If your need continues or grows, we plan the next step with you.",
+              ].map((item) => (
+                <li key={item} className="border-t border-rule-light py-5 flex items-start gap-3 text-ink-muted-dark text-[15px]">
+                  <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="border-t border-rule-light pt-16 lg:pt-20">
@@ -155,7 +182,7 @@ export default function AboutPage() {
               <div>
                 <p className="section-kicker text-ink-muted-dark mb-4">For councils, care homes and healthcare organisations</p>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                  We support organisations managing urgent absence, recurring rota gaps, discharge pressure, and longer-term workforce needs. You get straightforward communication on what is available, what is not, and what happens next.
+                  We support organisations managing urgent absence, recurring rota gaps, discharge pressure, and longer-term workforce needs. You get a straight answer on what is available, what is not, and what happens next.
                 </p>
                 <Link
                   href="/contact"
@@ -165,13 +192,46 @@ export default function AboutPage() {
                 </Link>
               </div>
               <div>
-                <p className="section-kicker text-ink-muted-dark mb-4">For healthcare professionals</p>
-                <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                  We work with registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers who want flexible agency work across England. Competitive rates, a named coordinator, and shifts that fit your schedule.
+                <p className="section-kicker text-ink-muted-dark mb-5">For healthcare professionals</p>
+                <p className="text-ink-muted-dark text-[14px] leading-relaxed text-ink-muted-dark mb-5 max-w-[48ch]">
+                  We work with registered nurses, social workers, OTs, physiotherapists, HCAs and support workers who want flexible agency work with proper briefing and dependable coordination.
                 </p>
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-0 mb-6">
+                  <div>
+                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-3">What you can expect from us</p>
+                    <ul className="space-y-2">
+                      {[
+                        'Shifts briefed properly before you attend',
+                        'A named coordinator for changes and questions',
+                        'Placements matched to your actual experience',
+                        'Rates confirmed before you accept',
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-ink-muted-dark text-[13px] leading-relaxed">
+                          <span className="mt-[7px] w-1 h-1 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-6 sm:mt-0">
+                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-3">What we expect from you</p>
+                    <ul className="space-y-2">
+                      {[
+                        "Attendance as confirmed — contact us if something changes",
+                        "Current compliance: DBS, registration, training",
+                        "Professional conduct with clients and with us",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-ink-muted-dark text-[13px] leading-relaxed">
+                          <span className="mt-[7px] w-1 h-1 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
                 <Link
                   href="/work-for-us"
-                  className="interactive-lift inline-flex items-center gap-2 mt-6 border border-rule-light text-ink-dark px-6 py-3 rounded-md text-[14px] font-semibold hover:border-ink-dark/30 transition-colors"
+                  className="interactive-lift inline-flex items-center gap-2 border border-rule-light text-ink-dark px-6 py-3 rounded-md text-[14px] font-semibold hover:border-ink-dark/30 transition-colors"
                 >
                   Join our register <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>

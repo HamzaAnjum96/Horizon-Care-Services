@@ -6,27 +6,31 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'What types of staff do you provide?',
-    a: 'We place registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants and support workers across health and social care settings.',
+    a: 'We place registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants and support workers. We cover urgent shifts, planned rotas, and longer-term placements.',
   },
   {
     q: 'Who do you work with?',
-    a: 'We work with local authorities, NHS trusts, care homes, residential services, supported living providers, private hospitals, clinics and healthcare organisations.',
+    a: 'We work with local authorities, NHS trusts, care homes, supported living providers, residential services, private hospitals and wider healthcare organisations across England.',
   },
   {
     q: 'Can you provide urgent cover?',
-    a: 'Yes. We support urgent and short-notice staffing requirements where suitable professionals are available. For urgent cover, we aim to respond within 2 working hours.',
+    a: "Yes, where suitable professionals are available for your setting. Call us for urgent requirements and we'll triage quickly. If we can't fill it safely, we'll tell you straight away — not after keeping you waiting.",
   },
   {
     q: 'Do you support longer-term contracts?',
-    a: 'Yes. We can support single shifts, block bookings, planned absence, rota gaps and longer-term placements.',
+    a: 'Yes. Single shifts, block bookings, planned absence cover, rota gaps and ongoing placements — all handled. We work to the same process regardless of duration.',
   },
   {
     q: 'What checks do your staff have?',
-    a: 'Checks depend on the role and setting, but may include DBS checks, right-to-work confirmation, references, identity checks, training evidence and professional registration checks with NMC, Social Work England or HCPC where relevant.',
+    a: "Before we put anyone forward, we verify DBS status, right-to-work, references and professional registration with NMC, Social Work England or HCPC where relevant. We don't send workers whose compliance we haven't confirmed.",
   },
   {
     q: 'What information should we send when requesting staff?',
-    a: 'Send the role, setting, location, shift pattern, urgency, required qualifications, and any compliance or reporting requirements. If the need is urgent, call us and we will work through the detail quickly.',
+    a: 'The role and any registration or band required, the setting type, location, shift dates or pattern, urgency level, and anything specific about the environment. The more detail you give us upfront, the faster we can give you a realistic answer.',
+  },
+  {
+    q: 'What happens if the requirement changes after I contact you?',
+    a: "Get in touch and we'll adjust. If a shift changes, extends or gets cancelled, let us know as early as possible and we'll coordinate from there. You won't need to re-explain the setting from scratch.",
   },
 ]
 

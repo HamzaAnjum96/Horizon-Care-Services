@@ -222,6 +222,56 @@ export default function WorkForUsPage() {
             </div>
 
             <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
+              <p className="section-kicker text-ink-muted-dark mb-5">What we expect from placements</p>
+              <p
+                className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-6 max-w-[28ch]"
+                style={{
+                  fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
+                  fontVariationSettings: '"opsz" 24, "wght" 560',
+                }}
+              >
+                What good looks like.
+              </p>
+              <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[60ch] mb-12">
+                A good placement means you arrive prepared, stay in contact if anything changes, and work to the standard the service needs. We brief you properly beforehand — setting type, reporting lines, what to expect on the day. In return, we ask for the same professionalism in the field. That&rsquo;s what makes clients ask for workers back, and what leads to more shifts.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-x-16 gap-y-8">
+                <div>
+                  <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-4">What you can expect from us</p>
+                  <ul className="space-y-3">
+                    {[
+                      'A proper brief before every shift — setting type, reporting line, what to expect',
+                      'Honest assessment of whether a placement is a good fit for you',
+                      'A named coordinator available for changes and questions',
+                      'Rates confirmed before you accept, paid consistently',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-ink-muted-dark text-[14px] leading-relaxed">
+                        <span className="mt-[8px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-4">What we expect from you</p>
+                  <ul className="space-y-3">
+                    {[
+                      'Attendance as confirmed — contact us immediately if something changes',
+                      'Current compliance: DBS, registration, mandatory training',
+                      'Professional conduct with clients and with us',
+                      'Feedback if a placement wasn\'t right — it helps us match better next time',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-ink-muted-dark text-[14px] leading-relaxed">
+                        <span className="mt-[8px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
               <p className="section-kicker text-ink-muted-dark mb-10">Open roles</p>
               <div className="divide-y divide-rule-light">
                 {roles.map((role) => (
