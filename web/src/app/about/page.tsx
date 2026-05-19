@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { PageHeader } from '@/components/layout/page-header'
@@ -183,7 +182,7 @@ export default function AboutPage() {
               {credentials.map(({ code, name, image, href }) => (
                 <div key={code} className="flex flex-col items-center gap-3 text-center w-[120px]">
                   <div className="flex items-center justify-center w-20 h-20">
-                    <Image src={image} alt={name} width={80} height={80} className="object-contain" />
+                    <img src={image} alt={name} className="w-full h-full object-contain" />
                   </div>
                   <span className="font-mono text-[11px] tracking-widest text-ink-muted-dark uppercase">{code}</span>
                   <p className="text-[12px] text-ink-muted-dark leading-snug">{name}</p>
