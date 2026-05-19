@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageHeader } from '@/components/layout/page-header'
+import { getAllPosts } from '@/lib/blog'
 
 const BASE = 'https://www.horizoncareservices.org'
 
@@ -26,14 +27,6 @@ const PAGE_GROUPS: {
     kicker: 'Services',
     pages: [
       { title: 'Healthcare Staffing', href: '/services', description: 'Registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers placed across England.' },
-    ],
-  },
-  {
-    kicker: 'Writing',
-    pages: [
-      { title: 'Blog', href: '/blog', description: 'Articles and guidance for healthcare professionals and commissioning organisations.' },
-      { title: 'Caring with Dignity in Later Life', href: '/blog/caring-with-dignity-in-later-life', description: 'What dignity in care actually means in the ordinary moments — and the systems that protect it.' },
-      { title: 'Home Care vs Care Home', href: '/blog/home-care-vs-care-home', description: 'Understanding the difference between home care and a care home placement.' },
     ],
   },
   {
@@ -80,7 +73,8 @@ const AI_FILES = [
   },
 ]
 
-export default function SitemapPage() {
+export default async function SitemapPage() {
+  const posts = await getAllPosts()
   return (
     <>
       <div className="pb-20">
@@ -125,6 +119,49 @@ export default function SitemapPage() {
                   </ul>
                 </div>
               ))}
+
+              {/* ── Writing (dynamic) ── */}
+              <div className="border-t border-rule-light py-10">
+                <p className="section-kicker text-ink-muted-dark mb-6">Writing</p>
+                <ul className="space-y-5">
+                  <li className="grid sm:grid-cols-[1fr_auto] gap-1 sm:gap-8 sm:items-baseline">
+                    <div>
+                      <Link
+                        href="/blog"
+                        className="font-display text-ink-dark hover:text-amber transition-colors"
+                        style={{ fontSize: 'clamp(1rem, 1.5vw, 1.1rem)', fontVariationSettings: '"opsz" 18, "wght" 560' }}
+                      >
+                        Blog
+                      </Link>
+                      <p className="text-ink-muted-dark text-[13px] leading-relaxed mt-1 max-w-[52ch]">
+                        Articles and guidance for healthcare professionals and commissioning organisations.
+                      </p>
+                    </div>
+                    <span className="hidden sm:block font-mono text-[11px] text-ink-muted-dark/60 tracking-wide sm:text-right flex-shrink-0">
+                      {BASE}/blog
+                    </span>
+                  </li>
+                  {posts.map((post) => (
+                    <li key={post.slug} className="grid sm:grid-cols-[1fr_auto] gap-1 sm:gap-8 sm:items-baseline">
+                      <div>
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="font-display text-ink-dark hover:text-amber transition-colors"
+                          style={{ fontSize: 'clamp(1rem, 1.5vw, 1.1rem)', fontVariationSettings: '"opsz" 18, "wght" 560' }}
+                        >
+                          {post.title}
+                        </Link>
+                        <p className="text-ink-muted-dark text-[13px] leading-relaxed mt-1 max-w-[52ch]">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                      <span className="hidden sm:block font-mono text-[11px] text-ink-muted-dark/60 tracking-wide sm:text-right flex-shrink-0">
+                        {BASE}/blog/{post.slug}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* ── AI & machine-readable ── */}

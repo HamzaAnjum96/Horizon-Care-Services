@@ -65,8 +65,22 @@
   </url>
 
   <url>
+    <loc>https://www.horizoncareservices.org/blog/caring-with-dignity-in-later-life/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
     <loc>https://www.horizoncareservices.org/blog/home-care-vs-care-home/</loc>
     <lastmod>2026-05-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.horizoncareservices.org/blog/hats-haircuts-tattoos-care-planning/</loc>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
