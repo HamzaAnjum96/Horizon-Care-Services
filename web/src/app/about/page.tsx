@@ -6,12 +6,12 @@ import { PageHeader } from '@/components/layout/page-header'
 const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
-  title: { absolute: 'About Us — Horizon Care Services' },
-  description: 'Three years placing vetted healthcare professionals with NHS trusts, local authorities, and care organisations across England. Registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers.',
+  title: { absolute: 'About Horizon Care Services | Healthcare Staffing Agency' },
+  description: 'Horizon Care Services is a healthcare staffing agency supplying vetted health and social care professionals to local authorities, NHS trusts, care homes and healthcare organisations across England.',
   alternates: { canonical: `${siteUrl}/about` },
   openGraph: {
-    title: 'About Us — Horizon Care Services',
-    description: 'Three years of healthcare staffing across England — placing registered nurses, social workers, and allied health professionals with NHS trusts and local authorities.',
+    title: 'About Horizon Care Services | Healthcare Staffing Agency',
+    description: 'Healthcare staffing built on relationships, not just rotas. We supply vetted professionals to local authorities, NHS trusts, care homes and healthcare organisations.',
     url: `${siteUrl}/about`,
     type: 'website',
   },
@@ -73,10 +73,10 @@ export default function AboutPage() {
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[64ch]">
                 <p>
-                  Horizon Care Services is a healthcare staffing agency. We place registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers with NHS trusts, local authorities, and care organisations across England.
+                  Horizon Care Services is a healthcare staffing agency supplying vetted health and social care professionals to organisations across England. We support local authorities, NHS trusts, care homes, residential services, supported living providers and healthcare organisations with short-notice cover, planned staffing needs and longer-term placements.
                 </p>
                 <p>
-                  We have been operating for three years, building a register of professionals we trust and relationships with commissioners who know what to expect from us. We don&rsquo;t fill positions with whoever is available — every professional is assessed for the settings we place them in.
+                  We understand that staffing is not just an admin issue. A gap on a rota can affect safety, continuity, service quality and team morale. Our role is to help services find suitable people quickly, without losing sight of compliance, communication and fit.
                 </p>
               </div>
             </div>
@@ -110,10 +110,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Careful selection
+                  Setting-led matching
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We assess each professional against the settings we place them in. Skills, registration, and relevant experience all factor in. The person who walks through the door is someone we&rsquo;d put our name to.
+                  Different services need different people. A hospital ward, care home, supported living service and local authority team all require different experience, pace and judgement. We assess each professional against the settings we place them in.
                 </p>
               </div>
               <div>
@@ -124,10 +124,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Joined-up working
+                  Clear communication
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We coordinate closely with ward managers, team leads, and placement coordinators. When something changes, we respond and communicate clearly. We don&rsquo;t disappear once a placement is made.
+                  We respond clearly, confirm availability properly and keep clients informed if anything changes. We remain available after cover is arranged — if the requirement changes or an issue arises, we respond.
                 </p>
               </div>
               <div>
@@ -138,10 +138,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Honest about capacity
+                  Honest capacity
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We tell clients what we can and cannot provide. We confirm availability before we commit. If we can&rsquo;t meet a requirement, we say so — rather than overpromise and underdeliver.
+                  We tell clients what we can and cannot provide. We would rather give a straight answer than overpromise. If we cannot safely meet a requirement, we say so.
                 </p>
               </div>
             </div>
@@ -150,12 +150,12 @@ export default function AboutPage() {
           <div className="border-t border-rule-light pt-16 lg:pt-20">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
               <div>
-                <p className="section-kicker text-ink-muted-dark mb-4">For NHS and Local Authority commissioners</p>
+                <p className="section-kicker text-ink-muted-dark mb-4">For councils, care homes and healthcare organisations</p>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                  We understand the pressures discharge planners and staffing managers operate under. We respond to requirements promptly, confirm availability clearly, and keep you informed when anything changes.
+                  We support organisations that need dependable health and social care staffing. Whether you are managing urgent absence, recurring rota gaps, discharge pressure or longer-term workforce needs, we help you understand what is available and arrange suitable cover.
                 </p>
                 <Link
-                  href="/referrals"
+                  href="/contact"
                   className="interactive-lift inline-flex items-center gap-2 mt-6 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                 >
                   Request staff <ArrowUpRight size={14} aria-hidden="true" />

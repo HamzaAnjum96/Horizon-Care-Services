@@ -5,28 +5,28 @@ import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'What types of healthcare professionals do you place?',
-    a: 'Registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers. We cover clinical and non-clinical roles across hospital, community, residential, and domiciliary settings.',
+    q: 'What types of staff do you provide?',
+    a: 'We place registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants and support workers across health and social care settings.',
   },
   {
-    q: 'How quickly can you provide cover?',
-    a: 'For urgent requests, we aim to respond within 2 working hours and can often provide same-day cover. For planned requirements, we confirm availability within 2 working days. We operate 24 hours a day, 7 days a week.',
+    q: 'Who do you work with?',
+    a: 'We work with local authorities, NHS trusts, care homes, residential services, supported living providers, private hospitals, clinics and healthcare organisations.',
   },
   {
-    q: 'What vetting and compliance checks do your staff hold?',
-    a: 'Every professional on our register has been DBS checked, reference verified, and assessed for the environments they are placed in. We confirm professional registration — NMC for nurses, SWE for social workers, HCPC for allied health professionals — before any placement.',
+    q: 'Can you provide urgent cover?',
+    a: 'Yes. We support urgent and short-notice staffing requirements where suitable professionals are available. For urgent cover, we aim to respond within 2 working hours.',
   },
   {
-    q: 'Which settings do you work with?',
-    a: 'NHS hospital wards and departments, mental health units, learning disability services, care homes, community and domiciliary settings, and private hospitals. If you are outside our listed areas, contact us — we work across England.',
+    q: 'Do you support longer-term contracts?',
+    a: 'Yes. We can support single shifts, block bookings, planned absence, rota gaps and longer-term placements.',
   },
   {
-    q: 'Which areas do you cover?',
-    a: 'Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Greater Manchester, and London. We regularly extend beyond these areas — contact us if you are elsewhere in England.',
+    q: 'What checks do your staff have?',
+    a: 'Checks depend on the role and setting, but may include DBS checks, right-to-work confirmation, references, identity checks, training evidence and professional registration checks with NMC, Social Work England or HCPC where relevant.',
   },
   {
-    q: 'Do you work with NHS trusts and local authorities?',
-    a: 'Yes. We work with NHS trusts, local authorities, private care organisations, and commissioning teams across England. We are transparent about capacity, rates, and compliance from the first conversation. Call 020 3757 2767 or email contact@horizoncareservices.org.',
+    q: 'Do you work directly with families?',
+    a: 'Horizon Care Services is focused on supplying staff to organisations. We work with councils, local authorities, NHS trusts, care homes and healthcare providers rather than direct family enquiries.',
   },
 ]
 

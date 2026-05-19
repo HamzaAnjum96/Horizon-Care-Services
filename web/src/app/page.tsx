@@ -10,6 +10,8 @@ import { FaqSection } from '@/components/sections/faq-section'
 const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
+  title: { absolute: 'Healthcare Staffing Agency for Care Organisations | Horizon Care Services' },
+  description: 'Horizon Care Services supplies vetted health and social care professionals to local authorities, NHS trusts, care homes and care organisations across England. Request short-notice or planned staffing cover.',
   alternates: { canonical: siteUrl },
 }
 
@@ -19,50 +21,50 @@ const jsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What types of healthcare professionals does Horizon Care Services place?',
+      name: 'What types of staff does Horizon Care Services provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers. We cover clinical and non-clinical roles across hospital, community, residential, and domiciliary settings.',
+        text: 'We place registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants and support workers across health and social care settings.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How quickly can Horizon Care Services provide cover?',
+      name: 'Who does Horizon Care Services work with?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'For urgent requests, we aim to respond within 2 working hours and can often provide same-day cover. For planned requirements, we confirm availability within 2 working days. We operate 24 hours a day, 7 days a week.',
+        text: 'We work with local authorities, NHS trusts, care homes, residential services, supported living providers, private hospitals, clinics and healthcare organisations.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What vetting and compliance checks do Horizon Care Services staff hold?',
+      name: 'Can Horizon Care Services provide urgent cover?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Every professional on our register has been DBS checked, reference verified, and assessed for the environments they are placed in. We confirm NMC registration for nurses, SWE for social workers, and HCPC for allied health professionals before any placement.',
+        text: 'Yes. We support urgent and short-notice staffing requirements where suitable professionals are available. For urgent cover, we aim to respond within 2 working hours.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Which settings does Horizon Care Services work with?',
+      name: 'Does Horizon Care Services support longer-term contracts?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'NHS hospital wards and departments, mental health units, learning disability services, care homes, community and domiciliary settings, and private hospitals. If you are outside our listed areas, contact us — we work across England.',
+        text: 'Yes. We can support single shifts, block bookings, planned absence, rota gaps and longer-term placements.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What areas does Horizon Care Services cover?',
+      name: 'What checks do Horizon Care Services staff have?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Greater Manchester, and London. We regularly extend beyond these areas — contact us if you are elsewhere in England.',
+        text: 'Checks depend on the role and setting, but may include DBS checks, right-to-work confirmation, references, identity checks, training evidence and professional registration checks with NMC, Social Work England or HCPC where relevant.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Does Horizon Care Services work with NHS trusts and local authorities?',
+      name: 'Does Horizon Care Services work directly with families?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. We work with NHS trusts, local authorities, private care organisations, and commissioning teams across England. We are transparent about capacity, rates, and compliance from the first conversation. Call 020 3757 2767 or email contact@horizoncareservices.org.',
+        text: 'Horizon Care Services is focused on supplying staff to organisations. We work with councils, local authorities, NHS trusts, care homes and healthcare providers rather than direct family enquiries.',
       },
     },
   ],

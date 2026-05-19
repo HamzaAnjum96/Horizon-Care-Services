@@ -6,12 +6,12 @@ import { LocationMap } from '@/components/location-map'
 const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Contact Us — Horizon Care Services' },
-  description: 'Get in touch with Horizon Care Services. Phone, WhatsApp, and email for urgent staffing, NHS referrals, care enquiries, and general contact. Manchester office.',
+  title: { absolute: 'Request Healthcare Staff | Contact Horizon Care Services' },
+  description: 'Contact Horizon Care Services to request staffing cover. Phone, WhatsApp and email for urgent cover, planned staffing support and longer-term placements. Manchester office.',
   alternates: { canonical: `${siteUrl}/contact` },
   openGraph: {
-    title: 'Contact Us — Horizon Care Services',
-    description: 'Phone, WhatsApp, and email for urgent staffing, NHS referrals, care enquiries, and general contact.',
+    title: 'Request Healthcare Staff | Contact Horizon Care Services',
+    description: 'Contact us with the role, setting, location and urgency. We respond with a clear answer on availability and next steps.',
     url: `${siteUrl}/contact`,
     type: 'website',
   },
@@ -46,8 +46,8 @@ export default function ContactPage() {
       ))}
       <PageHeader
           kicker="Contact"
-          title="Get in touch."
-          intro="Whether you're making a referral, enquiring about care, or looking for staffing cover: we respond quickly and give you a straight answer."
+          title="Request staffing support."
+          intro="Whether you need urgent cover, planned staffing support or a longer-term placement, contact us with the role, setting, location and timescale."
         />
 
         <section className="bg-cream py-20 lg:py-28">

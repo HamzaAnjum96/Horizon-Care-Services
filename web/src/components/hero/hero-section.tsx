@@ -43,7 +43,7 @@ export function HeroSection() {
             fontVariationSettings: '"opsz" 64, "wght" 620',
           }}
         >
-          {['The', 'right', 'people,', 'right', 'when', 'you', 'need', 'them.'].map((word, i) => (
+          {['The', 'right', 'people,', 'right', 'when', 'your', 'service', 'needs', 'them.'].map((word, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
@@ -66,23 +66,21 @@ export function HeroSection() {
             className="text-ink-muted-light leading-relaxed max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
-            Vetted healthcare professionals supplied to NHS trusts, local authorities, and care organisations across England.
-            Available 24/7, at short notice or on longer-term contracts.
+            Horizon Care Services supplies vetted health and social care professionals to local authorities, NHS trusts, care homes and healthcare organisations across England. We support urgent cover, planned staffing gaps and longer-term placements with clear communication from the first call.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">
             <Link
-              href="/services"
-              className="group interactive-lift flex items-center gap-3 text-ink-light text-[13px] font-semibold tracking-[0.08em] uppercase"
+              href="/contact"
+              className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
             >
-              <span className="h-px bg-ink-light/50 w-6 group-hover:w-10 transition-all duration-300" />
-              View Services
+              Request staff
             </Link>
             <Link
               href="/contact"
               className="interactive-lift inline-flex items-center gap-2 border border-ink-light/30 text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:border-ink-light/60 hover:bg-ink-light/5 transition-colors"
             >
-              Contact Us
+              Speak to us about cover
             </Link>
           </div>
         </motion.div>

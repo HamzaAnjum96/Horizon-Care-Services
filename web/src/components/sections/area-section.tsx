@@ -27,8 +27,7 @@ export function AreaSection() {
               Serving England.
             </p>
             <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[38ch]">
-              Six regions, with further expansion planned. Available to individuals,
-              families, NHS trusts, and local authorities.
+              Six regions, with additional areas considered depending on role, urgency and safe availability. Available to local authorities, NHS trusts, care homes and healthcare organisations.
             </p>
           </div>
 

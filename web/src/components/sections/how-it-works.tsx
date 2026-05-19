@@ -1,23 +1,23 @@
 const steps = [
   {
     num: '01',
-    title: 'Enquiry',
-    desc: 'Call or email to tell us what you need. We ask the right questions and respond quickly — often the same day for urgent cover.',
+    title: 'Tell us what you need',
+    desc: 'Call or email with the role, setting, location, shift pattern, urgency and any specific requirements. We ask the right questions so we understand the environment properly.',
   },
   {
     num: '02',
-    title: 'Matching',
-    desc: 'We identify the right people and service model for your requirements. Vetting, compliance, and relevant experience confirmed before deployment.',
+    title: 'We confirm suitability',
+    desc: 'We check availability, experience, compliance and professional registration where required. We only put people forward where we believe the fit is right.',
   },
   {
     num: '03',
-    title: 'Delivery',
-    desc: 'Staff or care teams are in place. We handle scheduling, coordination, and any short-notice adjustments as needs change.',
+    title: 'Cover is arranged',
+    desc: 'We confirm the placement details clearly, including timings, location, reporting instructions and any role-specific expectations.',
   },
   {
     num: '04',
-    title: 'Review',
-    desc: 'Regular check-ins keep quality high and capacity aligned. We stay accountable for outcomes and adjust the arrangement as required.',
+    title: 'We stay in contact',
+    desc: 'We remain available for updates, changes, short-notice adjustments and follow-up. If the requirement continues, we help plan the next step.',
   },
 ]
 

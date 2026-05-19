@@ -6,12 +6,12 @@ import { PageHeader } from '@/components/layout/page-header'
 const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Healthcare Staffing — Horizon Care Services' },
-  description: 'Registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers placed across England. Available 24/7 at short notice or on longer-term contracts.',
+  title: { absolute: 'Healthcare Staffing Services | Horizon Care Services' },
+  description: 'Registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers placed across England. Short-notice and planned staffing cover.',
   alternates: { canonical: `${siteUrl}/services` },
   openGraph: {
-    title: 'Healthcare Staffing — Horizon Care Services',
-    description: 'Vetted healthcare professionals placed with NHS trusts, local authorities, and care organisations across England. Available 24/7.',
+    title: 'Healthcare Staffing Services | Horizon Care Services',
+    description: 'Vetted health and social care professionals placed with local authorities, NHS trusts, care homes and healthcare organisations across England.',
     url: `${siteUrl}/services`,
     type: 'website',
   },
@@ -20,36 +20,38 @@ export const metadata: Metadata = {
 const roles = [
   {
     title: 'Registered Nurses',
-    detail: 'RGN, RMN, RNLD. Ward cover, community nursing, and specialist settings.',
+    detail: 'RGN, RMN and RNLD professionals for wards, care homes, mental health settings, residential services and specialist environments.',
   },
   {
     title: 'Social Workers',
-    detail: 'Qualified social workers with experience across adult and children\'s services.',
+    detail: 'Qualified social workers for adult services, children\'s services, local authority teams and wider social care settings.',
   },
   {
     title: 'Occupational Therapists',
-    detail: 'Assessment, rehabilitation, and discharge planning support.',
+    detail: 'Occupational therapists for assessments, rehabilitation, discharge planning and community-based work.',
   },
   {
     title: 'Physiotherapists',
-    detail: 'Community and hospital-based physiotherapy provision.',
+    detail: 'Physiotherapists for hospital, community, rehabilitation and care-based environments.',
   },
   {
     title: 'Healthcare Assistants',
-    detail: 'Experienced HCAs across ward, residential, and home environments.',
+    detail: 'Experienced HCAs for hospital, residential, care home and community settings.',
   },
   {
     title: 'Support Workers',
-    detail: 'Trained support workers for residential, community, and domiciliary settings.',
+    detail: 'Support workers for residential care, supported living, learning disability, mental health and community services.',
   },
 ]
 
 const settings = [
   'NHS hospital wards and departments',
-  'Mental health units',
+  'Local authority social care teams',
+  'Mental health services',
   'Learning disability services',
   'Care homes and residential settings',
-  'Community and domiciliary care',
+  'Supported living providers',
+  'Community and domiciliary care organisations',
   'Private hospitals and clinics',
 ]
 
@@ -69,7 +71,7 @@ export default function ServicesPage() {
       <PageHeader
         kicker="What we provide"
         title="Healthcare professionals placed across England."
-        intro="We supply registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers to NHS trusts, local authorities, and care organisations. Available at short notice or on longer-term contracts — 24 hours a day."
+        intro="We supply vetted health and social care professionals to local authorities, NHS trusts, care homes, residential services, supported living providers and healthcare organisations. From urgent shift cover to longer-term placements, we help services stay safely staffed."
       />
 
       {/* Staff types */}
@@ -83,7 +85,7 @@ export default function ServicesPage() {
               fontVariationSettings: '"opsz" 32, "wght" 560',
             }}
           >
-            Clinical and non-clinical roles, all vetted.
+            Clinical and non-clinical roles, checked before placement.
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
@@ -118,14 +120,14 @@ export default function ServicesPage() {
                   fontVariationSettings: '"opsz" 28, "wght" 560',
                 }}
               >
-                The person who walks through the door is someone we'd put our name to.
+                People you can place with confidence.
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                 <p>
-                  Every professional on our register has been DBS checked, reference verified, and assessed for the settings they are placed in. We confirm NMC registration for nurses, SWE for social workers, and HCPC for allied health professionals before any placement goes ahead.
+                  Every professional on our register is checked before placement. We confirm suitability against the role, setting and client requirements, rather than sending workers into environments they are not prepared for.
                 </p>
                 <p>
-                  We don&rsquo;t operate a revolving door of unvetted temps. When we commit to a placement, the professional we send is someone we know, assessed against the environment they are going into.
+                  Depending on the role, checks may include DBS status, identity, right to work, references, training evidence and professional registration with NMC, Social Work England or HCPC.
                 </p>
               </div>
             </div>
@@ -178,10 +180,10 @@ export default function ServicesPage() {
                 Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Manchester, and London.
               </p>
               <p className="text-ink-muted-dark text-[15px] leading-relaxed mb-8">
-                Contact us if you need cover outside these areas. We work across England and regularly extend into new locations.
+                If your organisation is outside these areas, contact us with the role, setting and urgency. We will confirm whether we can support the requirement safely.
               </p>
               <Link
-                href="/referrals"
+                href="/contact"
                 className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
               >
                 Submit a staffing request <ArrowUpRight size={14} aria-hidden="true" />

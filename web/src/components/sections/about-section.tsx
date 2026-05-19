@@ -20,20 +20,20 @@ export function AboutSection() {
 
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 border-t border-rule-light pt-10 lg:pt-12">
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">
-            Horizon Care Services is a healthcare staffing agency with three years
-            of experience placing professionals across England. We supply registered
-            nurses, social workers, OTs, physiotherapists, HCAs, and support workers
-            to NHS trusts, local authorities, and care organisations.
+            Horizon Care Services is a healthcare staffing agency supplying vetted
+            health and social care professionals to local authorities, NHS trusts,
+            care homes, residential services, supported living providers and
+            healthcare organisations.
           </p>
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">
-            We are selective about who we place and where. Every professional on our
-            register is DBS checked, reference verified, and assessed against the
-            settings they work in. Quality over volume — every time.
+            Staffing gaps affect safety, continuity and morale. We help organisations
+            keep services running by supplying suitable professionals for urgent
+            shifts, planned absence, rota pressure and longer-term workforce needs.
           </p>
           <p className="text-ink-muted-dark text-[16px] leading-relaxed">
-            We work closely with ward managers, team leads, and commissioning
-            teams. When a requirement comes in, we respond quickly, confirm
-            availability clearly, and stay accountable once a placement is made.
+            Fast cover matters, but the wrong placement creates more pressure than
+            it solves. We focus on suitability, compliance and communication so the
+            person arriving on shift is someone your service can work with confidently.
           </p>
         </div>
       </div>

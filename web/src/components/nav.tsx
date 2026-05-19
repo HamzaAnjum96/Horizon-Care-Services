@@ -12,9 +12,8 @@ import { cn } from '@/lib/utils'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/work-for-us', label: 'Work For Us' },
-  { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
+  { href: '/work-for-us', label: 'Work For Us' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -195,11 +194,11 @@ export function Nav() {
                 </a>
               </div>
               <Link
-                href="/referrals"
+                href="/contact"
                 onClick={() => setMobileOpen(false)}
                 className="inline-flex items-center gap-2 bg-brand text-ink-light px-4 py-2.5 rounded-md text-[13px] font-semibold hover:opacity-90 transition-opacity"
               >
-                Commission services <ArrowUpRight size={13} aria-hidden="true" />
+                Request Staff <ArrowUpRight size={13} aria-hidden="true" />
               </Link>
             </motion.div>
           </motion.div>

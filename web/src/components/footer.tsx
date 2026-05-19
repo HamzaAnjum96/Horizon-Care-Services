@@ -22,7 +22,7 @@ export function Footer() {
               </p>
             </div>
             <p className="text-ink-muted-light text-[14px] leading-relaxed max-w-[34ch] sm:ml-auto">
-              Healthcare staffing for NHS trusts, local authorities, and care organisations across England.
+              Healthcare staffing for local authorities, NHS trusts, care homes and care organisations across England.
             </p>
           </div>
 
