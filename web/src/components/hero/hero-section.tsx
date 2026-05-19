@@ -14,8 +14,6 @@ const AREAS = [
   'London',
 ]
 
-const marqueeText = AREAS.join('  ·  ') + '  ·  '
-
 export function HeroSection() {
   const reduceMotion = useReducedMotion()
 
@@ -85,26 +83,6 @@ export function HeroSection() {
           </div>
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.55, duration: MOTION_DURATIONS.base }}
-        className="relative border-t border-rule-dark overflow-hidden py-3.5"
-        aria-label="Service areas"
-      >
-        <div className="marquee-track" aria-hidden="true">
-          {[0, 1, 2, 3].map((i) => (
-            <span
-              key={i}
-              className="text-ink-muted-light text-[11px] font-medium tracking-[0.14em] uppercase flex-shrink-0 px-6"
-            >
-              {marqueeText}
-            </span>
-          ))}
-        </div>
-        <span className="sr-only">{AREAS.join(', ')}</span>
-      </motion.div>
     </section>
   )
 }
