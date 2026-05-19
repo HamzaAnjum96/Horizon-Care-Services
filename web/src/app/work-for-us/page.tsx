@@ -170,8 +170,8 @@ export default function WorkForUsPage() {
       ))}
       <PageHeader
           kicker="Work for us"
-          title="Join our register. Work on your terms."
-          intro="We recruit skilled health and social care professionals for flexible agency work across England. Join our register and choose shifts that fit your life, in settings where your skills are used properly."
+          title="Join a staffing team that plans shifts properly and treats you like a professional."
+          intro="We recruit skilled health and social care professionals for flexible agency work across England. We focus on better matching, clearer briefing, and dependable coordination so your shifts are safer, smoother, and worth saying yes to."
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -187,17 +187,17 @@ export default function WorkForUsPage() {
                     fontVariationSettings: '"opsz" 28, "wght" 560',
                   }}
                 >
-                  Flexible agency work, with real support behind it.
+                  Flexible agency work with better briefing, clearer expectations, and responsive coordination.
                 </p>
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
-                    We&rsquo;re a healthcare staffing agency. We work with NHS trusts, local authorities, and care organisations across England, and we take seriously who we place in those settings. That&rsquo;s why we&rsquo;re selective about the professionals we work with — and why the professionals who join us tend to stay.
+                    We work with NHS trusts, local authorities, and care organisations across England, and we are deliberate about where we place people. We do not treat staff as interchangeable — we match to setting, shift demands, and role scope so you can do your work well.
                   </p>
                   <p>
-                    We have been operating for three years. In that time we&rsquo;ve built long-term working relationships with our staff: not because we lock people in, but because we match them well and treat them as professionals.
+                    We have been operating for three years. Over that time, we have built long-term relationships by being clear upfront about the shift, the environment, and who to contact if something changes.
                   </p>
                   <p>
-                    If you want shifts that fit around your life, a team that responds when you need something, and roles where your skills are actually used, talk to us.
+                    If you want flexibility without constant uncertainty, we can be a better fit: practical communication, realistic planning, and a team that responds when you need support.
                   </p>
                 </div>
               </div>
@@ -206,11 +206,11 @@ export default function WorkForUsPage() {
                 <p className="section-kicker text-ink-muted-dark mb-5">What we offer</p>
                 <div className="space-y-5">
                   {[
-                    { label: 'Pay rates', value: 'Competitive, reviewed regularly and paid on time.' },
-                    { label: 'Flexibility', value: 'Choose your shifts. We work around your availability.' },
-                    { label: 'Variety', value: 'Hospitals, care homes, community, and domiciliary settings.' },
-                    { label: 'Support', value: 'A named coordinator you can actually reach when you need to.' },
-                    { label: 'Development', value: 'Access to training and ongoing professional development.' },
+                    { label: 'Shift clarity', value: 'Clearer role briefs, reporting lines, and expectations before you attend.' },
+                    { label: 'Flexibility', value: 'Choose shifts around your availability and preferred locations.' },
+                    { label: 'Coordination', value: 'A named contact for booking updates and escalation support.' },
+                    { label: 'Settings', value: 'Work across hospitals, care homes, supported living, and community services.' },
+                    { label: 'Pay process', value: 'Transparent rate confirmation and consistent payment cycles.' },
                   ].map(({ label, value }) => (
                     <div key={label} className="border-t border-rule-light pt-5">
                       <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>

@@ -43,7 +43,7 @@ export function HeroSection() {
             fontVariationSettings: '"opsz" 64, "wght" 620',
           }}
         >
-          {['The', 'right', 'people,', 'right', 'when', 'your', 'service', 'needs', 'them.'].map((word, i) => (
+          {['Healthcare', 'staffing', 'that', 'runs', 'on', 'clarity,', 'not', 'guesswork.'].map((word, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
@@ -66,7 +66,7 @@ export function HeroSection() {
             className="text-ink-muted-light leading-relaxed max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
-            Horizon Care Services supplies vetted health and social care professionals to local authorities, NHS trusts, care homes and healthcare organisations across England. We support urgent cover, planned staffing gaps and longer-term placements with clear communication from the first call.
+            We support NHS trusts, local authorities, care homes, and community providers with urgent cover and planned staffing across England. Tell us what your service needs, when you need it, and what good cover looks like in your setting — then we confirm options, constraints, and next steps clearly.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">
@@ -74,13 +74,13 @@ export function HeroSection() {
               href="/contact"
               className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
             >
-              Request staff
+              Request staffing support
             </Link>
             <Link
               href="/contact"
               className="interactive-lift inline-flex items-center gap-2 border border-ink-light/30 text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:border-ink-light/60 hover:bg-ink-light/5 transition-colors"
             >
-              Speak to us about cover
+              Discuss your requirement
             </Link>
           </div>
         </motion.div>
