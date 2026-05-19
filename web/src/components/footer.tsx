@@ -71,11 +71,18 @@ export function Footer() {
         </div>
 
         <div className="border-t border-rule-dark mt-12 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <p className="text-[11px] text-ink-muted-light">
-            &copy; {new Date().getFullYear()} Horizon Care Services
-            <span className="mx-2 opacity-40">·</span>
-            Company No. 14615041
-          </p>
+          <div className="flex items-center justify-between w-full sm:w-auto gap-4">
+            <p className="text-[11px] text-ink-muted-light">
+              &copy; {new Date().getFullYear()} Horizon Care Services
+            </p>
+            <p className="text-[11px] text-ink-muted-light sm:hidden">
+              Co. No. 14615041
+            </p>
+            <p className="hidden sm:block text-[11px] text-ink-muted-light">
+              <span className="mx-2 opacity-40">·</span>
+              Company No. 14615041
+            </p>
+          </div>
           <div className="grid grid-cols-2 w-full sm:w-auto sm:flex sm:items-center gap-x-5 gap-y-2.5 [&>*:nth-child(even)]:justify-self-end sm:[&>*:nth-child(even)]:justify-self-auto">
             <Link
               href="/legal"

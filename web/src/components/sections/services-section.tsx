@@ -9,6 +9,8 @@ const points = [
   'Single shifts through to long-term contracts — 24/7',
 ]
 
+const complianceChecks = ['DBS', 'NMC', 'HCPC', 'Social Work England', 'Right to Work']
+
 export function ServicesSection() {
   return (
     <section className="bg-cream py-24 lg:py-32">
@@ -30,7 +32,7 @@ export function ServicesSection() {
             </span>
           </div>
 
-          <div className="grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-16 items-end">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-16 items-end mb-6">
             <ul className="space-y-2">
               {points.map((pt) => (
                 <li
@@ -48,6 +50,15 @@ export function ServicesSection() {
             >
               Full details <ArrowUpRight size={13} aria-hidden="true" />
             </Link>
+          </div>
+
+          <div className="flex flex-wrap gap-x-5 gap-y-2 items-center border-t border-rule-light pt-5">
+            <span className="section-kicker text-ink-muted-dark">Checks include</span>
+            {complianceChecks.map((body) => (
+              <span key={body} className="text-[12px] font-medium text-ink-muted-dark tracking-[0.04em]">
+                {body}
+              </span>
+            ))}
           </div>
         </div>
       </div>
