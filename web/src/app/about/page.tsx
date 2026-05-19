@@ -45,32 +45,6 @@ const jsonLd = [
   },
 ]
 
-interface Credential {
-  code: string
-  name: string
-  image: string
-  href?: string
-}
-
-const credentials: Credential[] = [
-  {
-    code: 'SIA-DS',
-    name: 'SIA Licence',
-    image: '/SIA-Logo.png',
-  },
-  {
-    code: 'AI-900',
-    name: 'Microsoft Certified: Azure AI Fundamentals',
-    image: '/microsoft-certified-fundamentals-badge.svg',
-  },
-  {
-    code: 'PL-200',
-    name: 'Microsoft Certified: Power Platform Functional Consultant Associate',
-    image: '/microsoft-certified-associate-badge.svg',
-    href: 'https://learn.microsoft.com/api/credentials/share/en-us/HamzaAnjum96/3F12C80F9D9FE4FE?sharingId=15A647A646042272',
-  },
-]
-
 export default function AboutPage() {
   return (
     <>
@@ -173,31 +147,6 @@ export default function AboutPage() {
                   We stay reachable after the shift is filled. If a requirement changes, grows or needs extension, you contact us and we respond with options — you don&rsquo;t restart from scratch.
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
-            <p className="section-kicker text-ink-muted-dark mb-8">Credentials &amp; certifications</p>
-            <div className="flex flex-wrap gap-10 lg:gap-16">
-              {credentials.map(({ code, name, image, href }) => (
-                <div key={code} className="flex flex-col items-center gap-3 text-center w-[120px]">
-                  <div className="flex items-center justify-center w-20 h-20">
-                    <img src={image} alt={name} className="w-full h-full object-contain" />
-                  </div>
-                  <span className="font-mono text-[11px] tracking-widest text-ink-muted-dark uppercase">{code}</span>
-                  <p className="text-[12px] text-ink-muted-dark leading-snug">{name}</p>
-                  {href && (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[12px] text-brand hover:opacity-75 transition-opacity"
-                    >
-                      Verify <ArrowUpRight size={11} aria-hidden="true" />
-                    </a>
-                  )}
-                </div>
-              ))}
             </div>
           </div>
 
