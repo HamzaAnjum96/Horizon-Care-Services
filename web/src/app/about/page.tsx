@@ -53,7 +53,7 @@ export default function AboutPage() {
       ))}
       <PageHeader
         kicker="About us"
-        title="Staffing built on relationships, not just rotas."
+        title="How we work: healthcare staffing with clear decisions and accountable follow-through."
       />
 
       <section className="bg-cream py-20 lg:py-28">
@@ -69,14 +69,17 @@ export default function AboutPage() {
                   fontVariationSettings: '"opsz" 28, "wght" 560',
                 }}
               >
-                Three years placing quality healthcare staff across England.
+                We help care services stay safe and staffed by making better placement decisions, faster.
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[64ch]">
                 <p>
-                  Horizon Care Services is a healthcare staffing agency supplying vetted health and social care professionals to organisations across England. We support local authorities, NHS trusts, care homes, residential services, supported living providers and healthcare organisations with short-notice cover, planned staffing needs and longer-term placements.
+                  Horizon Care Services is a healthcare staffing agency supplying vetted health and social care professionals across England. We support local authorities, NHS trusts, care homes, residential services, supported living providers, and healthcare organisations with short-notice cover, planned staffing, and longer-term placements.
                 </p>
                 <p>
-                  We understand that staffing is not just an admin issue. A gap on a rota can affect safety, continuity, service quality and team morale. Our role is to help services find suitable people quickly, without losing sight of compliance, communication and fit.
+                  We treat staffing as an operational risk and continuity issue, not just a rota task. A single gap can increase pressure on permanent teams, disrupt routines for people receiving care, and force managers into repeated last-minute decisions. Our role is to reduce that pressure with realistic options and dependable communication.
+                </p>
+                <p>
+                  We are direct about what we can provide, how quickly we can mobilise support, and where constraints exist. That approach helps clients plan properly instead of chasing uncertain cover.
                 </p>
               </div>
             </div>
@@ -88,7 +91,7 @@ export default function AboutPage() {
                   { label: 'Established', value: '3 years of operating experience' },
                   { label: 'Company number', value: '14615041' },
                   { label: 'Coverage', value: 'Bedfordshire, Bucks, Cambridgeshire, Hertfordshire, Manchester, London' },
-                  { label: 'Response time', value: 'Within 2 working days' },
+                  { label: 'Planning commitment', value: 'Clear updates and next-step ownership' },
                 ].map(({ label, value }) => (
                   <div key={label} className="border-t border-rule-light pt-5">
                     <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
@@ -110,10 +113,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Setting-led matching
+                  Requirement-first briefing
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  Different services need different people. A hospital ward, care home, supported living service and local authority team all require different experience, pace and judgement. We assess each professional against the settings we place them in.
+                  We begin with the operating context: service type, shift risk, required experience, handover expectations, and escalation routes. This prevents vague briefs and improves first-time match quality.
                 </p>
               </div>
               <div>
@@ -124,10 +127,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Clear communication
+                  Structured matching and confirmation
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We respond clearly, confirm availability properly and keep clients informed if anything changes. We remain available after cover is arranged — if the requirement changes or an issue arises, we respond.
+                  We match based on setting fit, role scope, and practical availability. Before confirming, we clarify any constraints that could affect continuity, then confirm who is attending, when, and how handover will happen.
                 </p>
               </div>
               <div>
@@ -138,10 +141,10 @@ export default function AboutPage() {
                     fontVariationSettings: '"opsz" 18, "wght" 620',
                   }}
                 >
-                  Honest capacity
+                  After-placement follow-through
                 </h3>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We tell clients what we can and cannot provide. We would rather give a straight answer than overpromise. If we cannot safely meet a requirement, we say so.
+                  We stay involved after the shift is filled. If a requirement changes, expands, or needs extension, we respond quickly with options rather than leaving services to restart the process from scratch.
                 </p>
               </div>
             </div>
@@ -152,7 +155,7 @@ export default function AboutPage() {
               <div>
                 <p className="section-kicker text-ink-muted-dark mb-4">For councils, care homes and healthcare organisations</p>
                 <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[52ch]">
-                  We support organisations that need dependable health and social care staffing. Whether you are managing urgent absence, recurring rota gaps, discharge pressure or longer-term workforce needs, we help you understand what is available and arrange suitable cover.
+                  We support organisations managing urgent absence, recurring rota gaps, discharge pressure, and longer-term workforce needs. You get straightforward communication on what is available, what is not, and what happens next.
                 </p>
                 <Link
                   href="/contact"

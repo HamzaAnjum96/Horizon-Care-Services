@@ -70,8 +70,8 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHeader
         kicker="What we provide"
-        title="Healthcare professionals placed across England."
-        intro="We supply vetted health and social care professionals to local authorities, NHS trusts, care homes, residential services, supported living providers and healthcare organisations. From urgent shift cover to longer-term placements, we help services stay safely staffed."
+        title="Staffing support designed around your service realities."
+        intro="We supply vetted health and social care professionals to NHS trusts, local authorities, care homes, and care organisations across England. Our process is built for real operations: define the requirement properly, match to setting and risk, confirm clearly, and stay accountable after placement."
       />
 
       {/* Staff types */}
@@ -85,7 +85,7 @@ export default function ServicesPage() {
               fontVariationSettings: '"opsz" 32, "wght" 560',
             }}
           >
-            Clinical and non-clinical roles, checked before placement.
+            Clinical and non-clinical roles for urgent cover, planned rotas, and longer-term continuity.
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
@@ -120,14 +120,17 @@ export default function ServicesPage() {
                   fontVariationSettings: '"opsz" 28, "wght" 560',
                 }}
               >
-                People you can place with confidence.
+                A practical process for safe, workable placements.
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                 <p>
-                  Every professional on our register is checked before placement. We confirm suitability against the role, setting and client requirements, rather than sending workers into environments they are not prepared for.
+                  Every professional on our register is checked before placement. We review requirements against role scope, setting demands, and practical shift conditions so clients are not left with avoidable mismatches.
                 </p>
                 <p>
-                  Depending on the role, checks may include DBS status, identity, right to work, references, training evidence and professional registration with NMC, Social Work England or HCPC.
+                  Depending on role type, checks may include identity, right to work, DBS status, references, training evidence, and where relevant professional registration checks. We also confirm practical details that affect shift success: arrival expectations, reporting lines, and handover context.
+                </p>
+                <p>
+                  If a brief is unclear, we challenge it early. That upfront clarity reduces rebooking loops, improves continuity, and gives managers fewer surprises during handover.
                 </p>
               </div>
             </div>
@@ -136,11 +139,11 @@ export default function ServicesPage() {
               <p className="section-kicker text-ink-muted-dark mb-5">Response times</p>
               <div className="space-y-5">
                 {[
-                  { label: 'Urgent cover', value: 'Same-day and next-day placements available.' },
-                  { label: 'Planned requirements', value: 'Availability confirmed within 2 working days.' },
-                  { label: 'Urgent response', value: 'Within 2 working hours for urgent requests.' },
-                  { label: 'Availability', value: '24 hours a day, 7 days a week.' },
-                  { label: 'Contract length', value: 'Single shift through to long-term placement.' },
+                  { label: 'Urgent cover', value: 'Rapid triage and realistic availability updates.' },
+                  { label: 'Planned requirements', value: 'Structured briefing and staged fulfilment support.' },
+                  { label: 'Communication', value: 'Clear confirmations, constraints, and handover expectations.' },
+                  { label: 'Coverage model', value: 'Single shift through to ongoing placement programmes.' },
+                  { label: 'Escalation support', value: 'Fast re-plan options when requirements change.' },
                 ].map(({ label, value }) => (
                   <div key={label} className="border-t border-rule-light pt-5">
                     <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
@@ -164,7 +167,7 @@ export default function ServicesPage() {
               fontVariationSettings: '"opsz" 28, "wght" 560',
             }}
           >
-            Common staffing situations we support.
+            Staffing pressures we can help you manage.
           </h2>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
             {[
@@ -220,7 +223,7 @@ export default function ServicesPage() {
                 href="/contact"
                 className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
               >
-                Submit a staffing request <ArrowUpRight size={14} aria-hidden="true" />
+                Request staffing support <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
