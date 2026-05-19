@@ -12,7 +12,7 @@ export function exampleApplication(role: { code: string; title: string }): Appli
 
   return {
     role: {
-      code: role.code || 'HCS-HCA-001',
+      code: role.code || 'HCS-HCA-089',
       title: role.title || 'Healthcare Assistant',
     },
     personal: {

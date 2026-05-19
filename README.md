@@ -38,6 +38,49 @@ This repository keeps content organized into focused folders:
 
 This structure keeps the repository organized and easy to maintain.
 
+## Adding a Blog Post
+
+Blog posts live in `web/content/blog/` as Markdown files. The site picks them up automatically — no code changes needed.
+
+### Steps
+
+1. Create a new `.md` file in `web/content/blog/` using a kebab-case name that will become the URL slug.  
+   Example: `my-article-title.md` → `/blog/my-article-title`
+
+2. Add the frontmatter block at the top of the file:
+
+   ```yaml
+   ---
+   title: "Your Article Title"
+   date: YYYY-MM-DD
+   author: Salwan Inayat
+   category: Category Name
+   excerpt: A one or two sentence summary shown on the blog listing page.
+   ---
+   ```
+
+3. Write the article body in Markdown below the frontmatter.
+
+4. **References section** — to trigger the styled references block at the bottom, use this exact heading:
+   ```markdown
+   ## Useful references
+   ```
+   List each link as a plain line followed by its URL on the next line.
+
+### What happens automatically
+
+- Posts are sorted newest-first on `/blog`
+- The most recent post gets a "New" badge
+- Reading time is calculated (approx. 220 words per minute)
+- The post is statically pre-rendered at build time
+
+### Categories used so far
+
+- `Family guidance`
+- `Care planning`
+
+---
+
 ## Design Direction Notes
 
 The homepage look and feel is being refined before any page expansion.

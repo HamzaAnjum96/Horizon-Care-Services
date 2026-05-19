@@ -22,13 +22,13 @@ export function FolderPanel() {
           isActive={active === 'families'}
           onClick={() => setActive('families')}
         >
-          For Individuals &amp; Families
+          For Organisations
         </TabButton>
         <TabButton
           isActive={active === 'professionals'}
           onClick={() => setActive('professionals')}
         >
-          For Professionals
+          For Healthcare Professionals
         </TabButton>
       </div>
 
@@ -84,7 +84,7 @@ function TabButton({
 
 /* ─── Families content ───────────────────────────── */
 function FamiliesContent() {
-  const words = ['Care', 'that', 'holds', 'people', 'steady.']
+  const words = ['The', 'right', 'staff,', 'when', 'it', 'matters.']
 
   return (
     <motion.div
@@ -123,8 +123,9 @@ function FamiliesContent() {
           transition={{ delay: 0.46, duration: MOTION_DURATIONS.base }}
           className="text-text-muted text-[17px] leading-relaxed max-w-[50ch] mb-8"
         >
-          Supported accommodation, home care, and specialist services across
-          England. Built around the person, not the paperwork.
+          We supply registered nurses, social workers, occupational therapists, physiotherapists,
+          healthcare assistants, and support workers to NHS trusts, local authorities, and care
+          organisations. Available 24 hours a day, seven days a week.
         </motion.p>
 
         <motion.div
@@ -143,7 +144,7 @@ function FamiliesContent() {
             href="/referrals"
             className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-5 py-2.5 rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
           >
-            Make a Referral <ArrowRight size={14} />
+            Request Staff <ArrowRight size={14} />
           </Link>
         </motion.div>
       </div>
@@ -151,13 +152,13 @@ function FamiliesContent() {
       {/* Right: sticker cluster */}
       <div className="hidden md:flex flex-col justify-center gap-3.5 px-10 py-12 border-l border-border-soft min-w-[230px]">
         <StickerBadge variant="amber" rotate={-2} delay={0.62}>
-          Staffed 7 days a week
+          24/7 availability
         </StickerBadge>
         <StickerBadge variant="sage" rotate={1.5} delay={0.74}>
-          6 service areas
+          Same-day cover
         </StickerBadge>
         <StickerBadge variant="cream" rotate={-1} delay={0.86}>
-          2-day referral response
+          NHS &amp; LA trusted
         </StickerBadge>
 
         <p className="text-[12px] text-text-muted mt-3 leading-snug">
@@ -172,7 +173,7 @@ function FamiliesContent() {
 
 /* ─── Professionals content ──────────────────────── */
 function ProfessionalsContent() {
-  const words = ['Staff', 'and', 'referrals,', 'handled', 'with', 'care.']
+  const words = ['Flexible', 'agency', 'work,', 'done', 'properly.']
 
   return (
     <motion.div
@@ -210,8 +211,9 @@ function ProfessionalsContent() {
           transition={{ delay: 0.3, duration: MOTION_DURATIONS.base }}
           className="text-text-muted text-[17px] leading-relaxed max-w-[50ch] mb-8"
         >
-          Staffing solutions and referral pathways for NHS trusts, local
-          authorities, and care organisations. Available round the clock.
+          Join our register and choose shifts that fit your schedule. We place experienced
+          professionals across hospitals, care homes, and community settings — with competitive
+          rates, a named coordinator, and placements in settings that meet our standards.
         </motion.p>
 
         <motion.div
@@ -221,16 +223,16 @@ function ProfessionalsContent() {
           className="flex flex-wrap gap-3"
         >
           <Link
-            href="/services/staffing"
+            href="/work-for-us"
             className="interactive-lift inline-flex items-center gap-2 bg-green-brand text-text-inv px-5 py-2.5 rounded-lg font-medium text-[14px] hover:bg-green-hover transition-colors"
           >
-            Staffing Solutions <ArrowRight size={14} />
+            Join Our Register <ArrowRight size={14} />
           </Link>
           <Link
-            href="/referrals"
+            href="/work-for-us"
             className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-5 py-2.5 rounded-lg font-semibold text-[14px] hover:opacity-90 transition-opacity"
           >
-            Submit a Referral <ArrowRight size={14} />
+            View Roles <ArrowRight size={14} />
           </Link>
         </motion.div>
       </div>
@@ -250,10 +252,10 @@ function ProfessionalsContent() {
           Urgent staffing:
           <br />
           <a
-            href="tel:07572701349"
+            href="tel:02037572767"
             className="interactive-lift font-semibold text-green-brand hover:text-green-hover transition-colors"
           >
-            07572 701 349
+            020 3757 2767
           </a>
         </p>
       </div>

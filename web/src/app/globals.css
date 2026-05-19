@@ -55,9 +55,10 @@
 
 /* ─── Base ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
+  overflow-x: clip;
   background-color: var(--cream);
   background-image:
     radial-gradient(circle at 7% -6%, color-mix(in oklab, var(--moss-soft) 48%, transparent) 0%, transparent 44%),
@@ -124,6 +125,17 @@ body {
   will-change: opacity;
 }
 
+.hero-icon-mask {
+  mask-image: radial-gradient(ellipse 40% 38% at 72% 50%, black 0%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse 40% 38% at 72% 50%, black 0%, transparent 82%);
+}
+@media (min-width: 640px) {
+  .hero-icon-mask {
+    mask-image: radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%);
+  }
+}
+
 @keyframes hero-breathe {
   0%, 100% { opacity: 0.45; }
   50%       { opacity: 1; }
@@ -139,22 +151,31 @@ body {
 }
 
 
-/* ─── Footer texture ────────────────────────────────────── */
-.footer-texture {
+/* ─── Footer atmosphere ─────────────────────────────────── */
+.footer-atmosphere {
   position: relative;
+  overflow: hidden;
 }
 
-.footer-texture::before {
+.footer-atmosphere::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(oklch(97% 0.005 56 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(97% 0.005 56 / 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background:
+    radial-gradient(ellipse 72% 90% at 5% 115%, oklch(21% 0.10 9 / 0.40) 0%, transparent 58%),
+    radial-gradient(ellipse 48% 55% at 96% -10%, oklch(44% 0.15 12 / 0.09) 0%, transparent 52%);
   pointer-events: none;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
+}
+
+/* ─── Paper grain (dark sections) ──────────────────────── */
+.dark-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.50' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
 
 /* ─── Marquee ─────────────────────────────────────────── */
@@ -178,6 +199,21 @@ body {
     box-shadow: none;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ─── Process flow connectors (HowItWorks) ───────────────── */
+.flow-connector-line {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.flow-connector-line.is-visible {
+  stroke-dashoffset: 0;
+}
+.flow-connector-line:nth-child(2) { transition-delay: 0.15s; }
+.flow-connector-line:nth-child(3) { transition-delay: 0.30s; }
+@media (prefers-reduced-motion: reduce) {
+  .flow-connector-line { transition: none; stroke-dashoffset: 0; }
 }
 
 /* ─── Legal page prose ──────────────────────────────────── */
@@ -221,4 +257,267 @@ body {
 .prose-legal strong {
   font-weight: 600;
   color: var(--ink-dark);
+}
+
+/* ─── Blog article prose ────────────────────────────────── */
+.prose-blog {
+  color: var(--ink-dark);
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.prose-blog > * + * { margin-top: 1.1em; }
+
+.prose-blog p {
+  max-width: 68ch;
+}
+
+.prose-blog p + p { margin-top: 1.1em; }
+
+.prose-blog strong {
+  font-weight: 600;
+  color: var(--ink-dark);
+}
+
+.prose-blog em { font-style: italic; }
+
+.prose-blog a {
+  color: var(--ink-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.prose-blog a:hover {
+  color: var(--amber);
+  text-decoration-color: var(--amber);
+}
+
+.prose-blog h2 {
+  font-family: var(--font-source-serif), serif;
+  font-variation-settings: "opsz" 32, "wght" 580;
+  font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-top: 3.5rem;
+  margin-bottom: 1.1rem;
+  color: var(--ink-dark);
+  max-width: 32ch;
+}
+
+.prose-blog > h2:first-child { margin-top: 0; }
+
+.prose-blog h3 {
+  font-family: var(--font-source-serif), serif;
+  font-variation-settings: "opsz" 18, "wght" 620;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-top: 2.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--ink-dark);
+}
+
+.prose-blog ul,
+.prose-blog ol {
+  margin: 1.1em 0;
+  padding: 0;
+  list-style: none;
+  max-width: 64ch;
+}
+
+.prose-blog ul li,
+.prose-blog ol li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-top: 0.4em;
+  line-height: 1.7;
+}
+
+.prose-blog ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--amber);
+  font-weight: 500;
+}
+
+.prose-blog ol {
+  counter-reset: ordered;
+}
+
+.prose-blog ol li {
+  counter-increment: ordered;
+  padding-left: 2rem;
+}
+
+.prose-blog ol li::before {
+  content: counter(ordered) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--amber);
+  font-family: var(--font-source-serif), serif;
+  font-variation-settings: "opsz" 14, "wght" 600;
+  font-size: 0.95em;
+}
+
+.prose-blog blockquote {
+  margin: 1.75rem 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  border-left: 2px solid var(--amber);
+  font-family: var(--font-source-serif), serif;
+  font-variation-settings: "opsz" 22, "wght" 480;
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink-dark);
+  max-width: 60ch;
+}
+
+.prose-blog hr {
+  border: 0;
+  display: block;
+  width: 72px;
+  height: 2px;
+  margin: 4rem auto;
+  background-color: var(--amber);
+  border-radius: 1px;
+}
+
+.prose-blog code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: color-mix(in oklab, var(--amber) 8%, transparent);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+}
+
+/* References list — last ul of article, styled as link list */
+.prose-blog .references-block ul li {
+  padding: 0.75rem 0 0.75rem 1.5rem;
+  margin-top: 0;
+  border-top: 1px solid var(--rule-light);
+}
+
+.prose-blog .references-block ul li:last-child {
+  border-bottom: 1px solid var(--rule-light);
+}
+
+/* ─── Step flow (blog) ─────────────────────────────── */
+.prose-blog .step-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  padding: 1.75rem 0;
+  margin: 0.25rem 0 1.5rem;
+  max-width: 68ch;
+  counter-reset: step-num;
+}
+
+.prose-blog .step-flow > div {
+  display: flex;
+  align-items: center;
+  counter-increment: step-num;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-dark);
+}
+
+.prose-blog .step-flow > div::before {
+  content: counter(step-num);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background: var(--amber);
+  color: oklch(97% 0.005 56);
+  font-family: var(--font-source-serif);
+  font-variation-settings: "opsz" 14, "wght" 600;
+  font-size: 11px;
+  border-radius: 2px;
+  margin-right: 0.5rem;
+}
+
+.prose-blog .step-flow > div:not(:last-child)::after {
+  content: '→';
+  margin: 0 0.625rem;
+  color: var(--amber);
+  opacity: 0.45;
+  font-size: 11px;
+}
+
+/* ─── Care comparison (blog) ───────────────────────── */
+.prose-blog .care-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--rule-light);
+  margin: 1.75rem 0;
+  max-width: 68ch;
+}
+
+.prose-blog .care-comparison > div {
+  padding: 1.25rem 1.5rem;
+}
+
+.prose-blog .care-comparison > div + div {
+  border-left: 1px solid var(--rule-light);
+  background: color-mix(in oklab, var(--amber) 5%, transparent);
+}
+
+.prose-blog .care-comparison__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted-dark);
+  margin-bottom: 0.85rem;
+}
+
+.prose-blog .care-comparison ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}
+
+.prose-blog .care-comparison ul > li {
+  padding: 0.4rem 0;
+  padding-left: 0;
+  margin-top: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-dark);
+  border-top: 1px solid var(--rule-light);
+}
+
+.prose-blog .care-comparison ul > li:first-child {
+  border-top: none;
+}
+
+.prose-blog .care-comparison ul > li::before {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .prose-blog .care-comparison {
+    grid-template-columns: 1fr;
+  }
+  .prose-blog .care-comparison > div + div {
+    border-left: none;
+    border-top: 1px solid var(--rule-light);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

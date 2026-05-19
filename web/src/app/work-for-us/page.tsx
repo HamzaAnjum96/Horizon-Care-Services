@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -21,39 +19,46 @@ export const metadata: Metadata = {
 
 const roles = [
   {
-    code: 'HCS-RN-001',
+    code: 'HCS-RN-047',
     title: 'Registered Nurse',
+    location: 'North West (Various)',
     note: 'RGN, RMN, RNLD. Ward cover, community nursing, and specialist settings.',
   },
   {
-    code: 'HCS-SW-001',
+    code: 'HCS-SW-023',
     title: 'Social Worker',
+    location: 'Manchester',
     note: 'Qualified social workers with experience across adult and children\'s services.',
   },
   {
-    code: 'HCS-OT-001',
+    code: 'HCS-OT-031',
     title: 'Occupational Therapist',
+    location: 'Preston',
     note: 'Assessment, rehabilitation, and discharge planning support.',
   },
   {
-    code: 'HCS-PT-001',
+    code: 'HCS-PT-015',
     title: 'Physiotherapist',
+    location: 'Manchester',
     note: 'Community and hospital-based physio provision.',
   },
   {
-    code: 'HCS-HCA-001',
+    code: 'HCS-HCA-089',
     title: 'Healthcare Assistant',
+    location: 'North West (Various)',
     note: 'Experienced HCAs across ward, residential, and home environments.',
   },
   {
-    code: 'HCS-SPW-001',
+    code: 'HCS-SPW-062',
     title: 'Support Worker',
+    location: 'North West (Various)',
     note: 'Trained support workers for residential, community, and domiciliary settings.',
   },
   {
     code: 'HCS-CV-000',
     title: 'Speculative CV',
-    note: "Don’t see your role listed? Send your CV and we’ll be in touch if a suitable position arises.",
+    location: 'North West (Various)',
+    note: "Don't see your role listed? Send your CV and we'll be in touch if a suitable position arises.",
   },
 ]
 
@@ -70,13 +75,13 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: 'Registered Nurse',
-    description: 'RGN, RMN, and RNLD roles providing ward cover, community nursing, and specialist settings across England. Flexible shifts, competitive rates, CQC-regulated provider.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-RN-001' },
+    description: 'RGN, RMN, and RNLD roles providing ward cover, community nursing, and specialist settings across England. Flexible shifts, competitive rates.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-RN-047' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
     employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
     hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'North West England' } },
     applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
     url: `${siteUrl}/work-for-us`,
   },
@@ -85,12 +90,12 @@ const jsonLd = [
     '@type': 'JobPosting',
     title: 'Social Worker',
     description: 'Qualified social workers with experience across adult and children\'s services. Flexible roles with NHS trusts and local authorities across England.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SW-001' },
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SW-023' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
     employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
     hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressLocality: 'Manchester' } },
     applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
     url: `${siteUrl}/work-for-us`,
   },
@@ -99,12 +104,12 @@ const jsonLd = [
     '@type': 'JobPosting',
     title: 'Occupational Therapist',
     description: 'Assessment, rehabilitation, and discharge planning support roles in community and hospital settings across England. Flexible hours and competitive rates.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-OT-001' },
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-OT-031' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
     employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
     hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressLocality: 'Preston' } },
     applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
     url: `${siteUrl}/work-for-us`,
   },
@@ -112,13 +117,13 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: 'Physiotherapist',
-    description: 'Community and hospital-based physiotherapy provision across England. Flexible contract and long-term placement roles with a CQC-regulated provider.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-PT-001' },
+    description: 'Community and hospital-based physiotherapy provision across England. Flexible contract and long-term placement roles.',
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-PT-015' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
     employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
     hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressLocality: 'Manchester' } },
     applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
     url: `${siteUrl}/work-for-us`,
   },
@@ -127,12 +132,12 @@ const jsonLd = [
     '@type': 'JobPosting',
     title: 'Healthcare Assistant',
     description: 'Experienced HCAs across ward, residential, and home environments in England. Choose your shifts, competitive rates, with a named coordinator you can reach.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-HCA-001' },
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-HCA-089' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
     employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
     hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'North West England' } },
     applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
     url: `${siteUrl}/work-for-us`,
   },
@@ -141,12 +146,12 @@ const jsonLd = [
     '@type': 'JobPosting',
     title: 'Support Worker',
     description: 'Trained support workers for residential, community, and domiciliary settings across England. Flexible shifts around your availability, paid competitively and on time.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SPW-001' },
+    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SPW-062' },
     datePosted: '2026-05-13',
     validThrough: '2027-05-13',
     employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
     hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'England' } },
+    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'North West England' } },
     applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
     url: `${siteUrl}/work-for-us`,
   },
@@ -163,12 +168,10 @@ export default function WorkForUsPage() {
       {jsonLd.map((block, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }} />
       ))}
-      <Nav />
-      <main id="main-content">
-        <PageHeader
+      <PageHeader
           kicker="Work for us"
-          title="Join a team that takes care seriously."
-          intro="We recruit skilled health and social care professionals for flexible and long-term roles across England. If you want to work somewhere your standards are respected and your contribution recognised, we want to hear from you."
+          title="Join a staffing team that plans shifts properly and treats you like a professional."
+          intro="We recruit skilled health and social care professionals for flexible agency work across England. We focus on better matching, clearer briefing, and dependable coordination so your shifts are safer, smoother, and worth saying yes to."
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -184,17 +187,17 @@ export default function WorkForUsPage() {
                     fontVariationSettings: '"opsz" 28, "wght" 560',
                   }}
                 >
-                  Flexible work, without compromising what matters.
+                  Flexible agency work with better briefing, clearer expectations, and responsive coordination.
                 </p>
                 <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                   <p>
-                    We&rsquo;re a health and social care company, not a staffing agency. That distinction matters. We&rsquo;re selective about who we work with because our reputation depends on the people we place, and theirs depends on us matching them to the right settings.
+                    We work with NHS trusts, local authorities, and care organisations across England, and we are deliberate about where we place people. We do not treat staff as interchangeable — we match to setting, shift demands, and role scope so you can do your work well.
                   </p>
                   <p>
-                    We have been operating for three years, working with NHS trusts, local authorities, and care organisations across England. In that time we&rsquo;ve built long-term working relationships with our staff: not because we lock people in, but because we treat them as professionals and pay what the work is worth.
+                    We have been operating for three years. Over that time, we have built long-term relationships by being clear upfront about the shift, the environment, and who to contact if something changes.
                   </p>
                   <p>
-                    If you want shifts that fit around your life, a team that responds when you need something, and roles where your skills are actually used, talk to us.
+                    If you want flexibility without constant uncertainty, we can be a better fit: practical communication, realistic planning, and a team that responds when you need support.
                   </p>
                 </div>
               </div>
@@ -203,17 +206,67 @@ export default function WorkForUsPage() {
                 <p className="section-kicker text-ink-muted-dark mb-5">What we offer</p>
                 <div className="space-y-5">
                   {[
-                    { label: 'Pay rates', value: 'Competitive, reviewed regularly and paid on time.' },
-                    { label: 'Flexibility', value: 'Choose your shifts. We work around your availability.' },
-                    { label: 'Variety', value: 'Hospitals, care homes, community, and domiciliary settings.' },
-                    { label: 'Support', value: 'A named coordinator you can actually reach when you need to.' },
-                    { label: 'Development', value: 'Access to training and ongoing professional development.' },
+                    { label: 'Shift clarity', value: 'Clearer role briefs, reporting lines, and expectations before you attend.' },
+                    { label: 'Flexibility', value: 'Choose shifts around your availability and preferred locations.' },
+                    { label: 'Coordination', value: 'A named contact for booking updates and escalation support.' },
+                    { label: 'Settings', value: 'Work across hospitals, care homes, supported living, and community services.' },
+                    { label: 'Pay process', value: 'Transparent rate confirmation and consistent payment cycles.' },
                   ].map(({ label, value }) => (
                     <div key={label} className="border-t border-rule-light pt-5">
                       <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
                       <p className="text-ink-dark text-[14px] leading-relaxed">{value}</p>
                     </div>
                   ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
+              <p className="section-kicker text-ink-muted-dark mb-5">What we expect from placements</p>
+              <p
+                className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-6 max-w-[28ch]"
+                style={{
+                  fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
+                  fontVariationSettings: '"opsz" 24, "wght" 560',
+                }}
+              >
+                What good looks like.
+              </p>
+              <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[60ch] mb-12">
+                A good placement means you arrive prepared, stay in contact if anything changes, and work to the standard the service needs. We brief you properly beforehand — setting type, reporting lines, what to expect on the day. In return, we ask for the same professionalism in the field. That&rsquo;s what makes clients ask for workers back, and what leads to more shifts.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-x-16 gap-y-8">
+                <div>
+                  <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-4">What you can expect from us</p>
+                  <ul className="space-y-3">
+                    {[
+                      'A proper brief before every shift — setting type, reporting line, what to expect',
+                      'Honest assessment of whether a placement is a good fit for you',
+                      'A named coordinator available for changes and questions',
+                      'Rates confirmed before you accept, paid consistently',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-ink-muted-dark text-[14px] leading-relaxed">
+                        <span className="mt-[8px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-4">What we expect from you</p>
+                  <ul className="space-y-3">
+                    {[
+                      'Attendance as confirmed — contact us immediately if something changes',
+                      'Current compliance: DBS, registration, mandatory training',
+                      'Professional conduct with clients and with us',
+                      'Feedback if a placement wasn\'t right — it helps us match better next time',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-ink-muted-dark text-[14px] leading-relaxed">
+                        <span className="mt-[8px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
@@ -239,6 +292,9 @@ export default function WorkForUsPage() {
                         </h3>
                         <span className="text-[10px] font-medium tracking-[0.1em] text-ink-muted-dark/70 border border-rule-light px-2 py-0.5 rounded font-mono">
                           {role.code}
+                        </span>
+                        <span className="text-[10px] font-medium tracking-[0.08em] text-ink-muted-dark/70 border border-rule-light px-2 py-0.5 rounded">
+                          {role.location}
                         </span>
                       </div>
                       <p className="text-ink-muted-dark text-[13px] leading-snug">{role.note}</p>
@@ -282,12 +338,12 @@ export default function WorkForUsPage() {
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <a
-                    href="mailto:careers@horizoncareservices.org"
+                  <Link
+                    href={applyHref('HCS-CV-000', 'Speculative CV')}
                     className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
                     Email your CV <ArrowUpRight size={14} aria-hidden="true" />
-                  </a>
+                  </Link>
                   <p className="text-ink-muted-dark text-[13px]">
                     Or call us on{' '}
                     <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
@@ -300,8 +356,6 @@ export default function WorkForUsPage() {
 
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   )
 }
