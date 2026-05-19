@@ -33,6 +33,7 @@ const PAGE_GROUPS: {
     kicker: 'Work for us',
     pages: [
       { title: 'Work for us', href: '/work-for-us', description: 'Career opportunities for nurses, healthcare assistants, support workers, and allied health professionals.' },
+      { title: 'Apply',       href: '/work-for-us/apply', description: 'Job application form for healthcare professionals looking to work with Horizon Care Services.' },
     ],
   },
   {
