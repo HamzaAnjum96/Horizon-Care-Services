@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
@@ -15,9 +13,8 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <Nav />
-      <main id="main-content" className="pb-20">
-        <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 9 May 2026" showGrid={false} />
+      <div className="pb-20">
+        <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 19 May 2026" showGrid={false} />
 
         {/* Content */}
         <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-14">
@@ -25,7 +22,13 @@ export default function PrivacyPolicyPage() {
 
             <Section title="1. Who we are">
               <p>
-                Horizon Care Services Ltd (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a registered health and social care provider in England. We are the data controller for personal information collected through this website and in connection with our services.
+                Horizon Care Services Ltd (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a healthcare staffing agency registered in England and Wales.
+              </p>
+              <p>
+                We supply health and social care professionals to organisations including local authorities, NHS trusts, care homes, residential services, supported living providers and healthcare organisations.
+              </p>
+              <p>
+                We are the data controller for personal information collected through this website and in connection with our staffing, business, candidate and administrative activities.
               </p>
               <p>
                 Registered address: 475B Cheetham Hill Road, Cheetham Hill, Manchester, M8 9LR. Company number: 14615041.
@@ -37,101 +40,165 @@ export default function PrivacyPolicyPage() {
             </Section>
 
             <Section title="2. What information we collect">
-              <p>We may collect the following categories of personal information:</p>
+              <p>We may collect and process the following categories of personal information.</p>
               <ul>
-                <li><strong>Contact details:</strong> name, telephone number, email address, postal address.</li>
-                <li><strong>Referral information:</strong> details about the person being referred, including relevant health, social care, and support needs, provided by NHS professionals, Local Authority staff, or families.</li>
-                <li><strong>Employment enquiries:</strong> CVs, qualifications, and professional registration details submitted by job applicants.</li>
-                <li><strong>Website usage data:</strong> browser type, pages visited, and access times, collected via server logs. We do not use analytics, advertising, or any cross-site tracking. Limited details on cookies and third-party content are set out in section 9.</li>
-                <li><strong>Communications:</strong> any information you send us by email or telephone.</li>
+                <li>
+                  <strong>Client and business contact information:</strong> name, job title, organisation, work email address, telephone number, enquiry details, staffing requirements, communication history.
+                </li>
+                <li>
+                  <strong>Candidate and worker information:</strong> name, address, telephone number, email address, CV, employment history, qualifications, training records, professional registration details, right-to-work information, DBS information where relevant, references, availability, role preferences, placement history, payroll or payment details where applicable.
+                </li>
+                <li>
+                  <strong>Staffing requirement information:</strong> details provided by client organisations about the roles, settings, shifts, locations and experience required.
+                </li>
+                <li>
+                  <strong>Compliance and placement information:</strong> role suitability notes, client requirements, placement dates, shift or booking information, timesheets or attendance records where applicable, feedback or incident information where relevant to a placement.
+                </li>
+                <li>
+                  <strong>Website and technical information:</strong> browser type, device information, pages visited, access times, server log information, cookie or local-storage preferences.
+                </li>
+                <li>
+                  <strong>Communications:</strong> information you send to us by email, telephone, WhatsApp, website form or other communication channels.
+                </li>
               </ul>
             </Section>
 
-            <Section title="3. How we use your information">
+            <Section title="3. How we collect information">
+              <p>We may collect information:</p>
+              <ul>
+                <li>Directly from you when you contact us, apply to work with us or submit an enquiry.</li>
+                <li>From client organisations requesting staffing support.</li>
+                <li>From referees.</li>
+                <li>From professional registration bodies where relevant.</li>
+                <li>From publicly available sources where necessary for recruitment or compliance checks.</li>
+                <li>From job boards or recruitment platforms where you have made your details available.</li>
+                <li>From IT systems used to operate our website and business.</li>
+              </ul>
+            </Section>
+
+            <Section title="4. How we use your information">
               <p>We use personal information to:</p>
               <ul>
-                <li>Assess and process referrals for our care and support services.</li>
-                <li>Arrange and deliver care, staffing, or support services.</li>
-                <li>Respond to enquiries from families, professionals, and commissioners.</li>
-                <li>Process employment applications and manage relationships with staff.</li>
-                <li>Comply with our legal and regulatory obligations, including CQC requirements.</li>
-                <li>Maintain records as required by applicable law.</li>
+                <li>Respond to staffing enquiries from client organisations, commissioners, managers and professionals.</li>
+                <li>Assess client staffing requirements.</li>
+                <li>Identify suitable candidates or workers for placements.</li>
+                <li>Carry out recruitment, vetting and compliance checks.</li>
+                <li>Confirm professional registration where relevant.</li>
+                <li>Manage staffing bookings, shifts and placements.</li>
+                <li>Communicate with clients, candidates and workers.</li>
+                <li>Manage contracts, invoices, timesheets and business records.</li>
+                <li>Meet legal, regulatory, tax, accounting and employment obligations.</li>
+                <li>Protect our business, clients, workers and service users where necessary.</li>
+                <li>Maintain website security and operate website preferences.</li>
               </ul>
             </Section>
 
-            <Section title="4. Legal basis for processing">
-              <p>We rely on the following lawful bases under UK GDPR:</p>
+            <Section title="5. Lawful bases for processing">
+              <p>We rely on different lawful bases depending on how and why we process personal information.</p>
               <ul>
-                <li><strong>Legitimate interests:</strong> responding to general enquiries and operating our website.</li>
-                <li><strong>Contract performance:</strong> delivering services and managing employment relationships.</li>
-                <li><strong>Legal obligation:</strong> where processing is required to comply with law or regulation.</li>
-                <li><strong>Vital interests:</strong> where processing is necessary to protect the life or safety of a service user.</li>
-                <li><strong>Explicit consent:</strong> where we rely on consent, we will ask for it clearly and separately.</li>
+                <li>
+                  <strong>Responding to business enquiries:</strong> legitimate interests. We have a legitimate interest in responding to organisations that contact us about staffing support.
+                </li>
+                <li>
+                  <strong>Managing client relationships and staffing requirements:</strong> contract performance or legitimate interests. We process information to provide staffing services and manage business relationships.
+                </li>
+                <li>
+                  <strong>Recruitment and candidate registration:</strong> contract performance, legitimate interests and legal obligation where applicable. We process candidate information to assess suitability, complete checks and manage work opportunities.
+                </li>
+                <li>
+                  <strong>Compliance checks:</strong> legal obligation, contract performance and legitimate interests where applicable. This may include right-to-work checks, professional registration checks, reference checks and other role-specific requirements.
+                </li>
+                <li>
+                  <strong>Special category data:</strong> where we process health, professional fitness, occupational health, safeguarding or similar sensitive information, we do so only where a valid UK GDPR condition applies. This may include employment, social security and social protection obligations, or explicit consent where appropriate.
+                </li>
+                <li>
+                  <strong>Legal and business records:</strong> legal obligation and legitimate interests. We retain records where needed for tax, accounting, contract, legal or dispute-management purposes.
+                </li>
+                <li>
+                  <strong>Website operation and security:</strong> legitimate interests. We use limited technical information to operate, secure and maintain the website.
+                </li>
               </ul>
-              <p>
-                Where we process special category data (health or care information), we rely on Article 9(2)(h) UK GDPR (healthcare purposes) and Schedule 1, Part 1(2) of the Data Protection Act 2018.
-              </p>
             </Section>
 
-            <Section title="5. Who we share information with">
-              <p>We do not sell personal data. We may share information with:</p>
+            <Section title="6. Who we share information with">
+              <p>We do not sell personal data. We may share personal information with:</p>
               <ul>
-                <li>NHS trusts, Local Authorities, and commissioners involved in coordinating a person&rsquo;s care.</li>
-                <li>Regulated healthcare professionals and partner organisations delivering services.</li>
-                <li>Our IT and hosting providers, under data processing agreements.</li>
-                <li>Regulatory bodies (CQC, ICO) where required by law.</li>
+                <li>Client organisations where this is necessary for staffing placements.</li>
+                <li>Candidates, workers and referees as part of recruitment and placement processes.</li>
+                <li>Professional registration bodies where checks are required.</li>
+                <li>DBS or background-check providers where applicable.</li>
+                <li>Payroll, accounting or payment providers where applicable.</li>
+                <li>IT, hosting, email and website service providers.</li>
+                <li>Insurers, legal advisers and professional advisers.</li>
+                <li>Regulators, law enforcement or public authorities where required by law.</li>
               </ul>
+              <p>We only share information where there is a valid reason to do so.</p>
             </Section>
 
-            <Section title="6. How long we keep your information">
+            <Section title="7. How long we keep your information">
               <p>
-                We retain personal data only for as long as necessary. Referral and care records are retained for a minimum of 7 years in line with NHS and social care guidance. Employment records are kept for 6 years after the end of employment. Website server logs are retained for up to 90 days.
+                Client, candidate, placement and compliance records are retained only for as long as needed for business, legal, contract, tax, employment, safeguarding, insurance or compliance purposes.
               </p>
+              <p>Typical retention periods may include:</p>
+              <ul>
+                <li>General enquiries: up to 2 years after the last contact.</li>
+                <li>Client and contract records: up to 6 years after the end of the business relationship.</li>
+                <li>Candidate registration records: up to 6 years after the last placement or meaningful contact.</li>
+                <li>Payroll, tax and accounting records: up to 6 years, or longer where legally required.</li>
+                <li>Website server logs: up to 90 days.</li>
+              </ul>
               <p>
-                We review retention periods periodically and delete data securely once it is no longer required.
+                Some records may be kept longer where required for legal claims, safeguarding, regulatory, insurance or compliance reasons.
               </p>
             </Section>
 
-            <Section title="7. Your rights">
-              <p>Under UK GDPR, you have the right to:</p>
+            <Section title="8. Your rights">
+              <p>Under UK data protection law, you may have the right to:</p>
               <ul>
                 <li>Access the personal data we hold about you.</li>
-                <li>Request correction of inaccurate or incomplete data.</li>
-                <li>Request erasure of your data, where we have no overriding legal reason to retain it.</li>
-                <li>Object to or restrict certain processing.</li>
-                <li>Data portability, where processing is based on consent or contract.</li>
-                <li>Withdraw consent at any time, without affecting the lawfulness of processing before withdrawal.</li>
+                <li>Ask us to correct inaccurate or incomplete data.</li>
+                <li>Ask us to erase your data where there is no overriding reason to keep it.</li>
+                <li>Ask us to restrict certain processing.</li>
+                <li>Object to certain processing.</li>
+                <li>Request data portability where applicable.</li>
+                <li>Withdraw consent where processing is based on consent.</li>
               </ul>
               <p>
-                To exercise any of these rights, write to us at the address above or email{' '}
-                <a href="mailto:contact@horizoncareservices.org">contact@horizoncareservices.org</a>. We will respond within one calendar month.
+                To exercise your rights, contact us at{' '}
+                <a href="mailto:contact@horizoncareservices.org">contact@horizoncareservices.org</a>. We will usually respond within one calendar month.
               </p>
             </Section>
 
-            <Section title="8. Complaints">
+            <Section title="9. Complaints">
               <p>
-                If you are unhappy with how we have handled your personal data, you have the right to lodge a complaint with the Information Commissioner&rsquo;s Office (ICO) at{' '}
+                If you are unhappy with how we handle your personal data, please contact us first so we can try to resolve the issue.
+              </p>
+              <p>
+                You also have the right to complain to the Information Commissioner&rsquo;s Office at{' '}
                 <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>{' '}
                 or by telephone on 0303 123 1113.
               </p>
             </Section>
 
-            <Section title="9. Cookies and similar technologies">
+            <Section title="10. Cookies and similar technologies">
               <p>
-                We do not set any tracking cookies. We do not use analytics, advertising, or cross-site profiling.
+                We do not use advertising cookies or cross-site profiling.
               </p>
               <p>
-                If you interact with the cookie banner on this site, we save a single entry in your browser&rsquo;s local storage to remember the choice you made. This is strictly necessary for the banner to work and is not shared with any third party.
+                We may use limited website technologies to operate the site, remember cookie choices and provide functional content.
               </p>
               <p>
-                <strong>Third-party content (functional).</strong> On the contact page we offer an interactive map. The map tiles are served by CartoDB and the Leaflet library is served by unpkg. These providers may receive your IP address and basic request information when the map is loaded. The map only loads if you have given consent through the cookie banner. You can change or withdraw your consent at any time using the &ldquo;Cookie Preferences&rdquo; link in the footer.
+                If you interact with the cookie banner on this site, we may save a single entry in your browser&rsquo;s local storage to remember the choice you made. This is used to operate the banner and is not shared with third parties.
               </p>
               <p>
-                When functional content is off, we display a static placeholder and our office address remains accessible without contacting any third-party service.
+                <strong>Third-party content.</strong> On the contact page, we may offer an interactive map. The map tiles may be served by a third-party map provider and the map library may be served by a third-party provider. These providers may receive your IP address and basic request information when the map is loaded. Where required, the map should only load after you have given consent through the cookie banner. You can change or withdraw your consent using the &ldquo;Cookie Preferences&rdquo; link in the footer.
+              </p>
+              <p>
+                When functional content is off, we display a static placeholder and our office address remains available without loading third-party map content.
               </p>
             </Section>
 
-            <Section title="10. Changes to this policy">
+            <Section title="11. Changes to this policy">
               <p>
                 We may update this policy when our practices change or when required by law. Material changes will be noted at the top of this page with a revised date.
               </p>
@@ -155,8 +222,7 @@ export default function PrivacyPolicyPage() {
           </div>
         </div>
 
-      </main>
-      <Footer />
+      </div>
     </>
   )
 }

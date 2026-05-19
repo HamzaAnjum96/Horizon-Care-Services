@@ -3,14 +3,6 @@
 import { useReducedMotion } from 'framer-motion'
 import { HCSLogoMark } from '@/components/hcs-logo'
 
-function seededFloat(seed: number): number {
-  const x = Math.sin(seed + 1) * 10000
-  return x - Math.floor(x)
-}
-
-const COLS = 15
-const ROWS = 10
-
 type IconType = 'cross' | 'dot' | 'logo' | 'shield' | 'heart' | 'ring'
 
 interface IconSpec {
@@ -24,9 +16,18 @@ interface IconSpec {
   delay: number
 }
 
-function buildIcons(): IconSpec[] {
+// ── Desktop: original seeded-random field ────────────────────────────────────
+
+function seededFloat(seed: number): number {
+  const x = Math.sin(seed + 1) * 10000
+  return x - Math.floor(x)
+}
+
+const COLS = 15
+const ROWS = 10
+
+function buildDesktopIcons(): IconSpec[] {
   const icons: IconSpec[] = []
-  // Track placed icons for overlap rejection (left/top in %, cPct = clearance radius in %)
   const placed: { left: number; top: number; cPct: number }[] = []
 
   const pool: IconType[] = [
@@ -41,10 +42,8 @@ function buildIcons(): IconSpec[] {
 
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      const t = col / (COLS - 1) // 0 = left, 1 = right
-
-      // More icons on the left (small, faint), fewer on the right (large, bright)
-      const fillProb = 0.18 + (1 - t) * 0.44 // ~0.62 left → ~0.18 right
+      const t = col / (COLS - 1)
+      const fillProb = 0.18 + (1 - t) * 0.44
       if (seededFloat(s++) > fillProb) continue
 
       const cw = 100 / COLS
@@ -53,27 +52,17 @@ function buildIcons(): IconSpec[] {
       const top  = row * ch + seededFloat(s++) * ch * 1.10 - ch * 0.05
       const type = pool[Math.floor(seededFloat(s++) * pool.length)]
       const raw  = Math.pow(seededFloat(s++), 1.5)
-
-      // Size: tiny on the left (~6px), large on the right (~100px)
       const size = Math.floor(6 + t * 94 + raw * 12)
-
-      // Clearance radius in % of canvas width (larger icons need more room)
       const cPct = size / 13
 
-      // Reject if this icon overlaps any already-placed icon
-      // Vertical distances are scaled up (canvas is wider than tall)
       const overlaps = placed.some(p => {
         const dx = left - p.left
         const dy = (top - p.top) * 1.7
         return Math.sqrt(dx * dx + dy * dy) < cPct + p.cPct
       })
-      if (overlaps) {
-        // Still consume the remaining seeds for this cell to keep sequence stable
-        s += 3
-        continue
-      }
+      if (overlaps) { s += 3; continue }
 
-      const opacity  = (0.04 + t * 0.24) + seededFloat(s++) * 0.09
+      const opacity  = (0.02 + t * 0.13) + seededFloat(s++) * 0.05
       const duration = 4.5 + seededFloat(s++) * 7
       const delay    = -(seededFloat(s++) * 12)
 
@@ -84,7 +73,21 @@ function buildIcons(): IconSpec[] {
   return icons
 }
 
-const ICONS = buildIcons()
+const DESKTOP_ICONS = buildDesktopIcons()
+
+// ── Mobile: 4 fixed icons, one of each key type, spread across right side ────
+
+const MOBILE_ICONS: IconSpec[] = [
+  { id: 'm-a', type: 'logo',   left: 80, top: 20, size: 74, opacity: 0.12, duration: 9.5,  delay: -3.0  },
+  { id: 'm-b', type: 'cross',  left: 88, top: 62, size: 52, opacity: 0.09, duration: 7.2,  delay: -7.5  },
+  { id: 'm-c', type: 'shield', left: 65, top: 75, size: 36, opacity: 0.07, duration: 11.0, delay: -2.0  },
+  { id: 'm-d', type: 'heart',  left: 73, top: 36, size: 26, opacity: 0.06, duration: 8.3,  delay: -9.0  },
+  { id: 'm-e', type: 'ring',   left: 83, top: 50, size: 22, opacity: 0.05, duration: 7.0,  delay: -5.5  },
+  { id: 'm-f', type: 'dot',    left: 70, top: 57, size: 13, opacity: 0.06, duration: 8.4,  delay: -3.8  },
+  { id: 'm-g', type: 'cross',  left: 76, top: 87, size: 28, opacity: 0.05, duration: 6.6,  delay: -11.2 },
+]
+
+// ── Shared ────────────────────────────────────────────────────────────────────
 
 function IconShape({ type, size }: { type: IconType; size: number }) {
   if (type === 'logo') {
@@ -139,22 +142,10 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
   return null
 }
 
-export function HeroIconGrid() {
-  const reduced = useReducedMotion()
-
+function IconLayer({ icons, animation }: { icons: IconSpec[]; animation: (icon: IconSpec) => string | undefined }) {
   return (
-    <div
-      aria-hidden="true"
-      className="absolute inset-0 pointer-events-none select-none"
-      style={{
-        color: 'oklch(55% 0.12 20)',
-        maskImage:
-          'radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%)',
-        WebkitMaskImage:
-          'radial-gradient(ellipse 70% 62% at 80% 50%, black 0%, transparent 90%)',
-      }}
-    >
-      {ICONS.map((icon) => (
+    <>
+      {icons.map((icon) => (
         <div
           key={icon.id}
           className="absolute"
@@ -164,15 +155,48 @@ export function HeroIconGrid() {
             marginLeft: -icon.size / 2,
             marginTop: -icon.size / 2,
             opacity: icon.opacity,
-            animation: reduced
-              ? 'none'
-              : `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`,
-            willChange: reduced ? 'auto' : 'transform',
+            animation: animation(icon),
+            willChange: animation(icon) ? 'transform' : 'auto',
           }}
         >
           <IconShape type={icon.type} size={icon.size} />
         </div>
       ))}
+    </>
+  )
+}
+
+export function HeroIconGrid() {
+  const reduced = useReducedMotion()
+
+  const anim = (icon: IconSpec) =>
+    reduced ? undefined : `hcs-breathe ${icon.duration.toFixed(2)}s ${icon.delay.toFixed(2)}s ease-in-out infinite`
+
+  return (
+    <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none">
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <filter id="icon-grain" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" seed="9" result="noise" />
+            <feColorMatrix type="saturate" values="0" in="noise" result="mono" />
+            <feComposite in="mono" in2="SourceAlpha" operator="in" result="clipped" />
+            <feBlend in="SourceGraphic" in2="clipped" mode="soft-light" />
+          </filter>
+        </defs>
+      </svg>
+      <div
+        className="hero-icon-mask absolute inset-0"
+        style={{ color: 'oklch(38% 0.08 20)', filter: 'url(#icon-grain)' }}
+      >
+      {/* Mobile: 4 icons only */}
+      <div className="sm:hidden absolute inset-0">
+        <IconLayer icons={MOBILE_ICONS} animation={anim} />
+      </div>
+      {/* Desktop: full field */}
+      <div className="hidden sm:block absolute inset-0">
+        <IconLayer icons={DESKTOP_ICONS} animation={anim} />
+      </div>
+    </div>
     </div>
   )
 }

@@ -1,23 +1,20 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
 
 const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
   title: { absolute: 'Legal Notice — Horizon Care Services' },
-  description: 'Legal information for Horizon Care Services Ltd, including company registration and regulatory details.',
+  description: 'Legal information for Horizon Care Services Ltd, including company registration details and website terms.',
   alternates: { canonical: `${siteUrl}/legal` },
 }
 
 export default function LegalNoticePage() {
   return (
     <>
-      <Nav />
-      <main id="main-content" className="pb-20">
-        <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 1 May 2025" showGrid={false} />
+      <div className="pb-20">
+        <PageHeader kicker="Legal" title="Legal Notice." intro="Last updated: 19 May 2026" showGrid={false} />
 
         {/* Content */}
         <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-14">
@@ -36,21 +33,27 @@ export default function LegalNoticePage() {
               </dl>
             </Section>
 
-            <Section title="Regulatory status">
+            <Section title="Nature of our services">
               <p>
-                Horizon Care Services Ltd is registered with and regulated by the Care Quality Commission (CQC) in England. Our services are provided in accordance with the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014.
+                Horizon Care Services Ltd operates as a healthcare staffing agency. We supply health and social care professionals to organisations including local authorities, NHS trusts, care homes, residential services, supported living providers and healthcare organisations.
               </p>
               <p>
-                We are also registered with the Information Commissioner&rsquo;s Office (ICO) as a data controller.
+                Horizon Care Services Ltd does not present itself on this website as a CQC-registered care provider. Organisations engaging staff through us remain responsible for ensuring that any regulated activities, service delivery arrangements and governance requirements are managed in accordance with their own legal and regulatory obligations.
+              </p>
+            </Section>
+
+            <Section title="Information Commissioner's Office">
+              <p>
+                Horizon Care Services Ltd is registered with the Information Commissioner&rsquo;s Office as a data controller where required for the personal information we process in connection with our business activities.
               </p>
             </Section>
 
             <Section title="Website disclaimer">
               <p>
-                The information on this website is provided for general guidance only. While we take reasonable care to keep it accurate and up to date, we make no warranties about its completeness, accuracy, or fitness for any particular purpose.
+                The information on this website is provided for general guidance only. While we take reasonable care to keep it accurate and up to date, we make no warranties about its completeness, accuracy or suitability for any particular purpose.
               </p>
               <p>
-                Nothing on this website constitutes clinical, legal, or financial advice. If you need guidance about a specific care situation, please contact us directly or speak to a qualified professional.
+                Nothing on this website constitutes clinical, legal, financial or regulatory advice. Organisations should make their own checks before engaging staff or relying on any information provided through this website.
               </p>
               <p>
                 We reserve the right to amend or remove content from this website at any time without notice.
@@ -59,16 +62,16 @@ export default function LegalNoticePage() {
 
             <Section title="Intellectual property">
               <p>
-                All content on this website, including text, design, graphics, and code, is the property of Horizon Care Services Ltd or its licensors and is protected by copyright.
+                All content on this website, including text, design, graphics and code, is the property of Horizon Care Services Ltd or its licensors and is protected by copyright.
               </p>
               <p>
-                You may view, download, and print pages from this site for personal, non-commercial use. Any other use, including reproduction or redistribution for commercial purposes, requires our prior written permission.
+                You may view, download and print pages from this site for internal business reference and non-commercial use. Any other use, including reproduction or redistribution for commercial purposes, requires our prior written permission.
               </p>
             </Section>
 
             <Section title="Third-party links">
               <p>
-                Where this website links to external sites, we are not responsible for their content, accuracy, or availability. Links do not imply endorsement of those sites or their operators.
+                Where this website links to external sites, we are not responsible for their content, accuracy or availability. Links do not imply endorsement of those sites or their operators.
               </p>
             </Section>
 
@@ -104,8 +107,7 @@ export default function LegalNoticePage() {
           </div>
         </div>
 
-      </main>
-      <Footer />
+      </div>
     </>
   )
 }

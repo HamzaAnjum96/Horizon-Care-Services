@@ -5,32 +5,32 @@ import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'What services does Horizon Care Services provide?',
-    a: 'We provide three core services: home care (personal care, companionship, medication management, meal preparation, housekeeping, and respite support); healthcare staffing (registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers); and specialist care for people living with dementia and those with life-limiting conditions including hospice and end-of-life care.',
+    q: 'What types of staff do you provide?',
+    a: 'We place registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants and support workers. We cover urgent shifts, planned rotas, and longer-term placements.',
   },
   {
-    q: 'What areas does Horizon Care Services cover?',
-    a: 'We operate across Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Greater Manchester, and London. Contact us if you are outside these areas. We can often extend coverage.',
+    q: 'Who do you work with?',
+    a: 'We work with local authorities, NHS trusts, care homes, supported living providers, residential services, private hospitals and wider healthcare organisations across England.',
   },
   {
-    q: 'Is Horizon Care Services CQC registered?',
-    a: 'Yes. Horizon Care Services Ltd is registered with and regulated by the Care Quality Commission (CQC) in England. Our services are provided in accordance with the Health and Social Care Act 2008 (Regulated Activities) Regulations 2014. Company number 14615041.',
+    q: 'Can you provide urgent cover?',
+    a: "Yes, where suitable professionals are available for your setting. Call us for urgent requirements and we'll triage quickly. If we can't fill it safely, we'll tell you straight away — not after keeping you waiting.",
   },
   {
-    q: 'How do I arrange home care from Horizon Care Services?',
-    a: 'Call 020 3757 2767 (Monday to Friday, 9am to 5pm), message via WhatsApp at the same number, or email contact@horizoncareservices.org. We respond within 2 working days to discuss requirements and confirm next steps.',
+    q: 'Do you support longer-term contracts?',
+    a: 'Yes. Single shifts, block bookings, planned absence cover, rota gaps and ongoing placements — all handled. We work to the same process regardless of duration.',
   },
   {
-    q: 'How quickly can Horizon Care Services provide healthcare staff?',
-    a: 'For urgent requirements, we can often respond the same day. For planned placements, we confirm availability within 2 working days. Staffing is available 24/7 for NHS trusts, local authorities, care homes, and other care organisations across England.',
+    q: 'What checks do your staff have?',
+    a: "Before we put anyone forward, we verify DBS status, right-to-work, references and professional registration with NMC, Social Work England or HCPC where relevant. We don't send workers whose compliance we haven't confirmed.",
   },
   {
-    q: 'Does Horizon Care Services work with NHS trusts and local authorities?',
-    a: 'Yes. We work with NHS trusts, local authorities, private care homes, and commissioning teams across England. We are transparent about capacity, rates, and compliance from the first conversation. Call 020 3757 2767 or email contact@horizoncareservices.org to discuss a commissioning requirement.',
+    q: 'What information should we send when requesting staff?',
+    a: 'The role and any registration or band required, the setting type, location, shift dates or pattern, urgency level, and anything specific about the environment. The more detail you give us upfront, the faster we can give you a realistic answer.',
   },
   {
-    q: 'What types of healthcare professionals does Horizon Care Services place?',
-    a: 'We place registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers in ward, community, residential, and domiciliary settings across England.',
+    q: 'What happens if the requirement changes after I contact you?',
+    a: "Get in touch and we'll adjust. If a shift changes, extends or gets cancelled, let us know as early as possible and we'll coordinate from there. You won't need to re-explain the setting from scratch.",
   },
 ]
 

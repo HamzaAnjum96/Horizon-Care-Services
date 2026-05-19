@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Nav } from '@/components/nav'
-import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/layout/page-header'
+
+const BASE = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
   title: 'Site Map — Horizon Care Services',
   description: 'All pages on the Horizon Care Services website, plus machine-readable files for search engines and AI.',
+  alternates: { canonical: `${BASE}/sitemap` },
 }
-
-const BASE = 'https://www.horizoncareservices.org'
 
 const PAGE_GROUPS: {
   kicker: string
@@ -18,30 +17,35 @@ const PAGE_GROUPS: {
   {
     kicker: 'Main',
     pages: [
-      { title: 'Home',    href: '/',        description: 'Overview of services, who we help, and how to get in touch.' },
-      { title: 'About',   href: '/about',   description: 'Who we are, our regulatory status, and the principles we work by.' },
-      { title: 'Contact', href: '/contact', description: 'Phone, email, WhatsApp, and a referral enquiry form.' },
+      { title: 'Home',    href: '/',        description: 'Overview of services, who we work with, and how to get in touch.' },
+      { title: 'About',   href: '/about',   description: 'Who we are, our approach to staffing, and how we work with commissioning organisations.' },
+      { title: 'Contact', href: '/contact', description: 'Phone, email, and a staffing request form for organisations.' },
     ],
   },
   {
     kicker: 'Services',
     pages: [
-      { title: 'Services overview',  href: '/services',           description: 'All care and staffing services at a glance.' },
-      { title: 'Staffing solutions', href: '/services/staffing',  description: 'Registered nurses, healthcare assistants, and support workers for shifts and long-term placements.' },
-      { title: 'Home care',          href: '/services/home-care', description: 'Personal care, companionship, and support delivered in the client\'s own home.' },
-      { title: 'Specialist care',    href: '/services/specialist',description: 'Dementia and Alzheimer\'s care, hospice support, and end-of-life care.' },
+      { title: 'Healthcare Staffing', href: '/services', description: 'Registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers placed across England.' },
     ],
   },
   {
-    kicker: 'Referrals',
+    kicker: 'Writing',
     pages: [
-      { title: 'Referrals', href: '/referrals', description: 'How NHS discharge planners and social workers can refer. We respond within 2 working days.' },
+      { title: 'Blog', href: '/blog', description: 'Articles and guidance for healthcare professionals and commissioning organisations.' },
+      { title: 'Caring with Dignity in Later Life', href: '/blog/caring-with-dignity-in-later-life', description: 'What dignity in care actually means in the ordinary moments — and the systems that protect it.' },
+      { title: 'Home Care vs Care Home', href: '/blog/home-care-vs-care-home', description: 'Understanding the difference between home care and a care home placement.' },
     ],
   },
   {
     kicker: 'Work for us',
     pages: [
       { title: 'Work for us', href: '/work-for-us', description: 'Career opportunities for nurses, healthcare assistants, support workers, and allied health professionals.' },
+    ],
+  },
+  {
+    kicker: 'Brand',
+    pages: [
+      { title: 'Brand assets', href: '/branding', description: 'Downloadable logo assets in all approved colour variants for use in partner materials.' },
     ],
   },
   {
@@ -79,10 +83,9 @@ const AI_FILES = [
 export default function SitemapPage() {
   return (
     <>
-      <Nav />
-      <main id="main-content" className="pb-20">
+      <div className="pb-20">
         <PageHeader
-          kicker="Site map"
+          kicker="Site Map"
           title="Everything on this site."
           intro="All pages, plus the machine-readable files used by search engines and AI."
           showGrid={false}
@@ -114,7 +117,7 @@ export default function SitemapPage() {
                             {description}
                           </p>
                         </div>
-                        <span className="font-mono text-[11px] text-ink-muted-dark/60 tracking-wide sm:text-right flex-shrink-0">
+                        <span className="hidden sm:block font-mono text-[11px] text-ink-muted-dark/60 tracking-wide sm:text-right flex-shrink-0">
                           {href === '/' ? BASE + '/' : BASE + href}
                         </span>
                       </li>
@@ -157,8 +160,7 @@ export default function SitemapPage() {
           </div>
         </div>
 
-      </main>
-      <Footer />
+      </div>
     </>
   )
 }
