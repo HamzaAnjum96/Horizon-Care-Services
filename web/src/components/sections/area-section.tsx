@@ -78,7 +78,7 @@ export function AreaSection() {
   return (
     <section className="bg-cream-dim border-t border-rule-light py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-[2fr_2fr_2fr] gap-10 lg:gap-16 items-center">
+        <div className="grid md:grid-cols-[2fr_2fr_2fr] gap-10 lg:gap-16 items-center">
 
           <div>
             <p className="section-kicker text-ink-muted-dark mb-4">
@@ -98,8 +98,8 @@ export function AreaSection() {
             </p>
           </div>
 
-          {/* England coverage dot map — large screens only */}
-          <div className="hidden lg:flex items-center justify-center py-4">
+          {/* England coverage dot map — tablet and up */}
+          <div className="hidden md:flex items-center justify-center py-4">
             <EnglandMap />
           </div>
 

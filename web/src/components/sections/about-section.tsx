@@ -44,7 +44,7 @@ export function AboutSection() {
           {pillars.map((pillar, i) => (
             <div
               key={pillar.title}
-              className="border-t border-rule-light py-7 md:py-8 grid md:grid-cols-[48px_1fr_1.4fr] gap-x-8 gap-y-1.5 md:items-baseline"
+              className="border-t border-rule-light py-7 lg:py-8 grid lg:grid-cols-[48px_1fr_1.4fr] gap-x-8 gap-y-1.5 lg:items-baseline"
             >
               <span
                 className="font-mono text-[11px] tracking-widest"
