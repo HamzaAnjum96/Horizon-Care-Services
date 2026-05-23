@@ -278,32 +278,13 @@ That small question could lead to better decisions, better reviews and care that
 
 ## Useful references
 
-- James Clear: "I think about decisions in three ways: hats, haircuts, and tattoos."  
-  https://jamesclear.com/quotes/i-think-about-decisions-in-three-ways-hats-haircuts-and-tattoos
-
-- NHS England: Personalised care and support planning  
-  https://www.england.nhs.uk/personalisedcare/pcsp/
-
-- NHS: Care and support plans  
-  https://www.nhs.uk/social-care-and-support/help-from-social-services-and-charities/care-and-support-plans/
-
-- CQC: Regulation 9 — Person-centred care  
-  https://www.cqc.org.uk/guidance-regulation/providers/regulations-service-providers-and-managers/health-social-care-act/regulation-9
-
-- CQC: Regulation 10 — Dignity and respect  
-  https://www.cqc.org.uk/guidance-regulation/providers/regulations-service-providers-and-managers/health-social-care-act/regulation-10
-
-- CQC: Regulation 11 — Need for consent  
-  https://www.cqc.org.uk/guidance-regulation/providers/regulations-service-providers-and-managers/health-social-care-act/regulation-11
-
-- NICE: Home care for older people  
-  https://www.nice.org.uk/guidance/ng21
-
-- NICE: Older people with social care needs and multiple long-term conditions  
-  https://www.nice.org.uk/guidance/ng22
-
-- NICE: Reviewing the outcomes of the home care plan  
-  https://www.nice.org.uk/guidance/qs123/chapter/quality-statement-5-reviewing-the-outcomes-of-the-home-care-plan
-
-- Age UK: Care plans  
-  https://www.ageuk.org.uk/information-advice/care/arranging-care/care-needs-assessment/care-plans/
+- [James Clear: "I think about decisions in three ways: hats, haircuts, and tattoos."](https://jamesclear.com/quotes/i-think-about-decisions-in-three-ways-hats-haircuts-and-tattoos)
+- [NHS England: Personalised care and support planning](https://www.england.nhs.uk/personalisedcare/pcsp/)
+- [NHS: Care and support plans](https://www.nhs.uk/social-care-and-support/help-from-social-services-and-charities/care-and-support-plans/)
+- [CQC: Regulation 9 — Person-centred care](https://www.cqc.org.uk/guidance-regulation/providers/regulations-service-providers-and-managers/health-social-care-act/regulation-9)
+- [CQC: Regulation 10 — Dignity and respect](https://www.cqc.org.uk/guidance-regulation/providers/regulations-service-providers-and-managers/health-social-care-act/regulation-10)
+- [CQC: Regulation 11 — Need for consent](https://www.cqc.org.uk/guidance-regulation/providers/regulations-service-providers-and-managers/health-social-care-act/regulation-11)
+- [NICE: Home care for older people](https://www.nice.org.uk/guidance/ng21)
+- [NICE: Older people with social care needs and multiple long-term conditions](https://www.nice.org.uk/guidance/ng22)
+- [NICE: Reviewing the outcomes of the home care plan](https://www.nice.org.uk/guidance/qs123/chapter/quality-statement-5-reviewing-the-outcomes-of-the-home-care-plan)
+- [Age UK: Care plans](https://www.ageuk.org.uk/information-advice/care/arranging-care/care-needs-assessment/care-plans/)
