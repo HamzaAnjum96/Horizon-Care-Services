@@ -16,8 +16,7 @@ export default function ApplyPage() {
       <PageHeader
         kicker="Application"
         title="Apply for a role."
-        intro="Complete the application below. When you’re done, we’ll generate a branded PDF for you to download and send to our careers team. Your data is processed in your browser, nothing is submitted automatically."
-        refSegments={['HCS', 'Careers', 'Application']}
+        intro="Complete the application below. When you’re done, we’ll generate a branded PDF for you to download and send to our careers team. Your data is processed in your browser — nothing is submitted automatically."
       />
 
       <section className="bg-cream py-16 lg:py-24">

@@ -17,7 +17,6 @@ export default function OnboardingPage() {
         kicker="New worker"
         title="Onboarding form."
         intro="Welcome to the team. Complete the sections below so we can set you up on payroll, arrange your contract, and start assigning you shifts."
-        refSegments={['HCS', 'Careers', 'Onboarding']}
       />
 
       <section className="bg-cream py-16 lg:py-24">

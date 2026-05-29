@@ -2,9 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { PageHeader } from '@/components/layout/page-header'
-import { Roster, type RosterEntry } from '@/components/dossier/roster'
-import { Register, RegisterRow } from '@/components/dossier/register-row'
-import { FieldList } from '@/components/dossier/field-list'
 
 const siteUrl = 'https://www.horizoncareservices.org'
 
@@ -20,36 +17,30 @@ export const metadata: Metadata = {
   },
 }
 
-const roles: RosterEntry[] = [
+const roles = [
   {
-    code: 'RGN·RMN·RNLD',
-    role: 'Registered Nurses',
-    scope: 'Wards, care homes, mental health settings, residential services and specialist environments.',
+    title: 'Registered Nurses',
+    detail: 'RGN, RMN and RNLD professionals for wards, care homes, mental health settings, residential services and specialist environments.',
   },
   {
-    code: 'SW',
-    role: 'Social Workers',
-    scope: "Adult services, children's services, local authority teams and wider social care settings.",
+    title: 'Social Workers',
+    detail: 'Qualified social workers for adult services, children\'s services, local authority teams and wider social care settings.',
   },
   {
-    code: 'OT',
-    role: 'Occupational Therapists',
-    scope: 'Assessments, rehabilitation, discharge planning and community-based work.',
+    title: 'Occupational Therapists',
+    detail: 'Occupational therapists for assessments, rehabilitation, discharge planning and community-based work.',
   },
   {
-    code: 'PT',
-    role: 'Physiotherapists',
-    scope: 'Hospital, community, rehabilitation and care-based environments.',
+    title: 'Physiotherapists',
+    detail: 'Physiotherapists for hospital, community, rehabilitation and care-based environments.',
   },
   {
-    code: 'HCA',
-    role: 'Healthcare Assistants',
-    scope: 'Hospital, residential, care home and community settings.',
+    title: 'Healthcare Assistants',
+    detail: 'Experienced HCAs for hospital, residential, care home and community settings.',
   },
   {
-    code: 'SUP',
-    role: 'Support Workers',
-    scope: 'Residential care, supported living, learning disability, mental health and community services.',
+    title: 'Support Workers',
+    detail: 'Support workers for residential care, supported living, learning disability, mental health and community services.',
   },
 ]
 
@@ -81,30 +72,38 @@ export default function ServicesPage() {
         kicker="What we provide"
         title="Staffing matched to your service."
         intro="We supply vetted health and social care professionals to NHS trusts, local authorities, care homes, and care organisations across England. Our process is built for real operations: define the requirement properly, match to setting and risk, confirm clearly, and stay accountable after placement."
-        refSegments={['HCS', 'Services']}
-        stamp="On call · 24/7"
       />
 
       {/* Staff types */}
-      <section className="bg-cream texture-ledger py-20 lg:py-28">
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex items-baseline justify-between gap-6 mb-12 lg:mb-16">
-            <div>
-              <p className="section-kicker text-ink-muted-dark mb-4">On the register</p>
-              <h2
-                className="font-display text-ink-dark leading-tight tracking-[-0.025em] max-w-[22ch]"
-                style={{
-                  fontSize: 'clamp(1.7rem, 3vw, 2.6rem)',
-                  fontVariationSettings: '"opsz" 32, "wght" 560',
-                }}
-              >
-                Urgent cover to long-term placements.
-              </h2>
-            </div>
-            <span className="register-mono text-ink-muted-dark hidden lg:block flex-shrink-0">{roles.length} role types</span>
-          </div>
+      <section className="bg-cream py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <p className="section-kicker text-ink-muted-dark mb-4">Staff we place</p>
+          <h2
+            className="font-display text-ink-dark leading-tight tracking-[-0.025em] mb-12 lg:mb-16 max-w-[22ch]"
+            style={{
+              fontSize: 'clamp(1.7rem, 3vw, 2.6rem)',
+              fontVariationSettings: '"opsz" 32, "wght" 560',
+            }}
+          >
+            Urgent cover to long-term placements.
+          </h2>
 
-          <Roster entries={roles} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
+            {roles.map((role, i) => (
+              <div key={role.title} className={`border-t border-rule-light py-7 ${i >= 3 ? '' : ''}`}>
+                <h3
+                  className="font-display text-ink-dark mb-2 leading-snug tracking-[-0.015em]"
+                  style={{
+                    fontSize: 'clamp(1.05rem, 1.5vw, 1.2rem)',
+                    fontVariationSettings: '"opsz" 18, "wght" 620',
+                  }}
+                >
+                  {role.title}
+                </h3>
+                <p className="text-ink-muted-dark text-[14px] leading-relaxed">{role.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -138,15 +137,20 @@ export default function ServicesPage() {
 
             <div className="lg:pt-10">
               <p className="section-kicker text-ink-muted-dark mb-5">Response times</p>
-              <FieldList
-                entries={[
-                  { label: 'Urgent', value: 'Rapid triage and realistic availability updates.' },
-                  { label: 'Planned', value: 'Structured briefing and staged fulfilment support.' },
-                  { label: 'Comms', value: 'Clear confirmations, constraints, and handover expectations.' },
-                  { label: 'Coverage', value: 'Single shift through to ongoing placement programmes.' },
-                  { label: 'Escalation', value: 'Fast re-plan options when requirements change.' },
-                ]}
-              />
+              <div className="space-y-5">
+                {[
+                  { label: 'Urgent cover', value: 'Rapid triage and realistic availability updates.' },
+                  { label: 'Planned requirements', value: 'Structured briefing and staged fulfilment support.' },
+                  { label: 'Communication', value: 'Clear confirmations, constraints, and handover expectations.' },
+                  { label: 'Coverage model', value: 'Single shift through to ongoing placement programmes.' },
+                  { label: 'Escalation support', value: 'Fast re-plan options when requirements change.' },
+                ].map(({ label, value }) => (
+                  <div key={label} className="border-t border-rule-light pt-5">
+                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
+                    <p className="text-ink-dark text-[14px] leading-relaxed">{value}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -178,14 +182,19 @@ export default function ServicesPage() {
             </div>
             <div className="lg:pt-12">
               <p className="section-kicker text-ink-muted-dark mb-5">What we check before confirming</p>
-              <FieldList
-                entries={[
-                  { label: 'Setting fit', value: 'Prior experience in the same environment type: ward, care home, supported living, community.' },
-                  { label: 'Role scope', value: "That the shift demands match the worker's actual experience, not just their job title." },
-                  { label: 'Compliance', value: 'DBS, right-to-work, registration and any role-specific training, current and applicable.' },
-                  { label: 'Practical', value: 'Reporting lines, handover expectations and anything specific about the service.' },
-                ]}
-              />
+              <div className="space-y-5">
+                {[
+                  { label: 'Setting fit', value: 'Prior experience in the same environment type — ward, care home, supported living, community.' },
+                  { label: 'Role scope', value: 'That the shift demands match the worker\'s actual experience, not just their job title.' },
+                  { label: 'Compliance', value: 'DBS, right-to-work, registration and any role-specific training — current and applicable.' },
+                  { label: 'Practical details', value: 'Reporting lines, handover expectations and anything specific about the service.' },
+                ].map(({ label, value }) => (
+                  <div key={label} className="border-t border-rule-light pt-5">
+                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
+                    <p className="text-ink-dark text-[14px] leading-relaxed">{value}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -215,9 +224,9 @@ export default function ServicesPage() {
               'Weekend and bank holiday cover',
               'Hard-to-fill rota positions',
               'Temporary service expansion',
-            ].map((situation, i) => (
-              <li key={situation} className="border-t border-rule-light py-5 grid grid-cols-[2.5rem_1fr] gap-x-3 items-baseline text-ink-dark text-[15px]">
-                <span className="register-mono text-amber" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            ].map((situation) => (
+              <li key={situation} className="border-t border-rule-light py-5 flex items-start gap-3 text-ink-muted-dark text-[15px]">
+                <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" />
                 {situation}
               </li>
             ))}
@@ -238,13 +247,28 @@ export default function ServicesPage() {
           >
             What to expect.
           </h2>
-          <Register>
-            <RegisterRow code="01 · Intake" body="We take the brief: role, setting, urgency and any specific requirements." />
-            <RegisterRow code="02 · Review" body="We check suitability against our current register for that environment." />
-            <RegisterRow code="03 · Decision" body="We give you a clear yes or no, with timing if yes, or alternatives if no." />
-            <RegisterRow code="04 · Placement" body="We confirm shift details directly with the worker: reporting point, timings, who to contact." />
-            <RegisterRow code="05 · Aftercare" body="We stay reachable through the placement for changes or issues." />
-          </Register>
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-0 list-none">
+            {[
+              { n: '01', text: 'We take the brief — role, setting, urgency and any specific requirements.' },
+              { n: '02', text: 'We check suitability against our current register for that environment.' },
+              { n: '03', text: 'We give you a clear yes or no, with timing if yes, or alternatives if no.' },
+              { n: '04', text: 'We confirm shift details directly with the worker — reporting point, timings, who to contact.' },
+              { n: '05', text: 'We stay reachable through the placement for changes or issues.' },
+            ].map(({ n, text }) => (
+              <li key={n} className="border-t border-rule-light pt-6 pb-8">
+                <p
+                  className="font-display text-amber mb-3 leading-none"
+                  style={{
+                    fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+                    fontVariationSettings: '"opsz" 28, "wght" 520',
+                  }}
+                >
+                  {n}
+                </p>
+                <p className="text-ink-muted-dark text-[14px] leading-relaxed">{text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -254,9 +278,10 @@ export default function ServicesPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
             <div>
               <p className="section-kicker text-ink-muted-dark mb-4">Settings we support</p>
-              <ul className="mt-6 border-t border-rule-light">
+              <ul className="space-y-3 mt-6">
                 {settings.map((s) => (
-                  <li key={s} className="border-b border-rule-light py-3 text-ink-dark text-[15px]">
+                  <li key={s} className="flex items-start gap-3 text-ink-muted-dark text-[15px]">
+                    <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" />
                     {s}
                   </li>
                 ))}
