@@ -1,65 +1,56 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import { Roster, type RosterEntry } from '@/components/dossier/roster'
+import { FieldStamp } from '@/components/dossier/field-stamp'
 
-const points = [
-  'Registered nurses (RGN, RMN, RNLD)',
-  'Social workers and allied health professionals',
-  'Occupational therapists and physiotherapists',
-  'Healthcare assistants and support workers',
-  'Single shifts through to long-term contracts — 24/7',
+const roster: RosterEntry[] = [
+  { code: 'RGN·RMN·RNLD', role: 'Registered nurses', scope: 'General, mental health and learning disability' },
+  { code: 'SW', role: 'Social workers', scope: 'Statutory and community teams' },
+  { code: 'OT·PT', role: 'Occupational therapists & physiotherapists', scope: 'Hospital and community rehab' },
+  { code: 'HCA', role: 'Healthcare assistants', scope: 'Wards, residential and domiciliary' },
+  { code: 'SUP', role: 'Support workers', scope: 'Supported living and complex care' },
 ]
 
 const complianceChecks = ['DBS', 'NMC', 'HCPC', 'Social Work England', 'Right to Work']
 
 export function ServicesSection() {
   return (
-    <section className="bg-cream py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <p className="section-kicker text-ink-muted-dark mb-4">
-          What we provide
-        </p>
+    <section className="bg-cream texture-ledger py-24 lg:py-32">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="flex items-baseline justify-between gap-8 mb-3">
+          <p className="section-kicker text-ink-muted-dark">On the register</p>
+          <span className="register-mono text-ink-muted-dark hidden lg:block">Single shift &rarr; long-term contract</span>
+        </div>
 
-        <div className="border-t border-b border-rule-light py-8 lg:py-10">
-          <div className="flex items-baseline justify-between gap-8 mb-7">
-            <h2
-              className="editorial-title text-ink-dark leading-tight"
-              style={{ fontSize: 'clamp(2rem, 4.2vw, 3.35rem)' }}
-            >
-              Healthcare Staffing
-            </h2>
-            <span className="hidden lg:block text-[12px] text-ink-muted-dark tracking-[0.03em] flex-shrink-0">
-              24/7 availability
-            </span>
+        <div className="flex items-end justify-between gap-8 mb-9 lg:mb-12">
+          <h2
+            className="editorial-title text-ink-dark leading-tight"
+            style={{ fontSize: 'clamp(2rem, 4.2vw, 3.35rem)' }}
+          >
+            Healthcare Staffing
+          </h2>
+          <div className="hidden sm:block flex-shrink-0 pb-1">
+            <FieldStamp>On call · 24/7</FieldStamp>
           </div>
+        </div>
 
-          <div className="mb-6">
-            <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-2 mb-5">
-              {points.map((pt) => (
-                <li
-                  key={pt}
-                  className="text-[15px] text-ink-muted-dark leading-snug flex items-start gap-3"
-                >
-                  <span className="mt-[7px] w-1 h-1 rounded-full bg-amber flex-shrink-0" />
-                  {pt}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/services"
-              className="interactive-lift inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
-            >
-              Full details <ArrowUpRight size={13} aria-hidden="true" />
-            </Link>
-          </div>
+        <Roster entries={roster} />
 
-          <div className="flex flex-wrap gap-x-5 gap-y-2 items-center border-t border-rule-light pt-5">
-            <span className="section-kicker text-ink-muted-dark">Checks include</span>
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 items-center">
+            <span className="register-mono text-amber">Checks</span>
             {complianceChecks.map((body) => (
-              <span key={body} className="text-[12px] font-medium text-ink-muted-dark tracking-[0.04em]">
+              <span key={body} className="text-[13px] font-medium text-ink-muted-dark tracking-[0.02em]">
                 {body}
               </span>
             ))}
           </div>
+          <Link
+            href="/services"
+            className="interactive-lift inline-flex items-center gap-2 text-ink-dark text-[13px] font-semibold tracking-[0.03em] hover:gap-3 transition-all whitespace-nowrap"
+          >
+            Full register and settings <ArrowUpRight size={13} aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </section>

@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { PageHeader } from '@/components/layout/page-header'
+import { Register, RegisterRow } from '@/components/dossier/register-row'
+import { FieldList } from '@/components/dossier/field-list'
 
 const siteUrl = 'https://www.horizoncareservices.org'
 
@@ -54,6 +56,8 @@ export default function AboutPage() {
       <PageHeader
         kicker="About us"
         title="Clear decisions. Accountable follow-through."
+        refSegments={['HCS', 'About']}
+        stamp="Est. 2023 · Co. 14615041"
       />
 
       <section className="bg-cream py-20 lg:py-28">
@@ -86,68 +90,36 @@ export default function AboutPage() {
 
             <div className="lg:pt-12">
               <p className="section-kicker text-ink-muted-dark mb-5">At a glance</p>
-              <div className="space-y-5">
-                {[
+              <FieldList
+                entries={[
                   { label: 'Established', value: '3 years of operating experience' },
-                  { label: 'Company number', value: '14615041' },
+                  { label: 'Company no.', value: '14615041' },
                   { label: 'Coverage', value: 'Bedfordshire, Bucks, Cambridgeshire, Hertfordshire, Manchester, London' },
-                  { label: 'Planning commitment', value: 'Clear updates and next-step ownership' },
-                ].map(({ label, value }) => (
-                  <div key={label} className="border-t border-rule-light pt-5">
-                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
-                    <p className="text-ink-dark text-[14px]">{value}</p>
-                  </div>
-                ))}
-              </div>
+                  { label: 'Commitment', value: 'Clear updates and next-step ownership' },
+                ]}
+              />
             </div>
           </div>
 
           <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
             <p className="section-kicker text-ink-muted-dark mb-8">Our approach</p>
-            <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
-              <div>
-                <h3
-                  className="font-display text-ink-dark mb-4 leading-snug tracking-[-0.015em]"
-                  style={{
-                    fontSize: 'clamp(1.1rem, 1.6vw, 1.3rem)',
-                    fontVariationSettings: '"opsz" 18, "wght" 620',
-                  }}
-                >
-                  Clarity before commitment
-                </h3>
-                <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We take the brief properly — service type, shift demands, required experience, reporting expectations. Ambiguity at this stage causes problems later, so we ask the questions that most agencies skip.
-                </p>
-              </div>
-              <div>
-                <h3
-                  className="font-display text-ink-dark mb-4 leading-snug tracking-[-0.015em]"
-                  style={{
-                    fontSize: 'clamp(1.1rem, 1.6vw, 1.3rem)',
-                    fontVariationSettings: '"opsz" 18, "wght" 620',
-                  }}
-                >
-                  Fit over availability
-                </h3>
-                <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We match on setting fit, actual placement history and role scope — not just who is free. If the match isn&rsquo;t strong enough, we say so rather than send someone who will struggle in your environment.
-                </p>
-              </div>
-              <div>
-                <h3
-                  className="font-display text-ink-dark mb-4 leading-snug tracking-[-0.015em]"
-                  style={{
-                    fontSize: 'clamp(1.1rem, 1.6vw, 1.3rem)',
-                    fontVariationSettings: '"opsz" 18, "wght" 620',
-                  }}
-                >
-                  Accountability after placement
-                </h3>
-                <p className="text-ink-muted-dark text-[15px] leading-relaxed">
-                  We stay reachable after the shift is filled. If a requirement changes, grows or needs extension, you contact us and we respond with options — you don&rsquo;t restart from scratch.
-                </p>
-              </div>
-            </div>
+            <Register>
+              <RegisterRow
+                code="Clarity"
+                title="Clarity before commitment"
+                body="We take the brief properly: service type, shift demands, required experience, reporting expectations. Ambiguity at this stage causes problems later, so we ask the questions that most agencies skip."
+              />
+              <RegisterRow
+                code="Fit"
+                title="Fit over availability"
+                body="We match on setting fit, actual placement history and role scope, not just who is free. If the match isn’t strong enough, we say so rather than send someone who will struggle in your environment."
+              />
+              <RegisterRow
+                code="After"
+                title="Accountability after placement"
+                body="We stay reachable after the shift is filled. If a requirement changes, grows or needs extension, you contact us and we respond with options. You don’t restart from scratch."
+              />
+            </Register>
           </div>
 
           <div className="border-t border-rule-light pt-16 lg:pt-20 mb-20 lg:mb-28">
@@ -161,20 +133,13 @@ export default function AboutPage() {
             >
               In practice.
             </p>
-            <ul className="grid lg:grid-cols-2 gap-x-16 gap-y-0">
-              {[
-                'We confirm who is attending, when, and where before the shift starts.',
-                "If we can't fill a requirement, we tell you promptly — we don't leave it open.",
-                "We ask about the environment, not just the job title, so the brief is accurate.",
-                "If something goes wrong on shift, you contact us and we resolve it.",
-                "If your need continues or grows, we plan the next step with you.",
-              ].map((item) => (
-                <li key={item} className="border-t border-rule-light py-5 flex items-start gap-3 text-ink-muted-dark text-[15px]">
-                  <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <Register>
+              <RegisterRow code="Confirm" body="We confirm who is attending, when, and where before the shift starts." />
+              <RegisterRow code="Decline" body="If we can’t fill a requirement, we tell you promptly. We don’t leave it open." />
+              <RegisterRow code="Brief" body="We ask about the environment, not just the job title, so the brief is accurate." />
+              <RegisterRow code="Resolve" body="If something goes wrong on shift, you contact us and we resolve it." />
+              <RegisterRow code="Extend" body="If your need continues or grows, we plan the next step with you." />
+            </Register>
           </div>
 
           <div className="border-t border-rule-light pt-16 lg:pt-20">
@@ -198,7 +163,7 @@ export default function AboutPage() {
                 </p>
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-0 mb-6">
                   <div>
-                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-3">What you can expect from us</p>
+                    <p className="register-mono text-amber mb-3">From us</p>
                     <ul className="space-y-2">
                       {[
                         'Shifts briefed properly before you attend',
@@ -214,7 +179,7 @@ export default function AboutPage() {
                     </ul>
                   </div>
                   <div className="mt-6 sm:mt-0">
-                    <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-3">What we expect from you</p>
+                    <p className="register-mono text-amber mb-3">From you</p>
                     <ul className="space-y-2">
                       {[
                         "Attendance as confirmed — contact us if something changes",

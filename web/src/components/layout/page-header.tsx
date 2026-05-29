@@ -5,6 +5,8 @@ import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
 import { HeroIconGrid } from '@/components/hero/hero-icon-grid'
+import { RefLine } from '@/components/dossier/ref-line'
+import { FieldStamp } from '@/components/dossier/field-stamp'
 
 interface PageHeaderProps {
   kicker: string
@@ -12,27 +14,36 @@ interface PageHeaderProps {
   intro?: string
   cta?: { label: string; href: string }
   showGrid?: boolean
+  /** Document reference segments shown after "Ref /". Falls back to [kicker]. */
+  refSegments?: string[]
+  /** Optional stamp pinned top-right of the header. */
+  stamp?: string
 }
 
-export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageHeaderProps) {
+export function PageHeader({ kicker, title, intro, cta, showGrid = true, refSegments, stamp }: PageHeaderProps) {
   return (
-    <div className="relative bg-deep border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+    <div className="relative bg-deep texture-halftone wash-deep border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
       {showGrid && <HeroIconGrid />}
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.16, duration: MOTION_DURATIONS.base, ease: EASE_OUT_EXPO }}
-          className="section-kicker text-ink-muted-light mb-5"
+          className="flex items-start justify-between gap-6 mb-6"
         >
-          {kicker}
-        </motion.p>
+          <RefLine segments={refSegments ?? [kicker]} />
+          {stamp && (
+            <div className="hidden sm:block flex-shrink-0">
+              <FieldStamp reversed>{stamp}</FieldStamp>
+            </div>
+          )}
+        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.24, duration: MOTION_DURATIONS.medium, ease: EASE_OUT_EXPO }}
-          className="font-display text-ink-light leading-[0.96] tracking-[-0.03em]"
+          className="font-display text-ink-light leading-[0.96] tracking-[-0.03em] max-w-[20ch]"
           style={{
             fontSize: 'clamp(2.4rem, 5.2vw, 4.2rem)',
             fontVariationSettings: '"opsz" 56, "wght" 600',

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { PageHeader } from '@/components/layout/page-header'
+import { FieldList } from '@/components/dossier/field-list'
 
 const siteUrl = 'https://www.horizoncareservices.org'
 
@@ -74,6 +75,8 @@ export default function WorkForUsPage() {
           kicker="Work for us"
           title="Agency work done properly."
           intro="We recruit skilled health and social care professionals for flexible agency work across England. We focus on better matching, clearer briefing, and dependable coordination so your shifts are safer, smoother, and worth saying yes to."
+          refSegments={['HCS', 'Careers']}
+          stamp="Now on the register"
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -106,20 +109,15 @@ export default function WorkForUsPage() {
 
               <div className="lg:pt-12">
                 <p className="section-kicker text-ink-muted-dark mb-5">What we offer</p>
-                <div className="space-y-5">
-                  {[
-                    { label: 'Shift clarity', value: 'Clearer role briefs, reporting lines, and expectations before you attend.' },
+                <FieldList
+                  entries={[
+                    { label: 'Clarity', value: 'Clearer role briefs, reporting lines, and expectations before you attend.' },
                     { label: 'Flexibility', value: 'Choose shifts around your availability and preferred locations.' },
                     { label: 'Coordination', value: 'A named contact for booking updates and escalation support.' },
                     { label: 'Settings', value: 'Work across hospitals, care homes, supported living, and community services.' },
-                    { label: 'Pay process', value: 'Transparent rate confirmation and consistent payment cycles.' },
-                  ].map(({ label, value }) => (
-                    <div key={label} className="border-t border-rule-light pt-5">
-                      <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
-                      <p className="text-ink-dark text-[14px] leading-relaxed">{value}</p>
-                    </div>
-                  ))}
-                </div>
+                    { label: 'Pay', value: 'Transparent rate confirmation and consistent payment cycles.' },
+                  ]}
+                />
               </div>
             </div>
 
@@ -139,7 +137,7 @@ export default function WorkForUsPage() {
               </p>
               <div className="grid sm:grid-cols-2 gap-x-16 gap-y-8">
                 <div>
-                  <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-4">What you can expect from us</p>
+                  <p className="register-mono text-amber mb-4">From us</p>
                   <ul className="space-y-3">
                     {[
                       'A proper brief before every shift — setting type, reporting line, what to expect',
@@ -155,7 +153,7 @@ export default function WorkForUsPage() {
                   </ul>
                 </div>
                 <div>
-                  <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-4">What we expect from you</p>
+                  <p className="register-mono text-amber mb-4">From you</p>
                   <ul className="space-y-3">
                     {[
                       'Attendance as confirmed — contact us immediately if something changes',

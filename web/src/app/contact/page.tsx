@@ -48,6 +48,8 @@ export default function ContactPage() {
           kicker="Contact"
           title="Request staffing support."
           intro="For urgent or same-day cover, call us. For planned staffing, longer-term requirements, or anything you'd rather put in writing first, email or WhatsApp. Either way, the more detail you give us upfront, the faster we can give you a realistic answer."
+          refSegments={['HCS', 'Contact']}
+          stamp="Response ≤ 2 working days"
         />
 
         <section className="bg-cream py-20 lg:py-28">
@@ -156,14 +158,14 @@ export default function ContactPage() {
                 <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
                   {[
                     'Role title and registration or band required',
-                    'Setting type (ward, care home, supported living, community, etc.)',
+                    'Setting type (ward, care home, supported living, community)',
                     'Location and date(s) or shift pattern',
-                    'Whether it\'s urgent or planned',
+                    "Whether it's urgent or planned",
                     'Any specific experience or compliance requirement',
                     'How quickly you need a response',
-                  ].map((item) => (
-                    <li key={item} className="border-t border-rule-light py-4 flex items-start gap-3 text-ink-muted-dark text-[14px]">
-                      <span className="mt-[8px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
+                  ].map((item, i) => (
+                    <li key={item} className="border-t border-rule-light py-4 grid grid-cols-[2.25rem_1fr] gap-x-3 items-baseline text-ink-dark text-[14px]">
+                      <span className="register-mono text-amber" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                       {item}
                     </li>
                   ))}

@@ -1,20 +1,22 @@
 const areas = [
-  'Bedfordshire',
-  'Buckinghamshire',
-  'Cambridgeshire',
-  'Hertfordshire',
-  'Manchester',
-  'London',
+  { code: 'BED', name: 'Bedfordshire' },
+  { code: 'BUCK', name: 'Buckinghamshire' },
+  { code: 'CAMB', name: 'Cambridgeshire' },
+  { code: 'HERT', name: 'Hertfordshire' },
+  { code: 'MAN', name: 'Manchester' },
+  { code: 'LDN', name: 'London' },
 ]
 
 function GBMap() {
   return (
-    <img
-      src="/england-outline.svg"
-      alt="Great Britain outline showing coverage areas"
-      className="w-full max-w-[200px] mx-auto opacity-70"
-      style={{ height: 'auto' }}
-    />
+    <div className="relative texture-halftone w-full max-w-[200px] mx-auto">
+      <img
+        src="/england-outline.svg"
+        alt="Great Britain outline showing coverage areas"
+        className="relative w-full opacity-60 mix-blend-multiply"
+        style={{ height: 'auto', filter: 'sepia(0.4) saturate(1.3) hue-rotate(-12deg)' }}
+      />
+    </div>
   )
 }
 
@@ -47,14 +49,17 @@ export function AreaSection() {
             <GBMap />
           </div>
 
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-3.5 list-none">
+          <dl className="border-t border-rule-light">
             {areas.map((area) => (
-              <li key={area} className="flex items-center gap-2.5">
-                <span className="w-1 h-1 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />
-                <span className="text-ink-dark text-[15px] font-medium">{area}</span>
-              </li>
+              <div
+                key={area.code}
+                className="border-b border-rule-light grid grid-cols-[3.5rem_1fr] gap-x-4 py-3 items-baseline"
+              >
+                <dt className="register-mono text-amber">{area.code}</dt>
+                <dd className="text-ink-dark text-[15px] font-medium">{area.name}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
 
         </div>
       </div>

@@ -151,6 +151,127 @@ body {
 }
 
 
+/* ─── Field-dossier texture system ─────────────────────────
+   Abstract texture only (no photography). All built from the same
+   SVG-filter / repeating-gradient technique as .grain-overlay so the
+   whole site reads like a controlled document, not a SaaS template. */
+
+/* Faint ledger ruling — horizontal hairlines on light surfaces. */
+.texture-ledger {
+  position: relative;
+}
+.texture-ledger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 39px,
+    var(--rule-light) 39px,
+    var(--rule-light) 40px
+  );
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+/* Dot-screen halftone — for dark bands (hero, CTA, page headers). */
+.texture-halftone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(var(--rule-dark) 0.7px, transparent 0.8px);
+  background-size: 7px 7px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 90% 8%, black 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 80% 70% at 90% 8%, black 0%, transparent 70%);
+}
+
+/* Low-opacity tinted washes — atmosphere without imagery. */
+.wash-amber {
+  background-image: radial-gradient(ellipse 60% 80% at 100% 0%, color-mix(in oklab, var(--amber) 9%, transparent) 0%, transparent 60%);
+}
+.wash-deep {
+  background-image: radial-gradient(ellipse 55% 75% at 0% 100%, color-mix(in oklab, var(--brand) 7%, transparent) 0%, transparent 58%);
+}
+
+/* Risograph misregistration — an amber echo offset behind a heading word.
+   Decorative; never used for meaning. Not gradient text. */
+.riso-offset {
+  position: relative;
+  display: inline-block;
+}
+.riso-offset::before {
+  content: attr(data-echo);
+  position: absolute;
+  left: 0.04em;
+  top: 0.055em;
+  color: var(--amber);
+  opacity: 0.28;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Field stamp — rotated, double-ruled badge with grain. The signature accent. */
+.field-stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.42rem 0.7rem;
+  border: 1.5px solid color-mix(in oklab, var(--amber) 70%, transparent);
+  box-shadow: inset 0 0 0 3px color-mix(in oklab, var(--amber) 9%, transparent);
+  border-radius: 2px;
+  color: var(--amber);
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  rotate: -3deg;
+}
+.field-stamp::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  border-radius: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23s)'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='s2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.12' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23s2)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='s2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.12' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23s2)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.field-stamp--reversed {
+  border-color: color-mix(in oklab, var(--amber-dim) 60%, transparent);
+  color: var(--amber-dim);
+}
+
+@keyframes stamp-settle {
+  0%   { opacity: 0; transform: scale(1.08); rotate: -7deg; }
+  100% { opacity: 1; transform: scale(1); rotate: -3deg; }
+}
+.stamp-animate {
+  animation: stamp-settle 0.34s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stamp-animate { animation: none; }
+}
+
+/* Register row — the dossier workhorse. Ruled record with a margin code.
+   Replaces card grids and numbered-box grids site-wide. */
+.register-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ─── Footer atmosphere ─────────────────────────────────── */
 .footer-atmosphere {
   position: relative;
@@ -199,21 +320,6 @@ body {
     box-shadow: none;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* ─── Process flow connectors (HowItWorks) ───────────────── */
-.flow-connector-line {
-  stroke-dasharray: 120;
-  stroke-dashoffset: 120;
-  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.flow-connector-line.is-visible {
-  stroke-dashoffset: 0;
-}
-.flow-connector-line:nth-child(2) { transition-delay: 0.15s; }
-.flow-connector-line:nth-child(3) { transition-delay: 0.30s; }
-@media (prefers-reduced-motion: reduce) {
-  .flow-connector-line { transition: none; stroke-dashoffset: 0; }
 }
 
 /* ─── Legal page prose ──────────────────────────────────── */

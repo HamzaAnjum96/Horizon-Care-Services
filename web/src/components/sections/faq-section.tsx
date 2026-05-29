@@ -49,7 +49,10 @@ export function FaqSection() {
   return (
     <section className="bg-cream py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <p className="section-kicker text-ink-muted-dark mb-4">Common questions</p>
+        <div className="flex items-baseline justify-between gap-6 mb-3">
+          <p className="section-kicker text-ink-muted-dark">Common questions</p>
+          <span className="register-mono text-ink-muted-dark hidden sm:block">Filed &middot; {faqs.length} entries</span>
+        </div>
         <h2
           className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[14ch]"
           style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)' }}
@@ -69,8 +72,11 @@ export function FaqSection() {
                     onClick={() => toggle(i)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className="flex w-full items-center justify-between py-6 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
+                    className="grid w-full grid-cols-[3.5rem_1fr_auto] items-baseline gap-x-4 py-6 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 focus-visible:ring-offset-4 focus-visible:ring-offset-cream"
                   >
+                    <span className="register-mono text-amber self-baseline" aria-hidden="true">
+                      Q.{String(i + 1).padStart(2, '0')}
+                    </span>
                     <span
                       className="font-display text-ink-dark group-hover:opacity-75 transition-opacity duration-200"
                       style={{
@@ -101,7 +107,7 @@ export function FaqSection() {
                   }}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-ink-muted-dark text-[15px] leading-relaxed pb-7 max-w-[72ch]">
+                    <p className="text-ink-muted-dark text-[15px] leading-relaxed pb-7 max-w-[72ch] lg:pl-[3.5rem]">
                       {faq.a}
                     </p>
                   </div>
