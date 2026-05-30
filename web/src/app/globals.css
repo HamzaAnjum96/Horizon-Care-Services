@@ -136,7 +136,6 @@ body {
   }
 }
 
-
 /* ─── Hero texture & animated blobs ────────────────────── */
 .hero-bg {
   position: absolute;
@@ -144,7 +143,6 @@ body {
   pointer-events: none;
   overflow: hidden;
 }
-
 
 .hero-pulse {
   position: absolute;
@@ -177,7 +175,6 @@ body {
   .watermark-breathe { animation: none; opacity: 0.13; }
 }
 
-
 /* ─── Footer atmosphere ─────────────────────────────────── */
 .footer-atmosphere {
   position: relative;
@@ -205,21 +202,8 @@ body {
   background-size: 200px 200px;
 }
 
-/* ─── Marquee ─────────────────────────────────────────── */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 55s linear infinite;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-
+  
   .interactive-lift,
   .interactive-lift:hover {
     transform: none;
