@@ -3,16 +3,7 @@
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
-import { HeroIconGrid } from '@/components/hero/hero-icon-grid'
-
-const AREAS = [
-  'Bedfordshire',
-  'Buckinghamshire',
-  'Cambridgeshire',
-  'Hertfordshire',
-  'Manchester',
-  'London',
-]
+import { HeroWatermark } from '@/components/hero/hero-watermark'
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion()
@@ -21,7 +12,7 @@ export function HeroSection() {
     <section className="relative bg-deep dark-grain texture-halftone wash-amber flex flex-col justify-between overflow-hidden pt-16 border-b border-rule-dark">
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-pulse" />
-        <HeroIconGrid />
+        <HeroWatermark />
       </div>
 
       <div className="relative flex-1 flex flex-col justify-center px-6 lg:px-10 max-w-7xl mx-auto w-full pt-14 pb-12 lg:pt-18 lg:pb-16">

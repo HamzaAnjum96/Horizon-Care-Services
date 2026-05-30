@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { EASE_OUT_EXPO, MOTION_DURATIONS } from '@/lib/motion'
-import { HeroIconGrid } from '@/components/hero/hero-icon-grid'
+import { HeroWatermark } from '@/components/hero/hero-watermark'
 
 interface PageHeaderProps {
   kicker: string
@@ -17,7 +17,7 @@ interface PageHeaderProps {
 export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageHeaderProps) {
   return (
     <div className="relative bg-deep texture-halftone border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
-      {showGrid && <HeroIconGrid />}
+      {showGrid && <HeroWatermark />}
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 6 }}
