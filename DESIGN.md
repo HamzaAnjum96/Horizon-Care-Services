@@ -194,3 +194,17 @@ Two categories: **strictly necessary** (always on, just the consent record itsel
 Components that depend on third-party content must call `useConsent()` and gate behind `consent?.functional === true`. When consent has not been hydrated yet the hook returns `undefined` — render a neutral placeholder so layout doesn't shift. The `LocationMap` component is the reference implementation.
 
 Users can revisit their choice via the `CookiePreferencesLink` in the footer, which dispatches `hcs:open-cookie-preferences`.
+
+
+## Hero & header watermark
+
+The scattered animated icon field was replaced by a single watermark.
+
+- `HeroWatermark` (`web/src/components/hero/hero-watermark.tsx`): one HCS logo mark, faint and light-toned, pinned to the bottom-right of dark hero/header bands. Width `clamp(56px, 6vw, 96px)`, rendered behind content via the band wrapper (`relative` + `overflow-hidden`). Used by the home hero and the shared `PageHeader`, so it appears on every page.
+- Motion: `watermark-breathe` (11s, slow scale + opacity drift). Disabled under `prefers-reduced-motion`.
+
+### Texture utilities (`globals.css`)
+
+- `.texture-halftone` — faint dot-screen, masked to the top-right, for dark bands (home hero, page headers).
+- `.wash-amber` — low-opacity amber radial wash for atmosphere (home hero).
+- `.register-mono` — monospace, tracked, uppercase label used for the area codes in the "Where we work" section.
