@@ -89,10 +89,14 @@ const MOBILE_ICONS: IconSpec[] = [
 
 // ── Shared ────────────────────────────────────────────────────────────────────
 
+// Etched-glass paint: faint top-lit gradient fill with a hairline light edge.
+const GLASS_FILL = 'url(#icon-glass)'
+const GLASS_EDGE = 'oklch(99% 0.004 60 / 0.6)'
+
 function IconShape({ type, size }: { type: IconType; size: number }) {
   if (type === 'logo') {
     return (
-      <div style={{ width: size, height: size }}>
+      <div style={{ width: size, height: size, opacity: 0.85 }}>
         <HCSLogoMark className="w-full h-full" />
       </div>
     )
@@ -100,15 +104,15 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
   if (type === 'cross') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <rect x="8" y="2" width="8" height="20" rx="1.5" fill="currentColor" />
-        <rect x="2" y="8" width="20" height="8" rx="1.5" fill="currentColor" />
+        <rect x="8" y="2" width="8" height="20" rx="1.5" fill={GLASS_FILL} stroke={GLASS_EDGE} strokeWidth="0.5" />
+        <rect x="2" y="8" width="20" height="8" rx="1.5" fill={GLASS_FILL} stroke={GLASS_EDGE} strokeWidth="0.5" />
       </svg>
     )
   }
   if (type === 'dot') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <circle cx="12" cy="12" r="4.5" fill="currentColor" />
+        <circle cx="12" cy="12" r="4.5" fill={GLASS_FILL} stroke={GLASS_EDGE} strokeWidth="0.5" />
       </svg>
     )
   }
@@ -117,7 +121,9 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <path
           d="M12 2 L20 5.5 L20 11 C20 15.5 16.5 19.5 12 21 C7.5 19.5 4 15.5 4 11 L4 5.5 Z"
-          fill="currentColor"
+          fill={GLASS_FILL}
+          stroke={GLASS_EDGE}
+          strokeWidth="0.5"
         />
       </svg>
     )
@@ -127,7 +133,9 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
         <path
           d="M12 20.5 C12 20.5 2.5 14 2.5 8.5 C2.5 5.5 4.9 3 8 3 C9.9 3 11.6 4 12 5.2 C12.4 4 14.1 3 16 3 C19.1 3 21.5 5.5 21.5 8.5 C21.5 14 12 20.5 12 20.5 Z"
-          fill="currentColor"
+          fill={GLASS_FILL}
+          stroke={GLASS_EDGE}
+          strokeWidth="0.5"
         />
       </svg>
     )
@@ -135,7 +143,7 @@ function IconShape({ type, size }: { type: IconType; size: number }) {
   if (type === 'ring') {
     return (
       <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
-        <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+        <circle cx="12" cy="12" r="8" fill="none" stroke={GLASS_EDGE} strokeWidth="1.75" />
       </svg>
     )
   }
@@ -176,17 +184,19 @@ export function HeroIconGrid() {
     <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none">
       <svg width="0" height="0" className="absolute">
         <defs>
-          <filter id="icon-grain" x="-5%" y="-5%" width="110%" height="110%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" seed="9" result="noise" />
-            <feColorMatrix type="saturate" values="0" in="noise" result="mono" />
-            <feComposite in="mono" in2="SourceAlpha" operator="in" result="clipped" />
-            <feBlend in="SourceGraphic" in2="clipped" mode="soft-light" />
-          </filter>
+          <linearGradient id="icon-glass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="oklch(96% 0.008 60)" stopOpacity="0.9" />
+            <stop offset="55%" stopColor="oklch(92% 0.01 56)" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="oklch(88% 0.012 50)" stopOpacity="0.12" />
+          </linearGradient>
         </defs>
       </svg>
       <div
         className="hero-icon-mask absolute inset-0"
-        style={{ color: 'oklch(38% 0.08 20)', filter: 'url(#icon-grain)' }}
+        style={{
+          color: 'oklch(94% 0.008 58)',
+          filter: 'drop-shadow(0 1px 1.5px oklch(0% 0 0 / 0.4))',
+        }}
       >
       {/* Mobile: 4 icons only */}
       <div className="sm:hidden absolute inset-0">

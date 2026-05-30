@@ -173,8 +173,8 @@ body {
 }
 
 @keyframes hcs-breathe {
-  0%, 100% { transform: scale(0.82) rotate(-2deg); }
-  50%       { transform: scale(1.19) rotate(2deg); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

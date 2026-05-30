@@ -16,7 +16,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ kicker, title, intro, cta, showGrid = true }: PageHeaderProps) {
   return (
-    <div className="relative bg-deep border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+    <div className="relative bg-deep texture-halftone border-b border-rule-dark pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
       {showGrid && <HeroIconGrid />}
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <motion.p
