@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <div className="pb-20">
-        <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 19 May 2026" showGrid={false} />
+        <PageHeader kicker="Legal" title="Privacy Policy." intro="Last updated: 17 June 2026" showGrid={false} />
 
         {/* Content */}
         <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-14">
@@ -129,10 +129,16 @@ export default function PrivacyPolicyPage() {
                 <li>DBS or background-check providers where applicable.</li>
                 <li>Payroll, accounting or payment providers where applicable.</li>
                 <li>IT, hosting, email and website service providers.</li>
+                <li>
+                  Google (Google Forms and Google Workspace), which we use to receive and store details submitted through forms on this website, including expressions of interest.
+                </li>
                 <li>Insurers, legal advisers and professional advisers.</li>
                 <li>Regulators, law enforcement or public authorities where required by law.</li>
               </ul>
               <p>We only share information where there is a valid reason to do so.</p>
+              <p>
+                <strong>International transfers.</strong> Some of our providers, including Google, may process personal data on servers outside the United Kingdom. Where personal data is transferred outside the UK, we rely on appropriate safeguards, such as a UK adequacy decision or standard contractual clauses (including the UK International Data Transfer Agreement or Addendum).
+              </p>
             </Section>
 
             <Section title="7. How long we keep your information">
@@ -195,6 +201,9 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 When functional content is off, we display a static placeholder and our office address remains available without loading third-party map content.
+              </p>
+              <p>
+                <strong>Website forms.</strong> Details you enter into a form on this website (such as the expression-of-interest form) are sent to Google Forms only when you choose to submit them. These forms do not set cookies, load Google tracking, or profile you when the page opens, so no cookie consent is required to use them.
               </p>
             </Section>
 
