@@ -6,10 +6,6 @@ const FORM_ID = '1FAIpQLSc-6ShCKYrT4TN52MpXidw11H7N6CfgJ5gm8eNMSxzYk8EKiw'
 const FORM_EMBED_SRC = `https://docs.google.com/forms/d/e/${FORM_ID}/viewform?embedded=true`
 const FORM_OPEN_SRC = `https://docs.google.com/forms/d/e/${FORM_ID}/viewform`
 
-// Height of the embedded form. Raise it if the form gains questions and an
-// internal scrollbar appears; lower it to trim trailing blank space.
-const FORM_HEIGHT = 1400
-
 // Unlisted page: reachable only by people who have the direct link.
 // Kept out of the sitemap, the /sitemap page, the nav and the footer, and
 // marked noindex/nofollow so search engines and AI crawlers do not list it.
@@ -36,17 +32,20 @@ export default function ExpressionOfInterestPage() {
 
       <section className="bg-cream py-16 lg:py-24">
         <div className="max-w-2xl mx-auto px-6 lg:px-10">
+          {/* Cross-origin Google iframe can't auto-size to its content, so the
+              height is set per breakpoint — taller on narrow phones where the
+              form wraps, shorter on wider screens. Fluid width keeps it
+              responsive. Tune these if a form scrollbar or blank space shows. */}
           <iframe
             src={FORM_EMBED_SRC}
             title="Expression of interest form"
             loading="lazy"
-            className="block w-full rounded-lg border border-rule-light bg-white"
-            style={{ height: FORM_HEIGHT, border: 0 }}
+            className="block w-full rounded-lg border border-rule-light bg-white h-[1800px] sm:h-[1600px] lg:h-[1500px]"
           >
             Loading the form…
           </iframe>
           <p className="mt-4 text-center text-[12.5px] text-ink-muted-dark">
-            Trouble with the form?{' '}
+            Trouble seeing the form?{' '}
             <a
               href={FORM_OPEN_SRC}
               target="_blank"
