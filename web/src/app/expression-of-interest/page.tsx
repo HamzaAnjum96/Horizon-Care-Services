@@ -40,7 +40,7 @@ export default function ExpressionOfInterestPage() {
             src={FORM_EMBED_SRC}
             title="Expression of interest form"
             loading="lazy"
-            className="block w-full rounded-lg border border-rule-light bg-white h-[1800px] sm:h-[1600px] lg:h-[1500px]"
+            className="block w-full rounded-lg border border-rule-light bg-white h-[1250px] sm:h-[1100px] lg:h-[1000px]"
           >
             Loading the form…
           </iframe>
