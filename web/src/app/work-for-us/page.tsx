@@ -57,9 +57,9 @@ const jsonLd = [
   },
 ]
 
-function applyHref(code: string, title: string) {
-  const params = new URLSearchParams({ code, title })
-  return `/work-for-us/apply?${params.toString()}`
+function applyHref(code: string) {
+  const params = new URLSearchParams({ jobref: code })
+  return `/expression-of-interest?${params.toString()}`
 }
 
 const speculativeMailto = `mailto:careers@horizoncareservices.org?subject=${encodeURIComponent('Application — HCS-CV-000 · Speculative CV')}&body=${encodeURIComponent('Dear Horizon Care Services,\n\nPlease find attached my CV for your consideration.\n\nI am interested in flexible agency work and would welcome the opportunity to discuss my experience, availability and preferred locations.\n\nKind regards,\n[Your name]')}`
@@ -202,7 +202,7 @@ export default function WorkForUsPage() {
                       <p className="text-ink-muted-dark text-[13px] leading-snug">{role.note}</p>
                     </div>
                     <Link
-                      href={applyHref(role.code, role.title)}
+                      href={applyHref(role.code)}
                       className="interactive-lift inline-flex items-center gap-2 border border-rule-light text-ink-dark px-4 py-2 rounded-md text-[12px] font-semibold tracking-[0.02em] hover:border-amber hover:text-amber transition-colors flex-shrink-0 self-start sm:self-center"
                     >
                       Apply <ArrowUpRight size={12} aria-hidden="true" />

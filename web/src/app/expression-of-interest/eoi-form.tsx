@@ -12,16 +12,18 @@ import { Field, TextInput, TextArea, RadioGroup } from '../work-for-us/fields'
 const FORM_ACTION =
   'https://docs.google.com/forms/d/e/1FAIpQLSc-6ShCKYrT4TN52MpXidw11H7N6CfgJ5gm8eNMSxzYk8EKiw/formResponse'
 
-// Field IDs from the form's "Get pre-filled link".
-// The three Yes/No ids are matched by their order in the form — verify with a
-// test submission. "entry.1004237903" (Job Ref.) exists but isn't collected here.
-//
-// email / phone / address are blank because the Google Form has no question for
-// them yet. Add those questions, grab a fresh pre-filled link, paste the entry
-// ids below, and the inputs switch on automatically (validation + submit).
+// Field IDs from the form's "Get pre-filled link" (order verified against the
+// live form). "referred" is client-side only and is never sent.
 const FIELD = {
+  jobRef:           'entry.1004237903',
   firstName:        'entry.704701710',
   surname:          'entry.1600847244',
+  email:            'entry.1960713328',
+  phone:            'entry.509331244',
+  addrLine1:        'entry.75913971',
+  addrLine2:        'entry.718216062',
+  town:             'entry.1692458647',
+  postcode:         'entry.1242557446',
   role:             'entry.1686103786',
   rightToWork:      'entry.100634696',
   experience:       'entry.1247109978',
@@ -29,11 +31,6 @@ const FIELD = {
   drivingLicence:   'entry.1865237791',
   hours:            'entry.1363007283',
   referee:          'entry.709355516',
-  email:   'entry.1960713328',
-  phone:   'entry.509331244',
-  // Home address has no question on the Google Form yet — add one, grab a fresh
-  // pre-filled link, and paste its entry id here to switch the field on.
-  address: '',
 }
 
 const YN = [
@@ -47,13 +44,18 @@ const ROLES = [
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE_RE = /^[\d\s+()-]{7,}$/
+const POSTCODE_RE = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i
 
 type FormState = {
+  jobRef: string
   firstName: string
   surname: string
   email: string
   phone: string
-  address: string
+  line1: string
+  line2: string
+  town: string
+  postcode: string
   role: string
   rightToWork: string
   experience: string
@@ -65,15 +67,22 @@ type FormState = {
 }
 
 const EMPTY: FormState = {
-  firstName: '', surname: '', email: '', phone: '', address: '',
+  jobRef: '', firstName: '', surname: '', email: '', phone: '',
+  line1: '', line2: '', town: '', postcode: '',
   role: '', rightToWork: '', experience: '', experienceDetail: '',
   drivingLicence: '', hours: '', referred: '', referee: '',
 }
 
-function readReferee(): string {
-  if (typeof window === 'undefined') return ''
+// URL params:
+//   ?jobref=CODE   → fills + locks the Job reference (used by "Apply" links)
+//   ?referee=NAME  → marks the application as a referral and fills the name
+function readParams(): { jobRef: string; referee: string } {
+  if (typeof window === 'undefined') return { jobRef: '', referee: '' }
   const sp = new URLSearchParams(window.location.search)
-  return (sp.get('referee') || sp.get('ref') || '').trim()
+  return {
+    jobRef: (sp.get('jobref') || sp.get('job') || '').trim(),
+    referee: (sp.get('referee') || '').trim(),
+  }
 }
 
 export function ExpressionForm() {
@@ -83,11 +92,16 @@ export function ExpressionForm() {
   const [done, setDone] = useState(false)
   const bannerRef = useRef<HTMLDivElement | null>(null)
 
-  // Pre-fill the referee from the URL (?referee=Name or ?ref=Name) so an
-  // existing employee can share a link that tags the referral on submission.
+  // Pre-fill from the URL after mount (keeps the static prerender clean).
   useEffect(() => {
-    const r = readReferee()
-    if (r) setF((s) => ({ ...s, referred: 'Yes', referee: r }))
+    const { jobRef, referee } = readParams()
+    if (jobRef || referee) {
+      setF((s) => ({
+        ...s,
+        jobRef: jobRef || s.jobRef,
+        ...(referee ? { referred: 'Yes', referee } : {}),
+      }))
+    }
   }, [])
 
   const set = (patch: Partial<FormState>) => {
@@ -98,15 +112,14 @@ export function ExpressionForm() {
     const e: Record<string, string> = {}
     if (!f.firstName.trim()) e.firstName = 'First name is required'
     if (!f.surname.trim()) e.surname = 'Surname is required'
-    if (FIELD.email) {
-      if (!f.email.trim()) e.email = 'Email address is required'
-      else if (!EMAIL_RE.test(f.email.trim())) e.email = 'Enter a valid email address'
-    }
-    if (FIELD.phone) {
-      if (!f.phone.trim()) e.phone = 'Phone number is required'
-      else if (!PHONE_RE.test(f.phone.trim())) e.phone = 'Enter a valid phone number'
-    }
-    if (FIELD.address && !f.address.trim()) e.address = 'Home address is required'
+    if (!f.email.trim()) e.email = 'Email address is required'
+    else if (!EMAIL_RE.test(f.email.trim())) e.email = 'Enter a valid email address'
+    if (!f.phone.trim()) e.phone = 'Phone number is required'
+    else if (!PHONE_RE.test(f.phone.trim())) e.phone = 'Enter a valid phone number'
+    if (!f.line1.trim()) e.line1 = 'Address line 1 is required'
+    if (!f.town.trim()) e.town = 'Town / city is required'
+    if (!f.postcode.trim()) e.postcode = 'Postcode is required'
+    else if (!POSTCODE_RE.test(f.postcode.trim())) e.postcode = 'Enter a valid UK postcode'
     if (!f.role) e.role = 'Please choose a role'
     if (!f.rightToWork) e.rightToWork = 'Please answer this question'
     if (!f.experience) e.experience = 'Please answer this question'
@@ -142,11 +155,15 @@ export function ExpressionForm() {
       const put = (id: string, v: string) => {
         if (id && v.trim()) body.append(id, v.trim())
       }
+      put(FIELD.jobRef, f.jobRef)
       put(FIELD.firstName, f.firstName)
       put(FIELD.surname, f.surname)
       put(FIELD.email, f.email)
       put(FIELD.phone, f.phone)
-      put(FIELD.address, f.address)
+      put(FIELD.addrLine1, f.line1)
+      put(FIELD.addrLine2, f.line2)
+      put(FIELD.town, f.town)
+      put(FIELD.postcode, f.postcode)
       put(FIELD.role, f.role)
       put(FIELD.rightToWork, f.rightToWork)
       put(FIELD.experience, f.experience)
@@ -195,6 +212,12 @@ export function ExpressionForm() {
         </div>
       )}
 
+      {f.jobRef && (
+        <Field label="Job reference" htmlFor="f-jobref" hint="From the role you selected.">
+          <TextInput id="f-jobref" value={f.jobRef} onChange={() => {}} readOnly />
+        </Field>
+      )}
+
       <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
         <Field label="First name" required htmlFor="f-first" error={errors.firstName}>
           <TextInput id="f-first" autoComplete="given-name" value={f.firstName} onChange={(v) => set({ firstName: v })} invalid={Boolean(errors.firstName)} />
@@ -204,26 +227,31 @@ export function ExpressionForm() {
         </Field>
       </div>
 
-      {(FIELD.email || FIELD.phone) && (
-        <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
-          {FIELD.email && (
-            <Field label="Email address" required htmlFor="f-email" error={errors.email}>
-              <TextInput id="f-email" type="email" inputMode="email" autoComplete="email" value={f.email} onChange={(v) => set({ email: v })} invalid={Boolean(errors.email)} />
-            </Field>
-          )}
-          {FIELD.phone && (
-            <Field label="Phone number" required htmlFor="f-phone" error={errors.phone}>
-              <TextInput id="f-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="07700 000000" value={f.phone} onChange={(v) => set({ phone: v })} invalid={Boolean(errors.phone)} />
-            </Field>
-          )}
-        </div>
-      )}
-
-      {FIELD.address && (
-        <Field label="Home address" required htmlFor="f-addr" error={errors.address}>
-          <TextArea id="f-addr" rows={3} value={f.address} onChange={(v) => set({ address: v })} invalid={Boolean(errors.address)} />
+      <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
+        <Field label="Email address" required htmlFor="f-email" error={errors.email}>
+          <TextInput id="f-email" type="email" inputMode="email" autoComplete="email" value={f.email} onChange={(v) => set({ email: v })} invalid={Boolean(errors.email)} />
         </Field>
-      )}
+        <Field label="Phone number" required htmlFor="f-phone" error={errors.phone}>
+          <TextInput id="f-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="07700 000000" value={f.phone} onChange={(v) => set({ phone: v })} invalid={Boolean(errors.phone)} />
+        </Field>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
+        <Field label="Address line 1" required htmlFor="f-line1" error={errors.line1}>
+          <TextInput id="f-line1" autoComplete="address-line1" value={f.line1} onChange={(v) => set({ line1: v })} invalid={Boolean(errors.line1)} />
+        </Field>
+        <Field label="Address line 2" htmlFor="f-line2">
+          <TextInput id="f-line2" autoComplete="address-line2" value={f.line2} onChange={(v) => set({ line2: v })} />
+        </Field>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
+        <Field label="Town / city" required htmlFor="f-town" error={errors.town}>
+          <TextInput id="f-town" autoComplete="address-level2" value={f.town} onChange={(v) => set({ town: v })} invalid={Boolean(errors.town)} />
+        </Field>
+        <Field label="Postcode" required htmlFor="f-postcode" error={errors.postcode}>
+          <TextInput id="f-postcode" autoComplete="postal-code" placeholder="LU3 3JG" value={f.postcode} onChange={(v) => set({ postcode: v.toUpperCase() })} invalid={Boolean(errors.postcode)} />
+        </Field>
+      </div>
 
       <Field label="Which role are you applying for?" required error={errors.role}>
         <RadioGroup name="role" value={f.role} onChange={(v) => set({ role: v })} options={ROLES} invalid={Boolean(errors.role)} />
