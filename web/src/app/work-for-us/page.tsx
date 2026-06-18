@@ -83,8 +83,6 @@ function applyHref(role: { code: string; role?: string; speculative?: boolean })
   return `/work-for-us/apply?${params.toString()}`
 }
 
-const speculativeMailto = `mailto:careers@horizoncareservices.org?subject=${encodeURIComponent('Application — HCS-CV-000 · Speculative CV')}&body=${encodeURIComponent('Dear Horizon Care Services,\n\nPlease find attached my CV for your consideration.\n\nI am interested in flexible agency work and would welcome the opportunity to discuss my experience, availability and preferred locations.\n\nKind regards,\n[Your name]')}`
-
 export default function WorkForUsPage() {
   return (
     <>
@@ -244,29 +242,29 @@ export default function WorkForUsPage() {
                       fontVariationSettings: '"opsz" 24, "wght" 560',
                     }}
                   >
-                    Send your CV.
+                    Apply in minutes.
                   </p>
                   <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[54ch]">
-                    Click Apply on any role above, or email{' '}
-                    <a
-                      href="mailto:careers@horizoncareservices.org"
+                    Hit Apply on one of the roles listed above, or{' '}
+                    <Link
+                      href="/expression-of-interest"
                       className="text-ink-dark underline underline-offset-2 hover:opacity-70 transition-opacity"
                     >
-                      careers@horizoncareservices.org
-                    </a>{' '}
-                    directly with your CV, the role reference, your availability, and preferred locations.
+                      register your interest
+                    </Link>{' '}
+                    and we&rsquo;ll be in touch when something suitable comes up. Either way it only takes a few minutes.
                   </p>
                   <p className="text-ink-muted-dark text-[14px] leading-relaxed mt-4 max-w-[54ch]">
                     All positions are subject to DBS check, professional registration verification, and employment references. We are an equal opportunities employer.
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <a
-                    href={speculativeMailto}
+                  <Link
+                    href="/expression-of-interest"
                     className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
                   >
-                    Email your CV <ArrowUpRight size={14} aria-hidden="true" />
-                  </a>
+                    Register interest <ArrowUpRight size={14} aria-hidden="true" />
+                  </Link>
                   <p className="text-ink-muted-dark text-[13px]">
                     Or call us on{' '}
                     <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
