@@ -47,6 +47,7 @@ export function Field({
 
 export function TextInput({
   id,
+  name,
   value,
   onChange,
   type = 'text',
@@ -59,6 +60,7 @@ export function TextInput({
   className,
 }: {
   id?: string
+  name?: string
   value: string
   onChange: (v: string) => void
   type?: string
@@ -73,6 +75,7 @@ export function TextInput({
   return (
     <input
       id={id}
+      name={name}
       type={type}
       value={value}
       onChange={(e) => onChange(e.target.value)}

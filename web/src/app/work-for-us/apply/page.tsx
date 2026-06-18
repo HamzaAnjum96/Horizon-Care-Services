@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import { PageHeader } from '@/components/layout/page-header'
-import { ApplyClient } from './apply-client'
+import { ExpressionForm } from '@/components/expression-form'
 
+// This route now renders the shared application form (same form as
+// /expression-of-interest, different framing). The previous multi-section
+// PDF application lives alongside in this folder (apply-client.tsx, pdf.ts,
+// etc.) and is kept for later use but no longer routed.
 export const metadata: Metadata = {
-  title: 'Apply — Horizon Care Services',
+  title: { absolute: 'Apply — Horizon Care Services' },
   description:
-    'Apply for a role at Horizon Care Services. Complete the application and download a branded PDF to send to our careers team.',
+    'Apply for a role at Horizon Care Services. Complete the short application form and our recruitment team will be in touch.',
   robots: { index: false, follow: false },
 }
 
@@ -16,33 +19,14 @@ export default function ApplyPage() {
       <PageHeader
         kicker="Application"
         title="Apply for a role."
-        intro="Complete the application below. When you’re done, we’ll generate a branded PDF for you to download and send to our careers team. Your data is processed in your browser — nothing is submitted automatically."
+        intro="Complete the short application form below. Our recruitment team reviews every application and will be in touch — your details go straight to us."
       />
 
       <section className="bg-cream py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <Suspense fallback={<ApplyFallback />}>
-            <ApplyClient />
-          </Suspense>
+          <ExpressionForm />
         </div>
       </section>
     </>
-  )
-}
-
-function ApplyFallback() {
-  return (
-    <div className="py-20 text-center">
-      <p className="section-kicker text-ink-muted-dark mb-3">Loading</p>
-      <p
-        className="font-display text-ink-dark"
-        style={{
-          fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
-          fontVariationSettings: '"opsz" 22, "wght" 560',
-        }}
-      >
-        Preparing your application…
-      </p>
-    </div>
   )
 }

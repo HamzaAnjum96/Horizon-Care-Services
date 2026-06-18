@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight, Check } from 'lucide-react'
-import { Field, TextInput, TextArea, RadioGroup } from '../work-for-us/fields'
+import { cn } from '@/lib/utils'
+import { Field, TextInput, TextArea, RadioGroup } from '@/app/work-for-us/fields'
 
 // ── Native Google Form submission ───────────────────────────────
-// Posts to the form's /formResponse endpoint in the background (no-cors),
-// so the applicant stays on this page and never sees Google. Responses land
-// in the linked Google Sheet exactly as a normal Google Form submission.
+// Shared by /expression-of-interest and /work-for-us/apply — same form,
+// different page header. Posts to the form's /formResponse endpoint in the
+// background (no-cors), so the applicant stays on this page and never sees
+// Google. Responses land in the linked Google Sheet.
 const FORM_ACTION =
   'https://docs.google.com/forms/d/e/1FAIpQLSc-6ShCKYrT4TN52MpXidw11H7N6CfgJ5gm8eNMSxzYk8EKiw/formResponse'
 
@@ -48,6 +50,7 @@ const POSTCODE_RE = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i
 
 type FormState = {
   jobRef: string
+  role: string
   firstName: string
   surname: string
   email: string
@@ -56,7 +59,6 @@ type FormState = {
   line2: string
   town: string
   postcode: string
-  role: string
   rightToWork: string
   experience: string
   experienceDetail: string
@@ -67,26 +69,31 @@ type FormState = {
 }
 
 const EMPTY: FormState = {
-  jobRef: '', firstName: '', surname: '', email: '', phone: '',
+  jobRef: '', role: '', firstName: '', surname: '', email: '', phone: '',
   line1: '', line2: '', town: '', postcode: '',
-  role: '', rightToWork: '', experience: '', experienceDetail: '',
+  rightToWork: '', experience: '', experienceDetail: '',
   drivingLicence: '', hours: '', referred: '', referee: '',
 }
 
-// URL params:
-//   ?jobref=CODE   → fills + locks the Job reference (used by "Apply" links)
-//   ?referee=NAME  → marks the application as a referral and fills the name
-function readParams(): { jobRef: string; referee: string } {
-  if (typeof window === 'undefined') return { jobRef: '', referee: '' }
+// URL params (all optional):
+//   ?jobref=CODE     → fills + locks the Job reference
+//   ?role=Carer|Nurse→ fills + locks the role applied for
+//   ?referee=NAME    → marks the application as a referral and fills the name
+function readParams(): { jobRef: string; role: string; referee: string } {
+  if (typeof window === 'undefined') return { jobRef: '', role: '', referee: '' }
   const sp = new URLSearchParams(window.location.search)
+  const roleRaw = (sp.get('role') || '').trim().toLowerCase()
+  const role = roleRaw === 'nurse' ? 'Nurse' : roleRaw === 'carer' ? 'Carer' : ''
   return {
     jobRef: (sp.get('jobref') || sp.get('job') || '').trim(),
+    role,
     referee: (sp.get('referee') || '').trim(),
   }
 }
 
 export function ExpressionForm() {
   const [f, setF] = useState<FormState>(EMPTY)
+  const [roleLocked, setRoleLocked] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
@@ -94,13 +101,15 @@ export function ExpressionForm() {
 
   // Pre-fill from the URL after mount (keeps the static prerender clean).
   useEffect(() => {
-    const { jobRef, referee } = readParams()
-    if (jobRef || referee) {
+    const { jobRef, role, referee } = readParams()
+    if (jobRef || role || referee) {
       setF((s) => ({
         ...s,
         jobRef: jobRef || s.jobRef,
+        role: role || s.role,
         ...(referee ? { referred: 'Yes', referee } : {}),
       }))
+      if (role) setRoleLocked(true)
     }
   }, [])
 
@@ -110,7 +119,8 @@ export function ExpressionForm() {
 
   const validate = (): Record<string, string> => {
     const e: Record<string, string> = {}
-    if (!f.firstName.trim()) e.firstName = 'First name is required'
+    if (!f.role) e.role = 'Please choose a role'
+    if (!f.firstName.trim()) e.firstName = 'Given name is required'
     if (!f.surname.trim()) e.surname = 'Surname is required'
     if (!f.email.trim()) e.email = 'Email address is required'
     else if (!EMAIL_RE.test(f.email.trim())) e.email = 'Enter a valid email address'
@@ -120,7 +130,6 @@ export function ExpressionForm() {
     if (!f.town.trim()) e.town = 'Town / city is required'
     if (!f.postcode.trim()) e.postcode = 'Postcode is required'
     else if (!POSTCODE_RE.test(f.postcode.trim())) e.postcode = 'Enter a valid UK postcode'
-    if (!f.role) e.role = 'Please choose a role'
     if (!f.rightToWork) e.rightToWork = 'Please answer this question'
     if (!f.experience) e.experience = 'Please answer this question'
     if (f.experience === 'Yes' && !f.experienceDetail.trim())
@@ -156,6 +165,7 @@ export function ExpressionForm() {
         if (id && v.trim()) body.append(id, v.trim())
       }
       put(FIELD.jobRef, f.jobRef)
+      put(FIELD.role, f.role)
       put(FIELD.firstName, f.firstName)
       put(FIELD.surname, f.surname)
       put(FIELD.email, f.email)
@@ -164,7 +174,6 @@ export function ExpressionForm() {
       put(FIELD.addrLine2, f.line2)
       put(FIELD.town, f.town)
       put(FIELD.postcode, f.postcode)
-      put(FIELD.role, f.role)
       put(FIELD.rightToWork, f.rightToWork)
       put(FIELD.experience, f.experience)
       if (f.experience === 'Yes') put(FIELD.experienceDetail, f.experienceDetail)
@@ -192,7 +201,7 @@ export function ExpressionForm() {
     .map(([, v]) => v)
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-7">
+    <form noValidate onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-9">
       {(messages.length > 0 || errors._form) && (
         <div ref={bannerRef} role="alert" className="border border-amber/40 bg-amber/5 rounded-md p-5">
           {errors._form ? (
@@ -212,98 +221,115 @@ export function ExpressionForm() {
         </div>
       )}
 
-      {f.jobRef && (
-        <Field label="Job reference" htmlFor="f-jobref" hint="From the role you selected.">
-          <TextInput id="f-jobref" value={f.jobRef} onChange={() => {}} readOnly />
-        </Field>
-      )}
+      {/* ── Role ── */}
+      <Section title="Role" first>
+        {f.jobRef && (
+          <Field label="Job reference" htmlFor="f-jobref" hint="From the role you selected.">
+            <TextInput id="f-jobref" value={f.jobRef} onChange={() => {}} readOnly />
+          </Field>
+        )}
+        {roleLocked ? (
+          <Field label="Which role are you applying for?" htmlFor="f-role" hint="From the role you selected.">
+            <TextInput id="f-role" value={f.role} onChange={() => {}} readOnly />
+          </Field>
+        ) : (
+          <Field label="Which role are you applying for?" required error={errors.role}>
+            <RadioGroup name="role" value={f.role} onChange={(v) => set({ role: v })} options={ROLES} invalid={Boolean(errors.role)} />
+          </Field>
+        )}
+      </Section>
 
-      <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
-        <Field label="First name" required htmlFor="f-first" error={errors.firstName}>
-          <TextInput id="f-first" autoComplete="given-name" value={f.firstName} onChange={(v) => set({ firstName: v })} invalid={Boolean(errors.firstName)} />
-        </Field>
-        <Field label="Surname" required htmlFor="f-surname" error={errors.surname}>
-          <TextInput id="f-surname" autoComplete="family-name" value={f.surname} onChange={(v) => set({ surname: v })} invalid={Boolean(errors.surname)} />
-        </Field>
-      </div>
+      {/* ── Your details ── */}
+      <Section title="Your details">
+        <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
+          <Field label="Given name" required htmlFor="f-given" error={errors.firstName}>
+            <TextInput id="f-given" name="given-name" autoComplete="given-name" value={f.firstName} onChange={(v) => set({ firstName: v })} invalid={Boolean(errors.firstName)} />
+          </Field>
+          <Field label="Surname" required htmlFor="f-surname" error={errors.surname}>
+            <TextInput id="f-surname" name="family-name" autoComplete="family-name" value={f.surname} onChange={(v) => set({ surname: v })} invalid={Boolean(errors.surname)} />
+          </Field>
+        </div>
 
-      <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
-        <Field label="Email address" required htmlFor="f-email" error={errors.email}>
-          <TextInput id="f-email" type="email" inputMode="email" autoComplete="email" value={f.email} onChange={(v) => set({ email: v })} invalid={Boolean(errors.email)} />
-        </Field>
-        <Field label="Phone number" required htmlFor="f-phone" error={errors.phone}>
-          <TextInput id="f-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="07700 000000" value={f.phone} onChange={(v) => set({ phone: v })} invalid={Boolean(errors.phone)} />
-        </Field>
-      </div>
+        <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
+          <Field label="Email address" required htmlFor="f-email" error={errors.email}>
+            <TextInput id="f-email" name="email" type="email" inputMode="email" autoComplete="email" value={f.email} onChange={(v) => set({ email: v })} invalid={Boolean(errors.email)} />
+          </Field>
+          <Field label="Phone number" required htmlFor="f-phone" error={errors.phone}>
+            <TextInput id="f-phone" name="tel" type="tel" inputMode="tel" autoComplete="tel" placeholder="07700 000000" value={f.phone} onChange={(v) => set({ phone: v })} invalid={Boolean(errors.phone)} />
+          </Field>
+        </div>
 
-      <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
-        <Field label="Address line 1" required htmlFor="f-line1" error={errors.line1}>
-          <TextInput id="f-line1" autoComplete="address-line1" value={f.line1} onChange={(v) => set({ line1: v })} invalid={Boolean(errors.line1)} />
+        <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
+          <Field label="Address line 1" required htmlFor="f-line1" error={errors.line1}>
+            <TextInput id="f-line1" name="address-line1" autoComplete="address-line1" value={f.line1} onChange={(v) => set({ line1: v })} invalid={Boolean(errors.line1)} />
+          </Field>
+          <Field label="Address line 2" htmlFor="f-line2">
+            <TextInput id="f-line2" name="address-line2" autoComplete="address-line2" value={f.line2} onChange={(v) => set({ line2: v })} />
+          </Field>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
+          <Field label="Town / city" required htmlFor="f-town" error={errors.town}>
+            <TextInput id="f-town" name="address-level2" autoComplete="address-level2" value={f.town} onChange={(v) => set({ town: v })} invalid={Boolean(errors.town)} />
+          </Field>
+          <Field label="Postcode" required htmlFor="f-postcode" error={errors.postcode}>
+            <TextInput id="f-postcode" name="postal-code" autoComplete="postal-code" placeholder="LU3 3JG" value={f.postcode} onChange={(v) => set({ postcode: v.toUpperCase() })} invalid={Boolean(errors.postcode)} />
+          </Field>
+        </div>
+      </Section>
+
+      {/* ── Eligibility & experience ── */}
+      <Section title="Eligibility & experience">
+        <Field label="Do you have the right to work in the UK?" required error={errors.rightToWork}>
+          <RadioGroup name="rtw" value={f.rightToWork} onChange={(v) => set({ rightToWork: v })} options={YN} invalid={Boolean(errors.rightToWork)} />
         </Field>
-        <Field label="Address line 2" htmlFor="f-line2">
-          <TextInput id="f-line2" autoComplete="address-line2" value={f.line2} onChange={(v) => set({ line2: v })} />
+
+        <Field label="Do you have any experience in care?" required error={errors.experience}>
+          <RadioGroup name="exp" value={f.experience} onChange={(v) => set({ experience: v })} options={YN} invalid={Boolean(errors.experience)} />
         </Field>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-x-5 gap-y-7">
-        <Field label="Town / city" required htmlFor="f-town" error={errors.town}>
-          <TextInput id="f-town" autoComplete="address-level2" value={f.town} onChange={(v) => set({ town: v })} invalid={Boolean(errors.town)} />
+        {f.experience === 'Yes' && (
+          <Field
+            label="If yes, please specify which employer(s) you worked for and the roles and responsibilities you had."
+            required
+            htmlFor="f-expd"
+            error={errors.experienceDetail}
+          >
+            <TextArea id="f-expd" rows={4} value={f.experienceDetail} onChange={(v) => set({ experienceDetail: v })} invalid={Boolean(errors.experienceDetail)} />
+          </Field>
+        )}
+
+        <Field label="Do you have a full UK driving licence?" required error={errors.drivingLicence}>
+          <RadioGroup name="dl" value={f.drivingLicence} onChange={(v) => set({ drivingLicence: v })} options={YN} invalid={Boolean(errors.drivingLicence)} />
         </Field>
-        <Field label="Postcode" required htmlFor="f-postcode" error={errors.postcode}>
-          <TextInput id="f-postcode" autoComplete="postal-code" placeholder="LU3 3JG" value={f.postcode} onChange={(v) => set({ postcode: v.toUpperCase() })} invalid={Boolean(errors.postcode)} />
+
+        <Field label="How many hours per week would you be available to work?" required htmlFor="f-hours" error={errors.hours}>
+          <TextInput id="f-hours" inputMode="numeric" placeholder="e.g. 37.5" value={f.hours} onChange={(v) => set({ hours: v })} invalid={Boolean(errors.hours)} />
         </Field>
-      </div>
+      </Section>
 
-      <Field label="Which role are you applying for?" required error={errors.role}>
-        <RadioGroup name="role" value={f.role} onChange={(v) => set({ role: v })} options={ROLES} invalid={Boolean(errors.role)} />
-      </Field>
-
-      <Field label="Do you have the right to work in the UK?" required error={errors.rightToWork}>
-        <RadioGroup name="rtw" value={f.rightToWork} onChange={(v) => set({ rightToWork: v })} options={YN} invalid={Boolean(errors.rightToWork)} />
-      </Field>
-
-      <Field label="Do you have any experience in care?" required error={errors.experience}>
-        <RadioGroup name="exp" value={f.experience} onChange={(v) => set({ experience: v })} options={YN} invalid={Boolean(errors.experience)} />
-      </Field>
-      {f.experience === 'Yes' && (
-        <Field
-          label="If yes, please specify which employer(s) you worked for and the roles and responsibilities you had."
-          required
-          htmlFor="f-expd"
-          error={errors.experienceDetail}
-        >
-          <TextArea id="f-expd" rows={4} value={f.experienceDetail} onChange={(v) => set({ experienceDetail: v })} invalid={Boolean(errors.experienceDetail)} />
+      {/* ── Referral ── */}
+      <Section title="Referral">
+        <Field label="Have you been referred by anyone currently working at Horizon?" required error={errors.referred}>
+          <RadioGroup
+            name="referred"
+            value={f.referred}
+            onChange={(v) => set({ referred: v, referee: v === 'No' ? '' : f.referee })}
+            options={YN}
+            invalid={Boolean(errors.referred)}
+          />
         </Field>
-      )}
+        {f.referred === 'Yes' && (
+          <Field
+            label="Please give the name of the Horizon employee who referred you."
+            required
+            htmlFor="f-referee"
+            error={errors.referee}
+          >
+            <TextInput id="f-referee" value={f.referee} onChange={(v) => set({ referee: v })} invalid={Boolean(errors.referee)} />
+          </Field>
+        )}
+      </Section>
 
-      <Field label="Do you have a full UK driving licence?" required error={errors.drivingLicence}>
-        <RadioGroup name="dl" value={f.drivingLicence} onChange={(v) => set({ drivingLicence: v })} options={YN} invalid={Boolean(errors.drivingLicence)} />
-      </Field>
-
-      <Field label="How many hours per week would you be available to work?" required htmlFor="f-hours" error={errors.hours}>
-        <TextInput id="f-hours" inputMode="numeric" placeholder="e.g. 37.5" value={f.hours} onChange={(v) => set({ hours: v })} invalid={Boolean(errors.hours)} />
-      </Field>
-
-      <Field label="Have you been referred by anyone currently working at Horizon?" required error={errors.referred}>
-        <RadioGroup
-          name="referred"
-          value={f.referred}
-          onChange={(v) => set({ referred: v, referee: v === 'No' ? '' : f.referee })}
-          options={YN}
-          invalid={Boolean(errors.referred)}
-        />
-      </Field>
-      {f.referred === 'Yes' && (
-        <Field
-          label="Please give the name of the Horizon employee who referred you."
-          required
-          htmlFor="f-referee"
-          error={errors.referee}
-        >
-          <TextInput id="f-referee" value={f.referee} onChange={(v) => set({ referee: v })} invalid={Boolean(errors.referee)} />
-        </Field>
-      )}
-
-      <div className="pt-4">
+      <div className="pt-2">
         <button
           type="submit"
           disabled={submitting}
@@ -313,6 +339,25 @@ export function ExpressionForm() {
         </button>
       </div>
     </form>
+  )
+}
+
+// Subtle section grouping — a small kicker label with a hairline divider above
+// every section after the first.
+function Section({
+  title,
+  first,
+  children,
+}: {
+  title: string
+  first?: boolean
+  children: React.ReactNode
+}) {
+  return (
+    <section className={cn('space-y-6', !first && 'border-t border-rule-light pt-8')}>
+      <p className="section-kicker text-ink-muted-dark">{title}</p>
+      <div className="space-y-7">{children}</div>
+    </section>
   )
 }
 
@@ -333,7 +378,7 @@ function DoneScreen({ firstName }: { firstName: string }) {
         We’ve got your details.
       </h2>
       <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[46ch] mx-auto mb-8">
-        Thanks for registering your interest{firstName.trim() ? `, ${firstName.trim()}` : ''}.
+        Thanks{firstName.trim() ? `, ${firstName.trim()}` : ''} — we’ve received your details.
         Our recruitment team will be in touch shortly.
       </p>
       <Link

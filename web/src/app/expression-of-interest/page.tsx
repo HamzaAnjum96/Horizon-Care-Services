@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { PageHeader } from '@/components/layout/page-header'
-import { ExpressionForm } from './eoi-form'
+import { ExpressionForm } from '@/components/expression-form'
 
 // Unlisted page: reachable only by people who have the direct link.
 // Kept out of the sitemap, the /sitemap page, the nav and the footer, and
