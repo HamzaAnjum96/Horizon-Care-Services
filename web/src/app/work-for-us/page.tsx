@@ -17,18 +17,34 @@ export const metadata: Metadata = {
   },
 }
 
-const roles = [
+const roles: {
+  code: string
+  title: string
+  location: string
+  note: string
+  role?: 'Nurse' | 'Carer'
+  speculative?: boolean
+}[] = [
   {
-    code: 'HCS-SPW-062',
-    title: 'Support Worker',
+    code: 'HCS-NUR-056',
+    title: 'Nurse',
+    role: 'Nurse',
     location: 'North West (Various)',
-    note: 'Trained support workers for residential, community, and domiciliary settings.',
+    note: 'Registered nurses for hospital, nursing home, and community placements across the North West.',
+  },
+  {
+    code: 'HCS-CAR-023',
+    title: 'Carer',
+    role: 'Carer',
+    location: 'North West (Various)',
+    note: 'Carers and support workers for residential, supported living, and domiciliary settings.',
   },
   {
     code: 'HCS-CV-000',
     title: 'Speculative CV',
+    speculative: true,
     location: 'North West (Various)',
-    note: "Don't see your role listed? Send your CV and we'll be in touch if a suitable position arises.",
+    note: "Don't see your role listed? Register your interest and we'll be in touch when something suitable comes up.",
   },
 ]
 
@@ -41,24 +57,29 @@ const jsonLd = [
       { '@type': 'ListItem', position: 2, name: 'Work For Us', item: `${siteUrl}/work-for-us` },
     ],
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'JobPosting',
-    title: 'Support Worker',
-    description: 'Trained support workers for residential, community, and domiciliary settings across England. Flexible shifts around your availability, paid competitively and on time.',
-    identifier: { '@type': 'PropertyValue', name: 'HCS', value: 'HCS-SPW-062' },
-    datePosted: '2026-05-13',
-    validThrough: '2027-05-13',
-    employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
-    hiringOrganization: { '@id': `${siteUrl}/#organization` },
-    jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'North West England' } },
-    applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
-    url: `${siteUrl}/work-for-us`,
-  },
+  ...roles
+    .filter((r) => !r.speculative)
+    .map((r) => ({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: r.title,
+      description: r.note,
+      identifier: { '@type': 'PropertyValue', name: 'HCS', value: r.code },
+      datePosted: '2026-06-17',
+      validThrough: '2027-06-17',
+      employmentType: ['CONTRACTOR', 'FULL_TIME', 'PART_TIME'],
+      hiringOrganization: { '@id': `${siteUrl}/#organization` },
+      jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB', addressRegion: 'North West England' } },
+      applicantLocationRequirements: { '@type': 'Country', name: 'United Kingdom' },
+      url: `${siteUrl}/work-for-us`,
+    })),
 ]
 
-function applyHref(code: string) {
-  const params = new URLSearchParams({ jobref: code })
+function applyHref(role: { code: string; role?: string; speculative?: boolean }) {
+  // Speculative CV → the plain expression-of-interest form (no job reference).
+  if (role.speculative) return '/expression-of-interest'
+  const params = new URLSearchParams({ jobref: role.code })
+  if (role.role) params.set('role', role.role)
   return `/work-for-us/apply?${params.toString()}`
 }
 
@@ -202,10 +223,10 @@ export default function WorkForUsPage() {
                       <p className="text-ink-muted-dark text-[13px] leading-snug">{role.note}</p>
                     </div>
                     <Link
-                      href={applyHref(role.code)}
+                      href={applyHref(role)}
                       className="interactive-lift inline-flex items-center gap-2 border border-rule-light text-ink-dark px-4 py-2 rounded-md text-[12px] font-semibold tracking-[0.02em] hover:border-amber hover:text-amber transition-colors flex-shrink-0 self-start sm:self-center"
                     >
-                      Apply <ArrowUpRight size={12} aria-hidden="true" />
+                      {role.speculative ? 'Register interest' : 'Apply'} <ArrowUpRight size={12} aria-hidden="true" />
                     </Link>
                   </div>
                 ))}
