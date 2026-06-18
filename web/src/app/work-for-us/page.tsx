@@ -41,7 +41,7 @@ const roles: {
   },
   {
     code: 'HCS-CV-000',
-    title: 'Speculative CV',
+    title: 'Register interest',
     speculative: true,
     location: 'North West (Various)',
     note: "Don't see your role listed? Register your interest and we'll be in touch when something suitable comes up.",
@@ -226,7 +226,7 @@ export default function WorkForUsPage() {
                       href={applyHref(role)}
                       className="interactive-lift inline-flex items-center gap-2 border border-rule-light text-ink-dark px-4 py-2 rounded-md text-[12px] font-semibold tracking-[0.02em] hover:border-amber hover:text-amber transition-colors flex-shrink-0 self-start sm:self-center"
                     >
-                      {role.speculative ? 'Register interest' : 'Apply'} <ArrowUpRight size={12} aria-hidden="true" />
+                      Apply <ArrowUpRight size={12} aria-hidden="true" />
                     </Link>
                   </div>
                 ))}
