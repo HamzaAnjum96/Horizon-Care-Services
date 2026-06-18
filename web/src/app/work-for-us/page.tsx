@@ -259,16 +259,14 @@ export default function WorkForUsPage() {
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <Link
-                    href="/expression-of-interest"
-                    className="interactive-lift inline-flex items-center gap-2 bg-brand text-ink-light px-6 py-3 rounded-md text-[14px] font-semibold hover:opacity-90 transition-opacity"
-                  >
-                    Register interest <ArrowUpRight size={14} aria-hidden="true" />
-                  </Link>
-                  <p className="text-ink-muted-dark text-[13px]">
-                    Or call us on{' '}
+                  <p className="text-ink-muted-dark text-[13px] leading-relaxed">
+                    Any questions? Call{' '}
                     <a href="tel:02037572767" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
                       020 3757 2767
+                    </a>{' '}
+                    or email{' '}
+                    <a href="mailto:careers@horizoncareservices.org" className="underline underline-offset-2 hover:text-ink-dark transition-colors">
+                      careers@horizoncareservices.org
                     </a>
                   </p>
                 </div>
