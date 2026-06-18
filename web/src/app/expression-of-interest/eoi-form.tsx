@@ -29,8 +29,10 @@ const FIELD = {
   drivingLicence:   'entry.1865237791',
   hours:            'entry.1363007283',
   referee:          'entry.709355516',
-  email:   '',
-  phone:   '',
+  email:   'entry.1960713328',
+  phone:   'entry.509331244',
+  // Home address has no question on the Google Form yet — add one, grab a fresh
+  // pre-filled link, and paste its entry id here to switch the field on.
   address: '',
 }
 
@@ -111,7 +113,13 @@ export function ExpressionForm() {
     if (f.experience === 'Yes' && !f.experienceDetail.trim())
       e.experienceDetail = 'Please give details of your experience'
     if (!f.drivingLicence) e.drivingLicence = 'Please answer this question'
-    if (!f.hours.trim()) e.hours = 'Please tell us your weekly availability'
+    if (!f.hours.trim()) {
+      e.hours = 'Please tell us your weekly availability'
+    } else {
+      const n = Number(f.hours.trim())
+      if (!Number.isFinite(n) || n <= 0 || n > 168)
+        e.hours = 'Enter a number of hours between 1 and 168'
+    }
     if (!f.referred) e.referred = 'Please answer this question'
     if (f.referred === 'Yes' && !f.referee.trim())
       e.referee = 'Please give the name of the employee who referred you'
