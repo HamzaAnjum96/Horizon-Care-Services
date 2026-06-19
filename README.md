@@ -121,11 +121,10 @@ admin@horizon-careservices.co.uk
 ## Service Areas
 
 - Bedfordshire
-- Buckinghamshire
-- Cambridgeshire
-- Hertfordshire
-- Manchester
-- London
+- Greater Manchester
+- Merseyside
+- Lancashire (including Blackpool and Rossendale)
+- Yorkshire
 
 ## Services
 

@@ -50,7 +50,7 @@ Single shifts through to long-term contracts. Short-notice cover 24/7. Placement
 
 ## Service Areas
 
-Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Manchester, London — and broader England on request
+Bedfordshire, Greater Manchester, Merseyside, Lancashire (including Blackpool and Rossendale), Yorkshire — and broader England on request
 
 ## Contact
 

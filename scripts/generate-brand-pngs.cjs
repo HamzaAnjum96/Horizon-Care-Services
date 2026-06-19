@@ -262,7 +262,7 @@ function buildBannerHeroHtml(fontUrl) {
     <div style="font-family:SS4,serif;font-size:17px;font-weight:300;font-variation-settings:'opsz' 14,'wght' 300;color:${INK_MUTED}">Home care, specialist support, and clinical staffing across England.</div>
   </div>
   <div style="position:absolute;top:600px;left:0;right:0;height:1px;background:rgba(245,241,238,0.12)"></div>
-  <div style="position:absolute;left:${lm}px;top:626px;font-family:SS4,serif;font-size:11px;font-weight:400;color:${INK_MUTED};letter-spacing:0.14em;text-transform:uppercase">BEDFORDSHIRE  ·  BUCKINGHAMSHIRE  ·  CAMBRIDGESHIRE  ·  HERTFORDSHIRE  ·  MANCHESTER  ·  LONDON</div>
+  <div style="position:absolute;left:${lm}px;top:626px;font-family:SS4,serif;font-size:11px;font-weight:400;color:${INK_MUTED};letter-spacing:0.14em;text-transform:uppercase">BEDFORDSHIRE  ·  GREATER MANCHESTER  ·  MERSEYSIDE  ·  LANCASHIRE  ·  YORKSHIRE</div>
 </div>
 </body></html>`
 }
