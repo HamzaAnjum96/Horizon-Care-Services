@@ -145,7 +145,7 @@ function BannerCard({ type, label, description }: {
               className="text-[7px] font-medium tracking-[0.13em] uppercase"
               style={{ color: BANNER_MUTED }}
             >
-              Registered Health &amp; Social Care · England
+              Healthcare Staffing · England
             </p>
             <p
               className="font-display leading-tight"
@@ -155,10 +155,10 @@ function BannerCard({ type, label, description }: {
                 color: BANNER_INK,
               }}
             >
-              Care that holds<br />people steady.
+              Staffing that holds<br />care steady.
             </p>
             <p className="text-[7px] leading-relaxed" style={{ color: BANNER_MUTED }}>
-              Home care, specialist support, and clinical staffing across England.
+              Reliable healthcare staffing for NHS and care providers across England.
             </p>
           </div>
         )}
@@ -177,7 +177,7 @@ function BannerCard({ type, label, description }: {
               Horizon Care Services
             </p>
             <p className="text-[7px] tracking-[0.13em] uppercase" style={{ color: BANNER_MUTED }}>
-              Registered Health &amp; Social Care · England
+              Healthcare Staffing · England
             </p>
           </div>
         )}
@@ -534,7 +534,7 @@ export function BrandingGrid() {
             <BannerCard
               type="hero"
               label="Hero — Text"
-              description='Headline "Care that holds people steady." with kicker and service areas strip.'
+              description='Headline "Staffing that holds care steady." with kicker and service areas strip.'
             />
             <BannerCard
               type="logo"

@@ -257,9 +257,9 @@ function buildBannerHeroHtml(fontUrl) {
     <svg width="${W}" height="${H}" style="display:block">${iconsSvg}</svg>
   </div>
   <div style="position:absolute;left:${lm}px;top:195px;display:flex;flex-direction:column;gap:18px">
-    <div style="font-family:SS4,serif;font-size:11px;font-weight:400;color:${INK_MUTED};letter-spacing:0.14em;text-transform:uppercase">REGISTERED HEALTH &amp; SOCIAL CARE  ·  ENGLAND</div>
-    <div style="font-family:SS4,serif;font-size:72px;font-weight:620;font-variation-settings:'opsz' 64,'wght' 620;color:${INK_LIGHT};line-height:1.1">Care that holds<br>people steady.</div>
-    <div style="font-family:SS4,serif;font-size:17px;font-weight:300;font-variation-settings:'opsz' 14,'wght' 300;color:${INK_MUTED}">Home care, specialist support, and clinical staffing across England.</div>
+    <div style="font-family:SS4,serif;font-size:11px;font-weight:400;color:${INK_MUTED};letter-spacing:0.14em;text-transform:uppercase">HEALTHCARE STAFFING  ·  ENGLAND</div>
+    <div style="font-family:SS4,serif;font-size:72px;font-weight:620;font-variation-settings:'opsz' 64,'wght' 620;color:${INK_LIGHT};line-height:1.1">Staffing that holds<br>care steady.</div>
+    <div style="font-family:SS4,serif;font-size:17px;font-weight:300;font-variation-settings:'opsz' 14,'wght' 300;color:${INK_MUTED}">Reliable healthcare staffing for NHS and care providers across England.</div>
   </div>
   <div style="position:absolute;top:600px;left:0;right:0;height:1px;background:rgba(245,241,238,0.12)"></div>
   <div style="position:absolute;left:${lm}px;top:626px;font-family:SS4,serif;font-size:11px;font-weight:400;color:${INK_MUTED};letter-spacing:0.14em;text-transform:uppercase">BEDFORDSHIRE  ·  GREATER MANCHESTER  ·  MERSEYSIDE  ·  LANCASHIRE  ·  YORKSHIRE</div>
@@ -283,7 +283,7 @@ function buildBannerLogoHtml(fontUrl) {
   <div style="position:absolute;top:${blockTop}px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:28px">
     ${markSvgInline(INK_LIGHT, markSize, markSize)}
     <div style="font-family:SS4,serif;font-size:80px;font-weight:580;font-variation-settings:'opsz' 64,'wght' 580;color:${INK_LIGHT};line-height:1;letter-spacing:-0.01em;white-space:nowrap">Horizon Care Services</div>
-    <div style="font-family:SS4,serif;font-size:13px;font-weight:300;color:${INK_MUTED};letter-spacing:0.14em;text-transform:uppercase">REGISTERED HEALTH &amp; SOCIAL CARE  ·  ENGLAND</div>
+    <div style="font-family:SS4,serif;font-size:13px;font-weight:300;color:${INK_MUTED};letter-spacing:0.14em;text-transform:uppercase">HEALTHCARE STAFFING  ·  ENGLAND</div>
   </div>
 </div>
 </body></html>`

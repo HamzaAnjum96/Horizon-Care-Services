@@ -16,11 +16,6 @@ This repository keeps content organized into focused folders:
   - `src/app/work-for-us/fields.tsx` - Shared form field components
   - `src/app/contact/` - Contact page with embedded map
 
-- **`/Website`** - Legacy static website files (superseded by `/web`)
-  - `content.txt` - Service information and details
-  - `robots.txt` - Search engine configuration
-  - `/assets` - Images, stylesheets, and JavaScript assets
-
 - **`/Documents`** - Documentation and planning records
   - [`SITE-DESIGN.md`](Documents/SITE-DESIGN.md) - Design brief and visual direction
   - [`CLIENT-DEV-DISCUSSION.md`](Documents/CLIENT-DEV-DISCUSSION.md) - Ongoing client and web developer discussion notes for look-and-feel decisions
@@ -101,7 +96,7 @@ See:
 A GitHub Actions workflow automatically deploys the website when changes are merged to the `main` branch:
 
 - **Trigger:** Push to main branch
-- **Action:** Deploys `/Website` folder to GitHub Pages
+- **Action:** Builds the `/web` Next.js app and deploys the static export (`web/out`) to GitHub Pages
 - **Result:** Website is live immediately after merge
 
 To deploy your changes, simply merge or push to the main branch.
