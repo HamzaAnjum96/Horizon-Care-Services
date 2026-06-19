@@ -2,14 +2,14 @@ import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
 const points = [
-  'Registered nurses (RGN, RMN, RNLD)',
-  'Social workers and allied health professionals',
-  'Occupational therapists and physiotherapists',
-  'Healthcare assistants and support workers',
-  'Single shifts through to long-term contracts — 24/7',
+  'Registered Nurses (RGN, RMN, RNLD)',
+  'Senior Healthcare Assistants (Senior HCAs)',
+  'Healthcare Assistants (HCAs)',
+  'Support Workers',
+  'Single shifts and emergency cover through to long-term contracts — 24/7',
 ]
 
-const complianceChecks = ['DBS', 'NMC', 'HCPC', 'Social Work England', 'Right to Work']
+const complianceChecks = ['DBS', 'NMC', 'Right to Work', 'References', 'Training']
 
 export function ServicesSection() {
   return (

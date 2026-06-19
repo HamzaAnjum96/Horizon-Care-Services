@@ -26,13 +26,13 @@ const PAGE_GROUPS: {
   {
     kicker: 'Services',
     pages: [
-      { title: 'Healthcare Staffing', href: '/services', description: 'Registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers placed across England.' },
+      { title: 'Healthcare Staffing', href: '/services', description: 'Registered nurses, senior healthcare assistants, healthcare assistants, and support workers placed across England.' },
     ],
   },
   {
     kicker: 'Work for us',
     pages: [
-      { title: 'Work for us', href: '/work-for-us', description: 'Career opportunities for nurses, healthcare assistants, support workers, and allied health professionals.' },
+      { title: 'Work for us', href: '/work-for-us', description: 'Career opportunities for registered nurses, senior healthcare assistants, healthcare assistants, and support workers.' },
     ],
   },
   {

@@ -8,22 +8,22 @@ const steps = [
   {
     num: '01',
     title: 'Tell us what you need',
-    desc: "Call or email us with the role, setting, location and shift times. Tell us anything specific about the environment — we'll ask if we need more detail.",
+    desc: "Call or email us with the role, setting, location and shift times. Let us know about any specific requirements of the service, and we'll ask for further details if needed.",
   },
   {
     num: '02',
     title: 'We confirm suitability',
-    desc: "We check experience, compliance and professional registration before putting anyone forward. We only suggest a worker when their background genuinely fits what you've described.",
+    desc: "We check experience, compliance and professional registration before putting anyone forward. We only recommend workers whose skills, qualifications and experience genuinely match your requirements.",
   },
   {
     num: '03',
     title: 'Cover is arranged',
-    desc: "We confirm all the details directly with the worker — shift times, where to report, who to speak to and anything specific about the role.",
+    desc: "We confirm all the details directly with the worker, including shift times, reporting arrangements, key contacts and any specific requirements of the role.",
   },
   {
     num: '04',
     title: 'We stay in contact',
-    desc: "We stay reachable after placement — for same-day changes, extensions, and anything that comes up mid-shift. If a requirement grows or shifts, you don't start from scratch. We already know your service.",
+    desc: "Our support doesn't end once cover is arranged. We remain available for same-day changes, shift extensions and any issues that arise. As we get to know your service, we can respond more quickly and effectively to future staffing requirements.",
   },
 ]
 
@@ -47,7 +47,7 @@ export function HowItWorks() {
           className="editorial-title text-ink-dark mb-12 lg:mb-14 max-w-[20ch]"
           style={{ fontSize: 'clamp(1.9rem, 3.6vw, 3rem)' }}
         >
-          Need to cover.
+          Need cover?
         </h2>
 
         <div ref={ref} className="relative">

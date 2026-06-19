@@ -7,11 +7,11 @@ const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
   title: { absolute: 'Healthcare Staffing Services | Horizon Care Services' },
-  description: 'Registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers placed across England. Short-notice and planned staffing cover.',
+  description: 'Registered nurses, senior healthcare assistants, healthcare assistants and support workers placed across England. Short-notice and planned staffing cover.',
   alternates: { canonical: `${siteUrl}/services` },
   openGraph: {
     title: 'Healthcare Staffing Services | Horizon Care Services',
-    description: 'Vetted health and social care professionals placed with local authorities, NHS trusts, care homes and healthcare organisations across England.',
+    description: 'Trained, qualified and experienced healthcare professionals placed with NHS trusts, nursing homes, residential care homes and supported living services across England.',
     url: `${siteUrl}/services`,
     type: 'website',
   },
@@ -20,39 +20,31 @@ export const metadata: Metadata = {
 const roles = [
   {
     title: 'Registered Nurses',
-    detail: 'RGN, RMN and RNLD professionals for wards, care homes, mental health settings, residential services and specialist environments.',
+    detail: 'Experienced RGN, RMN and RNLD professionals available for NHS trusts, nursing homes, supported living services, mental health settings and specialist care environments.',
   },
   {
-    title: 'Social Workers',
-    detail: 'Qualified social workers for adult services, children\'s services, local authority teams and wider social care settings.',
-  },
-  {
-    title: 'Occupational Therapists',
-    detail: 'Occupational therapists for assessments, rehabilitation, discharge planning and community-based work.',
-  },
-  {
-    title: 'Physiotherapists',
-    detail: 'Physiotherapists for hospital, community, rehabilitation and care-based environments.',
+    title: 'Senior Healthcare Assistants',
+    detail: 'Experienced Senior HCAs for residential care homes, supported living services and specialist care settings. Capable of leading shifts, supervising care staff, coordinating care delivery and supporting the smooth day-to-day operation of services.',
   },
   {
     title: 'Healthcare Assistants',
-    detail: 'Experienced HCAs for hospital, residential, care home and community settings.',
+    detail: 'Experienced HCAs for nursing homes, residential care homes, supported living services and specialist care settings, delivering compassionate, person-centred care and support.',
   },
   {
     title: 'Support Workers',
-    detail: 'Support workers for residential care, supported living, learning disability, mental health and community services.',
+    detail: 'Experienced Support Workers for residential care homes, supported living services, learning disability services, mental health settings and community-based care services.',
   },
 ]
 
 const settings = [
-  'NHS hospital wards and departments',
-  'Local authority social care teams',
-  'Mental health services',
+  'NHS trusts',
+  'Nursing homes',
+  'Residential care homes',
+  'Supported living services',
+  'Mental health settings',
   'Learning disability services',
-  'Care homes and residential settings',
-  'Supported living providers',
-  'Community and domiciliary care organisations',
-  'Private hospitals and clinics',
+  'Specialist care settings',
+  'Community-based care services',
 ]
 
 const jsonLd = {
@@ -71,7 +63,7 @@ export default function ServicesPage() {
       <PageHeader
         kicker="What we provide"
         title="Staffing matched to your service."
-        intro="We supply vetted health and social care professionals to NHS trusts, local authorities, care homes, and care organisations across England. Our process is built for real operations: define the requirement properly, match to setting and risk, confirm clearly, and stay accountable after placement."
+        intro="We supply trained, qualified and experienced healthcare professionals to NHS trusts, nursing homes, residential care homes and supported living services across England. Our process is built for real operations: define the requirement properly, match to setting and risk, confirm clearly, and stay accountable after placement."
       />
 
       {/* Staff types */}
@@ -112,7 +104,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-[5fr_4fr] gap-12 lg:gap-24">
             <div>
-              <p className="section-kicker text-ink-muted-dark mb-5">Compliance and vetting</p>
+              <p className="section-kicker text-ink-muted-dark mb-5">Compliance and screening</p>
               <p
                 className="font-display text-ink-dark leading-tight tracking-[-0.02em] mb-8"
                 style={{
@@ -120,17 +112,17 @@ export default function ServicesPage() {
                   fontVariationSettings: '"opsz" 28, "wght" 560',
                 }}
               >
-                Checked before they're placed.
+                Checked before placement.
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                 <p>
-                  Every professional on our register is checked before placement. We review requirements against role scope, setting demands, and practical shift conditions so clients are not left with avoidable mismatches.
+                  Every professional on our register is thoroughly checked before placement. We assess each requirement against the role, service setting and practical shift requirements to help ensure the right fit and reduce avoidable staffing mismatches.
                 </p>
                 <p>
-                  Depending on role type, checks may include identity, right to work, DBS status, references, training evidence, and where relevant professional registration checks. We also confirm practical details that affect shift success: arrival expectations, reporting lines, and handover context.
+                  Depending on the role, checks may include identity verification, right-to-work checks, DBS status, references, training records and, where applicable, professional registration verification. We also confirm practical details that support a successful placement, including reporting arrangements, arrival expectations and handover requirements.
                 </p>
                 <p>
-                  If a brief is unclear, we challenge it early. That upfront clarity reduces rebooking loops, improves continuity, and gives managers fewer surprises during handover.
+                  If a staffing brief is unclear, we address this at the outset. Taking the time to establish clear requirements helps improve continuity of care, reduces unnecessary rebooking and gives managers greater confidence in the staff provided.
                 </p>
               </div>
             </div>
@@ -139,11 +131,11 @@ export default function ServicesPage() {
               <p className="section-kicker text-ink-muted-dark mb-5">Response times</p>
               <div className="space-y-5">
                 {[
-                  { label: 'Urgent cover', value: 'Rapid triage and realistic availability updates.' },
-                  { label: 'Planned requirements', value: 'Structured briefing and staged fulfilment support.' },
-                  { label: 'Communication', value: 'Clear confirmations, constraints, and handover expectations.' },
-                  { label: 'Coverage model', value: 'Single shift through to ongoing placement programmes.' },
-                  { label: 'Escalation support', value: 'Fast re-plan options when requirements change.' },
+                  { label: 'Urgent cover', value: 'Rapid assessment and realistic availability updates.' },
+                  { label: 'Planned requirements', value: 'Structured workforce planning and staged fulfilment support.' },
+                  { label: 'Communication', value: 'Clear confirmations, transparent updates and defined handover expectations.' },
+                  { label: 'Coverage model', value: 'Flexible staffing solutions ranging from single shifts to ongoing placement programmes.' },
+                  { label: 'Escalation support', value: 'Responsive contingency planning and alternative staffing options when requirements change.' },
                 ].map(({ label, value }) => (
                   <div key={label} className="border-t border-rule-light pt-5">
                     <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
@@ -173,10 +165,10 @@ export default function ServicesPage() {
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[62ch]">
                 <p>
-                  Before proposing anyone, we look at the type of service they&rsquo;ll be working in, the specific demands of the shift — acuity level, working independently or within a team, supervision requirements — and their actual placement history in comparable environments.
+                  Before proposing a worker, we assess the type of service they will be supporting, the specific demands of the shift and their experience in comparable care environments. This includes factors such as the level of care required, whether they will be working independently or as part of a team, and any supervision or leadership responsibilities.
                 </p>
                 <p>
-                  We also confirm that their compliance is current and applicable to the role. If the match isn&rsquo;t strong enough, we say so and discuss realistic alternatives rather than sending someone who&rsquo;s technically available but wrong for the setting.
+                  We also confirm that all compliance requirements are current and appropriate for the role. If we do not believe a worker is a suitable match, we will say so and discuss realistic alternatives rather than supplying someone who is simply available but not right for the setting.
                 </p>
               </div>
             </div>
@@ -184,10 +176,10 @@ export default function ServicesPage() {
               <p className="section-kicker text-ink-muted-dark mb-5">What we check before confirming</p>
               <div className="space-y-5">
                 {[
-                  { label: 'Setting fit', value: 'Prior experience in the same environment type — ward, care home, supported living, community.' },
-                  { label: 'Role scope', value: 'That the shift demands match the worker\'s actual experience, not just their job title.' },
-                  { label: 'Compliance', value: 'DBS, right-to-work, registration and any role-specific training — current and applicable.' },
-                  { label: 'Practical details', value: 'Reporting lines, handover expectations and anything specific about the service.' },
+                  { label: 'Setting fit', value: 'Previous experience in similar environments, including nursing homes, residential care homes, supported living services, NHS settings and specialist care services.' },
+                  { label: 'Role suitability', value: 'We ensure the responsibilities of the shift align with the worker\'s skills, qualifications and practical experience, not just their job title.' },
+                  { label: 'Compliance', value: 'DBS status, right-to-work verification, professional registration (where applicable) and any role-specific training requirements.' },
+                  { label: 'Practical details', value: 'Reporting arrangements, handover requirements, key contacts and any service-specific information needed to support a successful placement.' },
                 ].map(({ label, value }) => (
                   <div key={label} className="border-t border-rule-light pt-5">
                     <p className="text-[11px] font-medium tracking-[0.1em] text-ink-muted-dark uppercase mb-1">{label}</p>
@@ -296,7 +288,7 @@ export default function ServicesPage() {
                   fontVariationSettings: '"opsz" 28, "wght" 560',
                 }}
               >
-                Bedfordshire, Buckinghamshire, Cambridgeshire, Hertfordshire, Manchester, and London.
+                Bedfordshire, Greater Manchester, Merseyside, Lancashire, and Yorkshire.
               </p>
               <p className="text-ink-muted-dark text-[15px] leading-relaxed mb-8">
                 If your organisation is outside these areas, contact us with the role, setting and urgency. We will confirm whether we can support the requirement safely.

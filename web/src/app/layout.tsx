@@ -30,16 +30,18 @@ export const metadata: Metadata = {
     template: '%s — Horizon Care Services',
   },
   description:
-    'Healthcare staffing agency placing registered nurses, social workers, occupational therapists, physiotherapists, HCAs, and support workers across England. Company No. 14615041.',
+    'Healthcare staffing agency placing registered nurses, senior healthcare assistants, healthcare assistants, and support workers across England. Company No. 14615041.',
   keywords: [
     'healthcare staffing agency',
     'nursing agency',
     'healthcare recruitment',
     'registered nurses',
+    'senior healthcare assistants',
     'healthcare assistants',
-    'social workers',
-    'occupational therapists',
     'support workers',
+    'nursing homes',
+    'residential care homes',
+    'supported living',
     'NHS staffing',
     'Manchester',
     'Bedfordshire',
@@ -62,14 +64,14 @@ export const metadata: Metadata = {
     siteName: 'Horizon Care Services',
     title: 'Horizon Care Services',
     description:
-      'Healthcare staffing agency placing registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers across England.',
+      'Healthcare staffing agency placing registered nurses, senior healthcare assistants, healthcare assistants, and support workers across England.',
     images: [{ url: '/brand/hcs-banner-hero@2x.png', width: 1920, height: 640, alt: 'Horizon Care Services' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Horizon Care Services',
     description:
-      'Healthcare staffing agency placing registered nurses, social workers, OTs, physiotherapists, HCAs, and support workers across England.',
+      'Healthcare staffing agency placing registered nurses, senior healthcare assistants, healthcare assistants, and support workers across England.',
     images: ['/brand/hcs-banner-hero@2x.png'],
   },
   manifest: '/site.webmanifest',
@@ -98,7 +100,7 @@ const jsonLd = [
     },
     image: `${siteUrl}/brand/hcs-banner-hero@2x.png`,
     description:
-      'Healthcare staffing agency placing registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers with NHS trusts, local authorities, and care organisations across England. Company No. 14615041.',
+      'Healthcare staffing agency placing registered nurses, senior healthcare assistants, healthcare assistants, and support workers with NHS trusts, nursing homes, residential care homes, and supported living services across England. Company No. 14615041.',
     telephone: '+442037572767',
     email: 'contact@horizoncareservices.org',
     address: {
@@ -118,11 +120,12 @@ const jsonLd = [
     knowsAbout: [
       'Healthcare Staffing',
       'Registered Nursing',
-      'Social Work',
-      'Occupational Therapy',
-      'Physiotherapy',
+      'Senior Healthcare Assistants',
       'Healthcare Assistants',
       'Support Workers',
+      'Nursing Homes',
+      'Residential Care Homes',
+      'Supported Living',
       'NHS Staffing',
       'Healthcare Recruitment',
     ],
@@ -154,11 +157,10 @@ const jsonLd = [
     ],
     areaServed: [
       { '@type': 'AdministrativeArea', name: 'Bedfordshire' },
-      { '@type': 'AdministrativeArea', name: 'Buckinghamshire' },
-      { '@type': 'AdministrativeArea', name: 'Cambridgeshire' },
-      { '@type': 'AdministrativeArea', name: 'Hertfordshire' },
-      { '@type': 'City', name: 'Manchester' },
-      { '@type': 'City', name: 'London' },
+      { '@type': 'AdministrativeArea', name: 'Greater Manchester' },
+      { '@type': 'AdministrativeArea', name: 'Merseyside' },
+      { '@type': 'AdministrativeArea', name: 'Lancashire' },
+      { '@type': 'AdministrativeArea', name: 'Yorkshire' },
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -170,7 +172,7 @@ const jsonLd = [
             '@type': 'Service',
             name: 'Healthcare Staffing',
             description:
-              'Registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants, and support workers supplied to NHS trusts, local authorities, and care organisations at short or extended notice, available 24/7.',
+              'Registered nurses, senior healthcare assistants, healthcare assistants, and support workers supplied to NHS trusts, nursing homes, residential care homes, and supported living services at short or extended notice, available 24/7.',
             url: `${siteUrl}/services`,
           },
         },

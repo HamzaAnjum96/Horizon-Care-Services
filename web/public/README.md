@@ -12,7 +12,7 @@ Horizon Care Services delivers professional care across England. We have been op
 
 **Three areas of provision:**
 
-1. **Staffing Solutions** — Registered nurses, healthcare assistants, support workers, and allied health professionals. Available 24/7 for single shifts, long-term placements, and short-notice cover.
+1. **Staffing Solutions** — Registered nurses, senior healthcare assistants, healthcare assistants, and support workers. Available 24/7 for single shifts, long-term placements, and short-notice cover.
 
 2. **Home Care** — Personal care, medication management, companionship, and respite support delivered in the client's own home.
 
@@ -22,9 +22,9 @@ Horizon Care Services delivers professional care across England. We have been op
 
 ## Where We Work
 
-Bedfordshire · Buckinghamshire · Cambridgeshire · Hertfordshire · Manchester · London
+Bedfordshire · Greater Manchester · Merseyside · Lancashire · Yorkshire
 
-We work across England and regularly extend into new areas. Contact us if your location is not listed.
+We work across England and additional areas may be considered subject to staffing availability. Contact us if your location is not listed.
 
 ---
 

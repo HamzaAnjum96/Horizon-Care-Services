@@ -7,11 +7,11 @@ const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
   title: { absolute: 'About Horizon Care Services | Healthcare Staffing Agency' },
-  description: 'Horizon Care Services is a healthcare staffing agency supplying vetted health and social care professionals to local authorities, NHS trusts, care homes and healthcare organisations across England.',
+  description: 'Horizon Care Services is a healthcare staffing agency supplying trained, qualified and experienced healthcare professionals to NHS trusts, nursing homes, residential care homes and supported living services across England.',
   alternates: { canonical: `${siteUrl}/about` },
   openGraph: {
     title: 'About Horizon Care Services | Healthcare Staffing Agency',
-    description: 'Healthcare staffing built on relationships, not just rotas. We supply vetted professionals to local authorities, NHS trusts, care homes and healthcare organisations.',
+    description: 'Healthcare staffing built on relationships, not just rotas. We supply trained, qualified and experienced professionals to NHS trusts, nursing homes, residential care homes and supported living services.',
     url: `${siteUrl}/about`,
     type: 'website',
   },
@@ -32,7 +32,7 @@ const jsonLd = [
     '@id': `${siteUrl}/about#webpage`,
     url: `${siteUrl}/about`,
     name: 'About Us — Horizon Care Services',
-    description: 'Three years placing vetted healthcare professionals with NHS trusts, local authorities, and care organisations across England.',
+    description: 'Three years placing trained, qualified and experienced healthcare professionals with NHS trusts, nursing homes, residential care homes and supported living services across England.',
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#organization` },
     breadcrumb: {
@@ -73,7 +73,7 @@ export default function AboutPage() {
               </p>
               <div className="space-y-4 text-ink-muted-dark text-[15px] leading-relaxed max-w-[64ch]">
                 <p>
-                  Horizon Care Services is a healthcare staffing agency supplying vetted health and social care professionals across England. We support local authorities, NHS trusts, care homes, residential services, supported living providers, and healthcare organisations with short-notice cover, planned staffing, and longer-term placements.
+                  Horizon Care Services is a healthcare staffing agency supplying trained, qualified and experienced healthcare professionals across England. We support NHS trusts, nursing homes, residential care homes and supported living services with short-notice cover, planned staffing, and longer-term placements.
                 </p>
                 <p>
                   We treat staffing as an operational risk and continuity issue, not just a rota task. A single gap can increase pressure on permanent teams, disrupt routines for people receiving care, and force managers into repeated last-minute decisions. Our role is to reduce that pressure with realistic options and dependable communication.
@@ -90,7 +90,7 @@ export default function AboutPage() {
                 {[
                   { label: 'Established', value: '3 years of operating experience' },
                   { label: 'Company number', value: '14615041' },
-                  { label: 'Coverage', value: 'Bedfordshire, Bucks, Cambridgeshire, Hertfordshire, Manchester, London' },
+                  { label: 'Coverage', value: 'Bedfordshire, Greater Manchester, Merseyside, Lancashire, Yorkshire' },
                   { label: 'Planning commitment', value: 'Clear updates and next-step ownership' },
                 ].map(({ label, value }) => (
                   <div key={label} className="border-t border-rule-light pt-5">
@@ -194,7 +194,7 @@ export default function AboutPage() {
               <div>
                 <p className="section-kicker text-ink-muted-dark mb-5">For healthcare professionals</p>
                 <p className="text-ink-muted-dark text-[14px] leading-relaxed text-ink-muted-dark mb-5 max-w-[48ch]">
-                  We work with registered nurses, social workers, OTs, physiotherapists, HCAs and support workers who want flexible agency work with proper briefing and dependable coordination.
+                  We work with registered nurses, senior healthcare assistants, healthcare assistants and support workers who want flexible agency work with proper briefing and dependable coordination.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-0 mb-6">
                   <div>

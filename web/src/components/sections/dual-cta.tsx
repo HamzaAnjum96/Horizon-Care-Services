@@ -23,11 +23,12 @@ export function DualCTA() {
           </p>
           <ul className="mb-10 space-y-2">
             {[
-              'The role and band or registration required',
-              'The setting type (care home, ward, supported living, community, etc.)',
+              'The role required (Registered Nurse, Senior HCA, HCA or Support Worker)',
+              'Any registration required (RGN, RMN or RNLD, where applicable)',
+              'The type of service (nursing home, residential care home, supported living, etc.)',
               'Location and date(s) or shift pattern',
               'Urgency level — same day, this week, or planned ahead',
-              'Anything specific about the environment or reporting requirements',
+              'Anything specific about the service or reporting requirements',
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-ink-muted-light text-[13px] leading-relaxed">
                 <span className="mt-[7px] w-1 h-1 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />

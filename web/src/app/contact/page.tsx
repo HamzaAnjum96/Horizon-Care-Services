@@ -155,12 +155,12 @@ export default function ContactPage() {
                 <p className="section-kicker text-ink-muted-dark mb-4">What to include in your first message</p>
                 <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0">
                   {[
-                    'Role title and registration or band required',
-                    'Setting type (ward, care home, supported living, community, etc.)',
-                    'Location and date(s) or shift pattern',
-                    'Whether it\'s urgent or planned',
-                    'Any specific experience or compliance requirement',
-                    'How quickly you need a response',
+                    'The role required (Registered Nurse, Senior HCA, HCA or Support Worker)',
+                    'Any registration required (RGN, RMN or RNLD, where applicable)',
+                    'The type of service or setting (nursing home, residential care home, supported living, NHS trust or specialist care setting)',
+                    'The location and date(s) or shift pattern required',
+                    'The level of urgency (same day, this week or planned in advance)',
+                    'Any specific requirements relating to the service, environment or reporting arrangements',
                   ].map((item) => (
                     <li key={item} className="border-t border-rule-light py-4 flex items-start gap-3 text-ink-muted-dark text-[14px]">
                       <span className="mt-[8px] w-1.5 h-1.5 rounded-full bg-amber flex-shrink-0" aria-hidden="true" />

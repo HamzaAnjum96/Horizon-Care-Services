@@ -7,7 +7,7 @@ const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
   title: { absolute: 'Work For Us — Horizon Care Services' },
-  description: 'Join Horizon Care Services as a registered nurse, social worker, occupational therapist, healthcare assistant, or support worker. Flexible hours, competitive rates across England.',
+  description: 'Join Horizon Care Services as a registered nurse, senior healthcare assistant, healthcare assistant, or support worker. Flexible hours, competitive rates across England.',
   alternates: { canonical: `${siteUrl}/work-for-us` },
   openGraph: {
     title: 'Work For Us — Horizon Care Services',

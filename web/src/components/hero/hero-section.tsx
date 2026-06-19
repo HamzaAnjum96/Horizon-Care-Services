@@ -55,7 +55,7 @@ export function HeroSection() {
             className="text-ink-muted-light leading-relaxed lg:max-w-[46ch]"
             style={{ fontSize: 'clamp(0.95rem, 1.35vw, 1.05rem)' }}
           >
-            We supply nurses, social workers, OTs, HCAs and support workers to NHS trusts, local authorities, care homes and supported living services across England. Tell us the role, setting and urgency — we assess suitability against where you work, not just job title, and confirm availability honestly. If we can&apos;t safely cover the shift, we say so.
+            We supply registered nurses, senior healthcare assistants, healthcare assistants and support workers to NHS trusts, nursing homes, residential care homes and supported living services across England. Every request is carefully reviewed for the right skills, experience and availability for your setting. If we can&apos;t provide suitably qualified staff to meet your requirements safely, we&apos;ll say so.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-7 flex-shrink-0">

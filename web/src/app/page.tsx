@@ -11,7 +11,7 @@ const siteUrl = 'https://www.horizoncareservices.org'
 
 export const metadata: Metadata = {
   title: { absolute: 'Healthcare Staffing Agency for Care Organisations | Horizon Care Services' },
-  description: 'Horizon Care Services supplies vetted health and social care professionals to local authorities, NHS trusts, care homes and care organisations across England. Request short-notice or planned staffing cover.',
+  description: 'Horizon Care Services supplies registered nurses, senior healthcare assistants, healthcare assistants and support workers to NHS trusts, nursing homes, residential care homes and supported living services across England. Request short-notice or planned staffing cover.',
   alternates: { canonical: siteUrl },
 }
 
@@ -24,7 +24,7 @@ const jsonLd = {
       name: 'What types of staff does Horizon Care Services provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We place registered nurses, social workers, occupational therapists, physiotherapists, healthcare assistants and support workers across health and social care settings.',
+        text: 'We supply registered nurses, senior healthcare assistants, healthcare assistants and support workers across nursing homes, residential care homes, supported living services and NHS settings.',
       },
     },
     {
@@ -32,7 +32,7 @@ const jsonLd = {
       name: 'Who does Horizon Care Services work with?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We work with local authorities, NHS trusts, care homes, residential services, supported living providers, private hospitals, clinics and healthcare organisations.',
+        text: 'We work with NHS trusts, nursing homes, residential care homes, supported living services and specialist care settings across England.',
       },
     },
     {
@@ -56,7 +56,7 @@ const jsonLd = {
       name: 'What checks do Horizon Care Services staff have?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Checks depend on the role and setting, but may include DBS checks, right-to-work confirmation, references, identity checks, training evidence and professional registration checks with NMC, Social Work England or HCPC where relevant.',
+        text: 'Checks depend on the role and setting, but may include identity verification, right-to-work checks, DBS status, references, training records and, where applicable, professional registration verification with the NMC.',
       },
     },
     {

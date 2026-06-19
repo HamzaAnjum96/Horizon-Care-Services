@@ -1,10 +1,9 @@
 const areas = [
   { code: 'BED', name: 'Bedfordshire' },
-  { code: 'BUCK', name: 'Buckinghamshire' },
-  { code: 'CAMB', name: 'Cambridgeshire' },
-  { code: 'HERT', name: 'Hertfordshire' },
-  { code: 'MAN', name: 'Manchester' },
-  { code: 'LDN', name: 'London' },
+  { code: 'GTM', name: 'Greater Manchester' },
+  { code: 'MSY', name: 'Merseyside' },
+  { code: 'LAN', name: 'Lancashire (incl. Blackpool & Rossendale)' },
+  { code: 'YRK', name: 'Yorkshire' },
 ]
 
 function GBMap() {
@@ -40,7 +39,7 @@ export function AreaSection() {
               Serving England.
             </p>
             <p className="text-ink-muted-dark text-[15px] leading-relaxed max-w-[38ch]">
-              Six regions, with additional areas considered depending on role, urgency and safe availability. Available to local authorities, NHS trusts, care homes and healthcare organisations.
+              Five regions, with additional areas considered subject to staffing availability and service requirements. Available to NHS trusts, nursing homes, residential care homes and supported living services.
             </p>
           </div>
 

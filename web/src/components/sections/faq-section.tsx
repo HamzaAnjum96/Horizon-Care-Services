@@ -6,11 +6,11 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     q: 'What types of staff do you provide?',
-    a: 'We place registered nurses (RGN, RMN, RNLD), social workers, occupational therapists, physiotherapists, healthcare assistants and support workers. We cover urgent shifts, planned rotas, and longer-term placements.',
+    a: 'We supply registered nurses (RGN, RMN, RNLD), senior healthcare assistants, healthcare assistants and support workers. We cover single shifts and emergency cover, short-term placements, ongoing requirements and long-term contracts.',
   },
   {
     q: 'Who do you work with?',
-    a: 'We work with local authorities, NHS trusts, care homes, supported living providers, residential services, private hospitals and wider healthcare organisations across England.',
+    a: 'We work with NHS trusts, nursing homes, residential care homes, supported living services and specialist care settings across England.',
   },
   {
     q: 'Can you provide urgent cover?',
@@ -22,11 +22,11 @@ const faqs = [
   },
   {
     q: 'What checks do your staff have?',
-    a: "Before we put anyone forward, we verify DBS status, right-to-work, references and professional registration with NMC, Social Work England or HCPC where relevant. We don't send workers whose compliance we haven't confirmed.",
+    a: "Before we put anyone forward, we verify DBS status, right to work, references, training records and, where applicable, professional registration with the NMC. We don't send workers whose compliance we haven't confirmed.",
   },
   {
     q: 'What information should we send when requesting staff?',
-    a: 'The role and any registration or band required, the setting type, location, shift dates or pattern, urgency level, and anything specific about the environment. The more detail you give us upfront, the faster we can give you a realistic answer.',
+    a: 'The role required (Registered Nurse, Senior HCA, HCA or Support Worker) and any registration required (RGN, RMN or RNLD where applicable), the type of service or setting, location, shift dates or pattern, urgency level, and any specific requirements relating to the service. The more detail you give us upfront, the faster we can give you a realistic answer.',
   },
   {
     q: 'What happens if the requirement changes after I contact you?',
