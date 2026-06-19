@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description: 'Healthcare and social care jobs with flexible hours, competitive rates, and a genuine commitment to high-quality care across England.',
     url: `${siteUrl}/work-for-us`,
     type: 'website',
+    images: [{ url: '/brand/hcs-og-card.png', width: 1200, height: 630, alt: 'Horizon Care Services — healthcare staffing across England' }],
   },
 }
 

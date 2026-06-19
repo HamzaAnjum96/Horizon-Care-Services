@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description: 'Trained, qualified and experienced healthcare professionals placed with NHS trusts, nursing homes, residential care homes and supported living services across England.',
     url: `${siteUrl}/services`,
     type: 'website',
+    images: [{ url: '/brand/hcs-og-card.png', width: 1200, height: 630, alt: 'Horizon Care Services — healthcare staffing across England' }],
   },
 }
 

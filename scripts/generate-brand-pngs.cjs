@@ -289,6 +289,28 @@ function buildBannerLogoHtml(fontUrl) {
 </body></html>`
 }
 
+// ─── Social share / OG card: 1200×630 (1.91:1) ───────────────
+// Centred lockup on the brand background so platforms (Facebook, WhatsApp,
+// X, LinkedIn) that crop to ~1.91:1 always show a clean, complete card.
+// Minimal text by design: mark + name + short kicker.
+function buildOgCardHtml(fontUrl) {
+  const W=1200, H=630
+  const iconsSvg = iconsSvgEls(W, H)
+  return base(fontUrl, W, H, BG_DEEP) + `
+<div style="position:relative;width:${W}px;height:${H}px;overflow:hidden;background:${BG_DEEP}">
+  <div style="position:absolute;inset:0;-webkit-mask-image:radial-gradient(circle 700px at ${W/2}px ${H/2}px, transparent 6%, black 58%)">
+    <svg width="${W}" height="${H}" style="display:block">${iconsSvg}</svg>
+  </div>
+  <div style="position:absolute;inset:0;background:radial-gradient(circle 460px at ${W/2}px ${Math.round(H*0.46)}px, rgba(14,12,10,0.92) 0%, rgba(14,12,10,0) 72%)"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px">
+    ${markSvgInline(INK_LIGHT, 168, 168)}
+    <div style="font-family:SS4,serif;font-size:74px;font-weight:580;font-variation-settings:'opsz' 64,'wght' 580;color:${INK_LIGHT};line-height:1;letter-spacing:-0.01em;white-space:nowrap">Horizon Care Services</div>
+    <div style="font-family:SS4,serif;font-size:18px;font-weight:400;color:${INK_MUTED};letter-spacing:0.18em;text-transform:uppercase">HEALTHCARE STAFFING  ·  ENGLAND</div>
+  </div>
+</div>
+</body></html>`
+}
+
 // ─── Merch SVG (embedded font, vector download) ───────────────
 function fontFaceSvg(b64) {
   return `@font-face{font-family:'SS4';src:url('data:font/woff2;base64,${b64}') format('woff2');font-weight:200 900;}`
@@ -425,6 +447,12 @@ async function main() {
   for (const [s, sx] of [[1,''], [2,'@2x']]) {
     await savePng(heroHtml, `hcs-banner-hero${sx}.png`, { w:1920, h:640, scale:s })
     await savePng(logoHtml, `hcs-banner-logo${sx}.png`, { w:1920, h:640, scale:s })
+  }
+
+  // ── Social share / OG card (Playwright) ──
+  const ogHtml = buildOgCardHtml(fontUrl)
+  for (const [s, sx] of [[1,''], [2,'@2x']]) {
+    await savePng(ogHtml, `hcs-og-card${sx}.png`, { w:1200, h:630, scale:s })
   }
 
   await browser.close()

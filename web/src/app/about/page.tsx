@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description: 'Healthcare staffing built on relationships, not just rotas. We supply trained, qualified and experienced professionals to NHS trusts, nursing homes, residential care homes and supported living services.',
     url: `${siteUrl}/about`,
     type: 'website',
+    images: [{ url: '/brand/hcs-og-card.png', width: 1200, height: 630, alt: 'Horizon Care Services — healthcare staffing across England' }],
   },
 }
 

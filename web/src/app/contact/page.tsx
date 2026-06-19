@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description: 'Contact us with the role, setting, location and urgency. We respond with a clear answer on availability and next steps.',
     url: `${siteUrl}/contact`,
     type: 'website',
+    images: [{ url: '/brand/hcs-og-card.png', width: 1200, height: 630, alt: 'Horizon Care Services — healthcare staffing across England' }],
   },
 }
 

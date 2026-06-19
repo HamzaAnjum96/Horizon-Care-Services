@@ -17,6 +17,7 @@ export const metadata: Metadata = {
       'Articles, notes, and field experience from the team at Horizon Care Services. Practical guidance for families, referrers, and healthcare professionals.',
     url: `${siteUrl}/blog`,
     type: 'website',
+    images: [{ url: '/brand/hcs-og-card.png', width: 1200, height: 630, alt: 'Horizon Care Services — healthcare staffing across England' }],
   },
 }
 

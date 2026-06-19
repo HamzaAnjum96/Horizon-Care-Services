@@ -65,14 +65,14 @@ export const metadata: Metadata = {
     title: 'Horizon Care Services',
     description:
       'Healthcare staffing agency placing registered nurses, senior healthcare assistants, healthcare assistants, and support workers across England.',
-    images: [{ url: '/brand/hcs-banner-hero@2x.png', width: 1920, height: 640, alt: 'Horizon Care Services' }],
+    images: [{ url: '/brand/hcs-og-card.png', width: 1200, height: 630, alt: 'Horizon Care Services — healthcare staffing across England' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Horizon Care Services',
     description:
       'Healthcare staffing agency placing registered nurses, senior healthcare assistants, healthcare assistants, and support workers across England.',
-    images: ['/brand/hcs-banner-hero@2x.png'],
+    images: ['/brand/hcs-og-card.png'],
   },
   manifest: '/site.webmanifest',
   icons: {
