@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
                 <li>Respond to staffing enquiries from client organisations, commissioners, managers and professionals.</li>
                 <li>Assess client staffing requirements.</li>
                 <li>Identify suitable candidates or workers for placements.</li>
-                <li>Carry out recruitment, vetting and compliance checks.</li>
+                <li>Carry out recruitment, screening and compliance checks.</li>
                 <li>Confirm professional registration where relevant.</li>
                 <li>Manage staffing bookings, shifts and placements.</li>
                 <li>Communicate with clients, candidates and workers.</li>
